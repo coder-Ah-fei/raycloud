@@ -960,3 +960,5 @@ cache|       qps|   rate|           get|           hit|          fail|        ex
 -----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
 -----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
 
+[ray-wcc:192.168.101.18:20003] 2021-03-01 17:05:10.543 WARN 8008 [] [XNIO-1 task-5] o.s.web.servlet.PageNotFound             [2m:[0;39m No mapping for GET /favicon.ico
+[ray-wcc:192.168.101.18:20003] 2021-03-01 17:05:10.858 ERROR 8008 [] [XNIO-1 task-5] h.r.c.web.handler.BaseExceptionHandler   [2m:[0;39m 程序异常==>errorCode:404, exception:No handler found for GET /favicon.ico
