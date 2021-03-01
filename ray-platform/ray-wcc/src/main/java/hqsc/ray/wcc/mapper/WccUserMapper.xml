@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccUserMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccUser">
+                    <id column="USER_ID" property="userId" />
+                    <result column="NAME" property="name" />
+                    <result column="NICKNAME" property="nickname" />
+                    <result column="PHONE" property="phone" />
+                    <result column="PASSWORD" property="password" />
+                    <result column="SALT" property="salt" />
+                    <result column="HEAD_PORTRAIT" property="headPortrait" />
+                    <result column="WECHAT_NICKNAME" property="wechatNickname" />
+                    <result column="WECHAT_UNION_ID" property="wechatUnionId" />
+                    <result column="WECHAT_HEAD_PORTRAIT_ADDRESS" property="wechatHeadPortraitAddress" />
+                    <result column="AUTH_TYPE" property="authType" />
+                    <result column="MEMBER" property="member" />
+                    <result column="MEMBER_RANK" property="memberRank" />
+                    <result column="CELEBRITY_FLAG" property="celebrityFlag" />
+                    <result column="GENDER" property="gender" />
+                    <result column="AGE" property="age" />
+                    <result column="USER_RANK" property="userRank" />
+                    <result column="USER_INTRODUCE" property="userIntroduce" />
+                    <result column="STATUS" property="status" />
+                    <result column="IS_DELETE" property="isDelete" />
+                    <result column="CREATED_BY" property="createdBy" />
+                    <result column="CREATED_BY_USER" property="createdByUser" />
+                    <result column="CREATION_DATE" property="creationDate" />
+                    <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser" />
+                    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" />
+                    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                USER_ID, NAME, NICKNAME, PHONE, PASSWORD, SALT, HEAD_PORTRAIT, WECHAT_NICKNAME, WECHAT_UNION_ID, WECHAT_HEAD_PORTRAIT_ADDRESS, AUTH_TYPE, MEMBER, MEMBER_RANK, CELEBRITY_FLAG, GENDER, AGE, USER_RANK, USER_INTRODUCE, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+        </sql>
+
+        <select id="getMyFavorite" resultMap="hqsc.ray.wcc.mapper.WccReleaseInfoMapper.BaseResultMap">
+             SELECT
+	          RELEASE_INFO_ID, TITEL, CONTENT, ATTACHMENT_ID, TYPE, BELONG_USER_ID, BELONG_CIRCLE_ID, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+            FROM
+	          wcc_Release_Info
+            WHERE
+	          RELEASE_INFO_ID = (SELECT BELONG_ID FROM wcc_praise_favorite WHERE USER_ID = #{userid} AND TYPE =  1 AND `STATUS` = 1 AND IS_DELETE = 0)
+	        AND IS_DELETE = 0
+	        AND STATUS = 1
+	        AND BELONG_USER_ID = #{userid}
+            ORDER BY
+	          CREATION_DATE DESC
+	        LIMIT 0,20
+        </select>
+</mapper>

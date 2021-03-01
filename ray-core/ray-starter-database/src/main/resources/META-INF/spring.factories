@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.database.config.MybatisPlusConfiguration,\
+  hqsc.ray.core.database.config.DruidConfiguration,\
+  hqsc.ray.core.database.config.TenantConfiguration
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccCelebrityInfoMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccCelebrityInfo">
+                    <id column="CELEBRITY_INFO_ID" property="celebrityInfoId" />
+                    <result column="BELONG_USERID" property="belongUserId" />
+                    <result column="NICKNAME" property="nickname" />
+                    <result column="HEAD_PORTRAIT" property="headPortrait" />
+                    <result column="GENDER" property="gender" />
+                    <result column="SCOPE" property="scope" />
+                    <result column="PLATFORM" property="platform" />
+                    <result column="ORGANIZATION_ID" property="organizationId" />
+                    <result column="CURRENT_ADDRESS" property="currentAddress" />
+                    <result column="TAG" property="tag" />
+                    <result column="LEVEL" property="level" />
+                    <result column="YEARS_LIMIT" property="yearsLimit" />
+                    <result column="AGE" property="age" />
+                    <result column="LABOR_UNION" property="laborUnion" />
+                    <result column="STATE" property="state" />
+                    <result column="LIVE_PRICE" property="livePrice" />
+                    <result column="VIDEO" property="video" />
+                    <result column="FANS" property="fans" />
+                    <result column="STATUS" property="status" />
+                    <result column="IS_DELETE" property="isDelete" />
+                    <result column="CREATED_BY" property="createdBy" />
+                    <result column="CREATED_BY_USER" property="createdByUser" />
+                    <result column="CREATION_DATE" property="creationDate" />
+                    <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser" />
+                    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" />
+                    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                CELEBRITY_INFO_ID,BELONG_USERID, NICKNAME, HEAD_PORTRAIT, GENDER, SCOPE, PLATFORM, ORGANIZATION_ID, CURRENT_ADDRESS, TAG, LEVEL, YEARS_LIMIT, AGE, LABOR_UNION, STATE, LIVE_PRICE, VIDEO, FANS, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+        </sql>
+
+    <resultMap id="findOrganizationByFansRankResult" type="hqsc.ray.wcc.entity.MCNOrganizationInfo">
+        <result column="ORGANIZATION_ID" property="organizationId" />
+        <result column="FANS" property="fansCount" />
+        <result column="CELEBRITYCOUNT" property="celebrityCount" />
+    </resultMap>
+
+    <select id="findOrganizationByFansRank" resultMap="findOrganizationByFansRankResult">
+        SELECT
+	      ORGANIZATION_ID,
+	      IFNULL( sum( fans ), 0 ) AS FANS,
+	      count( 0 ) AS CELEBRITYCOUNT
+        FROM
+	      wcc_celebrity_info
+        WHERE
+	      ( STATUS = 1 AND IS_DELETE = 0 )
+        GROUP BY
+	      ORGANIZATION_ID
+        ORDER BY
+	      FANS DESC
+	    LIMIT #{current}, #{size}
+    </select>
+</mapper>

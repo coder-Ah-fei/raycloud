@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccCircleInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccCircleInfo">
+        <id column="CIRCLE_ID" property="circleId"/>
+        <result column="CIRCLE_NAME" property="circleName"/>
+        <result column="CIRCLE_IMG" property="circleImg"/>
+        <result column="CIRCLE_SYNOPSIS" property="circleSynopsis"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CIRCLE_ID
+        , CIRCLE_NAME, CIRCLE_IMG, CIRCLE_SYNOPSIS, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+    </sql>
+
+
+    <resultMap id="indexCircles" type="hqsc.ray.wcc.vo.IndexCircleInfoVO">
+        <result column="CIRCLE_ID" property="circleId"/>
+        <result column="CIRCLE_NAME" property="circleName"/>
+        <result column="CIRCLE_IMG" property="circleImg"/>
+        <result column="CIRCLE_SYNOPSIS" property="circleSynopsis"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+        <result column="joined" property="joined"/>
+        <result column="peopleCount" property="peopleCount"/>
+    </resultMap>
+
+    <select id="findIndexCircles" resultMap="indexCircles">
+        SELECT wci.CIRCLE_ID,
+               wci.CIRCLE_NAME,
+               wci.CIRCLE_IMG,
+               wci.CIRCLE_SYNOPSIS,
+               wci.STATUS,
+               wci.IS_DELETE,
+               wci.CREATED_BY,
+               wci.CREATED_BY_USER,
+               wci.CREATION_DATE,
+               wci.LAST_UPDATED_BY_USER,
+               wci.LAST_UPDATED_BY,
+               wci.LAST_UPDATE_DATE,
+               (SELECT COUNT(1)
+                FROM wcc_user_circle
+                WHERE CIRCLE_ID = wci.CIRCLE_ID
+                  AND STATUS = 1
+                  AND IS_DELETE = 0
+                  AND USER_ID = #{userId}) AS joined,
+               (SELECT COUNT(1)
+                FROM wcc_user_circle
+                WHERE CIRCLE_ID = wci.CIRCLE_ID
+                  AND STATUS = 1
+                  AND IS_DELETE = 0)       AS peopleCount
+        FROM wcc_circle_info wci
+        WHERE 1 = 1
+          AND wci.STATUS = 1
+          AND wci.IS_DELETE = 0
+        ORDER BY wci.CREATION_DATE DESC
+            LIMIT #{current}, #{size}
+    </select>
+
+</mapper>

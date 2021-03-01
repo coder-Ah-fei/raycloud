@@ -1,0 +1,25 @@
+server:
+  port: 30006
+spring:
+  application:
+    name: @artifactId@
+  #数据源配置
+  datasource:
+    url: ${ray.datasource.url}
+    username: ${ray.datasource.username}
+    password: ${ray.datasource.password}
+logging:
+  config: classpath:logback.xml
+ray:
+  job:
+    admin:
+      addresses: http://localhost:30011/xxl-job-admin
+    accessToken: ''
+    executor:
+      appname: ${spring.application.name}
+      address: 127.0.0.1:30007
+      ip: 127.0.0.1
+      port: 30007
+      logPath: logs/app/ray-job/jobhandler/
+      logRetentionDays: 30
+

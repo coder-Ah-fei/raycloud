@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.lock.config.RedissonConfiguration
+
+

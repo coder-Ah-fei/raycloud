@@ -1,0 +1,39 @@
+server:
+  port: 20002
+spring:
+  application:
+    name: ${artifactId}
+  #数据源配置
+  datasource:
+    url: ${ray.datasource.url}
+    username: ${ray.datasource.username}
+    password: ${ray.datasource.password}
+
+dubbo:
+  scan:
+    base-packages: hqsc.ray.system.feign
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+  registries:
+    new:
+      address: spring-cloud://localhost
+#  registry:
+#   The Spring Cloud Dubbo's registry extension
+#    address: spring-cloud://localhost
+#   The traditional Dubbo's registry
+#    address: nacos://127.0.0.1:8848
+
+#jetcach配置
+jetcache:
+  remote:
+    default:
+      type: redis.lettuce
+      keyConvertor: fastjson
+      uri: redis://${spring.redis.host}:${spring.redis.port}/
+      #uri:
+      #  - redis://127.0.0.1:7000
+      #  - redis://127.0.0.1:7001
+      #  - redis://127.0.0.1:7002
+      #readFrom: slavePreferred

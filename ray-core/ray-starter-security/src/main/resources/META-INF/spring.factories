@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.security.config.IgnoreUrlPropsConfiguration,\
+  hqsc.ray.core.security.service.PermissionService
+
+
+
+

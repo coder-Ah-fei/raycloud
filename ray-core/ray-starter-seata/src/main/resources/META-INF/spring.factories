@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.seata.config.SeataConfiguration
+
+
+

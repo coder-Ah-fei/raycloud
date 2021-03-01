@@ -1,0 +1,10 @@
+server:
+  port: 30002
+spring:
+  application:
+    name: @artifactId@
+  #数据源配置
+  datasource:
+    url: ${ray.datasource.url}
+    username: ${ray.datasource.username}
+    password: ${ray.datasource.password}

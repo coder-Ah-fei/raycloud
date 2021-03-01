@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    hqsc.ray.core.dozer.config.DozerConfiguration

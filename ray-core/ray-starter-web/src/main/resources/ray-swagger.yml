@@ -1,0 +1,18 @@
+#Swagger属性配置
+ray:
+  swagger:
+    enable: false
+    title: RayCLoud文档管理中心
+    description: RayCloud文档管理
+    license: Powered by RayCloud
+    service-url:
+    contact-name:
+    contact-url:
+    contact-email:
+# knife4j配置
+knife4j:
+  enable: ${ray.swagger.enable}
+  basic:
+    enable: true
+    username: admin
+    password: raycloud

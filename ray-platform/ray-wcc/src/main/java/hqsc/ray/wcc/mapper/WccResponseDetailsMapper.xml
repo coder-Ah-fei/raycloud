@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccResponseDetailsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccResponseDetails">
+        <id column="RESPONSE_DETAIL_ID" property="responseDetailId"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="RESPONSE_TIME" property="responseTime"/>
+        <result column="RESPONSE_BODY" property="responseBody"/>
+        <result column="BELONG_TYPE" property="belongType"/>
+        <result column="BELONG_ID" property="belongId"/>
+        <result column="PARENT_ID" property="parentId"/>
+        <result column="FAVORITE_COUNT" property="favoriteCount"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        RESPONSE_DETAIL_ID
+        , USER_ID, RESPONSE_TIME, RESPONSE_BODY, BELONG_TYPE, BELONG_ID, PARENT_ID, FAVORITE_COUNT, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+    </sql>
+    <resultMap id="WccResponseDetailsVO" type="hqsc.ray.wcc.vo.WccResponseDetailsVO">
+        <id column="RESPONSE_DETAIL_ID" property="responseDetailId"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="userNickname" property="userNickname"/>
+        <result column="wechatHeadPortraitAddress" property="wechatHeadPortraitAddress"/>
+        <result column="RESPONSE_TIME" property="responseTime"/>
+        <result column="RESPONSE_BODY" property="responseBody"/>
+        <result column="BELONG_TYPE" property="belongType"/>
+        <result column="BELONG_ID" property="belongId"/>
+        <result column="PARENT_ID" property="parentId"/>
+        <result column="FAVORITE_COUNT" property="favoriteCount"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+        <result column="childNum" property="childNum"/>
+    </resultMap>
+    <select id="listResponseDetails" resultMap="WccResponseDetailsVO">
+        select wrd.RESPONSE_DETAIL_ID,
+        wrd.USER_ID,
+        wu.NICKNAME as userNickname,
+        wu.WECHAT_HEAD_PORTRAIT_ADDRESS as wechatHeadPortraitAddress,
+        wrd.RESPONSE_TIME,
+        wrd.RESPONSE_BODY,
+        wrd.BELONG_TYPE,
+        wrd.BELONG_ID,
+        wrd.PARENT_ID,
+        wrd.FAVORITE_COUNT,
+        wrd.STATUS,
+        wrd.IS_DELETE,
+        wrd.CREATED_BY,
+        wrd.CREATED_BY_USER,
+        wrd.CREATION_DATE,
+        wrd.LAST_UPDATED_BY_USER,
+        wrd.LAST_UPDATED_BY,
+        wrd.LAST_UPDATE_DATE,
+        (select count(1)
+        from wcc_response_details wrd2
+        where 1 = 1
+        and wrd2.BELONG_ID = #{parseLong}
+        and wrd2.PARENT_ID = wrd.RESPONSE_DETAIL_ID) as childNum
+        from wcc_response_details wrd, wcc_user wu
+        where 1 = 1
+        and wrd.USER_ID = wu.USER_ID
+        and wrd.BELONG_ID = #{parseLong}
+        <if test="responseDetailParentId != null">
+            and wrd.PARENT_ID = #{responseDetailParentId}
+        </if>
+        <if test="responseDetailParentId == null">
+            and wrd.PARENT_ID is null
+        </if>
+        order by wrd.CREATION_DATE desc;
+    </select>
+
+</mapper>

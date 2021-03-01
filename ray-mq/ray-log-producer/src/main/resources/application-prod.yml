@@ -1,0 +1,7 @@
+server:
+  port: 40001
+spring:
+  application:
+    name: @artifactId@
+  kafka:
+    bootstrap-servers: localhost:9092

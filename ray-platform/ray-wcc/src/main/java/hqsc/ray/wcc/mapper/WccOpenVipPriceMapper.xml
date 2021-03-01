@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccOpenVipPriceMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccOpenVipPrice">
+                    <id column="VIP_PRICE_ID" property="vipPriceId" />
+                    <result column="MONTH_CURRENT_PRICE" property="monthCurrentPrice" />
+                    <result column="MONTH_ORIGINA_PRICE" property="monthOriginaPrice" />
+                    <result column="MONTH_DAY_COUNT" property="monthDayCount" />
+                    <result column="NEXT_MONTH_PRICE" property="nextMonthPrice" />
+                    <result column="QUARTER_CURRENT_PRICE" property="quarterCurrentPrice" />
+                    <result column="QUARTER_ORIGINA_PRICE" property="quarterOriginaPrice" />
+                    <result column="QUARTER_DAY_COUNT" property="quarterDayCount" />
+                    <result column="NEXT_QUARTER_PRICE" property="nextQuarterPrice" />
+                    <result column="YEAR_CURRENT_PRICE" property="yearCurrentPrice" />
+                    <result column="YEAR_ORIGINA_PRICE" property="yearOriginaPrice" />
+                    <result column="YEAR_DAY_COUNT" property="yearDayCount" />
+                    <result column="NEXT_YEAR_PRICE" property="nextYearPrice" />
+                    <result column="STATUS" property="status" />
+                    <result column="IS_DELETE" property="isDelete" />
+                    <result column="CREATED_BY" property="createdBy" />
+                    <result column="CREATED_BY_USER" property="createdByUser" />
+                    <result column="CREATION_DATE" property="creationDate" />
+                    <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser" />
+                    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" />
+                    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                VIP_PRICE_ID, MONTH_CURRENT_PRICE, MONTH_ORIGINA_PRICE, MONTH_DAY_COUNT, NEXT_MONTH_PRICE, QUARTER_CURRENT_PRICE, QUARTER_ORIGINA_PRICE, QUARTER_DAY_COUNT, NEXT_QUARTER_PRICE, YEAR_CURRENT_PRICE, YEAR_ORIGINA_PRICE, YEAR_DAY_COUNT, NEXT_YEAR_PRICE, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+        </sql>
+
+</mapper>

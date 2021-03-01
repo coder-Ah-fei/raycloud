@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccReleaseInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccReleaseInfo">
+        <id column="RELEASE_INFO_ID" property="releaseInfoId"/>
+        <result column="TITEL" property="titel"/>
+        <result column="CONTENT" property="content"/>
+        <result column="ATTACHMENT_ID" property="attachmentId"/>
+        <result column="TYPE" property="type"/>
+        <result column="BELONG_USER_ID" property="belongUserId"/>
+        <result column="BELONG_CIRCLE_ID" property="belongCircleId"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        RELEASE_INFO_ID
+        , TITEL, CONTENT, ATTACHMENT_ID, TYPE, BELONG_USER_ID, BELONG_CIRCLE_ID, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+    </sql>
+
+
+    <resultMap id="indexReferrals" type="hqsc.ray.wcc.vo.IndexReferralsVO">
+        <result column="USER_ID" property="userId"/>
+        <result column="ATT_ID" property="attId"/>
+        <result column="WECHAT_HEAD_PORTRAIT_ADDRESS" property="wechatHeadPortraitAddress"/>
+        <result column="RELEASE_INFO_ID" property="releaseInfoId"/>
+        <result column="NICKNAME" property="nickname"/>
+        <result column="MEMBER" property="member"/>
+        <result column="MEMBER_RANK" property="memberRank"/>
+        <result column="TYPE" property="type"/>
+        <result column="TITEL" property="titel"/>
+        <result column="CONTENT" property="content"/>
+        <result column="ATTACHMENT_ID" property="attachmentId"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="praise_count" property="praiseCount"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="concern_count" property="concernCount"/>
+    </resultMap>
+
+
+    <select id="findIndexReferrals" resultMap="indexReferrals">
+        SELECT wcc_user.USER_ID,
+               wcc_user.HEAD_PORTRAIT                               AS ATT_ID,
+               wcc_user.WECHAT_HEAD_PORTRAIT_ADDRESS,
+               wcc_release_info.RELEASE_INFO_ID,
+               wcc_user.NICKNAME,
+               wcc_user.MEMBER,
+               wcc_user.MEMBER_RANK,
+               wcc_release_info.TYPE,
+               wcc_release_info.TITEL,
+               wcc_release_info.CONTENT,
+               wcc_release_info.ATTACHMENT_ID,
+               wcc_release_info.CREATION_DATE,
+               (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite
+                   WHERE 1 = 1
+                     AND STATUS = 1
+                     AND IS_DELETE = 0
+                     AND TYPE = 0
+                     AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
+               )                                                    AS praise_count,
+               (SELECT count(1)
+                FROM wcc_response_details
+                WHERE 1 = 1
+                  AND STATUS = 1
+                  AND IS_DELETE = 0
+                  AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID) AS comment_count,
+               (SELECT count(1)
+                FROM wcc_user_concern
+                WHERE 1 = 1
+                  AND STATUS = 1
+                  AND IS_DELETE = 0
+                  AND USER_ID = #{userId}
+                  AND BELONG_ID = wcc_user.USER_ID)                 AS concern_count
+        FROM wcc_user,
+             wcc_release_info
+        WHERE 1 = 1
+          AND wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
+          AND wcc_user.STATUS = 1
+          AND wcc_user.IS_DELETE = 0
+          AND wcc_release_info.STATUS = 1
+          AND wcc_release_info.IS_DELETE = 0
+        ORDER BY wcc_release_info.CREATION_DATE DESC
+            LIMIT #{current}, #{size}
+    </select>
+
+
+    <resultMap id="indexVideo" type="hqsc.ray.wcc.vo.IndexVideoVO">
+        <id column="RELEASE_INFO_ID" property="releaseInfoId"/>
+        <result column="TITEL" property="titel"/>
+        <result column="CONTENT" property="content"/>
+        <result column="url" property="url"/>
+        <result column="ATTACHMENT_ID" property="attachmentId"/>
+        <result column="TYPE" property="type"/>
+        <result column="BELONG_USER_ID" property="belongUserId"/>
+        <result column="BELONG_CIRCLE_ID" property="belongCircleId"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+    </resultMap>
+
+    <select id="findIndexVideo" resultMap="indexVideo">
+        SELECT wri.RELEASE_INFO_ID,
+               wri.TITEL,
+               wri.CONTENT,
+               rsa.url,
+               wri.ATTACHMENT_ID,
+               wri.TYPE,
+               wri.BELONG_USER_ID,
+               wri.BELONG_CIRCLE_ID,
+               wri.STATUS,
+               wri.IS_DELETE,
+               wri.CREATED_BY,
+               wri.CREATED_BY_USER,
+               wri.CREATION_DATE,
+               wri.LAST_UPDATED_BY_USER,
+               wri.LAST_UPDATED_BY,
+               wri.LAST_UPDATE_DATE
+        FROM (wcc_release_info AS wri, ray_sys_attachment AS rsa)
+        WHERE wri.STATUS = 1
+          AND wri.IS_DELETE = 0
+          AND rsa.is_recycle = 0
+          AND wri.ATTACHMENT_ID = rsa.id
+          AND wri.TYPE = 3
+        ORDER BY wri.CREATION_DATE DESC
+            LIMIT #{current}, #{size}
+    </select>
+
+
+    <resultMap id="myReleaseInfo" type="hqsc.ray.wcc.vo.MyReleaseInfoVO">
+        <id column="RELEASE_INFO_ID" property="releaseInfoId"/>
+        <result column="TITEL" property="titel"/>
+        <result column="CONTENT" property="content"/>
+        <result column="ATTACHMENT_ID" property="attachmentId"/>
+        <result column="TYPE" property="type"/>
+        <result column="BELONG_USER_ID" property="belongUserId"/>
+        <result column="BELONG_CIRCLE_ID" property="belongCircleId"/>
+        <result column="STATUS" property="status"/>
+        <result column="IS_DELETE" property="isDelete"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATED_BY_USER" property="createdByUser"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+        <result column="praise_count" property="praiseCount"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="NAME" property="name"/>
+        <result column="NICKNAME" property="nickname"/>
+        <result column="WECHAT_HEAD_PORTRAIT_ADDRESS" property="wechatHeadPortraitAddress"/>
+        <result column="responseDetailsCreateDateNewest" property="responseDetailsCreateDateNewest"/>
+    </resultMap>
+
+    <select id="findMyReleaseInfo" resultMap="myReleaseInfo">
+        SELECT
+        r.RELEASE_INFO_ID,
+        r.TITEL,
+        r.CONTENT,
+        r.ATTACHMENT_ID,
+        r.TYPE,
+        r.BELONG_USER_ID,
+        r.BELONG_CIRCLE_ID,
+        r.STATUS,
+        r.IS_DELETE,
+        r.CREATED_BY,
+        r.CREATED_BY_USER,
+        r.CREATION_DATE,
+        r.LAST_UPDATED_BY_USER,
+        r.LAST_UPDATED_BY,
+        r.LAST_UPDATE_DATE,
+        (
+        SELECT
+        count( 1 )
+        FROM
+        wcc_praise_favorite f
+        WHERE
+        1 = 1
+        AND f.STATUS = 1
+        AND f.IS_DELETE = 0
+        AND f.TYPE = 0
+        AND f.BELONG_ID = r.RELEASE_INFO_ID
+        ) AS praise_count,
+        ( SELECT count( 1 ) FROM wcc_response_details d WHERE 1 = 1 AND d.STATUS = 1 AND d.IS_DELETE = 0 AND d.BELONG_ID
+        =
+        r.RELEASE_INFO_ID ) AS comment_count,
+        u.NAME,
+        u.NICKNAME,
+        u.WECHAT_HEAD_PORTRAIT_ADDRESS
+        FROM
+        wcc_release_info r
+        LEFT JOIN wcc_user u ON u.USER_ID=r.BELONG_USER_ID
+        WHERE
+        1 = 1
+        AND r.STATUS = 1
+        AND r.IS_DELETE = 0
+        <if test="releaseInfoIdsStr != null and releaseInfoIdsStr != ''">
+            AND r.RELEASE_INFO_ID IN (#{releaseInfoIdsStr})
+        </if>
+        <if test="userId != null">
+            AND r.BELONG_USER_ID = #{userId}
+        </if>
+        <if test="type != null">
+            AND r.TYPE = #{type}
+        </if>
+        ORDER BY
+        r.CREATION_DATE DESC
+        LIMIT #{current} ,#{size}
+    </select>
+    <select id="findById" resultMap="myReleaseInfo">
+        SELECT r.RELEASE_INFO_ID,
+               r.TITEL,
+               r.CONTENT,
+               r.ATTACHMENT_ID,
+               r.TYPE,
+               r.BELONG_USER_ID,
+               r.BELONG_CIRCLE_ID,
+               r.STATUS,
+               r.IS_DELETE,
+               r.CREATED_BY,
+               r.CREATED_BY_USER,
+               r.CREATION_DATE,
+               r.LAST_UPDATED_BY_USER,
+               r.LAST_UPDATED_BY,
+               r.LAST_UPDATE_DATE,
+               (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite f
+                   WHERE 1 = 1
+                     AND f.STATUS = 1
+                     AND f.IS_DELETE = 0
+                     AND f.TYPE = 0
+                     AND f.BELONG_ID = r.RELEASE_INFO_ID
+               )                         AS praise_count,
+               (SELECT count(1)
+                FROM wcc_response_details d
+                WHERE 1 = 1
+                  AND d.STATUS = 1
+                  AND d.IS_DELETE = 0
+                  AND d.BELONG_ID
+                    =
+                      r.RELEASE_INFO_ID) AS comment_count,
+               u.NAME,
+               u.NICKNAME,
+               u.WECHAT_HEAD_PORTRAIT_ADDRESS
+        FROM wcc_release_info r
+                 LEFT JOIN wcc_user u ON u.USER_ID = r.BELONG_USER_ID
+        WHERE 1 = 1
+          AND r.STATUS = 1
+          AND r.IS_DELETE = 0
+          AND r.RELEASE_INFO_ID = #{releaseInfoId}
+        ORDER BY r.CREATION_DATE DESC LIMIT 0 ,1
+    </select>
+    <select id="listWccReleaseInfosForNewestComment" resultMap="myReleaseInfo">
+        SELECT wri.RELEASE_INFO_ID,
+               wri.TITEL,
+               wri.CONTENT,
+               wri.ATTACHMENT_ID,
+               wri.TYPE,
+               wri.BELONG_USER_ID,
+               wri.BELONG_CIRCLE_ID,
+               wri.STATUS,
+               wri.IS_DELETE,
+               wri.CREATED_BY,
+               wri.CREATED_BY_USER,
+               wri.CREATION_DATE,
+               wri.LAST_UPDATED_BY_USER,
+               wri.LAST_UPDATED_BY,
+               wri.LAST_UPDATE_DATE,
+               (select wrd.CREATION_DATE
+                from wcc_response_details wrd
+                where wrd.USER_ID = #{userId}
+                order by wrd.CREATION_DATE desc limit 0,
+               1)                       AS responseDetailsCreateDateNewest,
+                (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite f
+                   WHERE 1 = 1
+                     AND f.STATUS = 1
+                     AND f.IS_DELETE = 0
+                     AND f.TYPE = 0
+                     AND f.BELONG_ID = wri.RELEASE_INFO_ID
+               )                         AS praise_count,
+               (SELECT count(1)
+                FROM wcc_response_details d
+                WHERE 1 = 1
+                  AND d.STATUS = 1
+                  AND d.IS_DELETE = 0
+                  AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
+        FROM wcc_release_info wri,
+            wcc_response_details wrd
+        WHERE 1 = 1
+          AND wri.RELEASE_INFO_ID = wrd.BELONG_ID
+          AND wrd.USER_ID = #{userId}
+        GROUP BY wrd.BELONG_ID
+        ORDER BY responseDetailsCreateDateNewest LIMIT #{current}, #{size};
+    </select>
+
+
+    <select id="getMyFavorite" resultMap="myReleaseInfo">
+        SELECT wri.RELEASE_INFO_ID,
+               wri.TITEL,
+               wri.CONTENT,
+               wri.ATTACHMENT_ID,
+               wri.TYPE,
+               wri.BELONG_USER_ID,
+               wri.BELONG_CIRCLE_ID,
+               wri.STATUS,
+               wri.IS_DELETE,
+               wri.CREATED_BY,
+               wri.CREATED_BY_USER,
+               wri.CREATION_DATE,
+               wri.LAST_UPDATED_BY_USER,
+               wri.LAST_UPDATED_BY,
+               wri.LAST_UPDATE_DATE,
+               (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite f
+                   WHERE 1 = 1
+                     AND f.STATUS = 1
+                     AND f.IS_DELETE = 0
+                     AND f.TYPE = 0
+                     AND f.BELONG_ID = wri.RELEASE_INFO_ID
+               )                                         AS praise_count,
+               (SELECT count(1)
+                FROM wcc_response_details d
+                WHERE 1 = 1
+                  AND d.STATUS = 1
+                  AND d.IS_DELETE = 0
+                  AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
+        FROM wcc_release_info wri,
+             wcc_praise_favorite wpf
+        WHERE 1 = 1
+          AND wri.RELEASE_INFO_ID = wpf.BELONG_ID
+          AND wri.TYPE = #{type}
+          AND wpf.USER_ID = #{favoritesUserId}
+          AND wpf.IS_DELETE = 0
+          AND wpf.STATUS = 1
+        ORDER BY wri.CREATION_DATE limit #{current}, #{size};
+
+    </select>
+
+
+    <select id="listMyConcernReleaseInfos" resultMap="myReleaseInfo">
+        SELECT wu.NICKNAME,
+               wu.WECHAT_HEAD_PORTRAIT_ADDRESS,
+               wri.RELEASE_INFO_ID,
+               wri.TITEL,
+               wri.CONTENT,
+               wri.ATTACHMENT_ID,
+               wri.TYPE,
+               wri.BELONG_USER_ID,
+               wri.BELONG_CIRCLE_ID,
+               wri.STATUS,
+               wri.IS_DELETE,
+               wri.CREATED_BY,
+               wri.CREATED_BY_USER,
+               wri.CREATION_DATE,
+               wri.LAST_UPDATED_BY_USER,
+               wri.LAST_UPDATED_BY,
+               wri.LAST_UPDATE_DATE,
+               (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite f
+                   WHERE 1 = 1
+                     AND f.STATUS = 1
+                     AND f.IS_DELETE = 0
+                     AND f.TYPE = 0
+                     AND f.BELONG_ID = wri.RELEASE_INFO_ID
+               )                                         AS praise_count,
+               (SELECT count(1)
+                FROM wcc_response_details d
+                WHERE 1 = 1
+                  AND d.STATUS = 1
+                  AND d.IS_DELETE = 0
+                  AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
+        FROM wcc_release_info wri,
+             wcc_user_concern wuc,
+             wcc_user wu
+        WHERE 1 = 1
+          AND wri.BELONG_USER_ID = wuc.BELONG_ID
+          AND wu.USER_ID = wuc.BELONG_ID
+          AND wri.STATUS = 1
+          AND wri.IS_DELETE = 0
+          AND wuc.STATUS = 1
+          AND wuc.IS_DELETE = 0
+          AND wu.STATUS = 1
+          AND wu.IS_DELETE = 0
+          AND wuc.USER_ID = #{userId}
+        ORDER BY wri.CREATION_DATE DESC
+            limit #{current}
+               , #{size};
+    </select>
+
+</mapper>

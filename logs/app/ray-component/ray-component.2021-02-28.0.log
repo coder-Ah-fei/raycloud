@@ -1,0 +1,56 @@
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:12.967 WARN 12764 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:13.075 INFO 12764 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:13.082 INFO 12764 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:15.907 WARN 12764 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:15.917 WARN 12764 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:17.193 INFO 12764 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:17.202 INFO 12764 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:17.327 INFO 12764 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:17.495 WARN 12764 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:17.838 WARN 12764 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:18.243 INFO 12764 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:20.340 INFO 12764 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:20.340 INFO 12764 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 7204 ms
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:22.448 INFO 12764 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:23.387 INFO 12764 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:27.154 INFO 12764 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
+Execute Time：63 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:27.167 INFO 12764 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:29.581 INFO 12764 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:30.601 INFO 12764 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.006 WARN 12764 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.006 INFO 12764 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.018 WARN 12764 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.018 INFO 12764 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.394 INFO 12764 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:31.685 INFO 12764 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:32.926 INFO 12764 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@754d9b59]
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:34.587 INFO 12764 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:34.609 INFO 12764 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:34.637 INFO 12764 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:34.789 INFO 12764 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:34.939 INFO 12764 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:35.050 INFO 12764 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:36.206 INFO 12764 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 28.71 seconds (JVM running for 37.97)
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:36.273 INFO 12764 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:36.873 INFO 12764 [] [RMI TCP Connection(3)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:36.874 INFO 12764 [] [RMI TCP Connection(3)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-02-28 17:51:36.901 INFO 12764 [] [RMI TCP Connection(3)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 26 ms
+[ray-component:192.168.101.18:20004] 2021-02-28 17:55:23.023 INFO 12764 [] [SpringContextShutdownHook] io.undertow                              [2m:[0;39m stopping server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-02-28 17:55:23.067 INFO 12764 [] [SpringContextShutdownHook] io.undertow.servlet                      [2m:[0;39m Destroying Spring FrameworkServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-02-28 17:55:23.100 INFO 12764 [] [SpringContextShutdownHook] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m De-registering from Nacos Server now...
+[ray-component:192.168.101.18:20004] 2021-02-28 17:55:23.101 WARN 12764 [] [SpringContextShutdownHook] .s.c.a.CommonAnnotationBeanPostProcessor [2m:[0;39m Destroy method on bean with name 'nacosAutoServiceRegistration' threw an exception: java.lang.NullPointerException
+[ray-component:192.168.101.18:20004] 2021-02-28 17:55:23.105 INFO 12764 [] [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Shutting down ExecutorService 'applicationTaskExecutor'

@@ -1,0 +1,9 @@
+${AnsiColor.BRIGHT_GREEN}                   __________    _____ _____.___.
+${AnsiColor.BRIGHT_GREEN}                   \______   \  /  _  \\__  |   |
+${AnsiColor.BRIGHT_GREEN}   ______   ______  |       _/ /  /_\  \/   |   |  ______   ______
+${AnsiColor.BRIGHT_GREEN}  /_____/  /_____/  |    |   \/    |    \____   | /_____/  /_____/
+${AnsiColor.BRIGHT_GREEN}                    |____|_  /\____|__  / ______|
+${AnsiColor.BRIGHT_GREEN}                           \/         \/\/
+
+${AnsiColor.BLUE}:: RAYCLOUD :: ${spring.application.name}: ${AnsiColor.BRIGHT_GREEN}@spring.active@${AnsiColor.BLUE}: ${AnsiColor.BRIGHT_GREEN}v@project.version@${AnsiColor.BLUE} ::
+${AnsiColor.BLUE}:: Spring-Boot: ${AnsiColor.BRIGHT_GREEN}${spring-boot.version}${AnsiColor.BLUE} :: ${AnsiColor.DEFAULT}

@@ -1,0 +1,41 @@
+#spring配置
+spring:
+  redis:
+    #redis 单机环境配置
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    ssl: false
+    #redis 集群环境配置
+    #cluster:
+    #  nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003
+    #  commandTimeout: 5000
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      # MySql校验
+      validation-query: select 1
+
+ray:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/raycloud?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+  # public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJLLURUH8XNPkX9MME3mQrog3mpkOVYwnYrUqLbSN+Wi6IcmWg1YywHi/kKGUU1MTLjv3C406f1IYu+XWJ3XmX8CAwEAAQ==
+  # 预览模式开关
+  preview:
+    enable: false
+  # 租户开关
+  tenant:
+    enable: false
+  # 网关认证开关
+  uaa:
+    enable: false
+    ignore-url:
+      - /auth/login/**
+      - /auth/callback/**
+      - /auth/sms-code
+  # Swagger文档开关
+  swagger:
+    enable: true

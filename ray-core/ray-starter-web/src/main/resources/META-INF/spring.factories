@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.web.config.ExceptionConfiguration,\
+  hqsc.ray.core.web.config.DateConverterConfiguration,\
+  hqsc.ray.core.web.config.SwaggerConfiguration,\
+  hqsc.ray.core.web.config.WebConfiguration,\
+  hqsc.ray.core.web.config.UndertowHttp2Configuration
+
+

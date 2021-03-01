@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  hqsc.ray.core.log.config.LogConfiguration
+
+org.springframework.context.ApplicationContextInitializer=\
+  hqsc.ray.core.log.config.TransmitLocalMDCInitializer
+
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccPayLogMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccPayLog">
+                    <id column="PAY_LOG_ID" property="payLogId" />
+                    <result column="ORDER_ID" property="orderId" />
+                    <result column="THIRDPARTY_ID" property="thirdpartyId" />
+                    <result column="USER_ID" property="userId" />
+                    <result column="PAY_TYPE" property="payType" />
+                    <result column="BELONG_ID" property="belongId" />
+                    <result column="PROTO_PRICE" property="protoPrice" />
+                    <result column="PAY_AMOUNT" property="payAmount" />
+                    <result column="PAY_TIME" property="payTime" />
+                    <result column="STATUS" property="status" />
+                    <result column="IS_DELETE" property="isDelete" />
+                    <result column="CREATED_BY" property="createdBy" />
+                    <result column="CREATED_BY_USER" property="createdByUser" />
+                    <result column="CREATION_DATE" property="creationDate" />
+                    <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser" />
+                    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" />
+                    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                PAY_LOG_ID, ORDER_ID, THIRDPARTY_ID, USER_ID, PAY_TYPE, BELONG_ID, PROTO_PRICE, PAY_AMOUNT, PAY_TIME, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+        </sql>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hqsc.ray.wcc.mapper.WccBrandMerchantAuthMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="hqsc.ray.wcc.entity.WccBrandMerchantAuth">
+                    <id column="MERCHANT_BRAND_ID" property="merchantBrandId" />
+                    <result column="ICON" property="icon" />
+                    <result column="NAME" property="name" />
+                    <result column="ENTER_TYPE" property="enterType" />
+                    <result column="CONTACT_NAME" property="contactName" />
+                    <result column="CONTACT_WECHAT_NUM" property="contactWechatNum" />
+                    <result column="WECHAT_QRCODE_ICON" property="wechatQrcodeIcon" />
+                    <result column="ENTER_PLATFORM_TYPE" property="enterPlatformType" />
+                    <result column="SHOP_NAME" property="shopName" />
+                    <result column="SHOP_LINK" property="shopLink" />
+                    <result column="QUALIFIED_FILE" property="qualifiedFile" />
+                    <result column="BUSINESS_SCOPE" property="businessScope" />
+                    <result column="BUSINESS_SCOPE_STATE" property="businessScopeState" />
+                    <result column="STATUS" property="status" />
+                    <result column="IS_DELETE" property="isDelete" />
+                    <result column="CREATED_BY" property="createdBy" />
+                    <result column="CREATED_BY_USER" property="createdByUser" />
+                    <result column="CREATION_DATE" property="creationDate" />
+                    <result column="LAST_UPDATED_BY_USER" property="lastUpdatedByUser" />
+                    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" />
+                    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                MERCHANT_BRAND_ID, ICON, NAME, ENTER_TYPE, CONTACT_NAME, CONTACT_WECHAT_NUM, WECHAT_QRCODE_ICON, ENTER_PLATFORM_TYPE, SHOP_NAME, SHOP_LINK, QUALIFIED_FILE, BUSINESS_SCOPE, BUSINESS_SCOPE_STATE, STATUS, IS_DELETE, CREATED_BY, CREATED_BY_USER, CREATION_DATE, LAST_UPDATED_BY_USER, LAST_UPDATED_BY, LAST_UPDATE_DATE
+        </sql>
+
+</mapper>
