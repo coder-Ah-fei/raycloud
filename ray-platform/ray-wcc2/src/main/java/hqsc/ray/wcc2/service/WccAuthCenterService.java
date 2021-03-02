@@ -9,7 +9,7 @@ import hqsc.ray.wcc2.form.WccAuthCenterForm;
  * @author Administrator
  */
 public interface WccAuthCenterService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +17,20 @@ public interface WccAuthCenterService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccAuthCenters(WccAuthCenterForm wccAuthCenterForm);
-
+	
+	/**
+	 * 主播证报名
+	 *
+	 * @param wccAuthCenterForm
+	 * @return
+	 */
+	ResultMap anchorInfoSubmit(WccAuthCenterForm wccAuthCenterForm);
+	
+	/**
+	 * 判断用户是否已经主播报名成功
+	 *
+	 * @param userId
+	 * @return
+	 */
+	ResultMap<?> isAnchorInfoSubmit(Long userId);
 }

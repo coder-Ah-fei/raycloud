@@ -80,7 +80,7 @@ public class WccCelebrityInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "HEAD_PORTRAIT", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private WccAttachment headPortrait;
+	private RaySysAttachment headPortrait;
 	/**
 	 * 性别(0女1男)
 	 */

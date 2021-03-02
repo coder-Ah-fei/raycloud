@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysBlacklistRepository extends JpaRepository<SysBlacklist, Integer>, JpaSpecificationExecutor {
+public interface SysBlacklistRepository extends JpaRepository<SysBlacklist, Long>, JpaSpecificationExecutor {
 
 }

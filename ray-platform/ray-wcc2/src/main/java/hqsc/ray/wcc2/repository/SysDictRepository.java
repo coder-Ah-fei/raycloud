@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysDictRepository extends JpaRepository<SysDict, Integer>, JpaSpecificationExecutor {
+public interface SysDictRepository extends JpaRepository<SysDict, Long>, JpaSpecificationExecutor {
 
 }

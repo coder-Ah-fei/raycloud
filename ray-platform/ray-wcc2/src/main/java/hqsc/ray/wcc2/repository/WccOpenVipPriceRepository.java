@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccOpenVipPriceRepository extends JpaRepository<WccOpenVipPrice, Integer>, JpaSpecificationExecutor {
+public interface WccOpenVipPriceRepository extends JpaRepository<WccOpenVipPrice, Long>, JpaSpecificationExecutor {
 
 }

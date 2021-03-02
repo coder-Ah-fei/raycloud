@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccCircleInfoRepository extends JpaRepository<WccCircleInfo, Integer>, JpaSpecificationExecutor {
+public interface WccCircleInfoRepository extends JpaRepository<WccCircleInfo, Long>, JpaSpecificationExecutor {
 
 }

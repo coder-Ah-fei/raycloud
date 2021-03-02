@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysRouteRepository extends JpaRepository<SysRoute, Integer>, JpaSpecificationExecutor {
+public interface SysRouteRepository extends JpaRepository<SysRoute, Long>, JpaSpecificationExecutor {
 
 }

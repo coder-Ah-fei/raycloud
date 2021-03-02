@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccBrandMerchantAuthRepository extends JpaRepository<WccBrandMerchantAuth, Integer>, JpaSpecificationExecutor {
+public interface WccBrandMerchantAuthRepository extends JpaRepository<WccBrandMerchantAuth, Long>, JpaSpecificationExecutor {
 
 }

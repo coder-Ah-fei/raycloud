@@ -11,6 +11,14 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccAuthCenterRepository extends JpaRepository<WccAuthCenter, Integer>, JpaSpecificationExecutor {
-
+public interface WccAuthCenterRepository extends JpaRepository<WccAuthCenter, Long>, JpaSpecificationExecutor {
+	
+	/**
+	 * 根据用户查找
+	 *
+	 * @param userId
+	 * @return
+	 */
+	List<WccAuthCenter> findByWccUserId(Long userId);
+	
 }

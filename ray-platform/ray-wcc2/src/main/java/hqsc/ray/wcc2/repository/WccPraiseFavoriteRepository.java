@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccPraiseFavoriteRepository extends JpaRepository<WccPraiseFavorite, Integer>, JpaSpecificationExecutor {
+public interface WccPraiseFavoriteRepository extends JpaRepository<WccPraiseFavorite, Long>, JpaSpecificationExecutor {
 
 }

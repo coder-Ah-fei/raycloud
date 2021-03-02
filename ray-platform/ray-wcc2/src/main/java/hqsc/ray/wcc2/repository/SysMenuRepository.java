@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysMenuRepository extends JpaRepository<SysMenu, Integer>, JpaSpecificationExecutor {
+public interface SysMenuRepository extends JpaRepository<SysMenu, Long>, JpaSpecificationExecutor {
 
 }

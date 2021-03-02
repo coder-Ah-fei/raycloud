@@ -9,7 +9,7 @@ import hqsc.ray.wcc2.form.WccCourseForm;
  * @author Administrator
  */
 public interface WccCourseService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +17,28 @@ public interface WccCourseService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccCourses(WccCourseForm wccCourseForm);
-
+	
+	/**
+	 * 获取收藏的课程
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	ResultMap listWccCoursesFavorites(WccCourseForm wccCourseForm);
+	
+	/**
+	 * 获取已购买的课程
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	ResultMap listWccCoursesBought(WccCourseForm wccCourseForm);
+	
+	/**
+	 * 获取课程详细信息
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	ResultMap wccCourseDetail(WccCourseForm wccCourseForm);
 }

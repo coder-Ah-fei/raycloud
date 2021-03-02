@@ -11,6 +11,6 @@
 // *
 // * @author Administrator
 // */
-//public interface baseRepository extends JpaRepository<base, Integer>, JpaSpecificationExecutor {
+//public interface baseRepository extends JpaRepository<base, Long>, JpaSpecificationExecutor {
 //
 //}

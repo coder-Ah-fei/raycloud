@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysApiRepository extends JpaRepository<SysApi, Integer>, JpaSpecificationExecutor {
+public interface SysApiRepository extends JpaRepository<SysApi, Long>, JpaSpecificationExecutor {
 
 }

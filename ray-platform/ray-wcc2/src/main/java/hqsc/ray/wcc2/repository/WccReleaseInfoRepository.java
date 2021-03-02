@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccReleaseInfoRepository extends JpaRepository<WccReleaseInfo, Integer>, JpaSpecificationExecutor {
+public interface WccReleaseInfoRepository extends JpaRepository<WccReleaseInfo, Long>, JpaSpecificationExecutor {
 
 }

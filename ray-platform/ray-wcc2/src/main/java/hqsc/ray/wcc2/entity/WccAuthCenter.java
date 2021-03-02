@@ -82,6 +82,28 @@ public class WccAuthCenter extends BasicEntity {
 	@ApiModelProperty(value = "手机号")
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
+	
+	@ApiModelProperty(value = "邮寄地址（城市）")
+	@Column(name = "POST_ADDRESS")
+	private String postAddress;
+	
+	@ApiModelProperty(value = "邮寄地址（具体地址）")
+	@Column(name = "POST_ADDRESS_DETAIL")
+	private String postAddressDetail;
+	
+	@ApiModelProperty(value = "直播平台")
+	@Column(name = "LIVE_PLATFORM")
+	private String livePlatform;
+	
+	@ApiModelProperty(value = "直播类型")
+	@Column(name = "LIVE_TYPE")
+	private String liveType;
+	
+	@ApiModelProperty(value = "业务状态（0初始化 1已报名 等等未完待续）")
+	@Column(name = "BUSINESS_STATUS", columnDefinition = "char default 0 comment '业务状态（0初始化 1已报名 等等未完待续）'")
+	private Integer businessStatus;
+	
+	
 	/**
 	 * 身份证正面照
 	 */
@@ -89,7 +111,7 @@ public class WccAuthCenter extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "FRONT", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private WccAttachment front;
+	private RaySysAttachment front;
 	/**
 	 * 身份证反面照
 	 */
@@ -97,5 +119,16 @@ public class WccAuthCenter extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "BACK", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private WccAttachment back;
+	private RaySysAttachment back;
+	
+	/**
+	 * 2寸证件照
+	 */
+	@ApiModelProperty(value = "2寸证件照")
+	@OneToOne
+	@JoinColumn(name = "ID_PHOTO", nullable = true)
+	@NotFound(action = NotFoundAction.IGNORE)
+	private RaySysAttachment idPhoto;
+	
+	
 }

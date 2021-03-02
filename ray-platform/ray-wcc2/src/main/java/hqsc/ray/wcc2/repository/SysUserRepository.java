@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysUserRepository extends JpaRepository<SysUser, Integer>, JpaSpecificationExecutor {
+public interface SysUserRepository extends JpaRepository<SysUser, Long>, JpaSpecificationExecutor {
 
 }

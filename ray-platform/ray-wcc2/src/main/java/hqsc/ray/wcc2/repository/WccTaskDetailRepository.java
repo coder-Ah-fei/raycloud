@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccTaskDetailRepository extends JpaRepository<WccTaskDetail, Integer>, JpaSpecificationExecutor {
+public interface WccTaskDetailRepository extends JpaRepository<WccTaskDetail, Long>, JpaSpecificationExecutor {
 
 }

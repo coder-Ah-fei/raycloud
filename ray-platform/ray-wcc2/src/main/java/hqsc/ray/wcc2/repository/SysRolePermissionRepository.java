@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface SysRolePermissionRepository extends JpaRepository<SysRolePermission, Integer>, JpaSpecificationExecutor {
+public interface SysRolePermissionRepository extends JpaRepository<SysRolePermission, Long>, JpaSpecificationExecutor {
 
 }

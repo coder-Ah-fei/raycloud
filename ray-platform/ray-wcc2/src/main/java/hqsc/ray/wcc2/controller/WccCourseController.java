@@ -17,6 +17,8 @@
 package hqsc.ray.wcc2.controller;
 
 import hqsc.ray.core.auth.annotation.PreAuth;
+import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc2.dto.ResultMap;
@@ -57,8 +59,44 @@ public class WccCourseController extends BaseController {
 	@PostMapping(value = "/listWccCourses", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取课程列表", notes = "分页查询")
 	public ResultMap<?> listWccCourses(WccCourseForm wccCourseForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		ResultMap resultMap = wccCourseService.listWccCourses(wccCourseForm);
 		return resultMap;
 	}
+	
+	@PreAuth
+	@Log(value = "获取收藏的课程", exception = "获取收藏的课程请求异常")
+	@PostMapping(value = "/listWccCoursesFavorites", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取收藏的课程", notes = "分页查询")
+	public ResultMap<?> listWccCoursesFavorites(WccCourseForm wccCourseForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccCourseService.listWccCoursesFavorites(wccCourseForm);
+		return resultMap;
+	}
+	
+	@PreAuth
+	@Log(value = "获取已购买的课程", exception = "获取已购买的课程请求异常")
+	@PostMapping(value = "/listWccCoursesBought", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取已购买的课程", notes = "分页查询")
+	public ResultMap<?> listWccCoursesBought(WccCourseForm wccCourseForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccCourseService.listWccCoursesBought(wccCourseForm);
+		return resultMap;
+	}
+	
+	@PreAuth
+	@Log(value = "获取课程详细信息", exception = "获取课程详细信息请求异常")
+	@PostMapping(value = "/wccCourseDetail", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取课程详细信息", notes = "查询")
+	public ResultMap<?> wccCourseDetail(WccCourseForm wccCourseForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccCourseService.wccCourseDetail(wccCourseForm);
+		return resultMap;
+	}
+	
 }
 

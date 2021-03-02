@@ -1,130 +1,637 @@
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:21.419 WARN 26096 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:21.533 INFO 26096 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:21.542 INFO 26096 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:23.912 WARN 26096 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:23.921 WARN 26096 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:24.666 INFO 26096 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:24.672 INFO 26096 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:24.733 INFO 26096 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:24.899 WARN 26096 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:25.105 WARN 26096 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:25.391 INFO 26096 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:26.975 INFO 26096 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:26.975 INFO 26096 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 5359 ms
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:28.541 INFO 26096 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:29.225 INFO 26096 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:32.395 INFO 26096 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:16.557 WARN 17516 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:16.980 INFO 17516 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:16.990 INFO 17516 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:24.491 WARN 17516 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:24.525 WARN 17516 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:27.091 INFO 17516 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:27.106 INFO 17516 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:27.240 INFO 17516 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 54ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:27.533 WARN 17516 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:28.036 WARN 17516 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:28.498 INFO 17516 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:32.080 INFO 17516 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:32.081 INFO 17516 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 14831 ms
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:35.576 INFO 17516 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:37.938 INFO 17516 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:43.738 INFO 17516 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
 Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
 Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
+Execute Time：122 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:43.760 INFO 17516 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute Time：6 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:48.166 INFO 17516 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:49.532 INFO 17516 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:50.058 WARN 17516 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:50.058 INFO 17516 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:50.088 WARN 17516 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:50.088 INFO 17516 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:50.733 INFO 17516 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:51.659 INFO 17516 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:53.074 INFO 17516 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@7cb13e56]
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:54.737 INFO 17516 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:54.805 INFO 17516 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:54.841 INFO 17516 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:54.949 INFO 17516 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:55.229 INFO 17516 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:55.428 INFO 17516 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:56.550 INFO 17516 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 51.168 seconds (JVM running for 63.641)
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:56.666 INFO 17516 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:57.386 INFO 17516 [] [RMI TCP Connection(7)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:57.387 INFO 17516 [] [RMI TCP Connection(7)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-03-02 08:35:57.433 INFO 17516 [] [RMI TCP Connection(7)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 45 ms
+[ray-component:192.168.101.18:20004] 2021-03-02 09:18:24.640 WARN 17516 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-02 09:18:24.824 INFO 17516 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-02 09:18:24.888 INFO 17516 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 58ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-02 09:18:24.890 WARN 17516 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:40.491 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 2996260
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:40.689 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3002752
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:40.748 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3002822
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:41.678 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '609ab0cabab64c65ac5a6e6eeed36606.jpg', 25958, 'static/upload/20210302/609ab0cabab64c65ac5a6e6eeed36606.jpg', 'D:/hongrenquan/static/upload/20210302/609ab0cabab64c65ac5a6e6eeed36606.jpg', '609ab0cabab64c65ac5a6e6eeed36606.jpg', 1, '2021-03-02 09:25:39.539', '2021-03-02 09:25:39.539' )
+Execute Time：295 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:41.798 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":3302,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614648341691, data={id=162, filePath=static/upload/20210302/609ab0cabab64c65ac5a6e6eeed36606.jpg})","params":"\"\"","title":"附件上传","traceId":"moBqWMJ1","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:42.038 INFO 17516 [] [task-1] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=moBqWMJ1, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614648341691, data={id=162, filePath=static/upload/20210302/609ab0cabab64c65ac5a6e6eeed36606.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=3302, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:44.095 INFO 17516 [] [task-1] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:44.203 INFO 17516 [] [task-1] c.netflix.loadbalancer.BaseLoadBalancer  [2m:[0;39m Client: ray-system instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ray-system,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:44.265 INFO 17516 [] [task-1] c.n.l.DynamicServerListLoadBalancer      [2m:[0;39m Using serverListUpdater PollingServerListUpdater
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:44.451 INFO 17516 [] [task-1] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:44.469 INFO 17516 [] [task-1] c.n.l.DynamicServerListLoadBalancer      [2m:[0;39m DynamicServerListLoadBalancer for client ray-system initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ray-system,current list of Servers=[192.168.101.18:20002],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.101.18:20002;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@a25673d
+[ray-component:192.168.101.18:20004] 2021-03-02 09:25:45.321 INFO 17516 [] [PollingServerListUpdater-0] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:06.452 ERROR 17516 [] [XNIO-1 task-1] h.r.c.web.handler.BaseExceptionHandler   [2m:[0;39m 程序异常==>errorCode:401, exception:没有携带Token信息！
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.252 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 484580
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.279 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 485480
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.345 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3488459
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.504 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'ae59a7d3052d4c41ae813ee82ad58db4.jpg', 25958, 'static/upload/20210302/ae59a7d3052d4c41ae813ee82ad58db4.jpg', 'D:/hongrenquan/static/upload/20210302/ae59a7d3052d4c41ae813ee82ad58db4.jpg', 'ae59a7d3052d4c41ae813ee82ad58db4.jpg', 1, '2021-03-02 09:33:46.127', '2021-03-02 09:33:46.127' )
+Execute Time：76 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.505 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":504,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614648826504, data={id=163, filePath=static/upload/20210302/ae59a7d3052d4c41ae813ee82ad58db4.jpg})","params":"\"\"","title":"附件上传","traceId":"SGzdqYNn","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:33:46.506 INFO 17516 [] [task-2] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=SGzdqYNn, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614648826504, data={id=163, filePath=static/upload/20210302/ae59a7d3052d4c41ae813ee82ad58db4.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=504, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:34:30.101 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='163' 
+Execute Time：77 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:34:37.244 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='163' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.414 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 67153
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.431 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 118039
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.479 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3606599
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.578 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'e1979e8563734df383b384ba99b2a599.jpg', 25958, 'static/upload/20210302/e1979e8563734df383b384ba99b2a599.jpg', 'D:/hongrenquan/static/upload/20210302/e1979e8563734df383b384ba99b2a599.jpg', 'e1979e8563734df383b384ba99b2a599.jpg', 1, '2021-03-02 09:35:44.391', '2021-03-02 09:35:44.391' )
+Execute Time：86 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.579 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":307,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614648944579, data={id=164, filePath=static/upload/20210302/e1979e8563734df383b384ba99b2a599.jpg})","params":"\"\"","title":"附件上传","traceId":"G68KazyM","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:35:44.580 INFO 17516 [] [task-3] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=G68KazyM, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614648944579, data={id=164, filePath=static/upload/20210302/e1979e8563734df383b384ba99b2a599.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=307, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:36:22.901 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '7d12f20521c342df8412b5046f1ad5a2.jpg', 25958, 'static/upload/20210302/7d12f20521c342df8412b5046f1ad5a2.jpg', 'D:/hongrenquan/static/upload/20210302/7d12f20521c342df8412b5046f1ad5a2.jpg', '7d12f20521c342df8412b5046f1ad5a2.jpg', 1, '2021-03-02 09:36:22.854', '2021-03-02 09:36:22.854' )
+Execute Time：11 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:36:22.902 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":181,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614648982901, data={id=165, filePath=static/upload/20210302/7d12f20521c342df8412b5046f1ad5a2.jpg})","params":"\"\"","title":"附件上传","traceId":"XwEaGJmB","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:36:22.903 INFO 17516 [] [task-4] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=XwEaGJmB, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614648982901, data={id=165, filePath=static/upload/20210302/7d12f20521c342df8412b5046f1ad5a2.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=181, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.060 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 172173
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.116 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 210483
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.183 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3817309
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.235 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'feb213ba88374673aef0791d70b3e11e.jpg', 25958, 'static/upload/20210302/feb213ba88374673aef0791d70b3e11e.jpg', 'D:/hongrenquan/static/upload/20210302/feb213ba88374673aef0791d70b3e11e.jpg', 'feb213ba88374673aef0791d70b3e11e.jpg', 1, '2021-03-02 09:39:15.057', '2021-03-02 09:39:15.057' )
 Execute Time：46 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:32.408 INFO 26096 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.237 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":300,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649155236, data={id=166, filePath=static/upload/20210302/feb213ba88374673aef0791d70b3e11e.jpg})","params":"\"\"","title":"附件上传","traceId":"svXKHAif","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:39:15.238 INFO 17516 [] [task-5] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=svXKHAif, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649155236, data={id=166, filePath=static/upload/20210302/feb213ba88374673aef0791d70b3e11e.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=300, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.008 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 112772
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.034 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 112847
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.199 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3930331
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.228 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
-Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '83694548c754456498aa3c4a85f54668.jpg', 25958, 'static/upload/20210302/83694548c754456498aa3c4a85f54668.jpg', 'D:/hongrenquan/static/upload/20210302/83694548c754456498aa3c4a85f54668.jpg', '83694548c754456498aa3c4a85f54668.jpg', 1, '2021-03-02 09:41:08.002', '2021-03-02 09:41:08.002' )
+Execute Time：24 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.231 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":353,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649268228, data={id=167, filePath=static/upload/20210302/83694548c754456498aa3c4a85f54668.jpg})","params":"\"\"","title":"附件上传","traceId":"NLcyr1Mp","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:41:08.232 INFO 17516 [] [task-6] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=NLcyr1Mp, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649268228, data={id=167, filePath=static/upload/20210302/83694548c754456498aa3c4a85f54668.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=353, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.177 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 143950
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.187 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 143961
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.276 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 4074412
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.425 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '526ab89f70914e90aeb322a136252919.jpg', 25958, 'static/upload/20210302/526ab89f70914e90aeb322a136252919.jpg', 'D:/hongrenquan/static/upload/20210302/526ab89f70914e90aeb322a136252919.jpg', '526ab89f70914e90aeb322a136252919.jpg', 1, '2021-03-02 09:43:32.163', '2021-03-02 09:43:32.163' )
+Execute Time：123 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.427 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":406,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649412426, data={id=168, filePath=static/upload/20210302/526ab89f70914e90aeb322a136252919.jpg})","params":"\"\"","title":"附件上传","traceId":"GGoxLJEe","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:43:32.449 INFO 17516 [] [task-7] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=GGoxLJEe, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649412426, data={id=168, filePath=static/upload/20210302/526ab89f70914e90aeb322a136252919.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=406, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:19.012 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'bcb4542da0b64d85acf58c7bafb3eb61.jpg', 25958, 'static/upload/20210302/bcb4542da0b64d85acf58c7bafb3eb61.jpg', 'D:/hongrenquan/static/upload/20210302/bcb4542da0b64d85acf58c7bafb3eb61.jpg', 'bcb4542da0b64d85acf58c7bafb3eb61.jpg', 1, '2021-03-02 09:44:18.987', '2021-03-02 09:44:18.987' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:19.013 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":157,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649459012, data={id=169, filePath=static/upload/20210302/bcb4542da0b64d85acf58c7bafb3eb61.jpg})","params":"\"\"","title":"附件上传","traceId":"nS3qmcxS","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:19.024 INFO 17516 [] [task-8] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=nS3qmcxS, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649459012, data={id=169, filePath=static/upload/20210302/bcb4542da0b64d85acf58c7bafb3eb61.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=157, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:35.093 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '09503339a703480a8f66458aa8a0e783.jpg', 25958, 'static/upload/20210302/09503339a703480a8f66458aa8a0e783.jpg', 'D:/hongrenquan/static/upload/20210302/09503339a703480a8f66458aa8a0e783.jpg', '09503339a703480a8f66458aa8a0e783.jpg', 1, '2021-03-02 09:44:35.057', '2021-03-02 09:44:35.057' )
+Execute Time：31 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:35.094 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":177,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649475093, data={id=170, filePath=static/upload/20210302/09503339a703480a8f66458aa8a0e783.jpg})","params":"\"\"","title":"附件上传","traceId":"9OIKEXT4","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:35.104 INFO 17516 [] [task-9] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=9OIKEXT4, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649475093, data={id=170, filePath=static/upload/20210302/09503339a703480a8f66458aa8a0e783.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=177, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:45.495 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '1a4a9867a47741fbb83491e4d532c959.jpg', 25958, 'static/upload/20210302/1a4a9867a47741fbb83491e4d532c959.jpg', 'D:/hongrenquan/static/upload/20210302/1a4a9867a47741fbb83491e4d532c959.jpg', '1a4a9867a47741fbb83491e4d532c959.jpg', 1, '2021-03-02 09:44:45.475', '2021-03-02 09:44:45.475' )
+Execute Time：17 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:45.497 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":107,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649485495, data={id=171, filePath=static/upload/20210302/1a4a9867a47741fbb83491e4d532c959.jpg})","params":"\"\"","title":"附件上传","traceId":"OeluRSim","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:44:45.497 INFO 17516 [] [task-10] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=OeluRSim, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649485495, data={id=171, filePath=static/upload/20210302/1a4a9867a47741fbb83491e4d532c959.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=107, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.316 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 104822
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.319 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 178014
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.335 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 4252477
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.418 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 4252597
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.455 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '4bb199d0a17a4d80b8b5d4ef0762b59f.jpg', 25958, 'static/upload/20210302/4bb199d0a17a4d80b8b5d4ef0762b59f.jpg', 'D:/hongrenquan/static/upload/20210302/4bb199d0a17a4d80b8b5d4ef0762b59f.jpg', '4bb199d0a17a4d80b8b5d4ef0762b59f.jpg', 1, '2021-03-02 09:46:30.308', '2021-03-02 09:46:30.308' )
+Execute Time：34 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.456 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":258,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649590456, data={id=172, filePath=static/upload/20210302/4bb199d0a17a4d80b8b5d4ef0762b59f.jpg})","params":"\"\"","title":"附件上传","traceId":"LnRo8wqv","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:30.458 INFO 17516 [] [task-11] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=LnRo8wqv, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649590456, data={id=172, filePath=static/upload/20210302/4bb199d0a17a4d80b8b5d4ef0762b59f.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=258, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:47.381 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '918f83a3d2f141598a7c69af5111defb.jpg', 25958, 'static/upload/20210302/918f83a3d2f141598a7c69af5111defb.jpg', 'D:/hongrenquan/static/upload/20210302/918f83a3d2f141598a7c69af5111defb.jpg', '918f83a3d2f141598a7c69af5111defb.jpg', 1, '2021-03-02 09:46:47.353', '2021-03-02 09:46:47.353' )
+Execute Time：14 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:47.383 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":122,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614649607382, data={id=173, filePath=static/upload/20210302/918f83a3d2f141598a7c69af5111defb.jpg})","params":"\"\"","title":"附件上传","traceId":"yWJX4e4P","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:46:47.384 INFO 17516 [] [task-12] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=yWJX4e4P, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614649607382, data={id=173, filePath=static/upload/20210302/918f83a3d2f141598a7c69af5111defb.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=122, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:47:12.017 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='173' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:52:26.570 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 314553
+[ray-component:192.168.101.18:20004] 2021-03-02 09:52:26.571 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 356127
+[ray-component:192.168.101.18:20004] 2021-03-02 09:52:26.584 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='173' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:52:32.789 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='173' 
 Execute Time：4 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:34.645 INFO 26096 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:35.572 INFO 26096 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:35.887 WARN 26096 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:35.887 INFO 26096 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:35.895 WARN 26096 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:35.895 INFO 26096 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:36.275 INFO 26096 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:36.585 INFO 26096 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:37.342 INFO 26096 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@62110754]
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.530 INFO 26096 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.548 INFO 26096 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.569 INFO 26096 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.663 INFO 26096 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.827 INFO 26096 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:38.924 INFO 26096 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:40.073 INFO 26096 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 22.88 seconds (JVM running for 32.233)
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:40.162 INFO 26096 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:40.681 INFO 26096 [] [RMI TCP Connection(3)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:40.691 INFO 26096 [] [RMI TCP Connection(3)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-01 09:44:40.730 INFO 26096 [] [RMI TCP Connection(3)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 39 ms
-[ray-component:192.168.101.18:20004] 2021-03-01 11:06:42.558 WARN 26096 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 11:06:43.618 WARN 26096 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 11:06:44.362 INFO 26096 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 11:06:45.044 INFO 26096 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 450ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:07.877 WARN 5456 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:08.002 INFO 5456 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:08.011 INFO 5456 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:11.396 WARN 5456 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:11.404 WARN 5456 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:12.222 INFO 5456 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:12.232 INFO 5456 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:12.303 INFO 5456 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:12.482 WARN 5456 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:12.736 WARN 5456 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:13.050 INFO 5456 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:14.960 INFO 5456 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:14.960 INFO 5456 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 6855 ms
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:16.738 INFO 5456 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:17.722 INFO 5456 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:20.798 INFO 5456 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:40.396 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 67601
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:40.434 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
-Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
-Execute Time：85 ms
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '8e760e09ba9f4a7b8efa2643172c4d47.jpg', 25958, 'static/upload/20210302/8e760e09ba9f4a7b8efa2643172c4d47.jpg', 'D:/hongrenquan/static/upload/20210302/8e760e09ba9f4a7b8efa2643172c4d47.jpg', '8e760e09ba9f4a7b8efa2643172c4d47.jpg', 1, '2021-03-02 09:53:40.375', '2021-03-02 09:53:40.375' )
+Execute Time：19 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:20.813 INFO 5456 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:40.435 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":190,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650020435, data={id=174, filePath=static/upload/20210302/8e760e09ba9f4a7b8efa2643172c4d47.jpg})","params":"\"\"","title":"附件上传","traceId":"8eHyyhcB","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:40.436 INFO 17516 [] [task-13] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=8eHyyhcB, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650020435, data={id=174, filePath=static/upload/20210302/8e760e09ba9f4a7b8efa2643172c4d47.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=190, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:40.544 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
-Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：1 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:44.342 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '7003c3b754e34ab38e5ffa1a4508232e.jpg', 25958, 'static/upload/20210302/7003c3b754e34ab38e5ffa1a4508232e.jpg', 'D:/hongrenquan/static/upload/20210302/7003c3b754e34ab38e5ffa1a4508232e.jpg', '7003c3b754e34ab38e5ffa1a4508232e.jpg', 1, '2021-03-02 09:53:44.330', '2021-03-02 09:53:44.330' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:44.343 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":116,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650024342, data={id=175, filePath=static/upload/20210302/7003c3b754e34ab38e5ffa1a4508232e.jpg})","params":"\"\"","title":"附件上传","traceId":"VMui5PTr","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:44.344 INFO 17516 [] [task-14] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=VMui5PTr, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650024342, data={id=175, filePath=static/upload/20210302/7003c3b754e34ab38e5ffa1a4508232e.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=116, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:44.446 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='175' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:49.017 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'd3fbe1acfb76437caa50f41bbf8748b2.jpg', 25958, 'static/upload/20210302/d3fbe1acfb76437caa50f41bbf8748b2.jpg', 'D:/hongrenquan/static/upload/20210302/d3fbe1acfb76437caa50f41bbf8748b2.jpg', 'd3fbe1acfb76437caa50f41bbf8748b2.jpg', 1, '2021-03-02 09:53:49', '2021-03-02 09:53:49' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:49.017 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":111,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650029017, data={id=176, filePath=static/upload/20210302/d3fbe1acfb76437caa50f41bbf8748b2.jpg})","params":"\"\"","title":"附件上传","traceId":"ByAlR8YY","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:49.041 INFO 17516 [] [task-15] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=ByAlR8YY, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650029017, data={id=176, filePath=static/upload/20210302/d3fbe1acfb76437caa50f41bbf8748b2.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=111, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:53:49.113 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：11 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:56.091 WARN 17516 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 126979
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:56.120 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '50a7923087284f91ae2819e05c973c77.jpg', 25958, 'static/upload/20210302/50a7923087284f91ae2819e05c973c77.jpg', 'D:/hongrenquan/static/upload/20210302/50a7923087284f91ae2819e05c973c77.jpg', '50a7923087284f91ae2819e05c973c77.jpg', 1, '2021-03-02 09:55:56.089', '2021-03-02 09:55:56.089' )
+Execute Time：14 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:56.122 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":154,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650156121, data={id=177, filePath=static/upload/20210302/50a7923087284f91ae2819e05c973c77.jpg})","params":"\"\"","title":"附件上传","traceId":"1fOQmABr","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:56.136 INFO 17516 [] [task-16] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=1fOQmABr, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650156121, data={id=177, filePath=static/upload/20210302/50a7923087284f91ae2819e05c973c77.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=154, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:56.217 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='177' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:58.085 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'ed36ef07842f48309d007d266a6a13c1.jpg', 25958, 'static/upload/20210302/ed36ef07842f48309d007d266a6a13c1.jpg', 'D:/hongrenquan/static/upload/20210302/ed36ef07842f48309d007d266a6a13c1.jpg', 'ed36ef07842f48309d007d266a6a13c1.jpg', 1, '2021-03-02 09:55:58.057', '2021-03-02 09:55:58.057' )
+Execute Time：13 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:58.086 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":119,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650158085, data={id=178, filePath=static/upload/20210302/ed36ef07842f48309d007d266a6a13c1.jpg})","params":"\"\"","title":"附件上传","traceId":"8SG0dEkZ","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:58.087 INFO 17516 [] [task-17] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=8SG0dEkZ, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650158085, data={id=178, filePath=static/upload/20210302/ed36ef07842f48309d007d266a6a13c1.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=119, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:55:58.192 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：6 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:56:00.637 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '8c07cd62569844ddbe7db5e179c24aa5.jpg', 25958, 'static/upload/20210302/8c07cd62569844ddbe7db5e179c24aa5.jpg', 'D:/hongrenquan/static/upload/20210302/8c07cd62569844ddbe7db5e179c24aa5.jpg', '8c07cd62569844ddbe7db5e179c24aa5.jpg', 1, '2021-03-02 09:56:00.629', '2021-03-02 09:56:00.629' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 09:56:00.638 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":195,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614650160637, data={id=179, filePath=static/upload/20210302/8c07cd62569844ddbe7db5e179c24aa5.jpg})","params":"\"\"","title":"附件上传","traceId":"JGrs057S","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 09:56:00.639 INFO 17516 [] [task-18] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=JGrs057S, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614650160637, data={id=179, filePath=static/upload/20210302/8c07cd62569844ddbe7db5e179c24aa5.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=195, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 09:56:00.732 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:53.954 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 2513221
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:54.059 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'bfa187a1df694469aee0cbf4ec5cf07e.png', 481270, 'static/upload/20210302/bfa187a1df694469aee0cbf4ec5cf07e.png', 'D:/hongrenquan/static/upload/20210302/bfa187a1df694469aee0cbf4ec5cf07e.png', 'bfa187a1df694469aee0cbf4ec5cf07e.png', 1, '2021-03-02 10:37:53.932', '2021-03-02 10:37:53.933' )
+Execute Time：26 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:54.062 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":254,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614652674060, data={id=180, filePath=static/upload/20210302/bfa187a1df694469aee0cbf4ec5cf07e.png})","params":"\"\"","title":"附件上传","traceId":"FSpBrv25","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:54.139 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='180' 
+Execute Time：1 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:54.237 INFO 17516 [] [task-19] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=FSpBrv25, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614652674060, data={id=180, filePath=static/upload/20210302/bfa187a1df694469aee0cbf4ec5cf07e.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=254, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:57.056 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '6bdf5153e20f4d5faf776a4d7d3a91ad.png', 481270, 'static/upload/20210302/6bdf5153e20f4d5faf776a4d7d3a91ad.png', 'D:/hongrenquan/static/upload/20210302/6bdf5153e20f4d5faf776a4d7d3a91ad.png', '6bdf5153e20f4d5faf776a4d7d3a91ad.png', 1, '2021-03-02 10:37:57.033', '2021-03-02 10:37:57.033' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:57.058 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":179,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614652677057, data={id=181, filePath=static/upload/20210302/6bdf5153e20f4d5faf776a4d7d3a91ad.png})","params":"\"\"","title":"附件上传","traceId":"KyC8r8Gv","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:57.097 INFO 17516 [] [task-20] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=KyC8r8Gv, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614652677057, data={id=181, filePath=static/upload/20210302/6bdf5153e20f4d5faf776a4d7d3a91ad.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=179, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 10:37:57.190 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='181' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 10:38:00.373 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'e75d3c061eb7494fb0053de56b1fd597.png', 481270, 'static/upload/20210302/e75d3c061eb7494fb0053de56b1fd597.png', 'D:/hongrenquan/static/upload/20210302/e75d3c061eb7494fb0053de56b1fd597.png', 'e75d3c061eb7494fb0053de56b1fd597.png', 1, '2021-03-02 10:38:00.342', '2021-03-02 10:38:00.342' )
 Execute Time：3 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:22.967 INFO 5456 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.063 INFO 5456 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.393 WARN 5456 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.393 INFO 5456 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.406 WARN 5456 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.406 INFO 5456 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.700 INFO 5456 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:24.984 INFO 5456 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:25.787 INFO 5456 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@546f0369]
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.051 INFO 5456 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.071 INFO 5456 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.093 INFO 5456 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.173 INFO 5456 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.279 INFO 5456 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:27.395 INFO 5456 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:28.269 INFO 5456 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 24.622 seconds (JVM running for 33.466)
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:28.327 INFO 5456 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:28.831 INFO 5456 [] [RMI TCP Connection(1)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:28.831 INFO 5456 [] [RMI TCP Connection(1)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-01 14:00:28.860 INFO 5456 [] [RMI TCP Connection(1)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 28 ms
-[ray-component:192.168.101.18:20004] 2021-03-01 14:30:54.883 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:30:55.272 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:30:55.425 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:30:55.885 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 130ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:07.316 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:07.444 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:07.457 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:07.471 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:36.494 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:36.554 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:36.564 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:31:36.572 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:41:32.156 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:41:32.196 WARN 5456 [] [rebel-change-detector-thread] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:41:32.203 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:41:32.213 INFO 5456 [] [rebel-change-detector-thread] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:55:12.975 WARN 5456 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:55:13.022 WARN 5456 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:55:13.029 INFO 5456 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 14:55:13.037 INFO 5456 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-01 15:14:56.165 WARN 5456 [] [XNIO-1 task-7] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 15:14:56.384 WARN 5456 [] [XNIO-1 task-7] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-01 15:14:56.392 INFO 5456 [] [XNIO-1 task-7] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-01 15:14:56.468 INFO 5456 [] [XNIO-1 task-7] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 74ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-02 10:38:00.374 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":133,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614652680373, data={id=182, filePath=static/upload/20210302/e75d3c061eb7494fb0053de56b1fd597.png})","params":"\"\"","title":"附件上传","traceId":"t09eh0tG","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 10:38:00.375 INFO 17516 [] [task-21] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=t09eh0tG, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614652680373, data={id=182, filePath=static/upload/20210302/e75d3c061eb7494fb0053de56b1fd597.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=133, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 10:38:00.495 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='182' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:00.925 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 9660262
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:03.217 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'c5e5e1d48d97443c8919d3fb707dd9e9.png', 481270, 'static/upload/20210302/c5e5e1d48d97443c8919d3fb707dd9e9.png', 'D:/hongrenquan/static/upload/20210302/c5e5e1d48d97443c8919d3fb707dd9e9.png', 'c5e5e1d48d97443c8919d3fb707dd9e9.png', 1, '2021-03-02 13:18:58.498', '2021-03-02 13:18:58.686' )
+Execute Time：251 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:03.314 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":6614,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614662343274, data={id=162, filePath=static/upload/20210302/c5e5e1d48d97443c8919d3fb707dd9e9.png})","params":"\"\"","title":"附件上传","traceId":"vugYJHww","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:03.385 INFO 17516 [] [task-22] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=vugYJHww, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614662343274, data={id=162, filePath=static/upload/20210302/c5e5e1d48d97443c8919d3fb707dd9e9.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=6614, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:04.118 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='162' 
+Execute Time：133 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:07.406 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'ec4d58c06be64f5bb280108a6c4ace0e.jpg', 25958, 'static/upload/20210302/ec4d58c06be64f5bb280108a6c4ace0e.jpg', 'D:/hongrenquan/static/upload/20210302/ec4d58c06be64f5bb280108a6c4ace0e.jpg', 'ec4d58c06be64f5bb280108a6c4ace0e.jpg', 1, '2021-03-02 13:19:07.370', '2021-03-02 13:19:07.370' )
+Execute Time：24 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:07.408 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":289,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614662347406, data={id=163, filePath=static/upload/20210302/ec4d58c06be64f5bb280108a6c4ace0e.jpg})","params":"\"\"","title":"附件上传","traceId":"buKu3yVb","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:07.440 INFO 17516 [] [task-23] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=buKu3yVb, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614662347406, data={id=163, filePath=static/upload/20210302/ec4d58c06be64f5bb280108a6c4ace0e.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=289, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:08.111 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='163' 
+Execute Time：481 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:10.688 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '55cb4c0c922a4dc9848b8d33c82fe51b.png', 641536, 'static/upload/20210302/55cb4c0c922a4dc9848b8d33c82fe51b.png', 'D:/hongrenquan/static/upload/20210302/55cb4c0c922a4dc9848b8d33c82fe51b.png', '55cb4c0c922a4dc9848b8d33c82fe51b.png', 1, '2021-03-02 13:19:10.661', '2021-03-02 13:19:10.661' )
+Execute Time：20 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:10.690 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":140,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614662350688, data={id=164, filePath=static/upload/20210302/55cb4c0c922a4dc9848b8d33c82fe51b.png})","params":"\"\"","title":"附件上传","traceId":"UVC86MGm","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:10.691 INFO 17516 [] [task-24] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=UVC86MGm, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614662350688, data={id=164, filePath=static/upload/20210302/55cb4c0c922a4dc9848b8d33c82fe51b.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=140, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:19:10.796 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='164' 
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:19.393 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 908569
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:19.763 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '1b47f266754d46f8a47b2b6046ac9428.png', 481270, 'static/upload/20210302/1b47f266754d46f8a47b2b6046ac9428.png', 'D:/hongrenquan/static/upload/20210302/1b47f266754d46f8a47b2b6046ac9428.png', '1b47f266754d46f8a47b2b6046ac9428.png', 1, '2021-03-02 13:34:19.330', '2021-03-02 13:34:19.330' )
+Execute Time：254 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:19.765 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":903,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663259764, data={id=165, filePath=static/upload/20210302/1b47f266754d46f8a47b2b6046ac9428.png})","params":"\"\"","title":"附件上传","traceId":"ltmjE8lQ","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:22.894 INFO 17516 [] [task-25] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=ltmjE8lQ, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663259764, data={id=165, filePath=static/upload/20210302/1b47f266754d46f8a47b2b6046ac9428.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=903, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:23.575 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='165' 
+Execute Time：98 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:24.267 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'f053ca11037343cf95766f1344945f2b.png', 481270, 'static/upload/20210302/f053ca11037343cf95766f1344945f2b.png', 'D:/hongrenquan/static/upload/20210302/f053ca11037343cf95766f1344945f2b.png', 'f053ca11037343cf95766f1344945f2b.png', 1, '2021-03-02 13:34:23.690', '2021-03-02 13:34:23.691' )
+Execute Time：50 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:24.269 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":896,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663264267, data={id=166, filePath=static/upload/20210302/f053ca11037343cf95766f1344945f2b.png})","params":"\"\"","title":"附件上传","traceId":"RqhxttmJ","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:24.270 INFO 17516 [] [task-26] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=RqhxttmJ, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663264267, data={id=166, filePath=static/upload/20210302/f053ca11037343cf95766f1344945f2b.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=896, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:24.652 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='166' 
+Execute Time：105 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:28.642 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '22916ed3dee648e987d71c53a39cf310.png', 136251, 'static/upload/20210302/22916ed3dee648e987d71c53a39cf310.png', 'D:/hongrenquan/static/upload/20210302/22916ed3dee648e987d71c53a39cf310.png', '22916ed3dee648e987d71c53a39cf310.png', 1, '2021-03-02 13:34:28.562', '2021-03-02 13:34:28.562' )
+Execute Time：15 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:28.643 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":274,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663268642, data={id=167, filePath=static/upload/20210302/22916ed3dee648e987d71c53a39cf310.png})","params":"\"\"","title":"附件上传","traceId":"cqAEa1zO","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:28.663 INFO 17516 [] [task-27] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=cqAEa1zO, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663268642, data={id=167, filePath=static/upload/20210302/22916ed3dee648e987d71c53a39cf310.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=274, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:34:28.923 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='167' 
+Execute Time：42 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:02.117 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 93196
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:02.177 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '56f99fac36f04bebb758b74d8f9ab78f.png', 481270, 'static/upload/20210302/56f99fac36f04bebb758b74d8f9ab78f.png', 'D:/hongrenquan/static/upload/20210302/56f99fac36f04bebb758b74d8f9ab78f.png', '56f99fac36f04bebb758b74d8f9ab78f.png', 1, '2021-03-02 13:36:02.115', '2021-03-02 13:36:02.115' )
+Execute Time：33 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:02.179 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":265,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663362178, data={id=168, filePath=static/upload/20210302/56f99fac36f04bebb758b74d8f9ab78f.png})","params":"\"\"","title":"附件上传","traceId":"wjK8w816","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:02.180 INFO 17516 [] [task-28] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=wjK8w816, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663362178, data={id=168, filePath=static/upload/20210302/56f99fac36f04bebb758b74d8f9ab78f.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=265, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:02.333 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='168' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:04.591 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'a05eeffdc89e45409ac28c5af09aac8c.png', 641536, 'static/upload/20210302/a05eeffdc89e45409ac28c5af09aac8c.png', 'D:/hongrenquan/static/upload/20210302/a05eeffdc89e45409ac28c5af09aac8c.png', 'a05eeffdc89e45409ac28c5af09aac8c.png', 1, '2021-03-02 13:36:04.559', '2021-03-02 13:36:04.559' )
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:04.592 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":228,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663364591, data={id=169, filePath=static/upload/20210302/a05eeffdc89e45409ac28c5af09aac8c.png})","params":"\"\"","title":"附件上传","traceId":"k44uLsmT","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:04.615 INFO 17516 [] [task-29] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=k44uLsmT, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663364591, data={id=169, filePath=static/upload/20210302/a05eeffdc89e45409ac28c5af09aac8c.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=228, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:04.928 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='169' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:07.293 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'ce587725571d42a4bc28e20675d5d663.png', 481270, 'static/upload/20210302/ce587725571d42a4bc28e20675d5d663.png', 'D:/hongrenquan/static/upload/20210302/ce587725571d42a4bc28e20675d5d663.png', 'ce587725571d42a4bc28e20675d5d663.png', 1, '2021-03-02 13:36:07.279', '2021-03-02 13:36:07.279' )
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:07.295 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":133,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663367294, data={id=170, filePath=static/upload/20210302/ce587725571d42a4bc28e20675d5d663.png})","params":"\"\"","title":"附件上传","traceId":"l0Q91pXZ","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:07.296 INFO 17516 [] [task-30] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=l0Q91pXZ, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663367294, data={id=170, filePath=static/upload/20210302/ce587725571d42a4bc28e20675d5d663.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=133, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:36:07.384 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='170' 
+Execute Time：1 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:31.158 WARN 17516 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 83774
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:31.252 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'c3b1a9717a454040b0e351d891ab0d5a.jpg', 25958, 'static/upload/20210302/c3b1a9717a454040b0e351d891ab0d5a.jpg', 'D:/hongrenquan/static/upload/20210302/c3b1a9717a454040b0e351d891ab0d5a.jpg', 'c3b1a9717a454040b0e351d891ab0d5a.jpg', 1, '2021-03-02 13:37:31.141', '2021-03-02 13:37:31.141' )
+Execute Time：78 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:31.253 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":373,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663451252, data={id=171, filePath=static/upload/20210302/c3b1a9717a454040b0e351d891ab0d5a.jpg})","params":"\"\"","title":"附件上传","traceId":"F7kXG8R2","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:31.262 INFO 17516 [] [task-31] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=F7kXG8R2, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663451252, data={id=171, filePath=static/upload/20210302/c3b1a9717a454040b0e351d891ab0d5a.jpg}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=373, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:32.519 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='171' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:34.750 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'a054d8ad555a4080affcbc047855c4b8.png', 481270, 'static/upload/20210302/a054d8ad555a4080affcbc047855c4b8.png', 'D:/hongrenquan/static/upload/20210302/a054d8ad555a4080affcbc047855c4b8.png', 'a054d8ad555a4080affcbc047855c4b8.png', 1, '2021-03-02 13:37:34.686', '2021-03-02 13:37:34.686' )
+Execute Time：17 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:34.751 INFO 17516 [] [XNIO-1 task-2] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":211,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663454750, data={id=172, filePath=static/upload/20210302/a054d8ad555a4080affcbc047855c4b8.png})","params":"\"\"","title":"附件上传","traceId":"jWVJydqT","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:34.802 INFO 17516 [] [task-32] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=jWVJydqT, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663454750, data={id=172, filePath=static/upload/20210302/a054d8ad555a4080affcbc047855c4b8.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=211, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:34.969 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='172' 
+Execute Time：13 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:38.020 INFO 17516 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( '2a79e62ac84a47d5b5cdba3a957009a4.png', 641536, 'static/upload/20210302/2a79e62ac84a47d5b5cdba3a957009a4.png', 'D:/hongrenquan/static/upload/20210302/2a79e62ac84a47d5b5cdba3a957009a4.png', '2a79e62ac84a47d5b5cdba3a957009a4.png', 1, '2021-03-02 13:37:37.844', '2021-03-02 13:37:37.844' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:38.022 INFO 17516 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":312,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614663458020, data={id=173, filePath=static/upload/20210302/2a79e62ac84a47d5b5cdba3a957009a4.png})","params":"\"\"","title":"附件上传","traceId":"JRAnz4aQ","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:38.022 INFO 17516 [] [task-33] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=JRAnz4aQ, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614663458020, data={id=173, filePath=static/upload/20210302/2a79e62ac84a47d5b5cdba3a957009a4.png}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=312, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-02 13:37:38.364 INFO 17516 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='173' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-02 15:00:07.108 WARN 17516 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-02 15:00:08.702 INFO 17516 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-02 15:00:09.966 INFO 17516 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 1006ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-02 15:00:09.970 WARN 17516 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.

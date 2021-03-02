@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author Administrator
  */
-public interface WccExamRepository extends JpaRepository<WccExam, Integer>, JpaSpecificationExecutor {
+public interface WccExamRepository extends JpaRepository<WccExam, Long>, JpaSpecificationExecutor {
 
 }
