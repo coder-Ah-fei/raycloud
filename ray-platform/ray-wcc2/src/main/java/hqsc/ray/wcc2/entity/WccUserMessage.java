@@ -83,4 +83,9 @@ public class WccUserMessage extends BasicEntity {
 	@Column(name = "MESSAGE_TIME")
 	private Date messageTime;
 	
+	
+	@ApiModelProperty(value = "1 已读  0 未读")
+	@Column(name = "IS_READ", columnDefinition = "char(1) default 0 comment '已读标识（1 已读  0 未读）'")
+	private Integer isRead;
+	
 }

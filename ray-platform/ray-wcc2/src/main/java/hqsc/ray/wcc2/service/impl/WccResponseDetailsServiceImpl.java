@@ -77,4 +77,15 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
 	}
 	
+	/**
+	 * 新增评论
+	 *
+	 * @param wccResponseDetailsForm
+	 * @return
+	 */
+	@Override
+	public ResultMap saveWccResponseDetails(WccResponseDetailsForm wccResponseDetailsForm) {
+		return null;
+	}
+	
 }

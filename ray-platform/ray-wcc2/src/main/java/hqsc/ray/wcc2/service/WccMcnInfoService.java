@@ -9,7 +9,7 @@ import hqsc.ray.wcc2.form.WccMcnInfoForm;
  * @author Administrator
  */
 public interface WccMcnInfoService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +17,5 @@ public interface WccMcnInfoService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccMcnInfos(WccMcnInfoForm wccMcnInfoForm);
-
+	
 }

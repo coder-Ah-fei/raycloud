@@ -1,7 +1,9 @@
 package hqsc.ray.wcc2.service.impl;
 
 import hqsc.ray.wcc2.dto.ResultMap;
+import hqsc.ray.wcc2.dto.WccGoodsInfoDto;
 import hqsc.ray.wcc2.dto.WccMerchantBrandDetailDto;
+import hqsc.ray.wcc2.entity.WccGoodsInfo;
 import hqsc.ray.wcc2.entity.WccMerchantBrandDetail;
 import hqsc.ray.wcc2.form.WccMerchantBrandDetailForm;
 import hqsc.ray.wcc2.repository.WccMerchantBrandDetailRepository;
@@ -66,8 +68,17 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 		for (WccMerchantBrandDetail wccMerchantBrandDetail : wccMerchantBrandDetailList) {
 			wccMerchantBrandDetailDto = new WccMerchantBrandDetailDto();
 			BeanUtils.copyProperties(wccMerchantBrandDetail, wccMerchantBrandDetailDto);
-			
-			
+			if (wccMerchantBrandDetailForm.isGetGoodsInfo()) {
+				List<WccGoodsInfo> goodsInfoList = wccMerchantBrandDetail.getGoodsInfoList();
+				List<WccGoodsInfoDto> goodsInfoDtos = new ArrayList<>();
+				WccGoodsInfoDto wccGoodsInfoDto;
+				for (WccGoodsInfo wccGoodsInfo : goodsInfoList) {
+					wccGoodsInfoDto = new WccGoodsInfoDto();
+					BeanUtils.copyProperties(wccGoodsInfo, wccGoodsInfoDto);
+					goodsInfoDtos.add(wccGoodsInfoDto);
+				}
+				wccMerchantBrandDetailDto.setGoodsInfoList(goodsInfoDtos);
+			}
 			list.add(wccMerchantBrandDetailDto);
 		}
 		long count = wccMerchantBrandDetailRepository.count(specification);

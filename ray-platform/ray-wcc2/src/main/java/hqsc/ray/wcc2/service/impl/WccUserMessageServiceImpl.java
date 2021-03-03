@@ -66,8 +66,6 @@ public class WccUserMessageServiceImpl implements WccUserMessageService {
 		for (WccUserMessage wccUserMessage : wccUserMessageList) {
 			wccUserMessageDto = new WccUserMessageDto();
 			BeanUtils.copyProperties(wccUserMessage, wccUserMessageDto);
-			
-			
 			list.add(wccUserMessageDto);
 		}
 		long count = wccUserMessageRepository.count(specification);

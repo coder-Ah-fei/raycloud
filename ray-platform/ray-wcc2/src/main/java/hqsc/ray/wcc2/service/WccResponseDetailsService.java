@@ -9,7 +9,7 @@ import hqsc.ray.wcc2.form.WccResponseDetailsForm;
  * @author Administrator
  */
 public interface WccResponseDetailsService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +17,12 @@ public interface WccResponseDetailsService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccResponseDetailss(WccResponseDetailsForm wccResponseDetailsForm);
-
+	
+	/**
+	 * 新增评论
+	 *
+	 * @param wccResponseDetailsForm
+	 * @return
+	 */
+	ResultMap saveWccResponseDetails(WccResponseDetailsForm wccResponseDetailsForm);
 }

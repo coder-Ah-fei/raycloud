@@ -9,7 +9,7 @@ import hqsc.ray.wcc2.form.WccUserMessageForm;
  * @author Administrator
  */
 public interface WccUserMessageService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +17,5 @@ public interface WccUserMessageService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccUserMessages(WccUserMessageForm wccUserMessageForm);
-
+	
 }

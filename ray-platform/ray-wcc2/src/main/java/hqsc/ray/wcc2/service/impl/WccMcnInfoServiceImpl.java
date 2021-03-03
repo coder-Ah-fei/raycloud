@@ -1,6 +1,8 @@
 package hqsc.ray.wcc2.service.impl;
 
 import hqsc.ray.wcc2.dto.ResultMap;
+import hqsc.ray.wcc2.dto.WccMcnInfoDto;
+import hqsc.ray.wcc2.entity.WccMcnInfo;
 import hqsc.ray.wcc2.form.WccMcnInfoForm;
 import hqsc.ray.wcc2.repository.WccMcnInfoRepository;
 import hqsc.ray.wcc2.service.WccMcnInfoService;
@@ -12,11 +14,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * 描述：
  *
@@ -24,10 +26,10 @@ import java.util.Map;
  */
 @Service
 public class WccMcnInfoServiceImpl implements WccMcnInfoService {
-
+	
 	@Autowired
 	private WccMcnInfoRepository wccMcnInfoRepository;
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -35,8 +37,8 @@ public class WccMcnInfoServiceImpl implements WccMcnInfoService {
 	 * @return ResultMap
 	 */
 	@Override
-	public ResultMap listWccMcnInfos(WccMcnInfoForm wccMcnInfoForm){
-        Specification<WccMcnInfo> specification = (root, criteriaQuery, criteriaBuilder) -> {
+	public ResultMap listWccMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
+		Specification<WccMcnInfo> specification = (root, criteriaQuery, criteriaBuilder) -> {
 //			List<Predicate> pr = new ArrayList< >();
 //				if (!StringUtils.empty(articleForm.getSectionName())) {
 //					Join<Object, Object> section = root.join("section");
@@ -47,7 +49,7 @@ public class WccMcnInfoServiceImpl implements WccMcnInfoService {
 //				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
 //			}
 //			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
-
+			
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("createDate")));
 			return criteriaQuery.getRestriction();
 		};
@@ -59,20 +61,20 @@ public class WccMcnInfoServiceImpl implements WccMcnInfoService {
 			Page<WccMcnInfo> wccMcnInfoPage = wccMcnInfoRepository.findAll(specification, pageable);
 			wccMcnInfoList = wccMcnInfoPage.getContent();
 		}
-		List<WccMcnInfoDto> list = new ArrayList< >();
+		List<WccMcnInfoDto> list = new ArrayList<>();
 		WccMcnInfoDto wccMcnInfoDto;
 		for (WccMcnInfo wccMcnInfo : wccMcnInfoList) {
-            wccMcnInfoDto = new WccMcnInfoDto();
-        	BeanUtils.copyProperties(wccMcnInfo, wccMcnInfoDto);
-
-
-            list.add(wccMcnInfoDto);
+			wccMcnInfoDto = new WccMcnInfoDto();
+			BeanUtils.copyProperties(wccMcnInfo, wccMcnInfoDto);
+			wccMcnInfoDto.setHeadPortraitId(wccMcnInfo.getHeadPortrait() == null ? null : wccMcnInfo.getHeadPortrait().getId());
+			
+			list.add(wccMcnInfoDto);
 		}
 		long count = wccMcnInfoRepository.count(specification);
-		Map<String, Object> map = new HashMap< >();
+		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
-		return new ResultMap< >(ResultMap.SUCCESS_CODE, map);
+		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
 	}
-
+	
 }

@@ -27,6 +27,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * 品牌方/商家详情表实体类
@@ -137,4 +138,10 @@ public class WccMerchantBrandDetail extends BasicEntity {
 	@ApiModelProperty(value = "商家备注")
 	@Column(name = "REMARK")
 	private String remark;
+	
+	/**
+	 * 品牌下面的商品关联
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "merchantBrand")
+	private List<WccGoodsInfo> goodsInfoList;
 }
