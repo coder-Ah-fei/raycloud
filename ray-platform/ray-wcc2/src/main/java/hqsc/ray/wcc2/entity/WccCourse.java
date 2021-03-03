@@ -133,4 +133,7 @@ public class WccCourse extends BasicEntity {
 	@ApiModelProperty(value = "是否推荐课程(1是 0否)")
 	@Column(name = "IS_RECOMMEND")
 	private Integer isRecommend;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "wccCourse")
+	private List<WccUserPurchasedCourse> wccUserPurchasedCourseList;
 }

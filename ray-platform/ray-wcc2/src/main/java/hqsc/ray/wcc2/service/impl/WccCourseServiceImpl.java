@@ -85,7 +85,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 					bannerIdList.add(wccCourseResource.getWccAttachment().getId());
 				}
 			}
-			Long[] bannerIds = new Long[bannerIdList.size()];
+			Long[] bannerIds = bannerIdList.toArray(new Long[bannerIdList.size()]);
 			Arrays.sort(bannerIds);
 			wccCourseDto.setBannerIds(bannerIds);
 			list.add(wccCourseDto);
@@ -124,8 +124,8 @@ public class WccCourseServiceImpl implements WccCourseService {
 	public ResultMap listWccCoursesBought(WccCourseForm wccCourseForm) {
 		Specification<WccCourse> specification = (root, criteriaQuery, criteriaBuilder) -> {
 			List<Predicate> pr = new ArrayList<>();
-			Join<WccCourse, WccUserPurchasedCourse> wccPraiseFavoriteJoin = root.join("wccUserPurchasedCourse");
-			Join<WccUserPurchasedCourse, WccUser> userJoin = wccPraiseFavoriteJoin.join("user");
+			Join<Object, Object> wccPraiseFavoriteJoin = root.join("wccUserPurchasedCourseList");
+			Join<WccUserPurchasedCourse, WccUser> userJoin = wccPraiseFavoriteJoin.join("wccUser");
 			pr.add(criteriaBuilder.equal(userJoin.get("id"), wccCourseForm.getUserId()));
 			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
@@ -159,7 +159,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 					bannerIdList.add(wccCourseResource.getWccAttachment().getId());
 				}
 			}
-			Long[] bannerIds = new Long[bannerIdList.size()];
+			Long[] bannerIds = bannerIdList.toArray(new Long[bannerIdList.size()]);
 			Arrays.sort(bannerIds);
 			wccCourseDto.setBannerIds(bannerIds);
 			list.add(wccCourseDto);
@@ -200,7 +200,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 				bannerIdList.add(wccCourseResource.getWccAttachment().getId());
 			}
 		}
-		Long[] bannerIds = new Long[bannerIdList.size()];
+		Long[] bannerIds = bannerIdList.toArray(new Long[bannerIdList.size()]);
 		Arrays.sort(bannerIds);
 		wccCourseDto.setBannerIds(bannerIds);
 		

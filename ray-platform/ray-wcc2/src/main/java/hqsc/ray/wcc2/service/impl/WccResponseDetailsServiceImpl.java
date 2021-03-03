@@ -2,9 +2,15 @@ package hqsc.ray.wcc2.service.impl;
 
 import hqsc.ray.wcc2.dto.ResultMap;
 import hqsc.ray.wcc2.dto.WccResponseDetailsDto;
+import hqsc.ray.wcc2.entity.WccReleaseInfo;
 import hqsc.ray.wcc2.entity.WccResponseDetails;
+import hqsc.ray.wcc2.entity.WccUser;
+import hqsc.ray.wcc2.entity.WccUserMessage;
 import hqsc.ray.wcc2.form.WccResponseDetailsForm;
+import hqsc.ray.wcc2.repository.WccReleaseInfoRepository;
 import hqsc.ray.wcc2.repository.WccResponseDetailsRepository;
+import hqsc.ray.wcc2.repository.WccUserMessageRepository;
+import hqsc.ray.wcc2.repository.WccUserRepository;
 import hqsc.ray.wcc2.service.WccResponseDetailsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +19,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 描述：
@@ -29,6 +33,12 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 	
 	@Autowired
 	private WccResponseDetailsRepository wccResponseDetailsRepository;
+	@Autowired
+	private WccUserRepository wccUserRepository;
+	@Autowired
+	private WccReleaseInfoRepository wccReleaseInfoRepository;
+	@Autowired
+	private WccUserMessageRepository wccUserMessageRepository;
 	
 	/**
 	 * 获取数据
@@ -84,8 +94,47 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 	 * @return
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public ResultMap saveWccResponseDetails(WccResponseDetailsForm wccResponseDetailsForm) {
-		return null;
+		
+		WccResponseDetails comment = new WccResponseDetails();
+		BeanUtils.copyProperties(wccResponseDetailsForm, comment);
+		WccUser wccUser = wccUserRepository.findById(wccResponseDetailsForm.getUserId()).get();
+		comment.setWccUser(wccUser);
+		
+		Optional<WccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccResponseDetailsForm.getBelongId());
+		if (!releaseInfoOptional.isPresent()) {
+			return ResultMap.of("被评论的数据没有找到");
+		}
+		WccReleaseInfo wccReleaseInfo = releaseInfoOptional.get();
+		comment.setWccReleaseInfo(wccReleaseInfo);
+		comment.setFavoriteCount(0);
+		// 查找上级评论
+		if (wccResponseDetailsForm.getParentId() != null) {
+			Optional<WccResponseDetails> wccResponseDetailsOptional = wccResponseDetailsRepository.findById(wccResponseDetailsForm.getParentId());
+			if (wccResponseDetailsOptional.isPresent()) {
+				comment.setWccResponseDetails(wccResponseDetailsOptional.get());
+			}
+		}
+		comment.setResponseTime(new Date());
+		wccResponseDetailsRepository.save(comment);
+		
+		
+		// 新增一条消息
+		WccUserMessage wccUserMessage = new WccUserMessage();
+		wccUserMessage.setWccUser(wccReleaseInfo.getBelongUser());
+		if (wccReleaseInfo.getType() == 0L) {
+			wccUserMessage.setMessageType(1);
+			wccUserMessage.setMessageContent(wccUser.getNickname() + "回答了你的提问");
+		} else {
+			wccUserMessage.setMessageType(0);
+			wccUserMessage.setMessageContent(comment.getResponseBody());
+		}
+		wccUserMessage.setMessageTime(new Date());
+		wccUserMessage.setIsRead(0);
+		wccUserMessageRepository.save(wccUserMessage);
+		
+		return ResultMap.of(ResultMap.SUCCESS_CODE);
 	}
 	
 }

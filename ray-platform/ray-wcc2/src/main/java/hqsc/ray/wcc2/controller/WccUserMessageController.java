@@ -17,6 +17,8 @@
 package hqsc.ray.wcc2.controller;
 
 import hqsc.ray.core.auth.annotation.PreAuth;
+import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc2.dto.ResultMap;
@@ -51,6 +53,11 @@ public class WccUserMessageController extends BaseController {
 	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
 	public ResultMap<?> listWccUserMessages(WccUserMessageForm wccUserMessageForm) {
+		
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccUserMessageForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		
+		
 		ResultMap resultMap = wccUserMessageService.listWccUserMessages(wccUserMessageForm);
 		return resultMap;
 	}

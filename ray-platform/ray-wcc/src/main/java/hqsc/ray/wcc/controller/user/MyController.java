@@ -596,7 +596,9 @@ public class MyController extends BaseController {
 	
 	/*
 	 * 发表评论
+	 * 过时的改到 ray-wcc2/wcc-response-details/saveWccResponseDetails
 	 * */
+	@Deprecated
 	@UserAuth
 	@Log(value = "发表评论", exception = "发表评论异常")
 	@PostMapping(value = {"/comment"}, produces = {"application/json; charset=UTF-8"})

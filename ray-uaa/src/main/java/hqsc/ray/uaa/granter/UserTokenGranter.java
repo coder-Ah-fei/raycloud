@@ -36,35 +36,35 @@ import java.util.Map;
 @Slf4j
 public class UserTokenGranter extends AbstractTokenGranter {
 	private static final String GRANT_TYPE = "user-wechat";
-
+	
 	private final AuthenticationManager authenticationManager;
-
+	
 	private RedisService redisService;
-
+	
 	private AuthRequestFactory factory;
-
+	
 	public UserTokenGranter(AuthenticationManager authenticationManager,
-                            AuthorizationServerTokenServices tokenServices, ClientDetailsService clientDetailsService,
-                            OAuth2RequestFactory requestFactory, RedisService redisService, AuthRequestFactory factory) {
+	                        AuthorizationServerTokenServices tokenServices, ClientDetailsService clientDetailsService,
+	                        OAuth2RequestFactory requestFactory, RedisService redisService, AuthRequestFactory factory) {
 		this(authenticationManager, tokenServices, clientDetailsService, requestFactory, GRANT_TYPE);
 		this.redisService = redisService;
 		this.factory = factory;
 	}
-
+	
 	protected UserTokenGranter(AuthenticationManager authenticationManager, AuthorizationServerTokenServices tokenServices,
-                               ClientDetailsService clientDetailsService, OAuth2RequestFactory requestFactory, String grantType) {
+	                           ClientDetailsService clientDetailsService, OAuth2RequestFactory requestFactory, String grantType) {
 		super(tokenServices, clientDetailsService, requestFactory, grantType);
 		this.authenticationManager = authenticationManager;
 	}
-
+	
 	@Override
 	protected OAuth2Authentication getOAuth2Authentication(ClientDetails client, TokenRequest tokenRequest) {
 		Map<String, String> parameters = new LinkedHashMap<>(tokenRequest.getRequestParameters());
 		String code = parameters.get("code");
 		String encryptedData = parameters.get("encryptedData");
 		String iv = parameters.get("iv");
-
-		if (StringUtils.isBlank(code)||StringUtils.isBlank(encryptedData)||StringUtils.isBlank(iv)) {
+		
+		if (StringUtils.isBlank(code) || StringUtils.isBlank(encryptedData) || StringUtils.isBlank(iv)) {
 			throw new UserDeniedAuthorizationException("未传入请求参数");
 		}
 		AuthRequest authRequest = factory.get("WECHAT_MINI");
@@ -78,12 +78,14 @@ public class UserTokenGranter extends AbstractTokenGranter {
 			authUser.setRemark(Oauth2Constant.USER_TYPE_USER);
 		}
 		log.error("authUser:{}", JSON.toJSON(authUser));
-
-		String unionId=authUser.getToken().getUnionId();
-		if(StringUtil.isBlank(unionId)){
+		if (authUser == null) {
+			throw new UserDeniedAuthorizationException("authUser为null");
+		}
+		String unionId = authUser.getToken().getUnionId();
+		if (StringUtil.isBlank(unionId)) {
 			throw new UserDeniedAuthorizationException("获取不到UnionId");
 		}
-
+		
 		Authentication userAuth = new SocialAuthenticationToken(authUser);
 		((AbstractAuthenticationToken) userAuth).setDetails(parameters);
 		try {
@@ -93,11 +95,11 @@ public class UserTokenGranter extends AbstractTokenGranter {
 			throw new InvalidGrantException(ase.getMessage());
 		}
 		// If the username/password are wrong the spec says we should send 400/invalid grant
-
+		
 		if (userAuth == null || !userAuth.isAuthenticated()) {
 			throw new InvalidGrantException("Could not authenticate user: " + authUser);
 		}
-
+		
 		OAuth2Request storedOAuth2Request = getRequestFactory().createOAuth2Request(client, tokenRequest);
 		return new OAuth2Authentication(storedOAuth2Request, userAuth);
 	}

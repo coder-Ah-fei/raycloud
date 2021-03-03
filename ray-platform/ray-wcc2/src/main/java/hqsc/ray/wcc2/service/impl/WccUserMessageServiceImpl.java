@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,17 +41,15 @@ public class WccUserMessageServiceImpl implements WccUserMessageService {
 	@Override
 	public ResultMap listWccUserMessages(WccUserMessageForm wccUserMessageForm) {
 		Specification<WccUserMessage> specification = (root, criteriaQuery, criteriaBuilder) -> {
-//			List<Predicate> pr = new ArrayList< >();
-//				if (!StringUtils.empty(articleForm.getSectionName())) {
-//					Join<Object, Object> section = root.join("section");
-//					pr.add(builder.equal(section.get("sectionName"), articleForm.getSectionName()));
-//				}
-
-//			if (!StringUtils.empty(litigationEnvelopeBrandForm.getBrandName())) {
-//				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
-//			}
-//			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
-			
+			List<Predicate> pr = new ArrayList<>();
+			if (wccUserMessageForm.getUserId() != null) {
+				Join<Object, Object> wccUser = root.join("wccUser");
+				pr.add(criteriaBuilder.equal(wccUser.get("id"), wccUserMessageForm.getUserId()));
+			}
+			if (wccUserMessageForm.getMessageType() != null) {
+				pr.add(criteriaBuilder.equal(root.get("messageType").as(Integer.class), wccUserMessageForm.getMessageType()));
+			}
+			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
 		};
