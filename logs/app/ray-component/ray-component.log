@@ -4151,3 +4151,481 @@ Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_
 Execute Time：10 ms
 ==============  Sql  End   ==============
 
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:37.958 WARN 20768 [] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 89861
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:37.962 WARN 20768 [] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 102650
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:37.995 INFO 20768 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：6 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:38.157 INFO 20768 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:38.257 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：38 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:38:38.264 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:26.772 WARN 20768 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 648490
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:26.799 WARN 20768 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 648541
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:26.946 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：48 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:27.003 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:27.164 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:27.166 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:36.798 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：18 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:36.803 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：18 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:36.967 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:37.012 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:56.804 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:56.804 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:56.876 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:49:56.917 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.263 WARN 20768 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 277167
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.278 WARN 20768 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 277462
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.402 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：52 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.630 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：94 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.744 INFO 20768 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：109 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:34.802 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：142 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:42.858 INFO 20768 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:42.858 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:42.859 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:54:42.927 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：77 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:55:37.265 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：14 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:55:37.386 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:55:37.482 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:55:37.507 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:49.743 WARN 20768 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:49.761 INFO 20768 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:49.910 INFO 20768 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 148ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:49.916 WARN 20768 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.053 WARN 20768 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 127182
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.053 WARN 20768 [] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 127182
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.055 WARN 20768 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 127197
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.106 WARN 20768 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 72534
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.141 INFO 20768 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.275 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：13 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.276 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：13 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:56:50.277 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:05.022 INFO 20768 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:05.077 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:05.088 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:05.093 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:10.985 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='[object Object]' 
+Execute Time：110 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:48.720 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:48.720 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:48.742 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:57:48.742 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:00.247 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：17 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:00.249 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：1 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:00.271 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:00.337 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:03.961 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:03.961 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:04.875 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:04.909 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:39.911 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:39.922 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:39.964 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:58:39.968 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:59:07.835 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
+Execute Time：15 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:59:07.930 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:59:08.028 INFO 20768 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
+Execute Time：15 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:59:08.028 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
+Execute Time：15 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-03 18:59:09.530 INFO 20768 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute Time：9 ms
+==============  Sql  End   ==============
+

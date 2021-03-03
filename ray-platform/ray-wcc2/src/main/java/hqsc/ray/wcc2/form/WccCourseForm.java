@@ -31,5 +31,9 @@ public class WccCourseForm extends BaseForm {
 	@ApiModelProperty(value = "是否推荐课程(1是 0否)")
 	private Integer isRecommend;
 	
-	
+	/**
+	 * 课程类型(0系统课1进阶课)
+	 */
+	@ApiModelProperty(value = "课程类型(0系统课1进阶课)")
+	private Integer courseType;
 }

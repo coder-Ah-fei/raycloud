@@ -124,6 +124,10 @@ public class WccCourseServiceImpl implements WccCourseService {
 	public ResultMap listWccCoursesBought(WccCourseForm wccCourseForm) {
 		Specification<WccCourse> specification = (root, criteriaQuery, criteriaBuilder) -> {
 			List<Predicate> pr = new ArrayList<>();
+			if (wccCourseForm.getCourseType() != null) {
+				pr.add(criteriaBuilder.equal(root.get("courseType").as(Integer.class), wccCourseForm.getCourseType()));
+			}
+			
 			Join<Object, Object> wccPraiseFavoriteJoin = root.join("wccUserPurchasedCourseList");
 			Join<WccUserPurchasedCourse, WccUser> userJoin = wccPraiseFavoriteJoin.join("wccUser");
 			pr.add(criteriaBuilder.equal(userJoin.get("id"), wccCourseForm.getUserId()));

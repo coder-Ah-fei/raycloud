@@ -10132,3 +10132,777 @@ Execute Time：0 ms
 
 [ray-system:192.168.101.18:20002] 2021-03-03 18:38:37.809 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
 [ray-system:192.168.101.18:20002] 2021-03-03 18:38:37.907 ERROR 3248 [KpzRyBrR] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:38.221 ERROR 3248 [bbCtMjx0] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:38.647 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'GmSOTHJF', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@49cd906b', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 1353, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：47 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:38.667 INFO 3248 [WXyprf0n] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'OAC8XgHO', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@4a566585', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 1363, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：148 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:39.105 INFO 3248 [bbCtMjx0] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'vYg84Six', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@31cfb451', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 904, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：253 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:39.771 ERROR 3248 [bbCtMjx0] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:38:39.904 INFO 3248 [bbCtMjx0] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'nQU7ddKg', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@5ecf7e45', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 126, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:00.018 INFO 3248 [] [JetCacheDefaultExecutor] c.alicp.jetcache.support.StatInfoLogger  [2m:[0;39m jetcache stat from 2021-03-03 18:30:00,004 to 2021-03-03 18:45:00,004
+cache|       qps|   rate|           get|           hit|          fail|        expire|avgLoadTime|maxLoadTime
+-----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
+-----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.230 ERROR 3248 [bbCtMjx0] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/user/username
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.414 WARN 3248 [kG4GDDsA] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 416511
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.415 WARN 3248 [kG4GDDsA] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 417765
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.416 WARN 3248 [kG4GDDsA] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 418034
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.479 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysUserMapper.selectOne
+Execute SQL ：SELECT id,tenant_id,account,password,name,real_name,avatar,email,telephone,birthday,sex,role_id,depart_id,status,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_user WHERE (account = 'admin')
+Execute Time：15 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.609 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysRolePermissionMapper.selectList
+Execute SQL ：SELECT id,menu_id,role_id FROM ray_sys_role_permission WHERE (role_id = '1')
+Execute Time：42 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.758 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysMenuMapper.selectList
+Execute SQL ：SELECT id,name,permission,path,parent_id,icon,sort,keep_alive,type,status,is_deleted,tenant_id,create_by,update_by,create_time,update_time FROM ray_sys_menu WHERE (type = 2 AND id IN (2029,2067,1203,1401,1202,1404,1201,2075,2063,2077,2030,2068,1204,1402,1203,1200,1202,2076,2067,2078,2031,2089,1205,1403,1204,1201,1203,2064,2068,2069,2035,2026,2075,1404,1202,1205,1204,2089,2065,2070,2036,2027,2076,1203,2026,1200,1205,2075,2071,2066,2037,2064,2028,1204,1201,2027,2026,2076,2072,2038,2077,2065,2029,1205,1202,2028,2027,2064,2073,2039,2066,2078,2030,2026,1203,2029,2028,2065,2074,2077,2042,2069,2027,2031,1204,2030,2066,2029,2079,2032,2078,2070,2028,2035,1205,2031,2077,2030,2080,2069,2033,2071,2029,2026,2036,2035,2078,2031,2090,2070,2034,2072,2030,2027,2037,2069,2035,2036,2092,2071,2045,2073,2031,2028,2070,2093,2038,2037,2036,2072,2056,2074,2035,2071,2029,2094,2039,2038,2037,2073,2060,2079,2036,2072,2081,2030,2042,2039,2038,2074,2061,2080,2082,2073,2031,2037,2032,2042,2039,2079,2062,2090,1000,2074,2035,2038,2033,2032,2080,2042,2055,2092,1300,2079,2036,2039,2034,2090,2033,2032,2057,2093,1301,2080,2037,2042,2045,2092,2034,2033,2058,2094,1302,2090,2038,2032,2056,2093,2045,2059,2081,2034,1303,2092,2039,2094,2060,2033,2056,2047,2082,1304,2093,2045,2042,2081,2061,2034,2060,2048,1000,2094,1305,2056,2032,2082,2062,2045,2049,2081,1300,1306,2061,2060,1000,2033,2055,2056,2082,2050,1301,2062,1100,2061,1300,2034,2057,1000,2060,2051,1101,1302,2055,2062,1301,2045,2058,1300,2061,1102,2040,1303,2057,1302,2055,2056,2059,1301,2062,1103,2053,1304,2058,1303,2057,2060,2047,1302,1104,2055,2041,1305,1304,2059,2061,1303,2058,2048,1105,2043,1306,2057,1305,2047,2062,1304,2049,2059,1106,1100,2044,2058,1306,2048,1305,2055,2050,1400,2047,1101,2015,2059,1100,2049,1306,2057,2051,1401,2048,1102,2016,1101,2047,1100,2050,2058,2040,1402,2049,1103,2017,1102,2048,1101,2051,1403,2059,2053,1104,2018,2050,1103,2049,1102,1404,2047,2041,2040,2019,1105,2051,1104,2050,1103,1200,2048,2043,2053,1106,2020,1105,2040,1104,2051,1201,2049,2044,2041,1400,2021,1106,2053,1105,2040,1202,2050,2015,2043,1401,2022,1400,1106,2041,2053,1203,2051,2016,2044,1402,2023,1401,1400,1204,2041,2043,2040,2017,2015,1403,1402,1401,1205,2043,2044,2053,2018,1403,2016,1404,1402,2026,2044,2015,2041,2019,1404,2017,1403,1200,2027,2015,2016,2043,2020,1200,2018,1201,1404,2028,2016,2017,2044,2021,1201,2019,1202,1200,2029,2017,2015,2022,2018,1202,1203,2020,1201,2030,2018,2016,2023,1203,2019,1204,1202,2021,2031,2019,2017,1204,1205,2020,1203,2035,2022,2018,2020,1205,2026,2021,1204,2036,2023,2019,2026,2027,2021,1205,2037,2022,2028,2027,2020,2022,2038,2026,2023,2029,2028,2021,2023,2039,2027,2029,2030,2022,2042,2028,2030,2031,2023,2032,2029,2031,2035,2033,2030,2036,2035,2034,2031,2037,2036,2045,2035,2038,2037,2056,2036,2039,2038,2060,2037,2042,2039,2061,2038,2032,2042,2062,2039,2033,2032,2055,2042,2034,2033,2057,2032,2045,2034,2058,2033,2056,2045,2059,2034,2060,2056,2047,2061,2045,2060,2062,2048,2056,2061,2055,2049,2060,2062,2057,2050,2061,2055,2058,2051,2062,2057,2059,2040,2055,2058,2047,2053,2057,2059,2048,2041,2058,2047,2049,2043,2059,2048,2050,2044,2047,2049,2051,2015,2048,2050,2040,2016,2049,2051,2053,2017,2050,2040,2041,2018,2051,2053,2043,2019,2040,2041,2044,2020,2053,2015,2043,2021,2041,2016,2022,2044,2043,2017,2023,2015,2044,2018,2016,2015,2019,2017,2016,2020,2018,2017,2021,2019,2018,2022,2020,2023,2019,2021,2020,2022,2021,2023,2022,2023))
+Execute Time：62 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.760 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"executeTime":528,"ip":"192.168.101.18","location":" 局域网","method":"GET","operation":"Result(code=200, msg=处理成功, time=1614768336759, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager))","params":"\"[admin]\"","title":"用户名查询用户","traceId":"kG4GDDsA","url":"/provider/user/username"}
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.760 INFO 3248 [kG4GDDsA] [task-9] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=kG4GDDsA, title=用户名查询用户, operation=Result(code=200, msg=处理成功, time=1614768336759, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager)), method=GET, url=/provider/user/username, params="[admin]", ip=192.168.101.18, executeTime=528, location= 局域网, createBy=null, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:36.969 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:37.008 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'kG4GDDsA', '用户名查询用户', 'Result(code=200, msg=处理成功, time=1614768336759, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager))', 'GET', '/provider/user/username', '"[admin]"', '192.168.101.18', 528, ' 局域网' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:37.352 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:37.511 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'kG4GDDsA', '用户微信id查询', 'Result(code=200, msg=处理成功, time=1614768337203, data=UserInfo(wccUser=WccUser(userId=39, name=叶祖德111, nickname=一路繁花的夏, phone=11111111111111, password=null, salt=null, headPortrait=null, wechatNickname=null, wechatUnionId=omL755VvXDLL-HDIDlbL_K8UVetA, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, authType=null, member=null, memberRank=null, celebrityFlag=0, gender=1, age=null, userRank=null, userIntroduce=null, status=1, isDelete=0, createdBy=null, createdByUser=null, creationDate=2021-02-21T14:45:01, lastUpdatedByUser=null, lastUpdatedBy=null, lastUpdateDate=2021-02-21T14:45:02), permissions=null, roleIds=null, type=0, userName=null, tenantId=null, userType=user))', 'GET', '/provider/user/union', '"[omL755VvXDLL-HDIDlbL_K8UVetA]"', '192.168.101.18', 362, ' 局域网' )
+Execute Time：80 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:38.255 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:45:38.328 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'yalYHhOS', '用户登录', 'Result(code=200, msg=处理成功, time=1614768338204, data={roleId=0, tenantId=100000, avatar=, userType=user, userName=omL755VvXDLL-HDIDlbL_K8UVetA, type=3, userId=39, jti=6936d366-059e-4f2f-9952-ffdeda1973c9, accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJvbUw3NTVWdlhETEwtSERJRGxiTF9LOFVWZXRBIiwicm9sZUlkIjoiMCIsImF2YXRhciI6IiIsInVzZXJOYW1lIjoib21MNzU1VnZYRExMLUhESURsYkxfSzhVVmV0QSIsInR5cGUiOjMsInVzZXJJZCI6IjM5IiwiYXV0aG9yaXRpZXMiOlsiKjoqOioiXSwiY2xpZW50X2lkIjoicmF5Iiwic2NvcGUiOlsiYWxsIl0sInRlbmFudElkIjoiMTAwMDAwIiwidXNlclR5cGUiOiJ1c2VyIiwiZXhwIjoxNjE0NzcxOTM3LCJqdGkiOiI2OTM2ZDM2Ni0wNTllLTRmMmYtOTk1Mi1mZmRlZGExOTczYzkifQ.uYdJZca9PfZZvp8P9mg2NBq1thBGWpE62qR_oXv5lII, refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJvbUw3NTVWdlhETEwtSERJRGxiTF9LOFVWZXRBIiwicm9sZUlkIjoiMCIsImF2YXRhciI6IiIsInVzZXJOYW1lIjoib21MNzU1VnZYRExMLUhESURsYkxfSzhVVmV0QSIsInR5cGUiOjMsInVzZXJJZCI6IjM5IiwiYXV0aG9yaXRpZXMiOlsiKjoqOioiXSwiY2xpZW50X2lkIjoicmF5Iiwic2NvcGUiOlsiYWxsIl0sImF0aSI6IjY5MzZkMzY2LTA1OWUtNGYyZi05OTUyLWZmZGVkYTE5NzNjOSIsInRlbmFudElkIjoiMTAwMDAwIiwidXNlclR5cGUiOiJ1c2VyIiwiZXhwIjoxNjE0NzcxOTM3LCJqdGkiOiJkMDliMGI2Zi1jM2RjLTQ0OTQtODhjZC01ZWM4MWUzZTliZTAifQ.PNAlkvIHhmqnKzzaADTaCEVGk-nbX_d-2GNYvasOtOw})', 'POST', '/oauth/token', '"[{\\"authenticated\\":true,\\"authorities\\":[],\\"details\\":{\\"remoteAddress\\":\\"192.168.101.18\\"},\\"name\\":\\"ray\\",\\"principal\\":{\\"accountNonExpired\\":true,\\"accountNonLocked\\":true,\\"authorities\\":[],\\"credentialsNonExpired\\":true,\\"enabled\\":true,\\"username\\":\\"ray\\"}},{\\"code\\":\\"001DYdll2rusB64BPhnl23MzXm3DYdlO\\",\\"grant_type\\":\\"user-wechat\\",\\"scope\\":\\"all\\",\\"encryptedData\\":\\"nB1NZHmquOgvbxPhwN2SWgQoAsfkGRIiWauAoRZaLprJtwv0co5JXDsVgwDP4o/lcrjxCi/Yrc0pTV3NavGnYoqCbrLsVnn/+CqX94a27lnHN5zj0rdLhK27mTgw1bd6m1iEfug21mhApFSQV79xCkgnFDaaOs0MARrp2+FSs6UTP1ydKjs6mIIUJSezhQ/AEVEcS8dqP4u9kG+EIHZraJvKAYhFizi/43itTSJvXwlMJQjm3+6Z8SkW6LOH8o3MBPUykj4mvgSsO3khqhGowCFLTRZnvIqXfK4zkJmagoumke99P0nAjy+Vt+izO/cGJP64USTI9Oq1pM3bfLhxz4zkX+YBga3gggg275gWTiuGr8DQ1284tM7ZkVCA3RqUjx5FIKu1UKahI+brn5ZSqyygeUiyZuztwADOqdSCSgqEHxG37yDiRFUieczygvHiGW6PYcd1bT3IkjZAmkEicuJmUdyvsIj4jzWewKgU30I=\\",\\"iv\\":\\"qWfvm0+vcudL+2mLuTGwxw==\\"}]"', '192.168.101.22', 2691, ' 局域网' )
+Execute Time：6 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:12.767 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/user/username
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:12.935 WARN 3248 [kG4GDDsA] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 214594
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.070 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysUserMapper.selectOne
+Execute SQL ：SELECT id,tenant_id,account,password,name,real_name,avatar,email,telephone,birthday,sex,role_id,depart_id,status,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_user WHERE (account = 'admin')
+Execute Time：33 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.232 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysRolePermissionMapper.selectList
+Execute SQL ：SELECT id,menu_id,role_id FROM ray_sys_role_permission WHERE (role_id = '1')
+Execute Time：89 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.565 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysMenuMapper.selectList
+Execute SQL ：SELECT id,name,permission,path,parent_id,icon,sort,keep_alive,type,status,is_deleted,tenant_id,create_by,update_by,create_time,update_time FROM ray_sys_menu WHERE (type = 2 AND id IN (2029,2067,1203,1401,1202,1404,1201,2075,2063,2077,2030,2068,1204,1402,1203,1200,1202,2076,2067,2078,2031,2089,1205,1403,1204,1201,1203,2064,2068,2069,2035,2026,2075,1404,1202,1205,1204,2089,2065,2070,2036,2027,2076,1203,2026,1200,1205,2075,2071,2066,2037,2064,2028,1204,1201,2027,2026,2076,2072,2038,2077,2065,2029,1205,1202,2028,2027,2064,2073,2039,2066,2078,2030,2026,1203,2029,2028,2065,2074,2077,2042,2069,2027,2031,1204,2030,2066,2029,2079,2032,2078,2070,2028,2035,1205,2031,2077,2030,2080,2069,2033,2071,2029,2026,2036,2035,2078,2031,2090,2070,2034,2072,2030,2027,2037,2069,2035,2036,2092,2071,2045,2073,2031,2028,2070,2093,2038,2037,2036,2072,2056,2074,2035,2071,2029,2094,2039,2038,2037,2073,2060,2079,2036,2072,2081,2030,2042,2039,2038,2074,2061,2080,2082,2073,2031,2037,2032,2042,2039,2079,2062,2090,1000,2074,2035,2038,2033,2032,2080,2042,2055,2092,1300,2079,2036,2039,2034,2090,2033,2032,2057,2093,1301,2080,2037,2042,2045,2092,2034,2033,2058,2094,1302,2090,2038,2032,2056,2093,2045,2059,2081,2034,1303,2092,2039,2094,2060,2033,2056,2047,2082,1304,2093,2045,2042,2081,2061,2034,2060,2048,1000,2094,1305,2056,2032,2082,2062,2045,2049,2081,1300,1306,2061,2060,1000,2033,2055,2056,2082,2050,1301,2062,1100,2061,1300,2034,2057,1000,2060,2051,1101,1302,2055,2062,1301,2045,2058,1300,2061,1102,2040,1303,2057,1302,2055,2056,2059,1301,2062,1103,2053,1304,2058,1303,2057,2060,2047,1302,1104,2055,2041,1305,1304,2059,2061,1303,2058,2048,1105,2043,1306,2057,1305,2047,2062,1304,2049,2059,1106,1100,2044,2058,1306,2048,1305,2055,2050,1400,2047,1101,2015,2059,1100,2049,1306,2057,2051,1401,2048,1102,2016,1101,2047,1100,2050,2058,2040,1402,2049,1103,2017,1102,2048,1101,2051,1403,2059,2053,1104,2018,2050,1103,2049,1102,1404,2047,2041,2040,2019,1105,2051,1104,2050,1103,1200,2048,2043,2053,1106,2020,1105,2040,1104,2051,1201,2049,2044,2041,1400,2021,1106,2053,1105,2040,1202,2050,2015,2043,1401,2022,1400,1106,2041,2053,1203,2051,2016,2044,1402,2023,1401,1400,1204,2041,2043,2040,2017,2015,1403,1402,1401,1205,2043,2044,2053,2018,1403,2016,1404,1402,2026,2044,2015,2041,2019,1404,2017,1403,1200,2027,2015,2016,2043,2020,1200,2018,1201,1404,2028,2016,2017,2044,2021,1201,2019,1202,1200,2029,2017,2015,2022,2018,1202,1203,2020,1201,2030,2018,2016,2023,1203,2019,1204,1202,2021,2031,2019,2017,1204,1205,2020,1203,2035,2022,2018,2020,1205,2026,2021,1204,2036,2023,2019,2026,2027,2021,1205,2037,2022,2028,2027,2020,2022,2038,2026,2023,2029,2028,2021,2023,2039,2027,2029,2030,2022,2042,2028,2030,2031,2023,2032,2029,2031,2035,2033,2030,2036,2035,2034,2031,2037,2036,2045,2035,2038,2037,2056,2036,2039,2038,2060,2037,2042,2039,2061,2038,2032,2042,2062,2039,2033,2032,2055,2042,2034,2033,2057,2032,2045,2034,2058,2033,2056,2045,2059,2034,2060,2056,2047,2061,2045,2060,2062,2048,2056,2061,2055,2049,2060,2062,2057,2050,2061,2055,2058,2051,2062,2057,2059,2040,2055,2058,2047,2053,2057,2059,2048,2041,2058,2047,2049,2043,2059,2048,2050,2044,2047,2049,2051,2015,2048,2050,2040,2016,2049,2051,2053,2017,2050,2040,2041,2018,2051,2053,2043,2019,2040,2041,2044,2020,2053,2015,2043,2021,2041,2016,2022,2044,2043,2017,2023,2015,2044,2018,2016,2015,2019,2017,2016,2020,2018,2017,2021,2019,2018,2022,2020,2023,2019,2021,2020,2022,2021,2023,2022,2023))
+Execute Time：90 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.576 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"executeTime":797,"ip":"192.168.101.18","location":" 局域网","method":"GET","operation":"Result(code=200, msg=处理成功, time=1614768553565, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager))","params":"\"[admin]\"","title":"用户名查询用户","traceId":"kG4GDDsA","url":"/provider/user/username"}
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.599 INFO 3248 [kG4GDDsA] [task-10] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=kG4GDDsA, title=用户名查询用户, operation=Result(code=200, msg=处理成功, time=1614768553565, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager)), method=GET, url=/provider/user/username, params="[admin]", ip=192.168.101.18, executeTime=797, location= 局域网, createBy=null, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.652 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:13.777 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'kG4GDDsA', '用户名查询用户', 'Result(code=200, msg=处理成功, time=1614768553565, data=UserInfo(sysUser=SysUser(tenantId=1, account=admin, password={bcrypt}$2a$10$yeaPv1Pkeb8M5/TbaZYi3ewYb65k/t8W9ySbNFAwypB131T4E4zZe, name=admin, realName=ray, avatar=https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2084118128,2518711034&fm=26&gp=0.jpg, email=ray@ray.hqsc, telephone=18810001000, birthday=null, sex=1, roleId=1, departId=1, status=0, isDeleted=0, departName=null, statusName=null, roleName=null), wccUser=null, permissions=[sys:user:add, sys:user:edit, sys:user:delete, sys:user:enable, sys:user:disable, sys:user:export, sys:role:add, sys:role:edit, sys:role:delete, sys:role:export, sys:role:perm, sys:menu:add, sys:menu:edit, sys:menu:delete, sys:menu:enable, sys:menu:disable, sys:menu:export, sys:depart:add, sys:depart:edit, sys:depart:delete, sys:depart:export, sys:datasource:add, sys:datasource:edit, sys:datasource:delete, sys:datasource:export, devops:gen, sys:client:add, sys:client:edit, sys:client:delete, sys:client:export, sys:client:status, sys:log:detail, sys:log:delete, sys:dict:add, sys:dict:edit, sys:dict:delete, sys:comp:edit, sys:attach:add, sys:attach:delete, gw:bl:add, gw:bl:edit, gw:bl:del, gw:bl:status, gw:api:sync, gw:api:del, gw:api:edit, gw:route:add, gw:route:edit, gw:route:del, sysconfig:carCircleGrade:add, sysconfig:carCircleGrade:delete, sysconfig:carCircleGrade:edit, sysconfig:carCircleGrade:see], roleIds=[1], type=0, userName=null, tenantId=1, userType=manager))', 'GET', '/provider/user/username', '"[admin]"', '192.168.101.18', 797, ' 局域网' )
+Execute Time：16 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:14.436 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:14.627 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'kG4GDDsA', '用户微信id查询', 'Result(code=200, msg=处理成功, time=1614768554315, data=UserInfo(wccUser=WccUser(userId=39, name=叶祖德111, nickname=一路繁花的夏, phone=11111111111111, password=null, salt=null, headPortrait=null, wechatNickname=null, wechatUnionId=omL755VvXDLL-HDIDlbL_K8UVetA, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, authType=null, member=null, memberRank=null, celebrityFlag=0, gender=1, age=null, userRank=null, userIntroduce=null, status=1, isDelete=0, createdBy=null, createdByUser=null, creationDate=2021-02-21T14:45:01, lastUpdatedByUser=null, lastUpdatedBy=null, lastUpdateDate=2021-02-21T14:45:02), permissions=null, roleIds=null, type=0, userName=null, tenantId=null, userType=user))', 'GET', '/provider/user/union', '"[omL755VvXDLL-HDIDlbL_K8UVetA]"', '192.168.101.18', 444, ' 局域网' )
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:15.117 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:15.218 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location ) VALUES ( 'fY7X2JTz', '用户登录', 'Result(code=200, msg=处理成功, time=1614768554919, data={roleId=0, tenantId=100000, avatar=, userType=user, userName=omL755VvXDLL-HDIDlbL_K8UVetA, type=3, userId=39, jti=6936d366-059e-4f2f-9952-ffdeda1973c9, accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJvbUw3NTVWdlhETEwtSERJRGxiTF9LOFVWZXRBIiwicm9sZUlkIjoiMCIsImF2YXRhciI6IiIsInVzZXJOYW1lIjoib21MNzU1VnZYRExMLUhESURsYkxfSzhVVmV0QSIsInR5cGUiOjMsInVzZXJJZCI6IjM5IiwiYXV0aG9yaXRpZXMiOlsiKjoqOioiXSwiY2xpZW50X2lkIjoicmF5Iiwic2NvcGUiOlsiYWxsIl0sInRlbmFudElkIjoiMTAwMDAwIiwidXNlclR5cGUiOiJ1c2VyIiwiZXhwIjoxNjE0NzcxOTM3LCJqdGkiOiI2OTM2ZDM2Ni0wNTllLTRmMmYtOTk1Mi1mZmRlZGExOTczYzkifQ.uYdJZca9PfZZvp8P9mg2NBq1thBGWpE62qR_oXv5lII, refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJvbUw3NTVWdlhETEwtSERJRGxiTF9LOFVWZXRBIiwicm9sZUlkIjoiMCIsImF2YXRhciI6IiIsInVzZXJOYW1lIjoib21MNzU1VnZYRExMLUhESURsYkxfSzhVVmV0QSIsInR5cGUiOjMsInVzZXJJZCI6IjM5IiwiYXV0aG9yaXRpZXMiOlsiKjoqOioiXSwiY2xpZW50X2lkIjoicmF5Iiwic2NvcGUiOlsiYWxsIl0sImF0aSI6IjY5MzZkMzY2LTA1OWUtNGYyZi05OTUyLWZmZGVkYTE5NzNjOSIsInRlbmFudElkIjoiMTAwMDAwIiwidXNlclR5cGUiOiJ1c2VyIiwiZXhwIjoxNjE0NzcxOTM3LCJqdGkiOiJkMDliMGI2Zi1jM2RjLTQ0OTQtODhjZC01ZWM4MWUzZTliZTAifQ.PNAlkvIHhmqnKzzaADTaCEVGk-nbX_d-2GNYvasOtOw})', 'POST', '/oauth/token', '"[{\\"authenticated\\":true,\\"authorities\\":[],\\"details\\":{\\"remoteAddress\\":\\"192.168.101.18\\"},\\"name\\":\\"ray\\",\\"principal\\":{\\"accountNonExpired\\":true,\\"accountNonLocked\\":true,\\"authorities\\":[],\\"credentialsNonExpired\\":true,\\"enabled\\":true,\\"username\\":\\"ray\\"}},{\\"code\\":\\"0617yk000yb7hL1XbV200p7DFT07yk02\\",\\"grant_type\\":\\"user-wechat\\",\\"scope\\":\\"all\\",\\"encryptedData\\":\\"dbvCYqXEcFAozojEZ6EnryhkCr+JNUykVFpjVhnePmeVpyk00jTilBehKkqxaoPiK4p7kwhaS9T4FDILz1aiEsh0pzEhb1HxjLlANdPckbCZmXoTjjNBlm0pm7uIuX8ysDrMSHNeK13qcxdthApq8Zvs8jlrgkB4or9K5DUe5/sl0WPS1hrht1wRjDpANb0ob5Y3P9Yq6qtZE+YWnFrmMCJBsPDU2dbFXzLS+67mN8Kq6eRdS+sw00nSt7jX6IFp2/9erytgBCbj63xfY+rt0kSopI/5qNFx8+uIOoP1MSMXsq8v6lG2pJ1Q96oJKwQ6UuRuRK2ZHw8rvn5OV/GiFnhSgUyjpsAFLhYbtH5c3j9ST7V/f4yOyGni/Y8oCvOAvjPpfmtuv+Mdoutd1D2PHkl8/TC7wq89+AFEEQHUAru2+cVIFAEzS08QjxXIqWDiNH81Dm1Bc5x9rYdKzLKGUBOw/5IFGEpeG70GO1EIdBQ=\\",\\"iv\\":\\"DydqKKZyhR6NKDJsFm1mIw==\\"}]"', '192.168.101.18', 3821, ' 局域网' )
+Execute Time：42 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:16.315 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:16.452 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'fJMOMowG', '首页推荐', 'Result(code=200, msg=处理成功, time=1614768556154, data=[IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=108, nickname=一路繁花的夏, member=null, memberRank=null, type=0, titel=的撒范德萨, content=范德萨范德萨\n, attachmentId=null, creationDate=2021-02-27T14:06:11, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=107, nickname=一路繁花的夏, member=null, memberRank=null, type=0, titel=1111, content=2222\n, attachmentId=null, creationDate=2021-02-27T14:05:56, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=41, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/u8XlySQq6H9wI4Tz4TmkkrfVAuvZJwTaBOWKQ15KInhDbBeQFBAENw6zOw4ZCfQWw4tJhDjDYWnHeIJ0OYZVog/132, releaseInfoId=106, nickname=小石头, member=null, memberRank=null, type=0, titel=主播证怎么获得？, content=需要办一个主播证，需要知道具体的流程...\n, attachmentId=null, creationDate=2021-02-26T13:30:12, praiseCount=0, commentCount=21, concernCount=0), IndexReferralsVO(userId=41, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/u8XlySQq6H9wI4Tz4TmkkrfVAuvZJwTaBOWKQ15KInhDbBeQFBAENw6zOw4ZCfQWw4tJhDjDYWnHeIJ0OYZVog/132, releaseInfoId=105, nickname=小石头, member=null, memberRank=null, type=2, titel=201023, content=<p>王企鹅群</p>, attachmentId=null, creationDate=2021-02-25T19:11:18, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=41, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/u8XlySQq6H9wI4Tz4TmkkrfVAuvZJwTaBOWKQ15KInhDbBeQFBAENw6zOw4ZCfQWw4tJhDjDYWnHeIJ0OYZVog/132, releaseInfoId=104, nickname=小石头, member=null, memberRank=null, type=2, titel=2021上传, content=<p>求我海德欧</p>, attachmentId=null, creationDate=2021-02-25T19:10:55, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=103, nickname=一路繁花的夏, member=null, memberRank=null, type=3, titel=福田大将军将于3月6日上市 预售价12.98-18.38万元, content=近日，我们从福田官方获悉，其全新皮卡大将军将于3月6日上市，该车此前在2020北京车展上公布了预售价为12.98-18.38万，新车外观采用了酷似福特F-150的设计，看起来充满力量感。\n, attachmentId=null, creationDate=2021-02-25T18:20:23, praiseCount=0, commentCount=1, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=102, nickname=一路繁花的夏, member=null, memberRank=null, type=2, titel=你好，国家乡村振兴局！, content=<p><img src="http://192.168.101.18:9999/ray-component/static/upload/20210225/6939a3977d604ca0b825e1ccc043af27.jpg"></p><p>2021年2月25日16时，北京市朝阳区太阳宫北街1号，国家乡村振兴局牌子正式挂出。“国务院扶贫开发领导小组办公室”牌子此前已经摘下。</p><p><br></p><p>　　作为国务院议事协调机构，国务院扶贫开发领导小组成立于1986年5月16日，当时称国务院贫困地区经济开发领导小组，1993年12月28日改用现名。国务院扶贫开发领导小组办公室负责承担领导小组的日常工作。</p><p><br></p><p>　　国家乡村振兴局正式挂牌，既是我国脱贫攻坚战取得全面胜利的一个标志，也是全面实施乡村振兴，奔向新生活、新奋斗的起点。</p><p><br></p>, attachmentId=null, creationDate=2021-02-25T17:37:27, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=101, nickname=一路繁花的夏, member=null, memberRank=null, type=1, titel=#作为职场新人老板不喜欢我要辞职吗#\n, content=, attachmentId=null, creationDate=2021-02-25T16:57:18, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=100, nickname=一路繁花的夏, member=null, memberRank=null, type=1, titel=#中国已消除绝对贫困#\n, content=, attachmentId=null, creationDate=2021-02-25T16:54:40, praiseCount=0, commentCount=0, concernCount=0), IndexReferralsVO(userId=39, attId=null, wechatHeadPortraitAddress=https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqFsN0H19sOJibYysUvUurwiciaIzfIibpa9t38fQW6ic03kFRDsBIHq9pwAySobYlyq9iaD9DmdOaOUTibA/132, releaseInfoId=99, nickname=一路繁花的夏, member=null, memberRank=null, type=0, titel=中国目前最红的网红有哪些？, content=中国目前最红的网红有哪些？\n, attachmentId=null, creationDate=2021-02-25T15:43:33, praiseCount=0, commentCount=1, concernCount=0)])', 'POST', '/indexPage/indexReferrals', '"[{\\"current\\":1,\\"hitCount\\":false,\\"optimizeCountSql\\":true,\\"orders\\":[],\\"pages\\":0,\\"records\\":[],\\"searchCount\\":true,\\"size\\":10,\\"total\\":0}]"', '192.168.101.18', 642, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:25.712 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:25.784 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'PUItgvse', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@41e524a7', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 207, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.161 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.295 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'AL9jvmo3', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@4d437903', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 135, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：26 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.360 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.595 INFO 3248 [kG4GDDsA] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '9vyKlKzq', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@4516f944', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 75, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：89 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.613 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:26.643 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'oIOoyKGv', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@70a4bf8e', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 84, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：17 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.514 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.514 ERROR 3248 [kG4GDDsA] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.515 ERROR 3248 [WXyprf0n] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.514 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.816 INFO 3248 [KpzRyBrR] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '4b98BwVN', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@36ccc0b0', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 397, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：114 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.890 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'o44NuquU', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@3aaba672', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 838, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:36.964 INFO 3248 [WXyprf0n] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'HirHJUEn', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@17cba6e3', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 691, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：59 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:37.042 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'AwQtgXhg', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@4fc388ea', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 695, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:55.947 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.037 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'fG02gghd', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@60349fa6', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 208, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.140 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.229 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '4BJd6XL6', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@3d6ca3c3', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 255, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.486 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.503 ERROR 3248 [WXyprf0n] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.611 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'JXMtwcLm', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@2ead7b79', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 76, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:49:56.609 INFO 3248 [WXyprf0n] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'B7NmklH0', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@7b3717a4', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 116, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.048 ERROR 3248 [WXyprf0n] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.088 WARN 3248 [bbCtMjx0] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 179442
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.151 WARN 3248 [bbCtMjx0] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 179537
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.152 WARN 3248 [bbCtMjx0] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 199340
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.168 WARN 3248 [bbCtMjx0] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 199345
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:56.294 INFO 3248 [bbCtMjx0] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'LeOXcPMg', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@57182ffe', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 13986, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:59.704 ERROR 3248 [bbCtMjx0] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:52:59.802 INFO 3248 [KpzRyBrR] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'Mx2cH8y1', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@3dbe2848', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 17887, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.631 ERROR 3248 [KpzRyBrR] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.631 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.694 WARN 3248 [bbCtMjx0] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 97473
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.694 WARN 3248 [KpzRyBrR] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 93870
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.696 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:33.763 ERROR 3248 [KpzRyBrR] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:34.788 INFO 3248 [KpzRyBrR] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '6kdcXBT2', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@2e90e3ca', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 141, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：731 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:34.812 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '0NSMBQCR', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@1d8c4fe7', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 207, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：731 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:34.870 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'twDpQMPP', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@4d1da640', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 199, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：80 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:34.872 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'Bi99ycbZ', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@5f6832b1', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 245, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：39 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.237 ERROR 3248 [WXyprf0n] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.277 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.355 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'm46j4u7Q', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@6f4ef475', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 125, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：45 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.363 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'Zz0nDMut', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@11d62a7e', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 90, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.406 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.437 ERROR 3248 [WXyprf0n] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.562 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '75fixvKn', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@71e20a12', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 97, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：8 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:54:42.597 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'nRqs5v4u', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@6ebc7c0e', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 96, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.380 ERROR 3248 [WXyprf0n] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.422 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.576 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'ZKzjbPD4', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@29bc9e97', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 118, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：126 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.593 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'fT0TQMs5', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@46dc36bf', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 123, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.624 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:36.728 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'AYB05saj', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@541e79ac', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 78, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:37.057 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:56.887 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:56.887 ERROR 3248 [WXyprf0n] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:57.054 WARN 3248 [WXyprf0n] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 82098
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:57.250 WARN 3248 [WXyprf0n] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 82267
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:57.736 INFO 3248 [WXyprf0n] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'WzyRPiZH', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@88de088', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 97, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：198 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:58.109 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'B75x8JVV', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@443f0624', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 121, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：3 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:55:58.239 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'L9tczW1a', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@4ed51dcc', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 256, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：237 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:47.378 WARN 3248 [bbCtMjx0] [XNIO-1 task-7] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.system]' package. Please check your configuration.
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:47.469 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:47.581 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 111ms. Found 0 Redis repository interfaces.
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.044 WARN 3248 [bbCtMjx0] [XNIO-1 task-7] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.972 ERROR 3248 [] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.972 ERROR 3248 [WXyprf0n] [XNIO-1 task-5] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.972 ERROR 3248 [KpzRyBrR] [XNIO-1 task-6] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.974 ERROR 3248 [WXyprf0n] [XNIO-1 task-8] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:48.986 ERROR 3248 [VsV5UUxO] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.072 ERROR 3248 [bbCtMjx0] [XNIO-1 task-7] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.231 ERROR 3248 [4hUwXi4z] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.274 ERROR 3248 [] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.329 INFO 3248 [WXyprf0n] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'TXVmmwWo', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@6108503f', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 417, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.599 INFO 3248 [KpzRyBrR] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'P6jK7hNM', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@d8b40be', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 545, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：8 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.599 INFO 3248 [bbCtMjx0] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'N5ZaG2BY', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@37b6a049', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 417, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：136 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.802 INFO 3248 [VsV5UUxO] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'MMPD8EPs', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@14aa627d', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 80, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：172 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.802 INFO 3248 [bbCtMjx0] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'pSpVhpCn', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@6c0c9996', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 382, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：174 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:49.912 INFO 3248 [4hUwXi4z] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '41aABB1L', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@1875800d', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 174, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：55 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:50.017 INFO 3248 [WXyprf0n] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'O9RZawbh', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@3353f68f', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 122, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:56:50.095 INFO 3248 [KpzRyBrR] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '5qbpPj6Q', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@263abbcb', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 112, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：46 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.338 ERROR 3248 [KpzRyBrR] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.386 INFO 3248 [WXyprf0n] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'iHJHWGg7', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@47f70db5', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 127, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.549 ERROR 3248 [WXyprf0n] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.613 INFO 3248 [KpzRyBrR] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'IMxBpphj', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@65e4f2e1', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 85, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.642 ERROR 3248 [KpzRyBrR] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.722 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'sTpf4K8t', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@2b86ee70', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 71, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.815 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:04.878 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'FlIenUCJ', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@1ed559e7', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 82, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:08.201 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:08.205 ERROR 3248 [WXyprf0n] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:08.406 INFO 3248 [WXyprf0n] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'GBnR84OL', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@31119a69', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 179, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：11 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:08.497 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'vNmkaGVn', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@5d353c58', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 129, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：42 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:47.902 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:47.960 ERROR 3248 [WXyprf0n] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.014 INFO 3248 [WXyprf0n] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '4tHinmNJ', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@65cd4bce', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 153, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.065 INFO 3248 [KpzRyBrR] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'A9FzIKHm', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@3eddbf00', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 92, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.442 ERROR 3248 [KpzRyBrR] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.513 ERROR 3248 [WXyprf0n] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.665 INFO 3248 [WXyprf0n] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'GKntfRKz', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@7083f36f', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 77, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:48.690 INFO 3248 [KpzRyBrR] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'otEW7T8t', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@4b43269b', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 117, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.486 ERROR 3248 [WXyprf0n] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.506 ERROR 3248 [KpzRyBrR] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.648 INFO 3248 [WXyprf0n] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'cBmRICek', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@478b9e89', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 154, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.659 ERROR 3248 [4hUwXi4z] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.678 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'mOItEmzI', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@21b24b03', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 110, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：16 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.713 INFO 3248 [4hUwXi4z] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'ocvZxIdo', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@5839d5f8', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 92, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.759 ERROR 3248 [4hUwXi4z] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:57:59.775 INFO 3248 [4hUwXi4z] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'BTnlFNDm', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@6ab90894', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 308, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：8 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:02.646 ERROR 3248 [4hUwXi4z] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:02.733 INFO 3248 [WXyprf0n] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'FaFe689E', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@4e203101', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 81, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：43 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.538 ERROR 3248 [WXyprf0n] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.707 INFO 3248 [KpzRyBrR] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'dcFy5Zop', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@33036762', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 83, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：47 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.747 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.760 ERROR 3248 [WXyprf0n] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.892 INFO 3248 [WXyprf0n] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'xZeCdUFT', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@42d80e5a', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 72, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:03.893 INFO 3248 [KpzRyBrR] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'BlJB4gvE', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@502520e2', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 85, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.599 ERROR 3248 [KpzRyBrR] [XNIO-1 task-3] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.601 ERROR 3248 [WXyprf0n] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.659 ERROR 3248 [KpzRyBrR] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.692 WARN 3248 [KpzRyBrR] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 109750
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.728 WARN 3248 [KpzRyBrR] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 110033
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.731 ERROR 3248 [VsV5UUxO] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.729 WARN 3248 [KpzRyBrR] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 109959
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.750 INFO 3248 [KpzRyBrR] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'GXufCAS0', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@4d33c7e5', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 142, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.804 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'jKxgnfMq', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@12df7411', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 162, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：48 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:39.805 INFO 3248 [KpzRyBrR] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '4d4T9Dfz', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@1ee532e7', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 90, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:40.013 INFO 3248 [VsV5UUxO] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '3jIYU4Fa', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@aa59611', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 100, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:45.987 ERROR 3248 [VsV5UUxO] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:46.048 ERROR 3248 [KpzRyBrR] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:46.050 INFO 3248 [WXyprf0n] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'q0jZ38AX', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@66908081', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 117, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：20 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:58:46.069 INFO 3248 [KpzRyBrR] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'iTSGZBzr', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@78f2c0bf', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 156, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.365 ERROR 3248 [KpzRyBrR] [XNIO-1 task-1] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.473 ERROR 3248 [WXyprf0n] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.716 INFO 3248 [bbCtMjx0] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'OAc4hnGL', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@3356b23c', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isHot\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 136, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：45 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.736 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.811 ERROR 3248 [bbCtMjx0] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:07.831 INFO 3248 [bbCtMjx0] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'TBNCTdNS', '获取课程列表', 'hqsc.ray.wcc2.dto.ResultMap@62943c86', 'POST', '/wcc-course/listWccCourses', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"isRecommend\\":1,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 109, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:08.049 INFO 3248 [bbCtMjx0] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '6BnRlW0M', '获取收藏的课程', 'hqsc.ray.wcc2.dto.ResultMap@1a4d32df', 'POST', '/wcc-course/listWccCoursesFavorites', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 162, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:08.057 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'K24pcPOP', '获取消息列表', 'hqsc.ray.wcc2.dto.ResultMap@62edcb5b', 'POST', '/wcc-banner/listWccBanners', '"[{\\"bannerPosition\\":\\"XUE_JIAO_CHENG\\",\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 276, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:09.355 ERROR 3248 [bbCtMjx0] [XNIO-1 task-4] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:09.392 ERROR 3248 [bbCtMjx0] [XNIO-1 task-2] hqsc.ray.system.aspect.PreviewAspect     [2m:[0;39m Request: url:/provider/log/set
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:09.414 INFO 3248 [bbCtMjx0] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( '6TLmGAE8', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@35bb9088', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 95, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 18:59:09.423 INFO 3248 [bbCtMjx0] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.system.mapper.SysLogMapper.insert
+Execute SQL ：INSERT INTO ray_sys_log ( trace_id, title, operation, method, url, params, ip, execute_time, location, create_by ) VALUES ( 'EKuC3gM0', '获取已购买的课程', 'hqsc.ray.wcc2.dto.ResultMap@6220dd46', 'POST', '/wcc-course/listWccCoursesBought', '"[{\\"firstRow\\":-20,\\"headOmit\\":false,\\"limit\\":0,\\"mark\\":false,\\"numberOfPages\\":5,\\"page\\":0,\\"pageDisplaySize\\":0,\\"pageEnd\\":0,\\"pageNow\\":-1,\\"pageSize\\":10,\\"rowBegin\\":-20,\\"rowCount\\":0,\\"rowEnd\\":-10,\\"selectPluginStarted\\":false,\\"tailOmit\\":false,\\"textPluginStarted\\":false,\\"totalPages\\":-1}]"', '192.168.101.18', 137, ' 局域网', 'omL755VvXDLL-HDIDlbL_K8UVetA' )
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-system:192.168.101.18:20002] 2021-03-03 19:00:00.004 INFO 3248 [] [JetCacheDefaultExecutor] c.alicp.jetcache.support.StatInfoLogger  [2m:[0;39m jetcache stat from 2021-03-03 18:45:00,004 to 2021-03-03 19:00:00,004
+cache|       qps|   rate|           get|           hit|          fail|        expire|avgLoadTime|maxLoadTime
+-----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
+-----+----------+-------+--------------+--------------+--------------+--------------+-----------+-----------
+
