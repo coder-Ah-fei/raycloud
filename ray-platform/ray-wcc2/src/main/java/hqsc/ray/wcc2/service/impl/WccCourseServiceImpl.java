@@ -107,10 +107,36 @@ public class WccCourseServiceImpl implements WccCourseService {
 	public ResultMap listWccCoursesFavorites(WccCourseForm wccCourseForm) {
 		wccCourseForm.setPageNow(1);
 		Pageable pageable = PageRequest.of(wccCourseForm.getPageNow() - 1, wccCourseForm.getPageSize());
-		Page<WccCourse> wccCoursePage = wccCourseRepository.listWccCoursesFavorites(wccCourseForm.getUserId(), pageable);
+		Page<WccCourse> wccCoursePage = wccCourseRepository.listWccCoursesFavorites(wccCourseForm.getUserId(), wccCourseForm.getCourseType(), pageable);
+		List<WccCourse> wccCourseList = wccCoursePage.getContent();
+		List<WccCourseDto> list = new ArrayList<>();
+		WccCourseDto wccCourseDto;
+		for (WccCourse wccCourse : wccCourseList) {
+			wccCourseDto = new WccCourseDto();
+			BeanUtils.copyProperties(wccCourse, wccCourseDto);
+			
+			List<WccCourseResource> resourceList = wccCourse.getResourceList();
+			
+			List<Long> bannerIdList = new ArrayList<>();
+			for (WccCourseResource wccCourseResource : resourceList) {
+				if (wccCourseResource.getWccAttachment() == null) {
+					continue;
+				}
+				if (wccCourseResource.getResourceType() == 1) {
+					wccCourseDto.setTitlePicId(wccCourseResource.getWccAttachment().getId());
+				}
+				if (wccCourseResource.getResourceType() == 2) {
+					bannerIdList.add(wccCourseResource.getWccAttachment().getId());
+				}
+			}
+			Long[] bannerIds = bannerIdList.toArray(new Long[bannerIdList.size()]);
+			Arrays.sort(bannerIds);
+			wccCourseDto.setBannerIds(bannerIds);
+			list.add(wccCourseDto);
+		}
 		Map<String, Object> map = new HashMap<>();
-//		map.put("list", list);
-//		map.put("count", count);
+		map.put("list", list);
+		map.put("count", wccCoursePage.getTotalElements());
 		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
 	}
 	

@@ -20,7 +20,7 @@ public class WccMcnInfoDto {
 	 * 机构图标
 	 */
 	@ApiModelProperty(value = "机构图标")
-	private Long headPortraitId;
+	private Long iconId;
 	/**
 	 * 标题
 	 */

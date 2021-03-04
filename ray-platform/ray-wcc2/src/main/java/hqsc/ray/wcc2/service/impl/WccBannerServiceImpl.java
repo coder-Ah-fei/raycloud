@@ -1,6 +1,7 @@
 package hqsc.ray.wcc2.service.impl;
 
 import hqsc.ray.wcc2.common.enums.BannerPosition;
+import hqsc.ray.wcc2.dto.PageMap;
 import hqsc.ray.wcc2.dto.ResultMap;
 import hqsc.ray.wcc2.dto.WccBannerDto;
 import hqsc.ray.wcc2.entity.WccBanner;
@@ -17,9 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 描述：
@@ -55,12 +54,15 @@ public class WccBannerServiceImpl implements WccBannerService {
 			return criteriaQuery.getRestriction();
 		};
 		List<WccBanner> wccBannerList;
+		Long count = 0L;
 		if (wccBannerForm.getPageNow() == -1) {
 			wccBannerList = wccBannerRepository.findAll(specification);
+			count = Long.valueOf(wccBannerList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccBannerForm.getPageNow() - 1, wccBannerForm.getPageSize());
 			Page<WccBanner> wccBannerPage = wccBannerRepository.findAll(specification, pageable);
 			wccBannerList = wccBannerPage.getContent();
+			count = wccBannerPage.getTotalElements();
 		}
 		List<WccBannerDto> list = new ArrayList<>();
 		WccBannerDto wccBannerDto;
@@ -72,11 +74,7 @@ public class WccBannerServiceImpl implements WccBannerService {
 			
 			list.add(wccBannerDto);
 		}
-		long count = wccBannerRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return new ResultMap(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
 	}
 	
 }

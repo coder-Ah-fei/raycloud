@@ -12,6 +12,9 @@ import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
+/**
+ * @author yang
+ */
 @ApiModel(value = "WccMcnInfo对象", description = "mcn机构对象")
 @Getter
 @Setter
@@ -35,7 +38,7 @@ public class WccMcnInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "ICON", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private RaySysAttachment headPortrait;
+	private RaySysAttachment icon;
 	/**
 	 * 标题
 	 */

@@ -1,5 +1,6 @@
 package hqsc.ray.wcc2.service.impl;
 
+import hqsc.ray.wcc2.dto.PageMap;
 import hqsc.ray.wcc2.dto.ResultMap;
 import hqsc.ray.wcc2.dto.WccMcnInfoDto;
 import hqsc.ray.wcc2.entity.WccMcnInfo;
@@ -15,9 +16,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 描述：
@@ -50,31 +49,30 @@ public class WccMcnInfoServiceImpl implements WccMcnInfoService {
 //			}
 //			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			
-			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("createDate")));
+			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
 		};
 		List<WccMcnInfo> wccMcnInfoList;
+		Long count;
 		if (wccMcnInfoForm.getPageNow() == -1) {
 			wccMcnInfoList = wccMcnInfoRepository.findAll(specification);
+			count = Long.valueOf(wccMcnInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccMcnInfoForm.getPageNow() - 1, wccMcnInfoForm.getPageSize());
 			Page<WccMcnInfo> wccMcnInfoPage = wccMcnInfoRepository.findAll(specification, pageable);
 			wccMcnInfoList = wccMcnInfoPage.getContent();
+			count = wccMcnInfoPage.getTotalElements();
 		}
 		List<WccMcnInfoDto> list = new ArrayList<>();
 		WccMcnInfoDto wccMcnInfoDto;
 		for (WccMcnInfo wccMcnInfo : wccMcnInfoList) {
 			wccMcnInfoDto = new WccMcnInfoDto();
 			BeanUtils.copyProperties(wccMcnInfo, wccMcnInfoDto);
-			wccMcnInfoDto.setHeadPortraitId(wccMcnInfo.getHeadPortrait() == null ? null : wccMcnInfo.getHeadPortrait().getId());
+			wccMcnInfoDto.setIconId(wccMcnInfo.getIcon() == null ? null : wccMcnInfo.getIcon().getId());
 			
 			list.add(wccMcnInfoDto);
 		}
-		long count = wccMcnInfoRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
 	}
 	
 }

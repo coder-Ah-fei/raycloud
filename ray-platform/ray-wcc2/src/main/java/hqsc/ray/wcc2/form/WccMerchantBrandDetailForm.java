@@ -10,6 +10,6 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class WccMerchantBrandDetailForm extends BaseForm {
-	@ApiModelProperty(value = "是否获取商品信息")
+	@ApiModelProperty(value = "是否获取商品信息 true/false")
 	private boolean getGoodsInfo;
 }

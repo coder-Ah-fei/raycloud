@@ -38,6 +38,7 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 	 */
 	@Override
 	public ResultMap listWccCelebrityInfos(WccCelebrityInfoForm wccCelebrityInfoForm) {
+		Map<String, Object> map = new HashMap<>();
 		Specification<WccCelebrityInfo> specification = (root, criteriaQuery, criteriaBuilder) -> {
 //			List<Predicate> pr = new ArrayList< >();
 //				if (!StringUtils.empty(articleForm.getSectionName())) {
@@ -56,10 +57,12 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 		List<WccCelebrityInfo> wccCelebrityInfoList;
 		if (wccCelebrityInfoForm.getPageNow() == -1) {
 			wccCelebrityInfoList = wccCelebrityInfoRepository.findAll(specification);
+			map.put("count", wccCelebrityInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccCelebrityInfoForm.getPageNow() - 1, wccCelebrityInfoForm.getPageSize());
 			Page<WccCelebrityInfo> wccCelebrityInfoPage = wccCelebrityInfoRepository.findAll(specification, pageable);
 			wccCelebrityInfoList = wccCelebrityInfoPage.getContent();
+			map.put("count", wccCelebrityInfoPage.getTotalElements());
 		}
 		List<WccCelebrityInfoDto> list = new ArrayList<>();
 		WccCelebrityInfoDto wccCelebrityInfoDto;
@@ -67,13 +70,10 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 			wccCelebrityInfoDto = new WccCelebrityInfoDto();
 			BeanUtils.copyProperties(wccCelebrityInfo, wccCelebrityInfoDto);
 			
-			
 			list.add(wccCelebrityInfoDto);
 		}
 		long count = wccCelebrityInfoRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
-		map.put("count", count);
 		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
 	}
 	

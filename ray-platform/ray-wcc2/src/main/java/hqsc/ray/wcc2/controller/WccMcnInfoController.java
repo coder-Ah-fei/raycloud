@@ -19,7 +19,9 @@ package hqsc.ray.wcc2.controller;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
+import hqsc.ray.wcc2.dto.PageMap;
 import hqsc.ray.wcc2.dto.ResultMap;
+import hqsc.ray.wcc2.dto.WccMcnInfoDto;
 import hqsc.ray.wcc2.form.WccMcnInfoForm;
 import hqsc.ray.wcc2.service.WccMcnInfoService;
 import io.swagger.annotations.Api;
@@ -50,7 +52,7 @@ public class WccMcnInfoController extends BaseController {
 	@Log(value = "获取mcn机构列表", exception = "获取mcn机构列表请求异常")
 	@PostMapping(value = "/listMcnInfos", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
-	public ResultMap<?> listMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
+	public ResultMap<PageMap<WccMcnInfoDto>> listMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
 		ResultMap resultMap = wccMcnInfoService.listWccMcnInfos(wccMcnInfoForm);
 		return resultMap;
 	}

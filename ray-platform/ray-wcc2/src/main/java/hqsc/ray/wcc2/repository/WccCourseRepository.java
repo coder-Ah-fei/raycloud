@@ -22,9 +22,9 @@ public interface WccCourseRepository extends JpaRepository<WccCourse, Long>, Jpa
 	 * @param pageable
 	 * @return
 	 */
-	@Query(value = "SELECT * FROM wcc_course wc, wcc_praise_favorite wpf WHERE 1 = 1 AND wc.COURSE_ID = wpf.BELONG_ID AND wpf.TYPE = 5 AND wpf.USER_ID = ?1",
-			countQuery = "SELECT count(*) FROM wcc_course wc, wcc_praise_favorite wpf WHERE 1 = 1 AND wc.COURSE_ID = wpf.BELONG_ID AND wpf.TYPE = 5 AND wpf.USER_ID = ?1\n",
+	@Query(value = "SELECT * FROM wcc_course wc, wcc_praise_favorite wpf WHERE 1 = 1 AND wc.COURSE_ID = wpf.BELONG_ID AND wpf.TYPE = 1 AND wpf.PRAISE_FAVORITE_TYPE = 5 AND wpf.USER_ID = ?1 AND if(?2 is not null, wc.COURSE_TYPE = ?2, 1=1)",
+			countQuery = "SELECT count(*) FROM wcc_course wc, wcc_praise_favorite wpf WHERE 1 = 1 AND wc.COURSE_ID = wpf.BELONG_ID AND wpf.TYPE = 1 AND wpf.PRAISE_FAVORITE_TYPE = 5 AND wpf.USER_ID = ?1 AND if(?2 is not null, wc.COURSE_TYPE = ?2, 1=1)",
 			nativeQuery = true)
-	Page<WccCourse> listWccCoursesFavorites(Long userId, Pageable pageable);
+	Page<WccCourse> listWccCoursesFavorites(Long userId, Integer courseType, Pageable pageable);
 	
 }

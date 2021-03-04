@@ -1,5 +1,6 @@
 package hqsc.ray.wcc2.service.impl;
 
+import hqsc.ray.wcc2.dto.PageMap;
 import hqsc.ray.wcc2.dto.ResultMap;
 import hqsc.ray.wcc2.dto.WccGoodsInfoDto;
 import hqsc.ray.wcc2.dto.WccMerchantBrandDetailDto;
@@ -17,9 +18,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 描述：
@@ -56,12 +55,15 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 			return criteriaQuery.getRestriction();
 		};
 		List<WccMerchantBrandDetail> wccMerchantBrandDetailList;
+		Long count;
 		if (wccMerchantBrandDetailForm.getPageNow() == -1) {
 			wccMerchantBrandDetailList = wccMerchantBrandDetailRepository.findAll(specification);
+			count = Long.valueOf(wccMerchantBrandDetailList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccMerchantBrandDetailForm.getPageNow() - 1, wccMerchantBrandDetailForm.getPageSize());
 			Page<WccMerchantBrandDetail> wccMerchantBrandDetailPage = wccMerchantBrandDetailRepository.findAll(specification, pageable);
 			wccMerchantBrandDetailList = wccMerchantBrandDetailPage.getContent();
+			count = wccMerchantBrandDetailPage.getTotalElements();
 		}
 		List<WccMerchantBrandDetailDto> list = new ArrayList<>();
 		WccMerchantBrandDetailDto wccMerchantBrandDetailDto;
@@ -81,11 +83,7 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 			}
 			list.add(wccMerchantBrandDetailDto);
 		}
-		long count = wccMerchantBrandDetailRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
 	}
 	
 }

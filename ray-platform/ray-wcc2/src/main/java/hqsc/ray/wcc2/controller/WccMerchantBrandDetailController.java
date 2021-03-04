@@ -19,7 +19,9 @@ package hqsc.ray.wcc2.controller;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
+import hqsc.ray.wcc2.dto.PageMap;
 import hqsc.ray.wcc2.dto.ResultMap;
+import hqsc.ray.wcc2.dto.WccMerchantBrandDetailDto;
 import hqsc.ray.wcc2.form.WccMerchantBrandDetailForm;
 import hqsc.ray.wcc2.service.WccMerchantBrandDetailService;
 import io.swagger.annotations.Api;
@@ -50,7 +52,7 @@ public class WccMerchantBrandDetailController extends BaseController {
 	@Log(value = "获取品牌及品牌下的商品列表", exception = "获取mcn机构列表请求异常")
 	@PostMapping(value = "/listWccMerchantBrandDetails", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
-	public ResultMap<?> listWccMerchantBrandDetails(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
+	public ResultMap<PageMap<WccMerchantBrandDetailDto>> listWccMerchantBrandDetails(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
 		ResultMap resultMap = wccMerchantBrandDetailService.listWccMerchantBrandDetails(wccMerchantBrandDetailForm);
 		return resultMap;
 	}
