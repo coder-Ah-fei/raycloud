@@ -74,7 +74,7 @@ public class JpaWccGoodsInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "IMG_ID", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment img;
+	private JpaSysAttachment img;
 	/**
 	 * 供货价
 	 */
@@ -94,6 +94,6 @@ public class JpaWccGoodsInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "PRODUCT_FILE")
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment productFile;
+	private JpaSysAttachment productFile;
 	
 }

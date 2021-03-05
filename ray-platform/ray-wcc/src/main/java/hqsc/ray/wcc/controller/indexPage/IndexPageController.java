@@ -17,6 +17,7 @@ import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
 import hqsc.ray.wcc.jpa.form.WccUserConcernForm;
+import hqsc.ray.wcc.jpa.service.WccUserCircleService;
 import hqsc.ray.wcc.jpa.service.WccUserConcernService;
 import hqsc.ray.wcc.service.*;
 import hqsc.ray.wcc.vo.IndexCircleInfoVO;
@@ -48,7 +49,7 @@ public class IndexPageController extends BaseController {
 	
 	private final IWccReleaseInfoService wccReleaseInfoService;
 	
-	private final IWccUserCircleService wccUserCircleService;
+	private final IWccUserCircleService iWccUserCircleService;
 	
 	private final IWccCircleInfoService wccCircleInfoService;
 	
@@ -57,6 +58,7 @@ public class IndexPageController extends BaseController {
 	
 	private final IWccUserService iWccUserService;
 	private final WccUserConcernService wccUserConcernService;
+	private final WccUserCircleService wccUserCircleService;
 	
 	private final IWccResponseDetailsService wccResponseDetailsService;
 	
@@ -119,7 +121,7 @@ public class IndexPageController extends BaseController {
 		wrapper.eq(WccUserCircle::getUserId, userInfo.getUserId());
 		wrapper.eq(WccUserCircle::getStatus, 1);
 		wrapper.eq(WccUserCircle::getIsDelete, 0);
-		List<WccUserCircle> records = wccUserCircleService.page(page, wrapper).getRecords();
+		List<WccUserCircle> records = iWccUserCircleService.page(page, wrapper).getRecords();
 		if (records == null || records.size() == 0) {
 			return Result.success("您还没有加入的圈子，请先加入圈子！");
 		}
@@ -360,8 +362,9 @@ public class IndexPageController extends BaseController {
 		
 		LambdaQueryWrapper<WccUserCircle> wrapper = Wrappers.lambdaQuery(new WccUserCircle());
 		wrapper.eq(WccUserCircle::getUserId, Long.valueOf(userInfo.getUserId()));
+		wrapper.eq(WccUserCircle::getCircleId, circleId);
 		wrapper.eq(WccUserCircle::getIsDelete, 0);
-		WccUserCircle wccUserCircle = wccUserCircleService.getOne(wrapper);
+		WccUserCircle wccUserCircle = iWccUserCircleService.getOne(wrapper);
 		
 		if (wccUserCircle != null && wccUserCircle.getStatus() == 1) {
 			return Result.fail(500, "您已经加入该圈子");
@@ -372,16 +375,56 @@ public class IndexPageController extends BaseController {
 			wccUserCircle.setCircleId(circleId);
 			wccUserCircle.setStatus(1);
 			wccUserCircle.setIsDelete(0);
-			wccUserCircleService.save(wccUserCircle);
+			iWccUserCircleService.save(wccUserCircle);
 			return Result.condition(true);
 		}
 		
 		if (wccUserCircle != null) {
 			wccUserCircle.setStatus(1);
 			wccUserCircle.setIsDelete(0);
-			wccUserCircleService.updateById(wccUserCircle);
+			iWccUserCircleService.updateById(wccUserCircle);
 			return Result.condition(true);
 		}
 		return Result.fail(500, "服务器异常");
 	}
+	
+	@UserAuth
+	@Log(value = "取消加入圈子", exception = "取消加入圈子异常")
+	@PostMapping(value = {"/cancelJoinCircle"})
+	@ApiOperation(value = "加入圈子", notes = "加入圈子")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "circleId", required = true, value = "要加入的圈子的id", paramType = "form"),
+	})
+	public Result<?> cancelJoinCircle(@RequestParam(required = false, value = "circleId") Long circleId) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		
+		Result result = wccUserCircleService.cancelJoinCircle(Long.valueOf(userInfo.getUserId()), circleId);
+//		LambdaQueryWrapper<WccUserCircle> wrapper = Wrappers.lambdaQuery(new WccUserCircle());
+//		wrapper.eq(WccUserCircle::getUserId, Long.valueOf(userInfo.getUserId()));
+//		wrapper.eq(WccUserCircle::getCircleId, circleId);
+//		wrapper.eq(WccUserCircle::getIsDelete, 0);
+//		WccUserCircle wccUserCircle = wccUserCircleService.getOne(wrapper);
+//
+//		if (wccUserCircle != null && wccUserCircle.getStatus() == 1) {
+//			return Result.fail(500, "您已经加入该圈子");
+//		}
+//		if (wccUserCircle == null) {
+//			wccUserCircle = new WccUserCircle();
+//			wccUserCircle.setUserId(Long.valueOf(userInfo.getUserId()));
+//			wccUserCircle.setCircleId(circleId);
+//			wccUserCircle.setStatus(1);
+//			wccUserCircle.setIsDelete(0);
+//			wccUserCircleService.save(wccUserCircle);
+//			return Result.condition(true);
+//		}
+//
+//		if (wccUserCircle != null) {
+//			wccUserCircle.setStatus(1);
+//			wccUserCircle.setIsDelete(0);
+//			wccUserCircleService.updateById(wccUserCircle);
+//			return Result.condition(true);
+//		}
+		return result;
+	}
+	
 }

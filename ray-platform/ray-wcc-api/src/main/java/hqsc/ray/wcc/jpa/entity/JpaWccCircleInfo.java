@@ -66,7 +66,7 @@ public class JpaWccCircleInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "CIRCLE_IMG", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment circleImg;
+	private JpaSysAttachment circleImg;
 	
 	
 	/**

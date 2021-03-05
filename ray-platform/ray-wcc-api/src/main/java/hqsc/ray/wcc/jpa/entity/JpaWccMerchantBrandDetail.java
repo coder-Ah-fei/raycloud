@@ -59,7 +59,7 @@ public class JpaWccMerchantBrandDetail extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "ICON", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment icon;
+	private JpaSysAttachment icon;
 	/**
 	 * 品牌方/商家名称
 	 */

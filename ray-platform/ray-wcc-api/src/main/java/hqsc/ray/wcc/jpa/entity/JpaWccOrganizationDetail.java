@@ -58,7 +58,7 @@ public class JpaWccOrganizationDetail extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "ICON", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment icon;
+	private JpaSysAttachment icon;
 	/**
 	 * 机构名称
 	 */

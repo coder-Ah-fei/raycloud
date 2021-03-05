@@ -72,7 +72,7 @@ public class JpaWccReleaseInfo extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "ATTACHMENT_ID", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment jpaWccAttachment;
+	private JpaSysAttachment jpaWccAttachment;
 	
 	
 	/**

@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccUserCircleDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccUserCircle;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,6 +77,26 @@ public class WccUserCircleServiceImpl implements WccUserCircleService {
 		map.put("list", list);
 		map.put("count", count);
 		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+	}
+	
+	/**
+	 * 取消加入圈子
+	 *
+	 * @param userId
+	 * @param circleId
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result cancelJoinCircle(Long userId, Long circleId) {
+		List<JpaWccUserCircle> wccUserCircleList = wccUserCircleRepository.findByJpaWccUserIdAndJpaWccCircleInfoId(userId, circleId);
+		if (wccUserCircleList.size() != 1) {
+			return Result.fail("没找到关联数据");
+		}
+		JpaWccUserCircle jpaWccUserCircle = wccUserCircleList.get(0);
+		jpaWccUserCircle.setStatus(0);
+		wccUserCircleRepository.save(jpaWccUserCircle);
+		return Result.success("成功退出圈子");
 	}
 	
 }

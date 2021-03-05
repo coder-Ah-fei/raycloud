@@ -61,7 +61,7 @@ public class JpaWccBrandMerchantAuth extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "ICON", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment icon;
+	private JpaSysAttachment icon;
 	
 	/**
 	 * 品牌方/商家名称
@@ -94,7 +94,7 @@ public class JpaWccBrandMerchantAuth extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "WECHAT_QRCODE_ICON", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment wechatQrcodeIcon;
+	private JpaSysAttachment wechatQrcodeIcon;
 	/**
 	 * 入驻类型平台(0淘宝1天猫)
 	 */
@@ -120,7 +120,7 @@ public class JpaWccBrandMerchantAuth extends BasicEntity {
 	@OneToOne
 	@JoinColumn(name = "QUALIFIED_FILE", nullable = true)
 	@NotFound(action = NotFoundAction.IGNORE)
-	private JpaWccAttachment qualifiedFile;
+	private JpaSysAttachment qualifiedFile;
 	/**
 	 * 经营范围
 	 */
