@@ -16,28 +16,28 @@
  */
 package hqsc.ray.wcc.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.log.annotation.Log;
+import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
+import hqsc.ray.wcc.entity.WccResponseDetails;
+import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.form.WccResponseDetailsForm;
+import hqsc.ray.wcc.jpa.service.WccResponseDetailsService;
+import hqsc.ray.wcc.service.IWccResponseDetailsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-import hqsc.ray.core.auth.annotation.PreAuth;
-import hqsc.ray.core.log.annotation.Log;
-
-import org.springframework.web.bind.annotation.RestController;
-import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.service.IWccResponseDetailsService;
-import hqsc.ray.wcc.entity.WccResponseDetails;
 import javax.validation.Valid;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hqsc.ray.core.common.api.Result;
-import hqsc.ray.core.database.entity.Search;
-import hqsc.ray.core.web.util.CollectionUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,77 +54,93 @@ import java.util.Map;
 @RequestMapping("/wcc-response-details")
 @Api(value = "回答详情表", tags = "回答详情表接口")
 public class WccResponseDetailsController extends BaseController {
-
-    private final IWccResponseDetailsService wccResponseDetailsService;
-
-    /**
-     * 分页列表
-     *
-     * @param page   分页信息
-     * @param search 　搜索关键词
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "回答详情表列表", exception = "回答详情表列表请求异常")
-    @GetMapping("/page")
-    @ApiOperation(value = "回答详情表列表", notes = "分页查询")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-        @ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-        @ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-        @ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-        @ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-    })
-    public Result<?> page(Page page, Map search) {
-		return Result.data(wccResponseDetailsService.listPage(page, new HashMap<>()));
-    }
-
-    /**
-     * 回答详情表信息
-     *
-     * @param id Id
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "回答详情表信息", exception = "回答详情表信息请求异常")
-    @GetMapping("/get")
-    @ApiOperation(value = "回答详情表信息", notes = "根据ID查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
-    })
-    public Result<?> get(@RequestParam String id) {
-		return Result.data(wccResponseDetailsService.getById(id));
+	
+	private final IWccResponseDetailsService iWccResponseDetailsService;
+	private final WccResponseDetailsService wccResponseDetailsService;
+	
+	/**
+	 * 分页列表
+	 *
+	 * @param page   分页信息
+	 * @param search 　搜索关键词
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "回答详情表列表", exception = "回答详情表列表请求异常")
+	@GetMapping("/page")
+	@ApiOperation(value = "回答详情表列表", notes = "分页查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
+			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
+			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
+			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
+			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
+	})
+	public Result<?> page(Page page, Map search) {
+		return Result.data(iWccResponseDetailsService.listPage(page, new HashMap<>()));
 	}
-
-    /**
-    * 回答详情表设置
-    *
-    * @param wccResponseDetails WccResponseDetails 对象
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "回答详情表设置", exception = "回答详情表设置请求异常")
-    @PostMapping("/set")
-    @ApiOperation(value = "回答详情表设置", notes = "回答详情表设置,支持新增或修改")
-    public Result<?> set(@Valid @RequestBody WccResponseDetails wccResponseDetails) {
-		return Result.condition(wccResponseDetailsService.saveOrUpdate(wccResponseDetails));
+	
+	/**
+	 * 回答详情表信息
+	 *
+	 * @param id Id
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "回答详情表信息", exception = "回答详情表信息请求异常")
+	@GetMapping("/get")
+	@ApiOperation(value = "回答详情表信息", notes = "根据ID查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
+	})
+	public Result<?> get(@RequestParam String id) {
+		return Result.data(iWccResponseDetailsService.getById(id));
 	}
-
-    /**
-    * 回答详情表删除
-    *
-    * @param ids id字符串，根据,号分隔
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "回答详情表删除", exception = "回答详情表删除请求异常")
-    @PostMapping("/del")
-    @ApiOperation(value = "回答详情表删除", notes = "回答详情表删除")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
-    })
-    public Result<?> del(@RequestParam String ids) {
-		return Result.condition(wccResponseDetailsService.removeByIds(CollectionUtil.stringToCollection(ids)));
+	
+	/**
+	 * 回答详情表设置
+	 *
+	 * @param wccResponseDetails WccResponseDetails 对象
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "回答详情表设置", exception = "回答详情表设置请求异常")
+	@PostMapping("/set")
+	@ApiOperation(value = "回答详情表设置", notes = "回答详情表设置,支持新增或修改")
+	public Result<?> set(@Valid @RequestBody WccResponseDetails wccResponseDetails) {
+		return Result.condition(iWccResponseDetailsService.saveOrUpdate(wccResponseDetails));
+	}
+	
+	/**
+	 * 回答详情表删除
+	 *
+	 * @param ids id字符串，根据,号分隔
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "回答详情表删除", exception = "回答详情表删除请求异常")
+	@PostMapping("/del")
+	@ApiOperation(value = "回答详情表删除", notes = "回答详情表删除")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
+	})
+	public Result<?> del(@RequestParam String ids) {
+		return Result.condition(iWccResponseDetailsService.removeByIds(CollectionUtil.stringToCollection(ids)));
+	}
+	
+	
+	//------------------------------------------------------------------------------------
+	
+	
+	@PreAuth
+	@Log(value = "新增评论", exception = "新增评论请求异常")
+	@PostMapping(value = "/saveWccResponseDetails", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "新增评论", notes = "新增评论")
+	public ResultMap<?> listWccUserMessages(WccResponseDetailsForm wccResponseDetailsForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccResponseDetailsForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccResponseDetailsService.saveWccResponseDetails(wccResponseDetailsForm);
+		return resultMap;
 	}
 }
 

@@ -159,8 +159,8 @@ INSERT INTO `ray_sys_api` (`id`, `code`, `name`, `notes`, `method`, `class_name`
 (84, '67e760391dc41cfce8f1eb490cf25590', '默认配置', '默认配置', 'GET', 'SysConfigController', 'defaultOss', '/config/default-oss', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL),
 (85, '3a5d36e02b2f335c05f29447dd250193', '保存默认配置', '保存默认配置', 'POST', 'SysConfigController', 'saveDefaultOss', '/config/save-default-oss', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL),
 (86, '9cd9e1e794871d16e6979c9d54f456c8', '保存OSS配置', '保存OSS配置', 'POST', 'SysConfigController', 'saveConfigOss', '/config/save-config-oss', 'application/json;charset=UTF-8', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL),
-(87, '5588f0697f631f1b95616035f2bd8831', '删除文件', '删除文件', 'POST', 'SysAttachmentController', 'del', '/wccAttachment/del', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL),
-(88, 'fb2da47cf384518853d9f908de4a8ad6', '附件分页', '附件分页，根据query查询', 'GET', 'SysAttachmentController', 'page', '/wccAttachment/page', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL);
+(87, '5588f0697f631f1b95616035f2bd8831', '删除文件', '删除文件', 'POST', 'SysAttachmentController', 'del', '/jpaWccAttachment/del', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL),
+(88, 'fb2da47cf384518853d9f908de4a8ad6', '附件分页', '附件分页，根据query查询', 'GET', 'SysAttachmentController', 'page', '/jpaWccAttachment/page', '', 'ray-component', '1', '1', NULL, NULL, '2020-10-19 22:22:25', NULL, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -479,7 +479,7 @@ INSERT INTO `ray_sys_menu` (`id`, `name`, `permission`, `path`, `parent_id`, `ic
 (2038, '删除字典', 'sys:dict:delete', NULL, 2035, NULL, 1, '0', '2', NULL, NULL, '2020-07-20 02:48:39', NULL, '0', '0', 0),
 (2039, '组件管理', NULL, '/system/component', 1000, 'nested', 1, '0', '1', NULL, NULL, '2020-08-08 05:35:05', NULL, '0', '0', 0),
 (2040, '内容管理', NULL, '/content', -1, 'content', 4, '0', '0', NULL, NULL, '2020-08-09 00:21:42', '2020-08-29 03:12:22', '0', '0', 0),
-(2041, '文件管理', NULL, '/content/wccAttachment', 2040, 'folder', 1, '0', '1', NULL, NULL, '2020-08-09 00:27:06', '2020-08-10 03:31:49', '0', '0', 0),
+(2041, '文件管理', NULL, '/content/jpaWccAttachment', 2040, 'folder', 1, '0', '1', NULL, NULL, '2020-08-09 00:27:06', '2020-08-10 03:31:49', '0', '0', 0),
 (2042, '修改组件', 'sys:comp:edit', NULL, 2039, NULL, 1, '0', '2', NULL, NULL, '2020-08-10 00:42:28', '2020-08-10 08:42:57', '0', '0', 0),
 (2043, '上传文件', 'sys:attach:add', NULL, 2041, NULL, 1, '0', '2', NULL, NULL, '2020-08-10 08:43:52', NULL, '0', '0', 0),
 (2044, '删除文件', 'sys:attach:delete', NULL, 2041, NULL, 1, '0', '2', NULL, NULL, '2020-08-10 08:44:29', NULL, '0', '0', 0),

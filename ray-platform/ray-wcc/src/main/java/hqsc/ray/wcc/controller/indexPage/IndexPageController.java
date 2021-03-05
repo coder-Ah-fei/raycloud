@@ -9,8 +9,15 @@ import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.entity.*;
+import hqsc.ray.wcc.entity.WccCircleInfo;
+import hqsc.ray.wcc.entity.WccResponseDetails;
+import hqsc.ray.wcc.entity.WccUserCircle;
+import hqsc.ray.wcc.entity.WccUserConcern;
 import hqsc.ray.wcc.form.WccReleaseInfoForm;
+import hqsc.ray.wcc.jpa.dto.PageMap;
+import hqsc.ray.wcc.jpa.dto.WccUserDto;
+import hqsc.ray.wcc.jpa.form.WccUserConcernForm;
+import hqsc.ray.wcc.jpa.service.WccUserConcernService;
 import hqsc.ray.wcc.service.*;
 import hqsc.ray.wcc.vo.IndexCircleInfoVO;
 import hqsc.ray.wcc.vo.IndexReferralsVO;
@@ -29,6 +36,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author
+ */
 @Controller
 @RestController
 @AllArgsConstructor
@@ -43,9 +53,10 @@ public class IndexPageController extends BaseController {
 	private final IWccCircleInfoService wccCircleInfoService;
 	
 	
-	private final IWccUserConcernService wccUserConcernService;
+	private final IWccUserConcernService iWccUserConcernService;
 	
-	private final IWccUserService wccUserService;
+	private final IWccUserService iWccUserService;
+	private final WccUserConcernService wccUserConcernService;
 	
 	private final IWccResponseDetailsService wccResponseDetailsService;
 	
@@ -166,14 +177,19 @@ public class IndexPageController extends BaseController {
 	@PostMapping(value = {"/myConcernUser"})
 	@ApiOperation(value = "查询我关注的用户", notes = "查询我关注的用户")
 	@ApiImplicitParams({})
-	public Result<?> myConcernUser() {
+	public Result<?> myConcernUser(WccUserConcernForm wccUserConcernForm) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		List<Long> ids = this.getMyConcern(Long.parseLong(userInfo.getUserId()));
+//		List<Long> ids = this.getMyConcern(Long.parseLong(userInfo.getUserId()));
+//
+//		if (ids == null || ids.size() == 0) {
+//			return Result.success("您还没有关注用户哦！");
+//		}
+		wccUserConcernForm.setPageNow(wccUserConcernForm.getCurrent());
+		wccUserConcernForm.setPageSize(wccUserConcernForm.getSize());
+		wccUserConcernForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		PageMap<WccUserDto> page = wccUserConcernService.listWccUserConcerns(wccUserConcernForm);
 		
-		if (ids == null || ids.size() == 0) {
-			return Result.success("您还没有关注用户哦！");
-		}
-		return Result.data(wccUserService.listByIds(ids));
+		return Result.data(page);
 		
 	}
 	
@@ -289,7 +305,7 @@ public class IndexPageController extends BaseController {
 		wrapper.eq(WccUserConcern::getStatus, 1);
 		wrapper.eq(WccUserConcern::getIsDelete, 0);
 		wrapper.orderByDesc(WccUserConcern::getAccessCount);
-		List<WccUserConcern> userConcerns = wccUserConcernService.list(wrapper);
+		List<WccUserConcern> userConcerns = iWccUserConcernService.list(wrapper);
 		if (userConcerns == null || userConcerns.size() == 0) {
 			return null;
 		}
@@ -314,10 +330,10 @@ public class IndexPageController extends BaseController {
 	public Result<?> concern(@RequestParam(required = false, value = "userId") Long userId) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		
-		WccUserConcern wccUserConcern = wccUserConcernService.selectOne(Long.parseLong(userInfo.getUserId()), userId);
+		WccUserConcern wccUserConcern = iWccUserConcernService.selectOne(Long.parseLong(userInfo.getUserId()), userId);
 		if (wccUserConcern != null) {
 			wccUserConcern.setStatus(wccUserConcern.getStatus() == 1 ? 0 : 1);
-			wccUserConcernService.updateById(wccUserConcern);
+			iWccUserConcernService.updateById(wccUserConcern);
 		} else {
 			wccUserConcern = new WccUserConcern();
 			wccUserConcern.setUserId(Long.parseLong(userInfo.getUserId()));
@@ -325,7 +341,7 @@ public class IndexPageController extends BaseController {
 			wccUserConcern.setAccessCount(0);
 			wccUserConcern.setStatus(1);
 			wccUserConcern.setIsDelete(0);
-			wccUserConcernService.save(wccUserConcern);
+			iWccUserConcernService.save(wccUserConcern);
 		}
 		
 		return Result.condition(true);

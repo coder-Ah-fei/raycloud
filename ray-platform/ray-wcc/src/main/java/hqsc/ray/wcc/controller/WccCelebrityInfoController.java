@@ -16,28 +16,26 @@
  */
 package hqsc.ray.wcc.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.log.annotation.Log;
+import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
+import hqsc.ray.wcc.entity.WccCelebrityInfo;
+import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.form.WccCelebrityInfoForm;
+import hqsc.ray.wcc.jpa.service.WccCelebrityInfoService;
+import hqsc.ray.wcc.service.IWccCelebrityInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-import hqsc.ray.core.auth.annotation.PreAuth;
-import hqsc.ray.core.log.annotation.Log;
-
-import org.springframework.web.bind.annotation.RestController;
-import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.service.IWccCelebrityInfoService;
-import hqsc.ray.wcc.entity.WccCelebrityInfo;
 import javax.validation.Valid;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hqsc.ray.core.common.api.Result;
-import hqsc.ray.core.database.entity.Search;
-import hqsc.ray.core.web.util.CollectionUtil;
-
 import java.util.Map;
 
 /**
@@ -53,77 +51,90 @@ import java.util.Map;
 @RequestMapping("/wcc-celebrity-info")
 @Api(value = "红人信息表", tags = "红人信息表接口")
 public class WccCelebrityInfoController extends BaseController {
-
-    private final IWccCelebrityInfoService wccCelebrityInfoService;
-
-    /**
-     * 分页列表
-     *
-     * @param page   分页信息
-     * @param search 　搜索关键词
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "红人信息表列表", exception = "红人信息表列表请求异常")
-    @GetMapping("/page")
-    @ApiOperation(value = "红人信息表列表", notes = "分页查询")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-        @ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-        @ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-        @ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-        @ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-    })
-    public Result<?> page(Page page, Map search) {
-		return Result.data(wccCelebrityInfoService.listPage(page, search));
-    }
-
-    /**
-     * 红人信息表信息
-     *
-     * @param id Id
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "红人信息表信息", exception = "红人信息表信息请求异常")
-    @GetMapping("/get")
-    @ApiOperation(value = "红人信息表信息", notes = "根据ID查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
-    })
-    public Result<?> get(@RequestParam String id) {
-		return Result.data(wccCelebrityInfoService.getById(id));
+	
+	private final IWccCelebrityInfoService iWccCelebrityInfoService;
+	private final WccCelebrityInfoService wccCelebrityInfoService;
+	
+	/**
+	 * 分页列表
+	 *
+	 * @param page   分页信息
+	 * @param search 　搜索关键词
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "红人信息表列表", exception = "红人信息表列表请求异常")
+	@GetMapping("/page")
+	@ApiOperation(value = "红人信息表列表", notes = "分页查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
+			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
+			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
+			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
+			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
+	})
+	public Result<?> page(Page page, Map search) {
+		return Result.data(iWccCelebrityInfoService.listPage(page, search));
 	}
-
-    /**
-    * 红人信息表设置
-    *
-    * @param wccCelebrityInfo WccCelebrityInfo 对象
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "红人信息表设置", exception = "红人信息表设置请求异常")
-    @PostMapping("/set")
-    @ApiOperation(value = "红人信息表设置", notes = "红人信息表设置,支持新增或修改")
-    public Result<?> set(@Valid @RequestBody WccCelebrityInfo wccCelebrityInfo) {
-		return Result.condition(wccCelebrityInfoService.saveOrUpdate(wccCelebrityInfo));
+	
+	/**
+	 * 红人信息表信息
+	 *
+	 * @param id Id
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "红人信息表信息", exception = "红人信息表信息请求异常")
+	@GetMapping("/get")
+	@ApiOperation(value = "红人信息表信息", notes = "根据ID查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
+	})
+	public Result<?> get(@RequestParam String id) {
+		return Result.data(iWccCelebrityInfoService.getById(id));
 	}
-
-    /**
-    * 红人信息表删除
-    *
-    * @param ids id字符串，根据,号分隔
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "红人信息表删除", exception = "红人信息表删除请求异常")
-    @PostMapping("/del")
-    @ApiOperation(value = "红人信息表删除", notes = "红人信息表删除")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
-    })
-    public Result<?> del(@RequestParam String ids) {
-		return Result.condition(wccCelebrityInfoService.removeByIds(CollectionUtil.stringToCollection(ids)));
+	
+	/**
+	 * 红人信息表设置
+	 *
+	 * @param wccCelebrityInfo WccCelebrityInfo 对象
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "红人信息表设置", exception = "红人信息表设置请求异常")
+	@PostMapping("/set")
+	@ApiOperation(value = "红人信息表设置", notes = "红人信息表设置,支持新增或修改")
+	public Result<?> set(@Valid @RequestBody WccCelebrityInfo wccCelebrityInfo) {
+		return Result.condition(iWccCelebrityInfoService.saveOrUpdate(wccCelebrityInfo));
+	}
+	
+	/**
+	 * 红人信息表删除
+	 *
+	 * @param ids id字符串，根据,号分隔
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "红人信息表删除", exception = "红人信息表删除请求异常")
+	@PostMapping("/del")
+	@ApiOperation(value = "红人信息表删除", notes = "红人信息表删除")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
+	})
+	public Result<?> del(@RequestParam String ids) {
+		return Result.condition(iWccCelebrityInfoService.removeByIds(CollectionUtil.stringToCollection(ids)));
+	}
+	
+	
+	//-------------------------------
+	
+	@PreAuth
+	@Log(value = "红人信息列表", exception = "红人信息列表请求异常")
+	@PostMapping(value = "/listWccCelebrityInfos", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "红人信息列表", notes = "红人信息列表")
+	public ResultMap<?> listWccCelebrityInfos(WccCelebrityInfoForm wccCelebrityInfoForm) {
+		ResultMap resultMap = wccCelebrityInfoService.listWccCelebrityInfos(wccCelebrityInfoForm);
+		return resultMap;
 	}
 }
 

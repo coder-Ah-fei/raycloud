@@ -18,8 +18,8 @@
         <module>ray-component-api</module>
         <module>ray-wcc</module>
         <module>ray-wcc-api</module>
-        <module>ray-wcc2</module>
-        <module>ray-wcc2-api</module>
+        <!--        <module>ray-wcc2</module>-->
+        <!--        <module>ray-wcc2-api</module>-->
     </modules>
 
 

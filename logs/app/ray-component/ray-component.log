@@ -1,907 +1,711 @@
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:46.475 WARN 12560 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:46.589 INFO 12560 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:46.602 INFO 12560 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:55.757 WARN 12560 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:55.793 WARN 12560 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:57.975 INFO 12560 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:57.991 INFO 12560 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:58.179 INFO 12560 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 42ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:58.460 WARN 12560 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:59.085 WARN 12560 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:43:59.756 INFO 12560 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:04.193 INFO 12560 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:04.193 INFO 12560 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 17342 ms
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:08.359 INFO 12560 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:09.580 INFO 12560 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:15.411 INFO 12560 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:29.945 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:30.960 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:31.976 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:31.976 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m no available server
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:32.007 ERROR 16836 [] [main] c.a.n.client.config.impl.ClientWorker    [2m:[0;39m [fixed-127.0.0.1_8848] [sub-server] get server config exception, dataId=wcc, group=DEFAULT_GROUP, tenant=
+
+java.net.ConnectException: no available server
+	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpGet(ServerHttpAgent.java:133)
+	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpGet(MetricsHttpAgent.java:51)
+	at com.alibaba.nacos.client.config.impl.ClientWorker.getServerConfig(ClientWorker.java:298)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfigInner(NacosConfigService.java:149)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfig(NacosConfigService.java:97)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.loadNacosData(NacosPropertySourceBuilder.java:85)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.build(NacosPropertySourceBuilder.java:74)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosPropertySource(NacosPropertySourceLocator.java:204)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosDataIfPresent(NacosPropertySourceLocator.java:191)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadApplicationConfiguration(NacosPropertySourceLocator.java:142)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.locate(NacosPropertySourceLocator.java:103)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:98)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:32.007 WARN 16836 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:33.022 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:34.038 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:35.050 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:35.050 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m no available server
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:35.050 ERROR 16836 [] [main] c.a.n.client.config.impl.ClientWorker    [2m:[0;39m [fixed-127.0.0.1_8848] [sub-server] get server config exception, dataId=wcc.yaml, group=DEFAULT_GROUP, tenant=
+
+java.net.ConnectException: no available server
+	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpGet(ServerHttpAgent.java:133)
+	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpGet(MetricsHttpAgent.java:51)
+	at com.alibaba.nacos.client.config.impl.ClientWorker.getServerConfig(ClientWorker.java:298)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfigInner(NacosConfigService.java:149)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfig(NacosConfigService.java:97)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.loadNacosData(NacosPropertySourceBuilder.java:85)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.build(NacosPropertySourceBuilder.java:74)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosPropertySource(NacosPropertySourceLocator.java:204)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosDataIfPresent(NacosPropertySourceLocator.java:191)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadApplicationConfiguration(NacosPropertySourceLocator.java:145)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.locate(NacosPropertySourceLocator.java:103)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:98)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:36.096 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:37.112 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:38.127 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m [NACOS SocketTimeoutException httpGet] currentServerAddr:http://127.0.0.1:8848， err : connect timed out
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:38.127 ERROR 16836 [] [main] c.a.n.c.config.http.ServerHttpAgent      [2m:[0;39m no available server
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:38.127 ERROR 16836 [] [main] c.a.n.client.config.impl.ClientWorker    [2m:[0;39m [fixed-127.0.0.1_8848] [sub-server] get server config exception, dataId=wcc-local.yaml, group=DEFAULT_GROUP, tenant=
+
+java.net.ConnectException: no available server
+	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpGet(ServerHttpAgent.java:133)
+	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpGet(MetricsHttpAgent.java:51)
+	at com.alibaba.nacos.client.config.impl.ClientWorker.getServerConfig(ClientWorker.java:298)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfigInner(NacosConfigService.java:149)
+	at com.alibaba.nacos.client.config.NacosConfigService.getConfig(NacosConfigService.java:97)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.loadNacosData(NacosPropertySourceBuilder.java:85)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder.build(NacosPropertySourceBuilder.java:74)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosPropertySource(NacosPropertySourceLocator.java:204)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadNacosDataIfPresent(NacosPropertySourceLocator.java:191)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.loadApplicationConfiguration(NacosPropertySourceLocator.java:150)
+	at com.alibaba.cloud.nacos.client.NacosPropertySourceLocator.locate(NacosPropertySourceLocator.java:103)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:98)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:38.143 INFO 16836 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:38.158 INFO 16836 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:44.266 WARN 16836 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:44.282 WARN 16836 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:45.610 INFO 16836 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:45.625 INFO 16836 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:45.719 INFO 16836 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 34ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:45.953 WARN 16836 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:46.422 WARN 16836 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:46.969 INFO 16836 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:50.272 INFO 16836 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:50.272 INFO 16836 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 11910 ms
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:53.037 INFO 16836 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20004] 2021-03-05 08:38:55.779 INFO 16836 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:03.540 INFO 16836 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
 Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
 Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
-Execute Time：104 ms
+Execute Time：135 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:15.430 INFO 12560 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:03.555 INFO 16836 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
 Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
 Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
-Execute Time：12 ms
+Execute Time：15 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:20.060 INFO 12560 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:21.570 INFO 12560 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.096 WARN 12560 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.097 INFO 12560 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.115 WARN 12560 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.115 INFO 12560 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.497 INFO 12560 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:22.950 INFO 12560 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:24.555 INFO 12560 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@7989f7de]
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:26.506 INFO 12560 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:26.536 INFO 12560 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:26.571 INFO 12560 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:26.766 INFO 12560 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:26.945 INFO 12560 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:27.032 INFO 12560 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:28.806 INFO 12560 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 57.328 seconds (JVM running for 91.641)
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:29.001 INFO 12560 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:29.738 INFO 12560 [] [RMI TCP Connection(4)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:29.739 INFO 12560 [] [RMI TCP Connection(4)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
-[ray-component:192.168.101.18:20004] 2021-03-04 08:44:29.787 INFO 12560 [] [RMI TCP Connection(4)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 48 ms
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.887 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582251
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.887 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 576387
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.893 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582332
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.893 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582338
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.897 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582366
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.898 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582373
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.905 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582383
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.905 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582389
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.908 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582399
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.911 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 582420
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.933 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:06.808 INFO 16836 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:08.094 INFO 16836 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:08.501 WARN 16836 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:08.501 INFO 16836 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:08.578 WARN 16836 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:08.579 INFO 16836 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:09.008 INFO 16836 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:09.353 INFO 16836 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:10.842 INFO 16836 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@2e47ec5e]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:12.540 INFO 16836 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:12.575 INFO 16836 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:12.604 INFO 16836 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:12.719 INFO 16836 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:12.855 INFO 16836 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:14.956 ERROR 16836 [] [main] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:109)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:524)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:16.982 ERROR 16836 [] [main] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:109)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:19.025 ERROR 16836 [] [main] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:109)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:19.926 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1340)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1315)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:104)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:524)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.sendBeat(NamingProxy.java:426)
+	at com.alibaba.nacos.client.naming.beat.BeatReactor$BeatTask.run(BeatReactor.java:167)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.057 ERROR 16836 [] [main] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:109)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.057 ERROR 16836 [] [main] com.alibaba.nacos.client.naming          [2m:[0;39m request: /nacos/v1/ns/instance failed, servers: [127.0.0.1:8848], code: 500, msg: Connection refused: connect
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.058 ERROR 16836 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, ray-component register failed...NacosRegistration{nacosDiscoveryProperties=NacosDiscoveryProperties{serverAddr='127.0.0.1:8848', endpoint='', namespace='', watchDelay=30000, logName='', service='ray-component', weight=1.0, clusterName='DEFAULT', group='DEFAULT_GROUP', namingLoadCacheAtStart='false', metadata={preserved.register.source=SPRING_CLOUD}, registerEnabled=true, ip='192.168.101.18', networkInterface='', port=20004, secure=false, accessKey='', secretKey='', heartBeatInterval=null, heartBeatTimeout=null, ipDeleteTimeout=null}},
+
+com.alibaba.nacos.api.exception.NacosException: failed to req API:/nacos/v1/ns/instance after all servers([127.0.0.1:8848]) tried: java.net.ConnectException: Connection refused: connect
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:552)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.060 WARN 16836 [] [main] ConfigServletWebServerApplicationContext [2m:[0;39m Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is java.lang.reflect.UndeclaredThrowableException
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.075 INFO 16836 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Shutting down ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:21.964 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1340)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1315)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:104)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.sendBeat(NamingProxy.java:426)
+	at com.alibaba.nacos.client.naming.beat.BeatReactor$BeatTask.run(BeatReactor.java:167)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:24.000 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1340)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1315)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:104)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.sendBeat(NamingProxy.java:426)
+	at com.alibaba.nacos.client.naming.beat.BeatReactor$BeatTask.run(BeatReactor.java:167)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:26.045 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m [NA] failed to request
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:81)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:175)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:463)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:558)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:242)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:339)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:357)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1226)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1162)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1056)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:990)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream0(HttpURLConnection.java:1340)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1315)
+	at com.alibaba.nacos.common.http.client.request.JdkHttpClientRequest.execute(JdkHttpClientRequest.java:104)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchangeForm(NacosRestTemplate.java:427)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.callServer(NamingProxy.java:599)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:538)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.sendBeat(NamingProxy.java:426)
+	at com.alibaba.nacos.client.naming.beat.BeatReactor$BeatTask.run(BeatReactor.java:167)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:26.045 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m request: /nacos/v1/ns/instance/beat failed, servers: [127.0.0.1:8848], code: 500, msg: Connection refused: connect
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:26.046 ERROR 16836 [] [com.alibaba.nacos.naming.beat.sender] com.alibaba.nacos.client.naming          [2m:[0;39m [CLIENT-BEAT] failed to send beat: {"port":20004,"ip":"192.168.101.18","weight":1.0,"serviceName":"DEFAULT_GROUP@@ray-component","cluster":"DEFAULT","metadata":{"preserved.register.source":"SPRING_CLOUD"},"scheduled":false,"period":5000,"stopped":false}, code: 500, msg: failed to req API:/nacos/v1/ns/instance/beat after all servers([127.0.0.1:8848]) tried: java.net.ConnectException: Connection refused: connect
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:30.116 INFO 16836 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} closing ...
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:30.128 INFO 16836 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} closed
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:30.323 INFO 16836 [] [main] io.undertow                              [2m:[0;39m stopping server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:30.366 INFO 16836 [] [main] ConditionEvaluationReportLoggingListener [2m:[0;39m 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:39:30.429 ERROR 16836 [] [main] o.s.boot.SpringApplication               [2m:[0;39m Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is java.lang.reflect.UndeclaredThrowableException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:185)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:554)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+Caused by: java.lang.reflect.UndeclaredThrowableException: null
+	at org.springframework.util.ReflectionUtils.rethrowRuntimeException(ReflectionUtils.java:147)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:79)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:239)
+	at com.alibaba.cloud.nacos.registry.NacosAutoServiceRegistration.register(NacosAutoServiceRegistration.java:78)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:138)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.bind(AbstractAutoServiceRegistration.java:101)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:88)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.onApplicationEvent(AbstractAutoServiceRegistration.java:47)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:404)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:361)
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:46)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	... 16 common frames omitted
+Caused by: com.alibaba.nacos.api.exception.NacosException: failed to req API:/nacos/v1/ns/instance after all servers([127.0.0.1:8848]) tried: java.net.ConnectException: Connection refused: connect
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:552)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:491)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.reqApi(NamingProxy.java:486)
+	at com.alibaba.nacos.client.naming.net.NamingProxy.registerService(NamingProxy.java:239)
+	at com.alibaba.nacos.client.naming.NacosNamingService.registerInstance(NacosNamingService.java:205)
+	at com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(NacosServiceRegistry.java:70)
+	... 29 common frames omitted
+
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:04.876 WARN 8956 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:04.986 INFO 8956 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-local.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:05.001 INFO 8956 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: local
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:09.626 WARN 8956 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:09.638 WARN 8956 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:11.528 INFO 8956 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:11.544 INFO 8956 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:11.699 INFO 8956 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 59ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:12.093 WARN 8956 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:12.635 WARN 8956 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:13.561 INFO 8956 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=f7d983e0-289c-3280-8bba-70201aaddb46
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:17.351 INFO 8956 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:17.351 INFO 8956 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 12240 ms
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:20.884 INFO 8956 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:22.067 INFO 8956 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:26.972 INFO 8956 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：13 ms
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
+Execute Time：80 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:51.936 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:27.001 INFO 8956 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
 
 ==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：9 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:52.082 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:52.093 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：17 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:53:52.139 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：4 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:23.282 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:23.282 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:23.293 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:23.298 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:28.297 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:32.751 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:35.104 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:38.473 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：20 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:54:48.039 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.214 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 71178
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.223 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 95932
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.227 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 95944
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.253 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.415 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.433 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:55:59.442 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:56:01.096 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
 Execute Time：6 ms
 ==============  Sql  End   ==============
 
-[ray-component:192.168.101.18:20004] 2021-03-04 08:57:48.679 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 107585
-[ray-component:192.168.101.18:20004] 2021-03-04 08:57:48.684 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 109244
-[ray-component:192.168.101.18:20004] 2021-03-04 08:57:48.705 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='181' 
-Execute Time：4 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:57:48.721 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：4 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:57:55.454 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:08.854 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:18.363 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：9 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:48.436 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:48.448 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:48.455 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:58:48.489 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:19.867 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:19.871 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:19.887 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:19.891 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：44 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:45.044 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:45.515 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：3 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:45.517 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：3 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:45.525 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：4 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:50.649 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:50.651 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:50.651 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 08:59:50.668 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：3 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:01.703 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:01.708 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:01.713 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:01.719 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：18 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:12.391 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:12.394 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:12.396 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:12.416 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:30.723 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:30.723 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:31.284 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:00:31.284 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:17.912 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:18.003 WARN 12560 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 65614
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:18.005 WARN 12560 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 76303
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:18.012 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:18.012 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:18.022 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:36.406 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：17 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:36.422 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：3 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:36.476 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:36.476 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:40.072 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：1 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:53.504 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:53.526 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:53.528 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:53.528 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:01:54.726 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.477 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 76752
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.478 WARN 12560 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 77951
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.480 WARN 12560 [] [XNIO-1 task-4] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 77954
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.511 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.526 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.609 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：10 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:11.650 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:41.999 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:41.999 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:42.011 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:42.012 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:03:57.346 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：18 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:04:27.304 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:04:27.305 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:04:27.306 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:04:27.322 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:34:54.884 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1827554
-[ray-component:192.168.101.18:20004] 2021-03-04 09:34:54.927 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1827606
-[ray-component:192.168.101.18:20004] 2021-03-04 09:34:54.961 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='175' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:39:40.522 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 285558
-[ray-component:192.168.101.18:20004] 2021-03-04 09:39:40.524 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 285564
-[ray-component:192.168.101.18:20004] 2021-03-04 09:39:40.528 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 2113223
-[ray-component:192.168.101.18:20004] 2021-03-04 09:39:40.529 WARN 12560 [] [XNIO-1 task-2] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 2113225
-[ray-component:192.168.101.18:20004] 2021-03-04 09:39:40.552 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='175' 
-Execute Time：2 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 09:54:56.108 INFO 12560 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-[ray-component:192.168.101.18:20004] 2021-03-04 09:54:57.356 INFO 12560 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 1098ms. Found 0 Redis repository interfaces.
-[ray-component:192.168.101.18:20004] 2021-03-04 09:54:57.874 WARN 12560 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-04 09:54:58.702 WARN 12560 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:39.888 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1739293
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:40.476 INFO 12560 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：135 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:41.474 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：210 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:41.527 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：146 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:41.643 INFO 12560 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='175' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:08:41.661 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:03.493 WARN 12560 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1101831
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:03.577 WARN 12560 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1101877
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:03.646 WARN 12560 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1102964
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:03.734 WARN 12560 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1102804
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:03.820 WARN 12560 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 1103325
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:04.261 INFO 12560 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：233 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:04.554 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：156 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:04.725 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：75 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:04.839 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：56 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:10.749 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='181' 
-Execute Time：11 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:27:10.763 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：11 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:27.751 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 437017
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:27.786 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 437053
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:27.964 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 443436
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:27.983 WARN 12560 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 443719
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:28.220 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：39 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:28.523 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：29 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:28.584 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：68 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:34:28.664 INFO 12560 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：45 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:27.630 INFO 12560 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='174' 
-Execute Time：0 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:27.828 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：64 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:27.829 INFO 12560 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='179' 
-Execute Time：21 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:27.830 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='178' 
-Execute Time：98 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:54.437 INFO 12560 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='176' 
-Execute Time：11 ms
-==============  Sql  End   ==============
-
-[ray-component:192.168.101.18:20004] 2021-03-04 10:35:54.451 INFO 12560 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
-
-==============  Sql Start  ==============
-Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
-Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle FROM ray_sys_attachment WHERE id='181' 
-Execute Time：3 ms
-==============  Sql  End   ==============
-
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:30.978 INFO 8956 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:32.496 INFO 8956 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.007 WARN 8956 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.007 INFO 8956 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.019 WARN 8956 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.019 INFO 8956 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.451 INFO 8956 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:33.853 INFO 8956 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:35.143 INFO 8956 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@21ec7946]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:36.710 INFO 8956 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:36.734 INFO 8956 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:36.766 INFO 8956 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:36.880 INFO 8956 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:37.022 INFO 8956 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20004 (http)
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:37.264 INFO 8956 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20004 register finished
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:38.748 INFO 8956 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 42.533 seconds (JVM running for 51.411)
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:38.912 INFO 8956 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[13] redis缓存key=[ray-api-resource]
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:39.707 INFO 8956 [] [RMI TCP Connection(9)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:39.708 INFO 8956 [] [RMI TCP Connection(9)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-03-05 08:44:39.741 INFO 8956 [] [RMI TCP Connection(9)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 33 ms
+[ray-component:192.168.101.18:20004] 2021-03-05 09:15:43.578 WARN 8956 [] [XNIO-1 task-2] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:15:43.982 WARN 8956 [] [XNIO-1 task-2] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:15:44.060 INFO 8956 [] [XNIO-1 task-2] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:15:44.159 INFO 8956 [] [XNIO-1 task-2] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 97ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:41:54.728 WARN 8956 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:41:54.861 WARN 8956 [] [XNIO-1 task-1] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:41:54.898 INFO 8956 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:41:54.946 INFO 8956 [] [XNIO-1 task-1] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 47ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.238 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3942763
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.347 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948295
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.480 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948408
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.581 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948498
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.645 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948609
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.648 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948618
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:10.668 WARN 8956 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC, version : 1.2.3, lastPacketReceivedIdleMillis : 3948641
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:11.453 INFO 8956 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.insert
+Execute SQL ：INSERT INTO ray_sys_attachment ( name, size, url, path, file_name, type, create_time, update_time ) VALUES ( 'b9650c137ff642798ca0b13dfe7f60d9.mp4', 1162539, 'static/upload/20210305/b9650c137ff642798ca0b13dfe7f60d9.mp4', 'D:/hongrenquan/static/upload/20210305/b9650c137ff642798ca0b13dfe7f60d9.mp4', 'b9650c137ff642798ca0b13dfe7f60d9.mp4', 2, '2021-03-05 09:50:08.704', '2021-03-05 09:50:08.704' )
+Execute Time：167 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:11.779 INFO 8956 [] [XNIO-1 task-1] hqsc.ray.core.log.aspect.LogAspect       [2m:[0;39m Http Request: {"createBy":"omL755VvXDLL-HDIDlbL_K8UVetA","executeTime":5140,"ip":"192.168.101.18","location":" 局域网","method":"POST","operation":"Result(code=200, msg=处理成功, time=1614909011517, data={id=190, filePath=static/upload/20210305/b9650c137ff642798ca0b13dfe7f60d9.mp4})","params":"\"\"","title":"附件上传","traceId":"xJigtBpY","url":"/attachment/upload"}
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:12.028 INFO 8956 [] [task-1] hqsc.ray.core.log.event.LogListener      [2m:[0;39m 发送日志:CommonLog(type=null, traceId=xJigtBpY, title=附件上传, operation=Result(code=200, msg=处理成功, time=1614909011517, data={id=190, filePath=static/upload/20210305/b9650c137ff642798ca0b13dfe7f60d9.mp4}), method=POST, url=/attachment/upload, params="", ip=192.168.101.18, executeTime=5140, location= 局域网, createBy=omL755VvXDLL-HDIDlbL_K8UVetA, updateBy=null, createTime=null, updateTime=null, isDeleted=null, tenantId=null, exception=null)
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:16.987 INFO 8956 [] [task-1] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:17.189 INFO 8956 [] [task-1] c.netflix.loadbalancer.BaseLoadBalancer  [2m:[0;39m Client: ray-system instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ray-system,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:17.244 INFO 8956 [] [task-1] c.n.l.DynamicServerListLoadBalancer      [2m:[0;39m Using serverListUpdater PollingServerListUpdater
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:17.874 INFO 8956 [] [task-1] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:17.987 INFO 8956 [] [task-1] c.n.l.DynamicServerListLoadBalancer      [2m:[0;39m DynamicServerListLoadBalancer for client ray-system initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ray-system,current list of Servers=[192.168.101.18:20002],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.101.18:20002;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@11cd1d50
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:18.307 INFO 8956 [] [PollingServerListUpdater-0] c.netflix.config.ChainedDynamicProperty  [2m:[0;39m Flipping property: ray-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+[ray-component:192.168.101.18:20004] 2021-03-05 09:50:29.087 ERROR 8956 [] [XNIO-1 task-2] h.r.c.web.handler.BaseExceptionHandler   [2m:[0;39m 程序异常：org.springframework.web.multipart.support.MissingServletRequestPartException: Required request part 'file' is not present
+[ray-component:192.168.101.18:20004] 2021-03-05 09:51:01.321 ERROR 8956 [] [XNIO-1 task-1] h.r.c.web.handler.BaseExceptionHandler   [2m:[0;39m 程序异常：org.springframework.web.multipart.support.MissingServletRequestPartException: Required request part 'file' is not present
