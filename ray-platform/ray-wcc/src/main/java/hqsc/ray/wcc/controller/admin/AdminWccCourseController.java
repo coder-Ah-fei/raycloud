@@ -14,9 +14,8 @@
  * limitations under the License.
  * Author: pangu(7333791@qq.com)
  */
-package hqsc.ray.wcc.controller;
+package hqsc.ray.wcc.controller.admin;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
@@ -24,7 +23,6 @@ import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
-import hqsc.ray.wcc.entity.WccCourse;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccCourseDto;
@@ -40,7 +38,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 /**
  * <p>
@@ -52,9 +49,9 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wccCourse")
+@RequestMapping("/wcc-course/manage")
 @Api(value = "课程表", tags = "课程表接口")
-public class WccCourseController extends BaseController {
+public class AdminWccCourseController extends BaseController {
 	
 	private final IWccCourseService iWccCourseService;
 	private final WccCourseService wccCourseService;
@@ -62,54 +59,46 @@ public class WccCourseController extends BaseController {
 	/**
 	 * 分页列表
 	 *
-	 * @param page   分页信息
-	 * @param search 　搜索关键词
+	 * @param wccCourseForm 分页信息
 	 * @return Result
 	 */
 	// @PreAuth
 	@Log(value = "课程表列表", exception = "课程表列表请求异常")
-	@PostMapping("/page")
+	@GetMapping("/page")
 	@ApiOperation(value = "课程表列表", notes = "分页查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-	})
-	public Result<?> page(Page page, Map search) {
-		return Result.data(iWccCourseService.listPage(page, search));
+	public Result<PageMap<WccCourseDto>> page(WccCourseForm wccCourseForm) {
+		PageMap<WccCourseDto> wccCourseDtoPageMap = wccCourseService.listWccCourses(wccCourseForm);
+		return Result.data(wccCourseDtoPageMap);
 	}
 	
+	
 	/**
-	 * 课程表信息
+	 * 根据id获取课程
 	 *
-	 * @param id Id
+	 * @param wccCourseForm Id
 	 * @return Result
 	 */
 	//@PreAuth
-	@Log(value = "课程表信息", exception = "课程表信息请求异常")
-	@PostMapping("/get")
-	@ApiOperation(value = "课程表信息", notes = "根据ID查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
-	})
-	public Result<?> get(@RequestParam String id) {
-		return Result.data(iWccCourseService.getById(id));
+	@Log(value = "根据id获取课程", exception = "根据id获取课程请求异常")
+	@GetMapping("/get")
+	@ApiOperation(value = "根据id获取课程", notes = "根据id获取课程")
+	public Result<WccCourseDto> get(WccCourseForm wccCourseForm) {
+		WccCourseDto wccCourseDto = wccCourseService.findById(wccCourseForm);
+		return Result.data(wccCourseDto);
 	}
 	
 	/**
-	 * 课程表设置
+	 * 保存课程
 	 *
-	 * @param wccCourse WccCourse 对象
+	 * @param wccCourseForm WccCourse 对象
 	 * @return Result
 	 */
 	@PreAuth
-	@Log(value = "课程表设置", exception = "课程表设置请求异常")
+	@Log(value = "保存课程", exception = "保存课程请求异常")
 	@PostMapping("/set")
-	@ApiOperation(value = "课程表设置", notes = "课程表设置,支持新增或修改")
-	public Result<?> set(@Valid @RequestBody WccCourse wccCourse) {
-		return Result.condition(iWccCourseService.saveOrUpdate(wccCourse));
+	@ApiOperation(value = "保存课程", notes = "保存课程,支持新增或修改")
+	public Result<?> set(@Valid @RequestBody WccCourseForm wccCourseForm) {
+		return wccCourseService.save(wccCourseForm);
 	}
 	
 	
@@ -135,23 +124,6 @@ public class WccCourseController extends BaseController {
 	
 	//-------------------------------------------------------------------
 	
-	
-	/**
-	 * 分页列表
-	 *
-	 * @param wccCourseForm 分页信息
-	 * @return Result
-	 */
-	@PreAuth
-	@Log(value = "获取课程列表", exception = "课程列表请求异常")
-	@PostMapping(value = "/listWccCourses", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取课程列表", notes = "分页查询")
-	public ResultMap<?> listWccCourses(WccCourseForm wccCourseForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
-		PageMap<WccCourseDto> wccCourseDtoPageMap = wccCourseService.listWccCourses(wccCourseForm);
-		return ResultMap.of(ResultMap.SUCCESS_CODE, wccCourseDtoPageMap);
-	}
 	
 	@PreAuth
 	@Log(value = "获取收藏的课程", exception = "获取收藏的课程请求异常")

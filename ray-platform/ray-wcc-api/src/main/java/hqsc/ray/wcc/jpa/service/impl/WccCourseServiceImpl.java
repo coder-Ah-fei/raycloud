@@ -1,12 +1,12 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.api.Result;
+import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccCourseDto;
-import hqsc.ray.wcc.jpa.entity.JpaWccCourse;
-import hqsc.ray.wcc.jpa.entity.JpaWccCourseResource;
-import hqsc.ray.wcc.jpa.entity.JpaWccUser;
-import hqsc.ray.wcc.jpa.entity.JpaWccUserPurchasedCourse;
+import hqsc.ray.wcc.jpa.entity.*;
 import hqsc.ray.wcc.jpa.form.WccCourseForm;
+import hqsc.ray.wcc.jpa.repository.RaySysAttachmentRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseRepository;
 import hqsc.ray.wcc.jpa.service.WccCourseService;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
@@ -31,6 +32,8 @@ public class WccCourseServiceImpl implements WccCourseService {
 	
 	@Autowired
 	private WccCourseRepository wccCourseRepository;
+	@Autowired
+	private RaySysAttachmentRepository raySysAttachmentRepository;
 	
 	/**
 	 * 获取数据
@@ -39,7 +42,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 	 * @return ResultMap
 	 */
 	@Override
-	public ResultMap listWccCourses(WccCourseForm wccCourseForm) {
+	public PageMap<WccCourseDto> listWccCourses(WccCourseForm wccCourseForm) {
 		Specification<JpaWccCourse> specification = (root, criteriaQuery, criteriaBuilder) -> {
 			List<Predicate> pr = new ArrayList<>();
 //				if (!StringUtils.empty(articleForm.getSectionName())) {
@@ -58,12 +61,15 @@ public class WccCourseServiceImpl implements WccCourseService {
 			return criteriaQuery.getRestriction();
 		};
 		List<JpaWccCourse> jpaWccCourseList;
+		Long count = 0L;
 		if (wccCourseForm.getPageNow() == -1) {
 			jpaWccCourseList = wccCourseRepository.findAll(specification);
+			count = Long.valueOf(jpaWccCourseList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccCourseForm.getPageNow() - 1, wccCourseForm.getPageSize());
 			Page<JpaWccCourse> wccCoursePage = wccCourseRepository.findAll(specification, pageable);
 			jpaWccCourseList = wccCoursePage.getContent();
+			count = wccCoursePage.getTotalElements();
 		}
 		List<WccCourseDto> list = new ArrayList<>();
 		WccCourseDto wccCourseDto;
@@ -90,11 +96,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 			wccCourseDto.setBannerIds(bannerIds);
 			list.add(wccCourseDto);
 		}
-		long count = wccCourseRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return PageMap.of(count, list);
 	}
 	
 	/**
@@ -235,6 +237,127 @@ public class WccCourseServiceImpl implements WccCourseService {
 		wccCourseDto.setBannerIds(bannerIds);
 		
 		return ResultMap.of(ResultMap.SUCCESS_CODE, wccCourseDto);
+	}
+	
+	/**
+	 * 根据id获取课程
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	@Override
+	public WccCourseDto findById(WccCourseForm wccCourseForm) {
+		
+		Optional<JpaWccCourse> jpaWccCourseOptional = wccCourseRepository.findById(wccCourseForm.getId());
+		if (!jpaWccCourseOptional.isPresent()) {
+			throw new RuntimeException("课程不存在");
+		}
+		JpaWccCourse jpaWccCourse = jpaWccCourseOptional.get();
+		WccCourseDto wccCourseDto = new WccCourseDto();
+		BeanUtils.copyProperties(jpaWccCourse, wccCourseDto);
+		
+		List<JpaWccCourseResource> resourceList = jpaWccCourse.getResourceList();
+		
+		List<Long> bannerIdList = new ArrayList<>();
+		for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+			if (jpaWccCourseResource.getWccAttachment() == null) {
+				continue;
+			}
+			if (jpaWccCourseResource.getResourceType() == 1) {
+				wccCourseDto.setTitlePicId(jpaWccCourseResource.getWccAttachment().getId());
+			}
+			if (jpaWccCourseResource.getResourceType() == 2) {
+				bannerIdList.add(jpaWccCourseResource.getWccAttachment().getId());
+			}
+		}
+		Long[] bannerIds = bannerIdList.toArray(new Long[bannerIdList.size()]);
+		Arrays.sort(bannerIds);
+		wccCourseDto.setBannerIds(bannerIds);
+		return wccCourseDto;
+	}
+	
+	/**
+	 * 保存课程,支持新增或修改
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result<?> save(WccCourseForm wccCourseForm) {
+		
+		JpaWccCourse jpaWccCourse = null;
+		
+		Optional<JpaWccCourse> wccCourseOptional = wccCourseRepository.findById(wccCourseForm.getId() == null ? 0L : wccCourseForm.getId());
+		
+		if (wccCourseOptional.isPresent()) {
+			jpaWccCourse = wccCourseOptional.get();
+			
+			BeanUtils.copyProperties(wccCourseForm, jpaWccCourse);
+			
+			Optional<JpaSysAttachment> attachmentOptional = raySysAttachmentRepository.findById(wccCourseForm.getTitlePicId() == null ? 0L : wccCourseForm.getTitlePicId());
+			List<JpaWccCourseResource> jpaWccCourseResourceList = new ArrayList<>();
+			JpaWccCourseResource resource;
+			if (attachmentOptional.isPresent()) {
+				resource = new JpaWccCourseResource();
+				resource.setJpaWccCourse(jpaWccCourse);
+				resource.setWccAttachment(attachmentOptional.get());
+				resource.setResourceType(1);
+				resource.setSort(0);
+				resource.setStatus(1);
+				resource.setIsDelete(0);
+				jpaWccCourseResourceList.add(resource);
+			}
+			for (Long bannerId : wccCourseForm.getBannerIds()) {
+				attachmentOptional = raySysAttachmentRepository.findById(bannerId);
+				if (attachmentOptional.isPresent()) {
+					resource = new JpaWccCourseResource();
+					resource.setJpaWccCourse(jpaWccCourse);
+					resource.setWccAttachment(attachmentOptional.get());
+					resource.setResourceType(2);
+					resource.setSort(0);
+					resource.setStatus(1);
+					resource.setIsDelete(0);
+					jpaWccCourseResourceList.add(resource);
+				}
+			}
+			jpaWccCourse.setResourceList(jpaWccCourseResourceList);
+			
+		} else {
+			jpaWccCourse = new JpaWccCourse();
+			
+			BeanUtils.copyProperties(wccCourseForm, jpaWccCourse);
+			
+			Optional<JpaSysAttachment> attachmentOptional = raySysAttachmentRepository.findById(wccCourseForm.getTitlePicId() == null ? 0L : wccCourseForm.getTitlePicId());
+			List<JpaWccCourseResource> jpaWccCourseResourceList = new ArrayList<>();
+			JpaWccCourseResource resource;
+			if (attachmentOptional.isPresent()) {
+				resource = new JpaWccCourseResource();
+				resource.setWccAttachment(attachmentOptional.get());
+				resource.setResourceType(1);
+				resource.setSort(0);
+				resource.setStatus(1);
+				resource.setIsDelete(0);
+				jpaWccCourseResourceList.add(resource);
+			}
+			for (Long bannerId : wccCourseForm.getBannerIds()) {
+				attachmentOptional = raySysAttachmentRepository.findById(bannerId);
+				if (attachmentOptional.isPresent()) {
+					resource = new JpaWccCourseResource();
+					resource.setWccAttachment(attachmentOptional.get());
+					resource.setResourceType(2);
+					resource.setSort(0);
+					resource.setStatus(1);
+					resource.setIsDelete(0);
+					jpaWccCourseResourceList.add(resource);
+				}
+			}
+			jpaWccCourse.setResourceList(jpaWccCourseResourceList);
+			jpaWccCourse.setStatus(1);
+			jpaWccCourse.setIsDelete(0);
+		}
+		wccCourseRepository.save(jpaWccCourse);
+		return Result.success("保存成功");
 	}
 	
 }
