@@ -14,8 +14,10 @@
  * limitations under the License.
  * Author: pangu(7333791@qq.com)
  */
-package hqsc.ray.wcc.controller;
+package hqsc.ray.wcc.controller.admin;
 
+import hqsc.ray.core.auth.annotation.PreAuth;
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.jpa.dto.PageMap;
@@ -24,13 +26,14 @@ import hqsc.ray.wcc.jpa.dto.WccBannerDto;
 import hqsc.ray.wcc.jpa.form.WccBannerForm;
 import hqsc.ray.wcc.jpa.service.WccBannerService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * banner图
@@ -40,20 +43,38 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-banner/")
+@RequestMapping("/wcc-banner/manage/")
 @Api(value = "banner图", tags = "banner图")
-public class WccBannerController extends BaseController {
+public class AdminWccBannerController extends BaseController {
 	
 	@Autowired
 	private WccBannerService wccBannerService;
 	
-	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
-	@PostMapping(value = "/listWccBanners", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
+	@Log(value = "获取banner图列表", exception = "获取banner图列表请求异常")
+	@GetMapping("/page")
+	@ApiOperation(value = "获取banner图列表", notes = "获取banner图列表")
 	public ResultMap<PageMap<WccBannerDto>> listWccBanners(WccBannerForm wccBannerForm) {
 		ResultMap resultMap = wccBannerService.listWccBanners(wccBannerForm);
 		return resultMap;
 	}
 	
+	@PreAuth
+	@Log(value = "获取banner", exception = "获取banner请求异常")
+	@GetMapping("/get")
+	@ApiOperation(value = "获取banner", notes = "获取banner")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
+	})
+	public Result<WccBannerDto> get(@RequestParam Long id) {
+		return Result.data(wccBannerService.findById(id));
+	}
+	
+	@PreAuth
+	@Log(value = "保存banner", exception = "保存banner请求异常")
+	@PostMapping("/set")
+	@ApiOperation(value = "保存banner", notes = "保存banner,支持新增或修改")
+	public Result<?> set(@Valid @RequestBody WccBannerForm wccBannerForm) {
+		return wccBannerService.save(wccBannerForm);
+	}
 }
 

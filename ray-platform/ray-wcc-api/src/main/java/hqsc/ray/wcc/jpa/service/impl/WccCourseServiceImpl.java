@@ -8,7 +8,9 @@ import hqsc.ray.wcc.jpa.entity.*;
 import hqsc.ray.wcc.jpa.form.WccCourseForm;
 import hqsc.ray.wcc.jpa.repository.RaySysAttachmentRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseRepository;
+import hqsc.ray.wcc.jpa.repository.WccCourseResourceRepository;
 import hqsc.ray.wcc.jpa.service.WccCourseService;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +36,8 @@ public class WccCourseServiceImpl implements WccCourseService {
 	private WccCourseRepository wccCourseRepository;
 	@Autowired
 	private RaySysAttachmentRepository raySysAttachmentRepository;
+	@Autowired
+	private WccCourseResourceRepository wccCourseResourceRepository;
 	
 	/**
 	 * 获取数据
@@ -81,6 +85,9 @@ public class WccCourseServiceImpl implements WccCourseService {
 			
 			List<Long> bannerIdList = new ArrayList<>();
 			for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+				if (jpaWccCourseResource.getIsDelete() == 1) {
+					continue;
+				}
 				if (jpaWccCourseResource.getWccAttachment() == null) {
 					continue;
 				}
@@ -121,6 +128,9 @@ public class WccCourseServiceImpl implements WccCourseService {
 			
 			List<Long> bannerIdList = new ArrayList<>();
 			for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+				if (jpaWccCourseResource.getIsDelete() == 1) {
+					continue;
+				}
 				if (jpaWccCourseResource.getWccAttachment() == null) {
 					continue;
 				}
@@ -181,6 +191,9 @@ public class WccCourseServiceImpl implements WccCourseService {
 			
 			List<Long> bannerIdList = new ArrayList<>();
 			for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+				if (jpaWccCourseResource.getIsDelete() == 1) {
+					continue;
+				}
 				if (jpaWccCourseResource.getWccAttachment() == null) {
 					continue;
 				}
@@ -222,6 +235,9 @@ public class WccCourseServiceImpl implements WccCourseService {
 		List<JpaWccCourseResource> resourceList = jpaWccCourse.getResourceList();
 		List<Long> bannerIdList = new ArrayList<>();
 		for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+			if (jpaWccCourseResource.getIsDelete() == 1) {
+				continue;
+			}
 			if (jpaWccCourseResource.getWccAttachment() == null) {
 				continue;
 			}
@@ -260,6 +276,9 @@ public class WccCourseServiceImpl implements WccCourseService {
 		
 		List<Long> bannerIdList = new ArrayList<>();
 		for (JpaWccCourseResource jpaWccCourseResource : resourceList) {
+			if (jpaWccCourseResource.getIsDelete() == 1) {
+				continue;
+			}
 			if (jpaWccCourseResource.getWccAttachment() == null) {
 				continue;
 			}
@@ -289,11 +308,14 @@ public class WccCourseServiceImpl implements WccCourseService {
 		JpaWccCourse jpaWccCourse = null;
 		
 		Optional<JpaWccCourse> wccCourseOptional = wccCourseRepository.findById(wccCourseForm.getId() == null ? 0L : wccCourseForm.getId());
-		
+		List<JpaWccCourseResource> resourceListOld = new ArrayList<>();
 		if (wccCourseOptional.isPresent()) {
 			jpaWccCourse = wccCourseOptional.get();
-			
 			BeanUtils.copyProperties(wccCourseForm, jpaWccCourse);
+			List<JpaWccCourseResource> resourceList = jpaWccCourse.getResourceList();
+			CollectionUtils.addAll(resourceListOld, new String[resourceList.size()]);
+			Collections.copy(resourceListOld, resourceList);
+			
 			
 			Optional<JpaSysAttachment> attachmentOptional = raySysAttachmentRepository.findById(wccCourseForm.getTitlePicId() == null ? 0L : wccCourseForm.getTitlePicId());
 			List<JpaWccCourseResource> jpaWccCourseResourceList = new ArrayList<>();
@@ -333,6 +355,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 			JpaWccCourseResource resource;
 			if (attachmentOptional.isPresent()) {
 				resource = new JpaWccCourseResource();
+				resource.setJpaWccCourse(jpaWccCourse);
 				resource.setWccAttachment(attachmentOptional.get());
 				resource.setResourceType(1);
 				resource.setSort(0);
@@ -344,6 +367,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 				attachmentOptional = raySysAttachmentRepository.findById(bannerId);
 				if (attachmentOptional.isPresent()) {
 					resource = new JpaWccCourseResource();
+					resource.setJpaWccCourse(jpaWccCourse);
 					resource.setWccAttachment(attachmentOptional.get());
 					resource.setResourceType(2);
 					resource.setSort(0);
@@ -357,6 +381,15 @@ public class WccCourseServiceImpl implements WccCourseService {
 			jpaWccCourse.setIsDelete(0);
 		}
 		wccCourseRepository.save(jpaWccCourse);
+		
+		if (resourceListOld != null) {
+			for (JpaWccCourseResource resource : resourceListOld) {
+				resource.setIsDelete(1);
+				resource.setStatus(0);
+				wccCourseResourceRepository.save(resource);
+			}
+		}
+		
 		return Result.success("保存成功");
 	}
 	

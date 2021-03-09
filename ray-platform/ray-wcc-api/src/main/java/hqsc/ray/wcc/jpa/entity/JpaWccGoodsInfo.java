@@ -95,5 +95,10 @@ public class JpaWccGoodsInfo extends BasicEntity {
 	@JoinColumn(name = "PRODUCT_FILE")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private JpaSysAttachment productFile;
-	
+	/**
+	 * 产品优势
+	 */
+	@ApiModelProperty(value = "产品优势")
+	@Column(name = "PRODUCT_SUPERIORITY", columnDefinition = "varchar(500) null comment '产品优势'")
+	private String productSuperiority;
 }

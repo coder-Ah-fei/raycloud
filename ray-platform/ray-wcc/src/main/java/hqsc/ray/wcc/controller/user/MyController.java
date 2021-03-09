@@ -3,6 +3,7 @@ package hqsc.ray.wcc.controller.user;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.binarywang.java.emoji.EmojiConverter;
 import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
@@ -62,6 +63,8 @@ public class MyController extends BaseController {
 		WccUser wccUser;
 		try {
 			wccUser = wccUserService.getById(userInfo.getUserId());
+			EmojiConverter emojiConverter = EmojiConverter.getInstance();
+			wccUser.setNickname(emojiConverter.toUnicode(wccUser.getNickname()));
 		} catch (Exception e) {
 			return Result.fail("查询用户信息异常");
 		}
@@ -218,7 +221,6 @@ public class MyController extends BaseController {
 	/*
 	 * 用户视频
 	 * */
-	@UserAuth
 	@Log(value = "用户视频", exception = "用户视频异常")
 	@PostMapping(value = {"/getUserVideo"})
 	@ApiOperation(value = "用户视频", notes = "用户视频")

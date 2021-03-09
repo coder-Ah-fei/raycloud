@@ -14,47 +14,52 @@
  * limitations under the License.
  * Author: pangu(7333791@qq.com)
  */
-package hqsc.ray.wcc.controller;
+package hqsc.ray.wcc.controller.admin;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.jpa.dto.PageMap;
-import hqsc.ray.wcc.jpa.dto.ResultMap;
-import hqsc.ray.wcc.jpa.dto.WccMcnInfoDto;
-import hqsc.ray.wcc.jpa.form.WccMcnInfoForm;
-import hqsc.ray.wcc.jpa.service.WccMcnInfoService;
+import hqsc.ray.wcc.jpa.dto.WccBannerDto;
+import hqsc.ray.wcc.jpa.form.SysAreaForm;
+import hqsc.ray.wcc.jpa.service.SysAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * mcn机构控制器
+ * banner图
  *
  * @author yang
  * @date 2021年3月1日
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-mcn-info")
-@Api(value = "mcn机构控制器", tags = "mcn机构控制器")
-public class WccMcnInfoController extends BaseController {
+@RequestMapping("/sys-area/manage/")
+@Api(value = "行政区划", tags = "行政区划")
+public class AdminSysAreaController extends BaseController {
 	
 	@Autowired
-	private WccMcnInfoService wccMcnInfoService;
+	private SysAreaService sysAreaService;
 	
-	@Log(value = "获取mcn机构列表", exception = "获取mcn机构列表请求异常")
-	@PostMapping(value = "/listMcnInfos", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
-	public ResultMap<PageMap<WccMcnInfoDto>> listMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
-		ResultMap resultMap = wccMcnInfoService.listWccMcnInfos(wccMcnInfoForm);
-		return resultMap;
+	@Log(value = "获取行政区划列表", exception = "获取行政区划列表请求异常")
+	@GetMapping("/page")
+	@ApiOperation(value = "获取行政区划列表", notes = "获取行政区划列表")
+	public Result<PageMap<WccBannerDto>> listWccBanners(SysAreaForm sysAreaForm) {
+		return Result.data(sysAreaService.listSysAreas(sysAreaForm));
 	}
 	
 	
+	@Log(value = "保存banner", exception = "保存banner请求异常")
+	@PostMapping("/set")
+	@ApiOperation(value = "保存banner", notes = "保存banner,支持新增或修改")
+	public Result<?> set() {
+		return sysAreaService.save();
+	}
 }
 

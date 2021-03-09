@@ -14,17 +14,13 @@
  * limitations under the License.
  * Author: pangu(7333791@qq.com)
  */
-package hqsc.ray.wcc.controller;
+package hqsc.ray.wcc.controller.admin;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
-import hqsc.ray.wcc.entity.WccMerchantBrandDetail;
-import hqsc.ray.wcc.jpa.dto.PageMap;
-import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccMerchantBrandDetailDto;
 import hqsc.ray.wcc.jpa.form.WccMerchantBrandDetailForm;
 import hqsc.ray.wcc.jpa.service.WccMerchantBrandDetailService;
@@ -34,11 +30,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 /**
  * <p>
@@ -50,9 +44,9 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-merchant-brand-detail")
+@RequestMapping("/wcc-merchant-brand-detail/manage")
 @Api(value = "品牌方/商家详情表", tags = "品牌方/商家详情表接口")
-public class WccMerchantBrandDetailController extends BaseController {
+public class AdminWccMerchantBrandDetailController extends BaseController {
 	
 	private final IWccMerchantBrandDetailService iWccMerchantBrandDetailService;
 	private final WccMerchantBrandDetailService wccMerchantBrandDetailService;
@@ -60,23 +54,15 @@ public class WccMerchantBrandDetailController extends BaseController {
 	/**
 	 * 分页列表
 	 *
-	 * @param page   分页信息
-	 * @param search 　搜索关键词
+	 * @param wccMerchantBrandDetailForm 分页信息
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "品牌方/商家详情表列表", exception = "品牌方/商家详情表列表请求异常")
 	@GetMapping("/page")
 	@ApiOperation(value = "品牌方/商家详情表列表", notes = "分页查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-	})
-	public Result<?> page(Page page, Map search) {
-		return Result.data(iWccMerchantBrandDetailService.listPage(page, search));
+	public Result<?> page(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
+		return Result.data(wccMerchantBrandDetailService.listWccMerchantBrandDetails(wccMerchantBrandDetailForm));
 	}
 	
 	/**
@@ -89,11 +75,8 @@ public class WccMerchantBrandDetailController extends BaseController {
 	@Log(value = "品牌方/商家详情表信息", exception = "品牌方/商家详情表信息请求异常")
 	@GetMapping("/get")
 	@ApiOperation(value = "品牌方/商家详情表信息", notes = "根据ID查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
-	})
-	public Result<?> get(@RequestParam String id) {
-		return Result.data(iWccMerchantBrandDetailService.getById(id));
+	public Result<WccMerchantBrandDetailDto> get(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
+		return Result.data(wccMerchantBrandDetailService.findById(wccMerchantBrandDetailForm));
 	}
 	
 	/**
@@ -106,8 +89,8 @@ public class WccMerchantBrandDetailController extends BaseController {
 	@Log(value = "品牌方/商家详情表设置", exception = "品牌方/商家详情表设置请求异常")
 	@PostMapping("/set")
 	@ApiOperation(value = "品牌方/商家详情表设置", notes = "品牌方/商家详情表设置,支持新增或修改")
-	public Result<?> set(@Valid @RequestBody WccMerchantBrandDetail wccMerchantBrandDetail) {
-		return Result.condition(iWccMerchantBrandDetailService.saveOrUpdate(wccMerchantBrandDetail));
+	public Result<?> set(@Valid @RequestBody WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
+		return wccMerchantBrandDetailService.save(wccMerchantBrandDetailForm);
 	}
 	
 	/**
@@ -129,12 +112,6 @@ public class WccMerchantBrandDetailController extends BaseController {
 	
 	//-------------------------------------------------------------------------
 	
-	@Log(value = "获取品牌及品牌下的商品列表", exception = "获取mcn机构列表请求异常")
-	@PostMapping(value = "/listWccMerchantBrandDetails", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
-	public ResultMap<PageMap<WccMerchantBrandDetailDto>> listWccMerchantBrandDetails(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
-		ResultMap resultMap = wccMerchantBrandDetailService.listWccMerchantBrandDetails(wccMerchantBrandDetailForm);
-		return resultMap;
-	}
+	
 }
 

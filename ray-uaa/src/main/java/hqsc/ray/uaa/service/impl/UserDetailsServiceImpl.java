@@ -1,5 +1,6 @@
 package hqsc.ray.uaa.service.impl;
 
+import com.github.binarywang.java.emoji.EmojiConverter;
 import hqsc.ray.component.entity.SysAttachment;
 import hqsc.ray.component.feign.ISysAttachmentProvider;
 import hqsc.ray.core.common.constant.Oauth2Constant;
@@ -108,7 +109,11 @@ public class UserDetailsServiceImpl implements RayUserDetailsService {
 		boolean bo = true;
 		WccUser wccUser = new WccUser();
 		wccUser.setWechatUnionId(unionId);
-		wccUser.setNickname(nickname);
+		
+		EmojiConverter emojiConverter = EmojiConverter.getInstance();
+		String html = emojiConverter.toHtml(emojiConverter.toUnicode(nickname));
+		
+		wccUser.setNickname(html);
 		wccUser.setHeadPortrait(avatarId);
 		wccUser.setWechatHeadPortraitAddress(avatar);
 		wccUser.setGender(Integer.parseInt(sex));

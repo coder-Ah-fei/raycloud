@@ -1,5 +1,7 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.util.DateUtil;
+import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccResponseDetailsDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
@@ -21,7 +23,11 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * 描述：
@@ -64,27 +70,33 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			return criteriaQuery.getRestriction();
 		};
 		List<JpaWccResponseDetails> jpaWccResponseDetailsList;
+		Long count = 0L;
 		if (wccResponseDetailsForm.getPageNow() == -1) {
 			jpaWccResponseDetailsList = wccResponseDetailsRepository.findAll(specification);
+			count = Long.valueOf(jpaWccResponseDetailsList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccResponseDetailsForm.getPageNow() - 1, wccResponseDetailsForm.getPageSize());
 			Page<JpaWccResponseDetails> wccResponseDetailsPage = wccResponseDetailsRepository.findAll(specification, pageable);
 			jpaWccResponseDetailsList = wccResponseDetailsPage.getContent();
+			count = wccResponseDetailsPage.getTotalElements();
 		}
 		List<WccResponseDetailsDto> list = new ArrayList<>();
 		WccResponseDetailsDto wccResponseDetailsDto;
+		
+		
 		for (JpaWccResponseDetails jpaWccResponseDetails : jpaWccResponseDetailsList) {
 			wccResponseDetailsDto = new WccResponseDetailsDto();
 			BeanUtils.copyProperties(jpaWccResponseDetails, wccResponseDetailsDto);
 			
+			wccResponseDetailsDto.setUserId(jpaWccResponseDetails.getJpaWccUser().getId());
+			wccResponseDetailsDto.setUserNickname(jpaWccResponseDetails.getJpaWccUser().getNickname());
+			wccResponseDetailsDto.setResponseTimeStr(jpaWccResponseDetails.getResponseTime() == null ? "" : DateUtil.formatLocalDateTime(jpaWccResponseDetails.getResponseTime()));
+			wccResponseDetailsDto.setReleaseInfoId(jpaWccResponseDetails.getJpaWccReleaseInfo().getId());
+			wccResponseDetailsDto.setResponseDetailsId(jpaWccResponseDetails.getJpaWccResponseDetails().getId());
 			
 			list.add(wccResponseDetailsDto);
 		}
-		long count = wccResponseDetailsRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
 	}
 	
 	/**
@@ -116,7 +128,7 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 				comment.setJpaWccResponseDetails(wccResponseDetailsOptional.get());
 			}
 		}
-		comment.setResponseTime(new Date());
+		comment.setResponseTime(LocalDateTime.now());
 		wccResponseDetailsRepository.save(comment);
 		
 		

@@ -4,6 +4,7 @@ import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccUser;
 import hqsc.ray.wcc.jpa.form.WccUserForm;
+import hqsc.ray.wcc.jpa.repository.WccUserConcernRepository;
 import hqsc.ray.wcc.jpa.repository.WccUserRepository;
 import hqsc.ray.wcc.jpa.service.WccUserService;
 import org.springframework.beans.BeanUtils;
@@ -29,6 +30,8 @@ public class WccUserServiceImpl implements WccUserService {
 	
 	@Autowired
 	private WccUserRepository wccUserRepository;
+	@Autowired
+	private WccUserConcernRepository wccUserConcernRepository;
 	
 	/**
 	 * 获取数据
@@ -66,8 +69,12 @@ public class WccUserServiceImpl implements WccUserService {
 		for (JpaWccUser jpaWccUser : jpaWccUserList) {
 			wccUserDto = new WccUserDto();
 			BeanUtils.copyProperties(jpaWccUser, wccUserDto);
-			
-			
+			wccUserDto.setJpaSysAttachmentId(jpaWccUser.getJpaSysAttachment() == null ? 0 : jpaWccUser.getJpaSysAttachment().getId());
+			wccUserDto.setConcernCount(0L);
+			if (wccUserForm.getId() != null) {
+				Long aLong = wccUserConcernRepository.countByJpaWccUserIdAndBelongUserId(wccUserForm.getId(), jpaWccUser.getId());
+				wccUserDto.setConcernCount(aLong);
+			}
 			list.add(wccUserDto);
 		}
 		long count = wccUserRepository.count(specification);

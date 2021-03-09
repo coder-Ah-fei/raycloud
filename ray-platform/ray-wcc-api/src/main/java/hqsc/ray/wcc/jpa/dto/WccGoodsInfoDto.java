@@ -24,6 +24,7 @@ public class WccGoodsInfoDto {
 	 */
 	@ApiModelProperty(value = "所属品牌方/商家")
 	private Long merchantBrandId;
+	private String merchantBrandName;
 	/**
 	 * 主推商品名称
 	 */
@@ -49,4 +50,8 @@ public class WccGoodsInfoDto {
 	 */
 	@ApiModelProperty(value = "产品文件")
 	private Long productFileId;
+	
+	
+	@ApiModelProperty(value = "产品优势")
+	private String productSuperiority;
 }

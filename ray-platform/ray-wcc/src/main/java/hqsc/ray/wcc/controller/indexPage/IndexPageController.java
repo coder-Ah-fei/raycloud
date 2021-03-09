@@ -65,7 +65,6 @@ public class IndexPageController extends BaseController {
 	/*
 	 * 首页推荐
 	 * */
-	@UserAuth
 	@Log(value = "首页推荐", exception = "首页推荐异常")
 	@PostMapping(value = {"/indexReferrals"})
 	@ApiOperation(value = "首页推荐", notes = "首页推荐")
@@ -77,7 +76,12 @@ public class IndexPageController extends BaseController {
 		if (page.getCurrent() < 1 || page.getSize() < 1) {
 			return Result.fail("非法参数！");
 		}
-		LoginUser userInfo = SecurityUtil.getUsername(req);
+		LoginUser userInfo = new LoginUser();
+		try {
+			userInfo = SecurityUtil.getUsername(req);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		List<IndexReferralsVO> referrals = wccReleaseInfoService.findIndexReferrals(userInfo.getUserId(), page.getCurrent(), page.getSize());
 		return Result.data(referrals);
 	}
@@ -85,7 +89,6 @@ public class IndexPageController extends BaseController {
 	/*
 	 * 首页推荐
 	 * */
-	@UserAuth
 	@Log(value = "首页视频", exception = "首页视频异常")
 	@PostMapping(value = {"/indexVideo"})
 	@ApiOperation(value = "首页视频", notes = "首页视频")
@@ -136,7 +139,6 @@ public class IndexPageController extends BaseController {
 	/*
 	 * 查询所有圈子
 	 * */
-	@UserAuth
 	@Log(value = "查询所有圈子", exception = "查询所有圈子异常")
 	@PostMapping(value = {"/findAllCircle"})
 	@ApiOperation(value = "查询所有圈子", notes = "查询所有圈子")
@@ -165,7 +167,12 @@ public class IndexPageController extends BaseController {
 //			indexCircleInfoVO.setPeopleCount(count);
 //			indexCircleInfoVOS.add(indexCircleInfoVO);
 //		}
-		LoginUser userInfo = SecurityUtil.getUsername(req);
+		LoginUser userInfo = new LoginUser();
+		try {
+			userInfo = SecurityUtil.getUsername(req);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		List<IndexCircleInfoVO> circleInfos = wccCircleInfoService.findIndexCircles(userInfo.getUserId(), page.getCurrent(), page.getSize());
 		return Result.data(circleInfos);
 	}

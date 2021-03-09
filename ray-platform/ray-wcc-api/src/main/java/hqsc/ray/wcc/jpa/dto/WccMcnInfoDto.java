@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class WccMcnInfoDto {
+public class WccMcnInfoDto extends BasicDto {
 	
 	private Long id;
 	/**
@@ -25,7 +25,7 @@ public class WccMcnInfoDto {
 	 * 标题
 	 */
 	@ApiModelProperty(value = "标题")
-	private String oName;
+	private String oname;
 	/**
 	 * 机构坐标
 	 */

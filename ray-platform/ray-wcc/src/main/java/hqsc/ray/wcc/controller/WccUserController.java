@@ -16,26 +16,25 @@
  */
 package hqsc.ray.wcc.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
 import hqsc.ray.wcc.entity.WccUser;
-import hqsc.ray.wcc.jpa.repository.WccUserRepository;
+import hqsc.ray.wcc.jpa.form.WccUserForm;
+import hqsc.ray.wcc.jpa.service.WccUserService;
 import hqsc.ray.wcc.service.IWccUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -51,7 +50,8 @@ import java.util.Map;
 @Api(value = "用户表", tags = "用户表接口")
 public class WccUserController extends BaseController {
 	
-	private final IWccUserService wccUserService;
+	private final IWccUserService iWccUserService;
+	private final WccUserService wccUserService;
 	
 	/**
 	 * 分页列表
@@ -60,19 +60,22 @@ public class WccUserController extends BaseController {
 	 * @param search 　搜索关键词
 	 * @return Result
 	 */
-	@PreAuth
 	@Log(value = "用户表列表", exception = "用户表列表请求异常")
 	@GetMapping("/page")
 	@ApiOperation(value = "用户表列表", notes = "分页查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-	})
-	public Result<?> page(Page page, Map search) {
-		return Result.data(wccUserService.listPage(page, search));
+	public Result<?> page(WccUserForm wccUserForm) {
+		LoginUser userInfo = null;
+		try {
+			userInfo = SecurityUtil.getUsername(req);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (userInfo != null) {
+			wccUserForm.setId(Long.valueOf(userInfo.getUserId()));
+		}
+		
+		return Result.data(wccUserService.listWccUsers(wccUserForm));
 	}
 	
 	/**
@@ -89,7 +92,7 @@ public class WccUserController extends BaseController {
 			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
 	})
 	public Result<?> get(@RequestParam String id) {
-		return Result.data(wccUserService.getById(id));
+		return Result.data(iWccUserService.getById(id));
 	}
 	
 	/**
@@ -103,7 +106,7 @@ public class WccUserController extends BaseController {
 	@PostMapping("/set")
 	@ApiOperation(value = "用户表设置", notes = "用户表设置,支持新增或修改")
 	public Result<?> set(@Valid @RequestBody WccUser wccUser) {
-		return Result.condition(wccUserService.saveOrUpdate(wccUser));
+		return Result.condition(iWccUserService.saveOrUpdate(wccUser));
 	}
 	
 	/**
@@ -120,7 +123,7 @@ public class WccUserController extends BaseController {
 			@ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
 	})
 	public Result<?> del(@RequestParam String ids) {
-		return Result.condition(wccUserService.removeByIds(CollectionUtil.stringToCollection(ids)));
+		return Result.condition(iWccUserService.removeByIds(CollectionUtil.stringToCollection(ids)));
 	}
 	
 	//-------------------------------------------------------------------------

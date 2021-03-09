@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 回答详情表实体类
@@ -63,7 +63,7 @@ public class JpaWccResponseDetails extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "回答时间")
 	@Column(name = "RESPONSE_TIME")
-	private Date responseTime;
+	private LocalDateTime responseTime;
 	/**
 	 * 回答内容
 	 */

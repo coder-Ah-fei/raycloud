@@ -16,45 +16,37 @@
  */
 package hqsc.ray.wcc.controller;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.jpa.dto.PageMap;
-import hqsc.ray.wcc.jpa.dto.ResultMap;
-import hqsc.ray.wcc.jpa.dto.WccMcnInfoDto;
-import hqsc.ray.wcc.jpa.form.WccMcnInfoForm;
-import hqsc.ray.wcc.jpa.service.WccMcnInfoService;
+import hqsc.ray.wcc.jpa.service.SysAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * mcn机构控制器
+ * banner图
  *
  * @author yang
  * @date 2021年3月1日
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-mcn-info")
-@Api(value = "mcn机构控制器", tags = "mcn机构控制器")
-public class WccMcnInfoController extends BaseController {
+@RequestMapping("/sys-area/")
+@Api(value = "banner图", tags = "banner图")
+public class SysAreaController extends BaseController {
+	private final SysAreaService sysAreaService;
 	
-	@Autowired
-	private WccMcnInfoService wccMcnInfoService;
-	
-	@Log(value = "获取mcn机构列表", exception = "获取mcn机构列表请求异常")
-	@PostMapping(value = "/listMcnInfos", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
-	public ResultMap<PageMap<WccMcnInfoDto>> listMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
-		ResultMap resultMap = wccMcnInfoService.listWccMcnInfos(wccMcnInfoForm);
-		return resultMap;
+	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
+	@PostMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
+	public Result<?> list() {
+		return sysAreaService.list();
 	}
-	
 	
 }
 

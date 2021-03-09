@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  * @author Administrator
  */
-public interface WccMcnInfoRepository extends JpaRepository<JpaWccMcnInfo, Integer>, JpaSpecificationExecutor {
+public interface WccMcnInfoRepository extends JpaRepository<JpaWccMcnInfo, Long>, JpaSpecificationExecutor {
 
 }

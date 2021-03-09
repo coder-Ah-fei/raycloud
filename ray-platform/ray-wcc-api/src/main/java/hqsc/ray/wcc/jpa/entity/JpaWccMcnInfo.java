@@ -11,6 +11,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author yang
@@ -44,7 +45,7 @@ public class JpaWccMcnInfo extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "标题")
 	@Column(name = "O_NAME")
-	private String oName;
+	private String oname;
 	/**
 	 * 机构坐标
 	 */
@@ -72,4 +73,7 @@ public class JpaWccMcnInfo extends BasicEntity {
 	@Column(name = "CELEBRITYCOUNT")
 	private Integer celebrityCount;
 	
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccMcnInfo")
+	private List<JpaWccCelebrityInfo> celebrityInfoList;
 }

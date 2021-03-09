@@ -98,4 +98,11 @@ public class JpaWccReleaseInfo extends BasicEntity {
 	@JsonIgnore
 	private JpaWccCircleInfo belongCircle;
 	
+	
+	/**
+	 * 1 删除  0正常
+	 */
+	@ApiModelProperty(value = "0 待审批  1审批通过 2审批未通过（临时处理）")
+	@Column(name = "APPROVE_STATUS", columnDefinition = "char(1) default '' comment '0 待审批  1审批通过 2审批未通过（临时处理）'")
+	private Integer approveStatus;
 }

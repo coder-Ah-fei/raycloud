@@ -1,5 +1,7 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.api.Result;
+import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
@@ -13,13 +15,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 /**
  * 描述：
@@ -54,12 +56,15 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 			return criteriaQuery.getRestriction();
 		};
 		List<JpaWccReleaseInfo> jpaWccReleaseInfoList;
+		Long count = 0L;
 		if (wccReleaseInfoForm.getPageNow() == -1) {
 			jpaWccReleaseInfoList = wccReleaseInfoRepository.findAll(specification);
+			count = Long.valueOf(jpaWccReleaseInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccReleaseInfoForm.getPageNow() - 1, wccReleaseInfoForm.getPageSize());
 			Page<JpaWccReleaseInfo> wccReleaseInfoPage = wccReleaseInfoRepository.findAll(specification, pageable);
 			jpaWccReleaseInfoList = wccReleaseInfoPage.getContent();
+			count = wccReleaseInfoPage.getTotalElements();
 		}
 		List<WccReleaseInfoDto> list = new ArrayList<>();
 		WccReleaseInfoDto wccReleaseInfoDto;
@@ -70,11 +75,27 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 			
 			list.add(wccReleaseInfoDto);
 		}
-		long count = wccReleaseInfoRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		
+		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+	}
+	
+	/**
+	 * 发布内容审批
+	 *
+	 * @param wccReleaseInfoForm
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result<?> approve(WccReleaseInfoForm wccReleaseInfoForm) {
+		Optional<JpaWccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccReleaseInfoForm.getId());
+		if (!releaseInfoOptional.isPresent()) {
+			return Result.fail("数据不存在");
+		}
+		JpaWccReleaseInfo jpaWccReleaseInfo = releaseInfoOptional.get();
+		jpaWccReleaseInfo.setApproveStatus(wccReleaseInfoForm.getApproveStatus());
+		wccReleaseInfoRepository.save(jpaWccReleaseInfo);
+		return Result.success("保存成功");
 	}
 	
 }

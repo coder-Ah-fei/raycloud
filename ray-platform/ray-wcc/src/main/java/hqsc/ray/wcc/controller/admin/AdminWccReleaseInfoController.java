@@ -14,7 +14,7 @@
  * limitations under the License.
  * Author: pangu(7333791@qq.com)
  */
-package hqsc.ray.wcc.controller;
+package hqsc.ray.wcc.controller.admin;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hqsc.ray.core.auth.annotation.PreAuth;
@@ -35,12 +35,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -52,33 +50,29 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-release-info")
+@RequestMapping("/wcc-release-info/manage")
 @Api(value = "发布信息表", tags = "发布信息表接口")
-public class WccReleaseInfoController extends BaseController {
+public class AdminWccReleaseInfoController extends BaseController {
 	
 	private final IWccReleaseInfoService iWccReleaseInfoService;
 	private final WccReleaseInfoService wccReleaseInfoService;
 	
-	/**
-	 * 分页列表
-	 *
-	 * @param page   分页信息
-	 * @param search 　搜索关键词
-	 * @return Result
-	 */
 	@PreAuth
-	@Log(value = "发布信息表列表", exception = "发布信息表列表请求异常")
+	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
 	@GetMapping("/page")
-	@ApiOperation(value = "发布信息表列表", notes = "分页查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-	})
-	public Result<?> page(Page page, Map search) {
-		return Result.data(iWccReleaseInfoService.listPage(page, search));
+	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
+	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return resultMap;
+	}
+	
+	@PreAuth
+	@Log(value = "发布内容审批", exception = "发布内容审批请求异常")
+	@PostMapping("/approve")
+	@ApiOperation(value = "发布内容审批", notes = "发布内容审批")
+	public Result<?> approve(@RequestBody hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+		Result result = wccReleaseInfoService.approve(wccReleaseInfoForm);
+		return result;
 	}
 	
 	/**
@@ -87,8 +81,9 @@ public class WccReleaseInfoController extends BaseController {
 	 * @param id Id
 	 * @return Result
 	 */
+	@PreAuth
 	@Log(value = "发布信息表信息", exception = "发布信息表信息请求异常")
-	@PostMapping("/get")
+	@GetMapping("/get")
 	@ApiOperation(value = "发布信息表信息", notes = "根据ID查询")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
@@ -103,6 +98,7 @@ public class WccReleaseInfoController extends BaseController {
 	 * @param wccReleaseInfo WccReleaseInfo 对象
 	 * @return Result
 	 */
+	@PreAuth
 	@Log(value = "发布信息表设置", exception = "发布信息表设置请求异常")
 	@PostMapping("/set")
 	@ApiOperation(value = "发布信息表设置", notes = "发布信息表设置,支持新增或修改")
@@ -158,15 +154,6 @@ public class WccReleaseInfoController extends BaseController {
 	
 	//-----------------------------------------------------------------------------------
 	
-	@PreAuth
-	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
-	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
-	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
-		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
-		return resultMap;
-	}
+	
 }
 

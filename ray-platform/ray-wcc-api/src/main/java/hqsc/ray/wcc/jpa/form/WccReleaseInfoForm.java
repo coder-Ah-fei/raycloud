@@ -16,6 +16,9 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class WccReleaseInfoForm extends BaseForm {
+	
+	private Long id;
+	
 	/**
 	 * 所属用户
 	 */
@@ -28,4 +31,6 @@ public class WccReleaseInfoForm extends BaseForm {
 	@ApiModelProperty(value = "发布类型")
 	private Long type;
 	
+	@ApiModelProperty(value = "0 待审批  1审批通过 2审批未通过（临时处理）")
+	private Integer approveStatus;
 }
