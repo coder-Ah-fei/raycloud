@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.WccUserConcernDto;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
@@ -72,10 +73,9 @@ public class WccUserConcernServiceImpl implements WccUserConcernService {
 			wccUserConcernDto.setId(jpaWccUserConcern.getId());
 			wccUserConcernDto.setJpaWccUserId(jpaWccUserConcern.getJpaWccUser().getId());
 			wccUserConcernDto.setBelongUserId(jpaWccUserConcern.getBelongUser().getId());
-			wccUserConcernDto.setNickname(jpaWccUserConcern.getBelongUser().getNickname());
+			wccUserConcernDto.setNickname(jpaWccUserConcern.getBelongUser().getNickname() == null ? "" : StringUtil.toUnicode(jpaWccUserConcern.getBelongUser().getNickname()));
 			wccUserConcernDto.setWechatHeadPortraitAddress(jpaWccUserConcern.getBelongUser().getWechatHeadPortraitAddress());
 			wccUserConcernDto.setAccessCount(jpaWccUserConcern.getAccessCount());
-			
 			list.add(wccUserConcernDto);
 		}
 		return PageMap.of(count, list);

@@ -1,7 +1,8 @@
 server:
   port: 20004
 web:
-  upload-path: D:/hongrenquan/
+  #  upload-path: /home/hongrenquan
+  upload-path: D:/hongrenquan
 file:
   maxsize: 10240
 spring:
@@ -21,4 +22,4 @@ spring:
         # 默认最大请求大小为10M，总上传的数据大小
         max-request-size: 150MB
 diy:
-  domain: http://192.168.101.18:9999
+  domain: https://hrq.rcircleplus.cn

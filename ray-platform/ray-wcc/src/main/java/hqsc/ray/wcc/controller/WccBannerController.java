@@ -23,10 +23,10 @@ import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccBannerDto;
 import hqsc.ray.wcc.jpa.form.WccBannerForm;
 import hqsc.ray.wcc.jpa.service.WccBannerService;
+import hqsc.ray.wcc.utils.WechatMiniUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,13 +44,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "banner图", tags = "banner图")
 public class WccBannerController extends BaseController {
 	
-	@Autowired
-	private WccBannerService wccBannerService;
+	private final WccBannerService wccBannerService;
+	private final WechatMiniUtil wechatMiniUtil;
 	
 	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
 	@PostMapping(value = "/listWccBanners", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
 	public ResultMap<PageMap<WccBannerDto>> listWccBanners(WccBannerForm wccBannerForm) {
+		String accessToken = wechatMiniUtil.getAccessToken();
 		ResultMap resultMap = wccBannerService.listWccBanners(wccBannerForm);
 		return resultMap;
 	}

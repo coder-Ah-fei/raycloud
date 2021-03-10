@@ -7,6 +7,7 @@ import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.WccCircleInfo;
@@ -83,6 +84,11 @@ public class IndexPageController extends BaseController {
 			e.printStackTrace();
 		}
 		List<IndexReferralsVO> referrals = wccReleaseInfoService.findIndexReferrals(userInfo.getUserId(), page.getCurrent(), page.getSize());
+		
+		for (IndexReferralsVO referral : referrals) {
+			referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
+		}
+		
 		return Result.data(referrals);
 	}
 	
@@ -232,7 +238,9 @@ public class IndexPageController extends BaseController {
 		
 		wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		List<IndexReferralsVO> list = wccReleaseInfoService.listMyConcernReleaseInfos(wccReleaseInfoForm, wccReleaseInfoForm.getCurrent(), wccReleaseInfoForm.getSize());
-		
+		for (IndexReferralsVO indexReferralsVO : list) {
+			indexReferralsVO.setNickname(indexReferralsVO.getNickname() == null ? "" : StringUtil.toUnicode(indexReferralsVO.getNickname()));
+		}
 		
 		return Result.data(list);
 	}

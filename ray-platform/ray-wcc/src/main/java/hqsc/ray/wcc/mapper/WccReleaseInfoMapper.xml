@@ -354,7 +354,7 @@
     </select>
 
 
-    <select id="listMyConcernReleaseInfos" resultMap="myReleaseInfo">
+    <select id="listMyConcernReleaseInfos" resultMap="indexReferrals">
         SELECT wu.NICKNAME,
                wu.WECHAT_HEAD_PORTRAIT_ADDRESS,
                wri.RELEASE_INFO_ID,

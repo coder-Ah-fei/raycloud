@@ -23,7 +23,7 @@ spring:
 
 wechat:
   appid: wx3d1fc01c88aeb1b3
-  appsecret: db7f89e3ee1d8d48f0e93c24f88f62f5
+  appsecret: e5381ab9b059e91c94fc5ecf2f651d63
 
 dubbo:
   scan:

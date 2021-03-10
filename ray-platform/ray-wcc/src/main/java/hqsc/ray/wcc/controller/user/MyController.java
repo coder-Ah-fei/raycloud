@@ -8,6 +8,7 @@ import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.*;
@@ -249,7 +250,6 @@ public class MyController extends BaseController {
 	/*
 	 * 话题详情
 	 * */
-	@UserAuth
 	@Log(value = "话题详情", exception = "话题详情异常")
 	@PostMapping(value = {"/getTopicDetails"})
 	@ApiOperation(value = "话题详情", notes = "话题详情")
@@ -301,7 +301,7 @@ public class MyController extends BaseController {
 			return;
 		}
 		for (WccResponseDetailsVO detailsVO : wccResponseDetailsVO.getChildList()) {
-			detailsVO.setRepliedUserNickname(wccResponseDetailsVO.getUserNickname());
+			detailsVO.setRepliedUserNickname(wccResponseDetailsVO.getUserNickname() == null ? "" : StringUtil.toUnicode(wccResponseDetailsVO.getUserNickname()));
 			if (detailsVO.getChildList() != null && detailsVO.getChildList().size() > 0) {
 				arrangeWccResponseDetailsVOList(childList2, detailsVO);
 			}

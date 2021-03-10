@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccUser;
@@ -69,6 +70,7 @@ public class WccUserServiceImpl implements WccUserService {
 		for (JpaWccUser jpaWccUser : jpaWccUserList) {
 			wccUserDto = new WccUserDto();
 			BeanUtils.copyProperties(jpaWccUser, wccUserDto);
+			wccUserDto.setNickname(StringUtil.toUnicode(jpaWccUser.getNickname()));
 			wccUserDto.setJpaSysAttachmentId(jpaWccUser.getJpaSysAttachment() == null ? 0 : jpaWccUser.getJpaSysAttachment().getId());
 			wccUserDto.setConcernCount(0L);
 			if (wccUserForm.getId() != null) {
