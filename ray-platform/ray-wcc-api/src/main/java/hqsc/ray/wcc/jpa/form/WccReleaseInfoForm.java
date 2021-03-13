@@ -25,6 +25,9 @@ public class WccReleaseInfoForm extends BaseForm {
 	@ApiModelProperty(value = "所属用户")
 	private Long belongUserId;
 	
+	@ApiModelProperty(value = "所属圈子")
+	private Long belongCircleId;
+	
 	/**
 	 * 发布类型(0提问1话题2文章3视频)
 	 */

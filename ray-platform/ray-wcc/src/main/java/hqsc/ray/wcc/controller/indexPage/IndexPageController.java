@@ -3,6 +3,7 @@ package hqsc.ray.wcc.controller.indexPage;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
@@ -364,6 +365,7 @@ public class IndexPageController extends BaseController {
 		return Result.condition(true);
 	}
 	
+	@PreAuth
 	@UserAuth
 	@Log(value = "加入圈子", exception = "加入圈子异常")
 	@PostMapping(value = {"/joinCircle"})

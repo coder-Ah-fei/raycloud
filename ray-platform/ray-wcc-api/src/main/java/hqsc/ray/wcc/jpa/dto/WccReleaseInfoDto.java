@@ -44,6 +44,7 @@ public class WccReleaseInfoDto {
 	@ApiModelProperty(value = "所属用户")
 	private Long belongUserId;
 	private String belongUserNickname;
+	private String wechatHeadPortraitAddress;
 	/**
 	 * 所属圈子
 	 */
@@ -57,4 +58,6 @@ public class WccReleaseInfoDto {
 	 */
 	@ApiModelProperty(value = "0 待审批  1审批通过 2审批未通过（临时处理）")
 	private Integer approveStatus;
+	
+	private String creationDateTimeStr;
 }

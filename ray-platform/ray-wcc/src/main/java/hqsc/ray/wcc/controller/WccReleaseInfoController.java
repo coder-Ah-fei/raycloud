@@ -27,6 +27,7 @@ import hqsc.ray.core.web.util.CollectionUtil;
 import hqsc.ray.wcc.entity.WccReleaseInfo;
 import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
 import hqsc.ray.wcc.service.IWccReleaseInfoService;
 import hqsc.ray.wcc.vo.MyReleaseInfoVO;
@@ -167,6 +168,15 @@ public class WccReleaseInfoController extends BaseController {
 		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
 		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
 		return resultMap;
+	}
+	
+	
+	@Log(value = "获取圈子中的发布信息", exception = "获取圈子中的发布信息请求异常")
+	@PostMapping("/listByCircleId")
+	@ApiOperation(value = "获取圈子中的发布信息", notes = "分页查询")
+	public Result<ResultMap<WccReleaseInfoDto>> listByCircleId(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
 }
 

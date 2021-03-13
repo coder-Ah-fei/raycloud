@@ -1,4 +1,4 @@
-package hqsc.ray.wcc.utils;
+package hqsc.ray.component.utils;
 
 import cn.hutool.json.JSONUtil;
 import hqsc.ray.core.common.util.StringUtil;

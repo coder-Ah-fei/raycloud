@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,16 +44,23 @@ public class WccUserServiceImpl implements WccUserService {
 	@Override
 	public ResultMap listWccUsers(WccUserForm wccUserForm) {
 		Specification<JpaWccUser> specification = (root, criteriaQuery, criteriaBuilder) -> {
-//			List<Predicate> pr = new ArrayList< >();
+			List<Predicate> pr = new ArrayList<>();
 //				if (!StringUtils.empty(articleForm.getSectionName())) {
 //					Join<Object, Object> section = root.join("section");
 //					pr.add(builder.equal(section.get("sectionName"), articleForm.getSectionName()));
 //				}
-
-//			if (!StringUtils.empty(litigationEnvelopeBrandForm.getBrandName())) {
-//				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
-//			}
-//			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
+			
+			if (wccUserForm.getTalentFlag() != null) {
+				pr.add(criteriaBuilder.equal(root.get("talentFlag"), wccUserForm.getTalentFlag()));
+			}
+			if (wccUserForm.getCelebrityFlag() != null) {
+				pr.add(criteriaBuilder.equal(root.get("celebrityFlag"), wccUserForm.getCelebrityFlag()));
+			}
+			if (wccUserForm.getStarFlag() != null) {
+				pr.add(criteriaBuilder.equal(root.get("starFlag"), wccUserForm.getStarFlag()));
+			}
+			
+			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();

@@ -89,6 +89,7 @@
           AND wcc_user.IS_DELETE = 0
           AND wcc_release_info.STATUS = 1
           AND wcc_release_info.IS_DELETE = 0
+          AND wcc_release_info.APPROVE_STATUS = 1
         ORDER BY wcc_release_info.CREATION_DATE DESC
             LIMIT #{current}, #{size}
     </select>
@@ -133,6 +134,7 @@
         FROM (wcc_release_info AS wri, ray_sys_attachment AS rsa)
         WHERE wri.STATUS = 1
           AND wri.IS_DELETE = 0
+          AND wri.APPROVE_STATUS = 1
           AND rsa.is_recycle = 0
           AND wri.ATTACHMENT_ID = rsa.id
           AND wri.TYPE = 3
@@ -395,6 +397,7 @@
           AND wu.USER_ID = wuc.BELONG_ID
           AND wri.STATUS = 1
           AND wri.IS_DELETE = 0
+          AND wri.APPROVE_STATUS = 1
           AND wuc.STATUS = 1
           AND wuc.IS_DELETE = 0
           AND wu.STATUS = 1

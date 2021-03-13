@@ -9,6 +9,7 @@ import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.WccReleaseInfo;
 import hqsc.ray.wcc.service.IWccReleaseInfoService;
+import hqsc.ray.wcc.utils.WechatMiniUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,6 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @AllArgsConstructor
@@ -27,7 +32,8 @@ import java.time.LocalDateTime;
 @Api(value = "发布信息", tags = "发布信息接口")
 public class ReleaseController extends BaseController {
 	
-	private IWccReleaseInfoService wccReleaseInfoService;
+	private final IWccReleaseInfoService wccReleaseInfoService;
+	private final WechatMiniUtil wechatMiniUtil;
 	
 	/*
 	 * 发布提问
@@ -124,6 +130,19 @@ public class ReleaseController extends BaseController {
 	
 	
 	private Result<?> releaseInfo(String titel, String content, Long attachmentid, Long belongCircleId, Long type) {
+		String a = "<p>23423432<img src=\"http://192.168.101.18:9999/ray-component/attachment/attachment?id=293\"></p><p>23423432</p>";
+		boolean msgSecCheck = wechatMiniUtil.msgSecCheck(titel + content);
+		if (!msgSecCheck) {
+			return Result.fail("您发布的标题或内容中可能包含敏感信息");
+		}
+		// 从content中提取连接
+		List<String> imgStr = getImgStr(content);
+		for (String s : imgStr) {
+			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(s);
+			if (!imgSecCheck) {
+				return Result.fail("您发布的标题或内容中可能包含敏感信息");
+			}
+		}
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		Long userid = Long.parseLong(userInfo.getUserId());
 		WccReleaseInfo releaseInfo = new WccReleaseInfo();
@@ -131,6 +150,12 @@ public class ReleaseController extends BaseController {
 		releaseInfo.setContent(content);
 		releaseInfo.setAttachmentId(attachmentid);
 		releaseInfo.setType(type);
+		if (type == 3) {
+			releaseInfo.setApproveStatus(0);
+		} else {
+			releaseInfo.setApproveStatus(1);
+			
+		}
 		releaseInfo.setBelongUserId(userid);
 		releaseInfo.setBelongCircleId(belongCircleId);
 		releaseInfo.setCreationDate(LocalDateTime.now());
@@ -140,5 +165,22 @@ public class ReleaseController extends BaseController {
 			e.printStackTrace();
 			return Result.fail("发布信息异常！");
 		}
+	}
+	
+	
+	public static List<String> getImgStr(String htmlStr) {
+		Matcher m = Pattern.compile("src=\"http://.*?\"").matcher(htmlStr);
+		List<String> list = new ArrayList<>();
+		
+		while (m.find()) {
+			String match = m.group();
+			//Pattern.CASE_INSENSITIVE忽略'jpg'的大小写
+			Matcher k = Pattern.compile("\"http://.*?\"", Pattern.CASE_INSENSITIVE).matcher(match);
+			if (k.find()) {
+				String group = k.group();
+				list.add(group.substring(1, group.length() - 1));
+			}
+		}
+		return list;
 	}
 }

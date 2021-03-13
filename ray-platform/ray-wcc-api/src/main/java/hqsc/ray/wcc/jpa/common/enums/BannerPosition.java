@@ -11,6 +11,7 @@ public enum BannerPosition {
 	/**
 	 *
 	 */
+	ZHU_BO_ZHENG("主播证"),
 	XUE_JIAO_CHENG("学教程"),
 	JU_YOU_XUAN("聚优选");
 	

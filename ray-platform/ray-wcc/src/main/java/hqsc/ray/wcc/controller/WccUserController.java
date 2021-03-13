@@ -70,11 +70,9 @@ public class WccUserController extends BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		if (userInfo != null) {
 			wccUserForm.setId(Long.valueOf(userInfo.getUserId()));
 		}
-		
 		return Result.data(wccUserService.listWccUsers(wccUserForm));
 	}
 	

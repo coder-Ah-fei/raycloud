@@ -1,6 +1,8 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import cn.hutool.core.date.DateUtil;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
@@ -48,6 +50,12 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 				Join<Object, Object> belongUser = root.join("belongUser");
 				pr.add(criteriaBuilder.equal(belongUser.get("id"), wccReleaseInfoForm.getBelongUserId()));
 			}
+			if (wccReleaseInfoForm.getBelongCircleId() != null) {
+				Join<Object, Object> belongUser = root.join("belongUser");
+				Join<Object, Object> userCircle = belongUser.join("userCircleList");
+				Join<Object, Object> circleInfo = userCircle.join("jpaWccCircleInfo");
+				pr.add(criteriaBuilder.equal(circleInfo.get("id"), wccReleaseInfoForm.getBelongCircleId()));
+			}
 			if (wccReleaseInfoForm.getType() != null) {
 				pr.add(criteriaBuilder.equal(root.get("type").as(Long.class), wccReleaseInfoForm.getType()));
 			}
@@ -71,8 +79,13 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 		for (JpaWccReleaseInfo jpaWccReleaseInfo : jpaWccReleaseInfoList) {
 			wccReleaseInfoDto = new WccReleaseInfoDto();
 			BeanUtils.copyProperties(jpaWccReleaseInfo, wccReleaseInfoDto);
-			
-			
+			wccReleaseInfoDto.setCreationDateTimeStr(jpaWccReleaseInfo.getCreationDate() == null ? "" : DateUtil.formatDateTime(jpaWccReleaseInfo.getCreationDate()));
+			if (jpaWccReleaseInfo.getBelongUser() != null) {
+				wccReleaseInfoDto.setBelongUserId(jpaWccReleaseInfo.getBelongUser().getId())
+						.setBelongUserNickname(StringUtil.toUnicode(jpaWccReleaseInfo.getBelongUser().getNickname()))
+						.setWechatHeadPortraitAddress(jpaWccReleaseInfo.getBelongUser().getWechatHeadPortraitAddress())
+				;
+			}
 			list.add(wccReleaseInfoDto);
 		}
 		

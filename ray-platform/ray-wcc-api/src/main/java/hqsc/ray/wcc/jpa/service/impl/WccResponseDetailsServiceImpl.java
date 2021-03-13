@@ -14,8 +14,9 @@ import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
 import hqsc.ray.wcc.jpa.repository.WccUserMessageRepository;
 import hqsc.ray.wcc.jpa.repository.WccUserRepository;
 import hqsc.ray.wcc.jpa.service.WccResponseDetailsService;
+import hqsc.ray.wcc.utils.WechatMiniUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,16 +36,14 @@ import java.util.Optional;
  * @author Administrator
  */
 @Service
+@RequiredArgsConstructor
 public class WccResponseDetailsServiceImpl implements WccResponseDetailsService {
 	
-	@Autowired
-	private WccResponseDetailsRepository wccResponseDetailsRepository;
-	@Autowired
-	private WccUserRepository wccUserRepository;
-	@Autowired
-	private WccReleaseInfoRepository wccReleaseInfoRepository;
-	@Autowired
-	private WccUserMessageRepository wccUserMessageRepository;
+	private final WccResponseDetailsRepository wccResponseDetailsRepository;
+	private final WccUserRepository wccUserRepository;
+	private final WccReleaseInfoRepository wccReleaseInfoRepository;
+	private final WccUserMessageRepository wccUserMessageRepository;
+	private final WechatMiniUtil wechatMiniUtil;
 	
 	/**
 	 * 获取数据
@@ -108,6 +107,11 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public ResultMap saveWccResponseDetails(WccResponseDetailsForm wccResponseDetailsForm) {
+		
+		boolean check = wechatMiniUtil.msgSecCheck(wccResponseDetailsForm.getResponseBody());
+		if (!check) {
+			return ResultMap.of("您发表的内容中可能包含敏感信息");
+		}
 		
 		JpaWccResponseDetails comment = new JpaWccResponseDetails();
 		BeanUtils.copyProperties(wccResponseDetailsForm, comment);

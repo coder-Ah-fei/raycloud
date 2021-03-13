@@ -16,6 +16,7 @@ import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
 import hqsc.ray.core.web.util.OssUtil;
+import hqsc.ray.component.utils.WechatMiniUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -47,6 +48,8 @@ import java.util.*;
 public class SysAttachmentController extends BaseController {
 	@Autowired
 	AttachmentConfig attachmentConfig;
+	@Autowired
+	private WechatMiniUtil wechatMiniUtil;
 	
 	@Value("${diy.domain}")
 	private String domain;
@@ -144,6 +147,22 @@ public class SysAttachmentController extends BaseController {
 //    @PostMapping("/upload")
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public Result<?> upload(@RequestParam("file") MultipartFile file) {
+		int begin = file.getOriginalFilename().lastIndexOf(".");
+		int last = file.getOriginalFilename().length();
+		String a = file.getOriginalFilename().substring(begin, last);
+		a = a.toLowerCase();
+		if (a.endsWith(".jpg")
+				|| a.endsWith(".png")
+				|| a.endsWith(".jpeg")
+				|| a.endsWith(".gif")
+				|| a.endsWith(".tif")
+		) {
+			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(file);
+			if (!imgSecCheck) {
+				throw new RuntimeException("您的图片中可能包含敏感信息");
+			}
+		}
+		
 		Map<String, Object> result = new HashMap<>(4);
 		SysAttachment sysAttachment = uploadFile(file);
 		result.put("id", sysAttachment.getId());

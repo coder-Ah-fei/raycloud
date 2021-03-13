@@ -27,6 +27,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * 用户表实体类
@@ -135,11 +136,28 @@ public class JpaWccUser extends BasicEntity {
 	private Integer memberRank;
 	
 	/**
-	 * 会员等级
+	 * 红人标记
+	 * 网红/自媒体标记
 	 */
 	@ApiModelProperty(value = "红人标记")
-	@Column(name = "CELEBRITY_FLAG")
+	@Column(name = "CELEBRITY_FLAG", columnDefinition = "char default 0 comment '网红/自媒体标记 0不是  1是'")
 	private Integer celebrityFlag;
+	
+	/**
+	 * 达人标记
+	 */
+	@ApiModelProperty(value = "达人标记")
+	@Column(name = "TALENT_FLAG", columnDefinition = "char default 0 comment '达人标记 0不是  1是'")
+	private Integer talentFlag;
+	
+	/**
+	 * 明星/名人标记
+	 */
+	@ApiModelProperty(value = "明星/名人标记")
+	@Column(name = "STAR_FLAG", columnDefinition = "char default 0 comment '明星/名人标记 0不是  1是'")
+	private Integer starFlag;
+	
+	
 	/**
 	 * 性别
 	 */
@@ -172,4 +190,9 @@ public class JpaWccUser extends BasicEntity {
 	private Integer status;
 	
 	
+	/**
+	 * 用户加入的圈子
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccUser")
+	private List<JpaWccUserCircle> userCircleList;
 }
