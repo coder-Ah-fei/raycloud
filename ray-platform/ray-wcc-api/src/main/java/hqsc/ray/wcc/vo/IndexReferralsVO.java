@@ -52,6 +52,7 @@ public class IndexReferralsVO implements Serializable {
 	
 	@ApiModelProperty(value = "附件id")
 	private Long attachmentId;
+	private String attachmentPath;
 	
 	@ApiModelProperty(value = "创建时间")
 	private LocalDateTime creationDate;
@@ -64,4 +65,11 @@ public class IndexReferralsVO implements Serializable {
 	
 	@ApiModelProperty(value = "当前登录用户是否关注，大于等于1为关注")
 	private Integer concernCount;
+	
+	
+	@ApiModelProperty(value = "视频文件的截图路径")
+	private String videoScreenshotPath;
+	@ApiModelProperty(value = "视频文件的hls路径")
+	private String videoHlsPath;
+	
 }

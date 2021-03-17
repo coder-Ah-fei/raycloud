@@ -12,34 +12,42 @@ import javax.servlet.MultipartConfigElement;
 
 /**
  * Nacos路由工具类配置
+ *
  * @author pangu
  */
 @Component
 @Configuration
 public class AttachmentConfig {
-
-
-    @Value("${file.maxsize}")
-    private String MAX_SIZE;
-
-    @Value("${web.upload-path}")
-    private String UPLOAD_PATH;
-
-    public String getMaxSize() {
-        return MAX_SIZE;
-    }
-
-    public String getUploadPath() {
-        return UPLOAD_PATH;
-    }
-
-    @Bean
-    public MultipartConfigElement multipartConfigElement() {
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        //单个文件最大
-        factory.setMaxFileSize(DataSize.of(10, DataUnit.MEGABYTES)); //KB,MB
-        /// 设置总上传数据总大小
-        factory.setMaxRequestSize(DataSize.of(10, DataUnit.MEGABYTES));
-        return factory.createMultipartConfig();
-    }
+	
+	
+	@Value("${file.maxsize}")
+	private String MAX_SIZE;
+	
+	@Value("${web.upload-path}")
+	private String UPLOAD_PATH;
+	
+	@Value("${web.ffmpeg-path}")
+	private String ffmpegPath;
+	
+	public String getFfmpegPath() {
+		return ffmpegPath;
+	}
+	
+	public String getMaxSize() {
+		return MAX_SIZE;
+	}
+	
+	public String getUploadPath() {
+		return UPLOAD_PATH;
+	}
+	
+	@Bean
+	public MultipartConfigElement multipartConfigElement() {
+		MultipartConfigFactory factory = new MultipartConfigFactory();
+		//单个文件最大
+		factory.setMaxFileSize(DataSize.of(10, DataUnit.MEGABYTES)); //KB,MB
+		/// 设置总上传数据总大小
+		factory.setMaxRequestSize(DataSize.of(10, DataUnit.MEGABYTES));
+		return factory.createMultipartConfig();
+	}
 }

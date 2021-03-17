@@ -87,6 +87,7 @@ public class IndexPageController extends BaseController {
 		List<IndexReferralsVO> referrals = wccReleaseInfoService.findIndexReferrals(userInfo.getUserId(), page.getCurrent(), page.getSize());
 		
 		for (IndexReferralsVO referral : referrals) {
+			referral.setAttachmentPath(StringUtil.isBlank(referral.getAttachmentPath()) ? "" : referral.getAttachmentPath().replace("static", ""));
 			referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
 		}
 		
@@ -108,6 +109,9 @@ public class IndexPageController extends BaseController {
 			return Result.fail("非法参数！");
 		}
 		List<IndexVideoVO> records = wccReleaseInfoService.findIndexVideo(page.getCurrent(), page.getSize());
+		for (IndexVideoVO record : records) {
+			record.setUrl(StringUtil.isBlank(record.getUrl()) ? "" : record.getUrl().replace("static", ""));
+		}
 		return Result.data(records);
 	}
 	
@@ -240,6 +244,7 @@ public class IndexPageController extends BaseController {
 		wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		List<IndexReferralsVO> list = wccReleaseInfoService.listMyConcernReleaseInfos(wccReleaseInfoForm, wccReleaseInfoForm.getCurrent(), wccReleaseInfoForm.getSize());
 		for (IndexReferralsVO indexReferralsVO : list) {
+			indexReferralsVO.setAttachmentPath(StringUtil.isBlank(indexReferralsVO.getAttachmentPath()) ? "" : indexReferralsVO.getAttachmentPath().replace("static", ""));
 			indexReferralsVO.setNickname(indexReferralsVO.getNickname() == null ? "" : StringUtil.toUnicode(indexReferralsVO.getNickname()));
 		}
 		

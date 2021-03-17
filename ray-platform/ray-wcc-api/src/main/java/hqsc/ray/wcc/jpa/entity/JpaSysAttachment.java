@@ -80,6 +80,18 @@ public class JpaSysAttachment extends BasicSysEntity {
 	 */
 	@ApiModelProperty(value = "文件路径")
 	private String path;
+	
+	/**
+	 * 视频文件的截图路径
+	 */
+	@ApiModelProperty(value = "视频文件的截图路径")
+	@Column(name = "video_screenshot_path")
+	private String videoScreenshotPath;
+	
+	@ApiModelProperty(value = "视频文件的hls路径")
+	@Column(name = "video_hls_path")
+	private String videoHlsPath;
+	
 	/**
 	 * 上传文件名
 	 */
@@ -143,5 +155,9 @@ public class JpaSysAttachment extends BasicSysEntity {
 	@Column(name = "is_recycle")
 	private Boolean isRecycle;
 	
-	
+	/**
+	 * 是否需要权限访问 0.否|1.是
+	 */
+	@ApiModelProperty(value = "是否需要权限访问 0.否|1.是")
+	private Boolean authority;
 }

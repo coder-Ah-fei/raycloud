@@ -28,19 +28,19 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * 用户圈子关联表实体类
+ * 用户和资源（附件）的关系表
  *
  * @author pangu
  * @since 2020-12-30
  */
-@ApiModel(value = "WccUserCircle对象", description = "用户圈子关联表")
+@ApiModel(value = "UserAttachment对象", description = "用户和资源（附件）的关系表")
 @Getter
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "wcc_user_circle")
-@org.hibernate.annotations.Table(appliesTo = "wcc_user_circle", comment = "用户圈子关联表")
-public class JpaWccUserCircle extends BasicEntity {
+@Table(name = "wcc_user_attachment")
+@org.hibernate.annotations.Table(appliesTo = "wcc_user_attachment", comment = "用户和资源（附件）的关系表")
+public class UserAttachment extends BasicEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -49,7 +49,7 @@ public class JpaWccUserCircle extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "主键id")
 	@Id
-	@Column(name = "USER_CIRCLE_ID")
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
 	@GenericGenerator(name = "myid", strategy = "hqsc.ray.wcc.jpa.configs.MyInsertGenerator")
 	private Long id;
@@ -63,12 +63,19 @@ public class JpaWccUserCircle extends BasicEntity {
 	@JsonIgnore
 	private JpaWccUser jpaWccUser;
 	/**
-	 * 圈子id
+	 * 资源id
 	 */
-	@ApiModelProperty(value = "圈子id")
+	@ApiModelProperty(value = "资源id")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CIRCLE_ID", referencedColumnName = "CIRCLE_ID")
+	@JoinColumn(name = "ATTACHMENT_ID", referencedColumnName = "id")
 	@JsonIgnore
-	private JpaWccCircleInfo jpaWccCircleInfo;
+	private JpaSysAttachment sysAttachment;
 	
+	
+	/**
+	 * 是否有权限访问 0.否|1.是
+	 */
+	@ApiModelProperty(value = "是否有权限访问 0.否|1.是")
+	@Column(name = "CAN_ACCESS")
+	private Boolean canAccess;
 }

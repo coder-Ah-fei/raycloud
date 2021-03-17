@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hqsc.ray.component.config.AttachmentConfig;
 import hqsc.ray.component.entity.SysAttachment;
 import hqsc.ray.component.service.ISysAttachmentService;
+import hqsc.ray.component.utils.VideoUtil;
 import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
@@ -147,21 +148,6 @@ public class SysAttachmentController extends BaseController {
 //    @PostMapping("/upload")
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public Result<?> upload(@RequestParam("file") MultipartFile file) {
-		int begin = file.getOriginalFilename().lastIndexOf(".");
-		int last = file.getOriginalFilename().length();
-		String a = file.getOriginalFilename().substring(begin, last);
-		a = a.toLowerCase();
-		if (a.endsWith(".jpg")
-				|| a.endsWith(".png")
-				|| a.endsWith(".jpeg")
-				|| a.endsWith(".gif")
-				|| a.endsWith(".tif")
-		) {
-			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(file);
-			if (!imgSecCheck) {
-				throw new RuntimeException("您的图片中可能包含敏感信息");
-			}
-		}
 		
 		Map<String, Object> result = new HashMap<>(4);
 		SysAttachment sysAttachment = uploadFile(file);
@@ -172,6 +158,23 @@ public class SysAttachmentController extends BaseController {
 	
 	
 	private SysAttachment uploadFile(MultipartFile file) {
+		int begin = file.getOriginalFilename().lastIndexOf(".");
+		int last = file.getOriginalFilename().length();
+		String fileType = file.getOriginalFilename().substring(begin, last);
+		fileType = fileType.toLowerCase();
+		if (fileType.endsWith(".jpg")
+				|| fileType.endsWith(".png")
+				|| fileType.endsWith(".jpeg")
+				|| fileType.endsWith(".gif")
+				|| fileType.endsWith(".tif")
+		) {
+			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(file);
+			if (!imgSecCheck) {
+				throw new RuntimeException("您的图片中可能包含敏感信息");
+			}
+		}
+		
+		
 		String fileName = UUID.randomUUID().toString().replace("-", "")
 				+ StringPool.DOT + FilenameUtils.getExtension(file.getOriginalFilename());
 		LoginUser userInfo = SecurityUtil.getUsername(req);
@@ -213,7 +216,29 @@ public class SysAttachmentController extends BaseController {
 			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
 		}
+		String videoScreenshotPath = "";
+		String videoHlsPath = "";
+		if (".mp4".equals(fileType)) {
+			String hlsPath = "static/hls/";
+			String videoFilePath = (fileName.replace(".mp4", "")) + "/";
+			String allVideoFilePath = uploadPath + hlsPath + videoFilePath;
+			File videoScreenshotFile = new File(allVideoFilePath);
+			if (!videoScreenshotFile.exists()) {
+				videoScreenshotFile.mkdirs();
+			}
+			String videoScreenshotFileName = UUID.randomUUID().toString().replace("-", "")
+					+ StringPool.DOT + "jpg";
+			videoScreenshotPath = videoFilePath + videoScreenshotFileName;
+			// 如果文件类型为mp4，则从视频中截图图片为视频封面
+			VideoUtil.getVideoPic(savePath + fileName, allVideoFilePath + videoScreenshotFileName);
+			// 然后启用线程将视频进行切片处理
+			VideoUtil.section(savePath + fileName, attachmentConfig.getFfmpegPath(), allVideoFilePath);
+			videoHlsPath = videoFilePath + "playList.m3u8";
+		}
 		SysAttachment att = new SysAttachment();
+		att.setVideoScreenshotPath(videoScreenshotPath);
+		att.setVideoHlsPath(videoHlsPath);
+		att.setAuthority(false);
 		att.setName(fileName);
 		att.setUrl(saveUrl + fileName);
 		att.setPath(savePath + fileName);

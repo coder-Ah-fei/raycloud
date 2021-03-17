@@ -2,7 +2,8 @@ server:
   port: 20004
 web:
   #  upload-path: /home/hongrenquan
-  upload-path: D:/hongrenquan
+  upload-path: D:/hongrenquan/
+  ffmpeg-path: D:/work/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
 file:
   maxsize: 10240
 spring:
@@ -27,5 +28,5 @@ wechat:
   appsecret: e5381ab9b059e91c94fc5ecf2f651d63
 
 diy:
-  #  domain: https://hrq.rcircleplus.cn
-  domain: http://192.168.101.18:9999
+  domain: https://hrq.rcircleplus.cn
+#  domain: http://192.168.101.18:9999

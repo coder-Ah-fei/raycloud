@@ -39,6 +39,7 @@
         <result column="TITEL" property="titel"/>
         <result column="CONTENT" property="content"/>
         <result column="ATTACHMENT_ID" property="attachmentId"/>
+        <result column="attachment_url" property="attachmentPath"/>
         <result column="CREATION_DATE" property="creationDate"/>
         <result column="praise_count" property="praiseCount"/>
         <result column="comment_count" property="commentCount"/>
@@ -58,6 +59,9 @@
                wcc_release_info.TITEL,
                wcc_release_info.CONTENT,
                wcc_release_info.ATTACHMENT_ID,
+               ray_sys_attachment.url                               AS attachment_url,
+               ray_sys_attachment.video_screenshot_path             AS videoScreenshotPath,
+               ray_sys_attachment.video_hls_path                    AS videoHlsPath,
                wcc_release_info.CREATION_DATE,
                (
                    SELECT count(1)
@@ -82,9 +86,11 @@
                   AND USER_ID = #{userId}
                   AND BELONG_ID = wcc_user.USER_ID)                 AS concern_count
         FROM wcc_user,
-             wcc_release_info
+             wcc_release_info,
+             ray_sys_attachment
         WHERE 1 = 1
           AND wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
+          AND wcc_release_info.ATTACHMENT_ID = ray_sys_attachment.id
           AND wcc_user.STATUS = 1
           AND wcc_user.IS_DELETE = 0
           AND wcc_release_info.STATUS = 1
@@ -363,6 +369,7 @@
                wri.TITEL,
                wri.CONTENT,
                wri.ATTACHMENT_ID,
+               rsa.url                                   AS attachment_url,
                wri.TYPE,
                wri.BELONG_USER_ID,
                wri.BELONG_CIRCLE_ID,
@@ -391,10 +398,12 @@
                   AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
         FROM wcc_release_info wri,
              wcc_user_concern wuc,
-             wcc_user wu
+             wcc_user wu,
+             ray_sys_attachment rsa
         WHERE 1 = 1
           AND wri.BELONG_USER_ID = wuc.BELONG_ID
           AND wu.USER_ID = wuc.BELONG_ID
+          AND rsa.id = wri.ATTACHMENT_ID
           AND wri.STATUS = 1
           AND wri.IS_DELETE = 0
           AND wri.APPROVE_STATUS = 1
