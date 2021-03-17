@@ -85,12 +85,10 @@
                   AND IS_DELETE = 0
                   AND USER_ID = #{userId}
                   AND BELONG_ID = wcc_user.USER_ID)                 AS concern_count
-        FROM wcc_user,
-             wcc_release_info,
-             ray_sys_attachment
+        FROM wcc_release_info
+                 LEFT JOIN wcc_user ON wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
+                 LEFT JOIN ray_sys_attachment ON wcc_release_info.ATTACHMENT_ID = ray_sys_attachment.id
         WHERE 1 = 1
-          AND wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
-          AND wcc_release_info.ATTACHMENT_ID = ray_sys_attachment.id
           AND wcc_user.STATUS = 1
           AND wcc_user.IS_DELETE = 0
           AND wcc_release_info.STATUS = 1
@@ -106,6 +104,8 @@
         <result column="TITEL" property="titel"/>
         <result column="CONTENT" property="content"/>
         <result column="url" property="url"/>
+        <result column="videoScreenshotPath" property="videoScreenshotPath"/>
+        <result column="videoHlsPath" property="videoHlsPath"/>
         <result column="ATTACHMENT_ID" property="attachmentId"/>
         <result column="TYPE" property="type"/>
         <result column="BELONG_USER_ID" property="belongUserId"/>
@@ -125,6 +125,8 @@
                wri.TITEL,
                wri.CONTENT,
                rsa.url,
+               rsa.video_screenshot_path AS videoScreenshotPath,
+               rsa.video_hls_path        AS videoHlsPath,
                wri.ATTACHMENT_ID,
                wri.TYPE,
                wri.BELONG_USER_ID,
@@ -170,6 +172,8 @@
         <result column="NAME" property="name"/>
         <result column="NICKNAME" property="nickname"/>
         <result column="WECHAT_HEAD_PORTRAIT_ADDRESS" property="wechatHeadPortraitAddress"/>
+        <result column="videoScreenshotPath" property="videoScreenshotPath"/>
+        <result column="videoHlsPath" property="videoHlsPath"/>
         <result column="responseDetailsCreateDateNewest" property="responseDetailsCreateDateNewest"/>
     </resultMap>
 
@@ -229,7 +233,9 @@
         LIMIT #{current} ,#{size}
     </select>
     <select id="findById" resultMap="myReleaseInfo">
-        SELECT r.RELEASE_INFO_ID,
+        SELECT rsa.video_screenshot_path AS videoScreenshotPath,
+               rsa.video_hls_path        AS videoHlsPath,
+               r.RELEASE_INFO_ID,
                r.TITEL,
                r.CONTENT,
                r.ATTACHMENT_ID,
@@ -266,6 +272,7 @@
                u.WECHAT_HEAD_PORTRAIT_ADDRESS
         FROM wcc_release_info r
                  LEFT JOIN wcc_user u ON u.USER_ID = r.BELONG_USER_ID
+                 LEFT JOIN ray_sys_attachment rsa ON rsa.id = r.ATTACHMENT_ID
         WHERE 1 = 1
           AND r.STATUS = 1
           AND r.IS_DELETE = 0
@@ -370,6 +377,8 @@
                wri.CONTENT,
                wri.ATTACHMENT_ID,
                rsa.url                                   AS attachment_url,
+               rsa.video_screenshot_path                 AS videoScreenshotPath,
+               rsa.video_hls_path                        AS videoHlsPath,
                wri.TYPE,
                wri.BELONG_USER_ID,
                wri.BELONG_CIRCLE_ID,
@@ -396,14 +405,11 @@
                   AND d.STATUS = 1
                   AND d.IS_DELETE = 0
                   AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
-        FROM wcc_release_info wri,
-             wcc_user_concern wuc,
-             wcc_user wu,
-             ray_sys_attachment rsa
+        FROM wcc_release_info wri
+                 INNER JOIN wcc_user_concern wuc ON wri.BELONG_USER_ID = wuc.BELONG_ID
+                 INNER JOIN wcc_user wu ON wu.USER_ID = wuc.BELONG_ID
+                 LEFT JOIN ray_sys_attachment rsa ON rsa.id = wri.ATTACHMENT_ID
         WHERE 1 = 1
-          AND wri.BELONG_USER_ID = wuc.BELONG_ID
-          AND wu.USER_ID = wuc.BELONG_ID
-          AND rsa.id = wri.ATTACHMENT_ID
           AND wri.STATUS = 1
           AND wri.IS_DELETE = 0
           AND wri.APPROVE_STATUS = 1

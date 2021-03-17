@@ -27,6 +27,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,8 +54,10 @@ public class VideoController extends BaseController {
 	@Log(value = "视频资源鉴权", exception = "视频资源鉴权请求异常")
 	@RequestMapping(value = "/authentication", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "视频资源鉴权", notes = "视频资源鉴权")
-	public Result<?> authentication(UserAttachmentForm userAttachmentForm) {
-		
+	public Result<?> authentication(@RequestHeader("X-Original-URI") String uri, UserAttachmentForm userAttachmentForm) {
+		if (uri.endsWith(".jpg") || uri.endsWith(".ts")) {
+			return Result.success("恭喜你可以访问");
+		}
 		try {
 			LoginUser userInfo = SecurityUtil.getUsername(req);
 			if (userInfo != null) {
@@ -64,7 +67,6 @@ public class VideoController extends BaseController {
 			e.printStackTrace();
 		}
 		userAttachmentService.authentication(userAttachmentForm, res);
-		
 		return Result.success("恭喜你可以访问");
 	}
 	

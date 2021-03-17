@@ -35,9 +35,14 @@ public class UserAttachmentServiceImpl implements UserAttachmentService {
 	 */
 	@Override
 	public void authentication(UserAttachmentForm userAttachmentForm, HttpServletResponse response) {
+		if (userAttachmentForm.getAttachmentId() == null) {
+			log.info("视频来鉴权，但是视频资源不存在1");
+			response.setStatus(401);
+			return;
+		}
 		Optional<JpaSysAttachment> attachmentOptional = attachmentRepository.findById(userAttachmentForm.getAttachmentId());
 		if (!attachmentOptional.isPresent()) {
-			log.info("视频来鉴权，但是视频资源不存在");
+			log.info("视频来鉴权，但是视频资源不存在2");
 			response.setStatus(401);
 			return;
 		}

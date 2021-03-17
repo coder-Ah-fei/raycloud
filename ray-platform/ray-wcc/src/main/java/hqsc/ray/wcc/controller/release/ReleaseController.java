@@ -101,6 +101,9 @@ public class ReleaseController extends BaseController {
 		if ("".equals(titel) || titel == null || "null".equals(titel)) {
 			return Result.fail("标题不能为空！");
 		}
+		if (belongCircleId <= 0) {
+			belongCircleId = null;
+		}
 		return releaseInfo(titel, content, attachmentid, belongCircleId, 2L);
 		
 	}

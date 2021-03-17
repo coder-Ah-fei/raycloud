@@ -6,6 +6,7 @@ import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
+import hqsc.ray.wcc.jpa.entity.JpaSysAttachment;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
 import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.repository.WccReleaseInfoRepository;
@@ -51,9 +52,7 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 				pr.add(criteriaBuilder.equal(belongUser.get("id"), wccReleaseInfoForm.getBelongUserId()));
 			}
 			if (wccReleaseInfoForm.getBelongCircleId() != null) {
-				Join<Object, Object> belongUser = root.join("belongUser");
-				Join<Object, Object> userCircle = belongUser.join("userCircleList");
-				Join<Object, Object> circleInfo = userCircle.join("jpaWccCircleInfo");
+				Join<Object, Object> circleInfo = root.join("belongCircle");
 				pr.add(criteriaBuilder.equal(circleInfo.get("id"), wccReleaseInfoForm.getBelongCircleId()));
 			}
 			if (wccReleaseInfoForm.getType() != null) {
@@ -86,6 +85,14 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 						.setWechatHeadPortraitAddress(jpaWccReleaseInfo.getBelongUser().getWechatHeadPortraitAddress())
 				;
 			}
+			JpaSysAttachment sysAttachment = jpaWccReleaseInfo.getJpaWccAttachment();
+			if (sysAttachment != null) {
+				wccReleaseInfoDto.setVideoHlsPath(sysAttachment.getVideoHlsPath())
+						.setVideoScreenshotPath(sysAttachment.getVideoScreenshotPath())
+						.setSysAttachmentId(sysAttachment.getId());
+			}
+			
+			
 			list.add(wccReleaseInfoDto);
 		}
 		

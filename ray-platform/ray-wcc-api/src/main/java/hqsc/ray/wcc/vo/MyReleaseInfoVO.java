@@ -33,5 +33,9 @@ public class MyReleaseInfoVO extends WccReleaseInfo implements Serializable {
 	
 	@ApiModelProperty(value = "当前用户最新的评论/回答时间")
 	private String responseDetailsCreateDateNewest;
+	@ApiModelProperty(value = "视频文件的截图路径")
+	private String videoScreenshotPath;
+	@ApiModelProperty(value = "视频文件的hls路径")
+	private String videoHlsPath;
 	
 }

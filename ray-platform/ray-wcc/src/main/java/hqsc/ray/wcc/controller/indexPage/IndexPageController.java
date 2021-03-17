@@ -230,16 +230,6 @@ public class IndexPageController extends BaseController {
 			return Result.fail("非法参数！");
 		}
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-//		List<Long> ids = this.getMyConcern(Long.parseLong(userInfo.getUserId()));
-//		if (ids == null || ids.size() == 0) {
-//			return Result.success("您还没有关注用户哦！");
-//		}
-//		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
-//		wrapper.in(WccReleaseInfo::getBelongUserId, ids);
-//		wrapper.eq(WccReleaseInfo::getStatus, 1);
-//		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
-//		wrapper.orderByDesc(WccReleaseInfo::getCreationDate);
-//		List records = wccReleaseInfoService.page(page, wrapper).getRecords();
 		
 		wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		List<IndexReferralsVO> list = wccReleaseInfoService.listMyConcernReleaseInfos(wccReleaseInfoForm, wccReleaseInfoForm.getCurrent(), wccReleaseInfoForm.getSize());

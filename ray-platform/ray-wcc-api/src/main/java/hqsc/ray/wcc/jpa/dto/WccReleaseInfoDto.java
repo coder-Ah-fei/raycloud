@@ -30,8 +30,11 @@ public class WccReleaseInfoDto {
 	 * 附件id
 	 */
 	@ApiModelProperty(value = "附件id")
-	private Long jpaWccAttachmentId;
-	
+	private Long sysAttachmentId;
+	@ApiModelProperty(value = "视频文件的截图路径")
+	private String videoScreenshotPath;
+	@ApiModelProperty(value = "视频文件的hls路径")
+	private String videoHlsPath;
 	
 	/**
 	 * 发布类型(0提问1话题2文章3视频)
