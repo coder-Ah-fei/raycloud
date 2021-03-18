@@ -37,3 +37,8 @@ jetcache:
       #  - redis://127.0.0.1:7001
       #  - redis://127.0.0.1:7002
       #readFrom: slavePreferred
+
+## 配置日志显示在spring boot admin
+logging:
+  file:
+    name: logs/app/ray-system/ray-system.log

@@ -1,7 +1,8 @@
 server:
   port: 20004
 web:
- upload-path: D:/hongrenquan/
+  upload-path: D:/hongrenquan/
+  ffmpeg-path: D:/java-app/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
 file:
   maxsize: 10240
 spring:
@@ -17,6 +18,18 @@ spring:
       multipart:
         # 根据实际需求作调整
         # 默认最大上传文件大小为1M，单个文件大小
-        max-file-size: 10MB
+        max-file-size: 100MB
         # 默认最大请求大小为10M，总上传的数据大小
-        max-request-size: 15MB
+        max-request-size: 150MB
+  cloud:
+    inetutils:
+      ignored-interfaces: eth.*
+      preferred-networks: 139.9.203.15
+
+wechat:
+  appid: wx3d1fc01c88aeb1b3
+  appsecret: e5381ab9b059e91c94fc5ecf2f651d63
+
+diy:
+  domain: https://hrq.rcircleplus.cn
+#  domain: http://192.168.101.18:9999

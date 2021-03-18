@@ -11,18 +11,19 @@ spring:
         group: @config.group@
         file-extension: yaml
         prefix: wcc
-#        shared-configs:
-#          - @artifactId@-@spring.active@.${spring.cloud.nacos.config.file-extension}
-#            refresh-enabled: true
-#        shared-configs[0]:
-#          data-id: @artifactId@.yaml
-#          group: DEFAULT_GROUP
-#          refresh: true
+      #        shared-configs:
+      #          - @artifactId@-@spring.active@.${spring.cloud.nacos.config.file-extension}
+      #            refresh-enabled: true
+      #        shared-configs[0]:
+      #          data-id: @artifactId@.yaml
+      #          group: DEFAULT_GROUP
+      #          refresh: true
       discovery:
         namespace: @config.namespace@
         server-addr: @config.server-addr@
         watch:
           enabled: false
+        ip: @config.ip@
     sentinel:
       # 是否开启sentinel
       enabled: true

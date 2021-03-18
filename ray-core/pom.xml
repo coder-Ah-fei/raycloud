@@ -194,6 +194,7 @@
             <properties>
                 <!--当前环境-->
                 <spring.active>local</spring.active>
+                <config.ip>127.0.0.1</config.ip>
                 <config.server-addr>127.0.0.1:8848</config.server-addr>
                 <config.namespace></config.namespace>
                 <config.group>DEFAULT_GROUP</config.group>
@@ -236,12 +237,13 @@
             <id>prod</id>
             <properties>
                 <spring.active>prod</spring.active>
-                <config.server-addr>172.26.85.32:8848</config.server-addr>
-                <config.namespace>568b8eaa-f25d-4f2a-8c87-83dcb4caa955</config.namespace>
+                <config.ip>47.104.108.119</config.ip>
+                <config.server-addr>47.104.108.119:8848</config.server-addr>
+                <config.namespace></config.namespace>
                 <config.group>DEFAULT_GROUP</config.group>
-                <discovery.server-addr>172.26.85.32:8848</discovery.server-addr>
+                <discovery.server-addr>47.104.108.119:8848</discovery.server-addr>
                 <sentinel.port>8719</sentinel.port>
-                <sentinel.dashboard>localhost:8080</sentinel.dashboard>
+                <sentinel.dashboard>localhost:8088</sentinel.dashboard>
             </properties>
         </profile>
         <profile>

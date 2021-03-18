@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: ${artifactId}
-#数据源配置
+  #数据源配置
   datasource:
     url: ${ray.datasource.url}
     username: ${ray.datasource.username}
@@ -38,3 +38,7 @@ jetcache:
       #  - redis://127.0.0.1:7002
       #readFrom: slavePreferred
 
+## 配置日志显示在spring boot admin
+logging:
+  file:
+    name: logs/app/ray-system/ray-system.log

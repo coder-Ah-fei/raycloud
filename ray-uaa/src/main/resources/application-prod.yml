@@ -27,3 +27,40 @@ dubbo:
 provider:
   application:
     name: ray-system
+
+justauth:
+  enabled: true
+  type:
+    github:
+      client-id: 75a51afd3b0a2fc32952
+      client-secret: dcf425ac89******************736d2317b
+      redirect-uri: http://localhost:9999/ray-uaa/auth/callback/github
+    wechat_open:
+      client-id: wxdcb******4ff4
+      client-secret: b4e9dc************************a08ed6d
+      redirect-uri: http://oauth.xkcoding.com/demo/oauth/wechat/callback
+    QQ:
+      client-id: 10**********6
+      client-secret: 1f7d08**********5b7**********29e
+      redirect-uri: http://oauth.xkcoding.com/demo/oauth/qq/callback
+      union-id: false
+  cache:
+    type: redis
+    prefix: 'SOCIAL::STATE::'
+    timeout: 1h
+  extend:
+    enum-class: hqsc.ray.core.auth.social.AuthOtherSource
+    config:
+      wechat_mini:
+        request-class: hqsc.ray.core.auth.social.AuthWeChatMiniRequest
+        client-id: wx3d1fc01c88aeb1b3
+        client-secret: e5381ab9b059e91c94fc5ecf2f651d63
+        redirect-uri: http://oauth.xkcoding.com/demo/oauth/wechat/callback
+        ignore-check-state: true
+social:
+  vue:
+    url: http://localhost:9528/#/socialcallback
+## 配置日志显示在spring boot admin
+logging:
+  file:
+    name: logs/app/ray-uaa/ray-uaa.log
