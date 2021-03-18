@@ -161,23 +161,6 @@ public class IndexPageController extends BaseController {
 		if (page.getCurrent() < 1 || page.getSize() < 1) {
 			return Result.fail("非法参数！");
 		}
-//		LambdaQueryWrapper<WccCircleInfo> wrapper = Wrappers.lambdaQuery(new WccCircleInfo());
-//		wrapper.eq(WccCircleInfo::getStatus, 1);
-//		wrapper.eq(WccCircleInfo::getIsDelete, 0);
-//		List<WccCircleInfo> records = wccCircleInfoService.page(page, wrapper).getRecords();
-//		List<IndexCircleInfoVO> indexCircleInfoVOS = new ArrayList<>();
-//		IndexCircleInfoVO indexCircleInfoVO;
-//		for (WccCircleInfo record : records) {
-//			LambdaQueryWrapper<WccUserCircle> wccUserCircleLambdaQueryWrapper = Wrappers.lambdaQuery(new WccUserCircle());
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getStatus, 1);
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getIsDelete, 0);
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getCircleId, record.getCircleId());
-//			int count = wccUserCircleService.count(wccUserCircleLambdaQueryWrapper);
-//			indexCircleInfoVO = new IndexCircleInfoVO();
-//			BeanUtils.copyProperties(record, indexCircleInfoVO);
-//			indexCircleInfoVO.setPeopleCount(count);
-//			indexCircleInfoVOS.add(indexCircleInfoVO);
-//		}
 		LoginUser userInfo = new LoginUser();
 		try {
 			userInfo = SecurityUtil.getUsername(req);

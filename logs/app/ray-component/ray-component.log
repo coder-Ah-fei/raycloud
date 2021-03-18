@@ -499,3 +499,566 @@ Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video
 Execute Time：2 ms
 ==============  Sql  End   ==============
 
+[ray-component:192.168.101.18:20004] 2021-03-18 11:12:59.588 WARN 18908 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.**.mapper.**]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-18 11:12:59.835 INFO 18908 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20004] 2021-03-18 11:12:59.902 INFO 18908 [] [XNIO-1 task-3] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 39ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20004] 2021-03-18 11:12:59.955 WARN 18908 [] [XNIO-1 task-3] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.414 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 5515163
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.486 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 5515413
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.487 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 5515446
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.500 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 5515459
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.808 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
+Execute Time：103 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:07.823 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:10.206 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：30 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:10.206 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：30 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:18.905 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:13:18.935 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：31 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:32:02.761 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 1123827
+[ray-component:192.168.101.18:20004] 2021-03-18 11:32:02.762 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 1123861
+[ray-component:192.168.101.18:20004] 2021-03-18 11:32:02.776 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 6650737
+[ray-component:192.168.101.18:20004] 2021-03-18 11:32:02.828 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：22 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 11:32:02.917 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：29 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:28:27.954 WARN 18908 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 6985038
+[ray-component:192.168.101.18:20004] 2021-03-18 13:28:28.083 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：79 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:28:28.083 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：23 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:29:38.171 WARN 18908 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 70088
+[ray-component:192.168.101.18:20004] 2021-03-18 13:29:38.171 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 70109
+[ray-component:192.168.101.18:20004] 2021-03-18 13:29:38.226 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：12 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:29:38.227 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：16 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:14.541 WARN 18908 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 1356314
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:14.542 WARN 18908 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 1356331
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:14.586 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='310' 
+Execute Time：20 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:14.593 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='310' 
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.191 INFO 18908 [] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='309' 
+Execute Time：9 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.489 INFO 18908 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='309' 
+Execute Time：101 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.489 INFO 18908 [] [XNIO-1 task-2] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='301' 
+Execute Time：101 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.490 INFO 18908 [] [XNIO-1 task-10] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='300' 
+Execute Time：62 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.490 INFO 18908 [] [XNIO-1 task-9] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='283' 
+Execute Time：14 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.491 INFO 18908 [] [XNIO-1 task-8] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='301' 
+Execute Time：103 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.495 INFO 18908 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='300' 
+Execute Time：105 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:15.499 INFO 18908 [] [XNIO-1 task-4] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='283' 
+Execute Time：109 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:18.282 INFO 18908 [] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='309' 
+Execute Time：32 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:18.716 INFO 18908 [] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='310' 
+Execute Time：2 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 13:52:18.725 INFO 18908 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='309' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.932 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 742444
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.932 WARN 18908 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 742448
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.933 WARN 18908 [] [XNIO-1 task-3] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 739208
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.934 WARN 18908 [] [XNIO-1 task-1] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 739218
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.934 WARN 18908 [] [XNIO-1 task-6] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 742473
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.956 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 742450
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:37.957 WARN 18908 [] [XNIO-1 task-5] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 742498
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:38.013 INFO 18908 [] [XNIO-1 task-3] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='259' 
+Execute Time：55 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:38.097 INFO 18908 [] [XNIO-1 task-1] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='256' 
+Execute Time：5 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:38.099 INFO 18908 [] [XNIO-1 task-6] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='251' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:38.135 INFO 18908 [] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='276' 
+Execute Time：32 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:04:38.166 INFO 18908 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='253' 
+Execute Time：18 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.834 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 79680
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.846 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 79713
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.848 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 79751
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.861 WARN 18908 [] [XNIO-1 task-7] c.a.druid.pool.DruidAbstractDataSource   [2m:[0;39m discard long time none received connection. , jdbcUrl : jdbc:mysql://192.168.101.18:3306/web_celebrity_circle3?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8, version : 1.2.3, lastPacketReceivedIdleMillis : 79754
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.891 INFO 18908 [] [XNIO-1 task-7] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='246' 
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:05:57.899 INFO 18908 [] [XNIO-1 task-5] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysAttachmentMapper.selectById
+Execute SQL ：SELECT id,storage_id,attachment_group_id,name,size,url,path,video_screenshot_path,video_hls_path,file_name,file_extend,thumb_url,type,create_by,update_by,create_time,update_time,is_deleted,is_recycle,authority FROM ray_sys_attachment WHERE id='244' 
+Execute Time：4 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:11.877 INFO 18908 [] [SpringContextShutdownHook] io.undertow                              [2m:[0;39m stopping server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:13.835 INFO 18908 [] [SpringContextShutdownHook] io.undertow.servlet                      [2m:[0;39m Destroying Spring FrameworkServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:15.839 INFO 18908 [] [SpringContextShutdownHook] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m De-registering from Nacos Server now...
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:15.845 WARN 18908 [] [SpringContextShutdownHook] .s.c.a.CommonAnnotationBeanPostProcessor [2m:[0;39m Destroy method on bean with name 'nacosAutoServiceRegistration' threw an exception: java.lang.NullPointerException
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:15.904 INFO 18908 [] [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Shutting down ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:28.991 INFO 18908 [] [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} closing ...
+[ray-component:192.168.101.18:20004] 2021-03-18 14:38:29.502 INFO 18908 [] [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} closed
+[ray-component:192.168.101.18:20009] 2021-03-18 14:39:57.575 WARN 21896 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:39:57.630 WARN 21896 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc-dev.yaml] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:39:57.632 INFO 21896 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-dev.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:39:57.641 INFO 21896 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: dev
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:01.284 WARN 21896 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:01.292 WARN 21896 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:02.361 INFO 21896 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:02.368 INFO 21896 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:02.442 INFO 21896 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 22ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:02.632 WARN 21896 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:02.912 WARN 21896 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:03.290 INFO 21896 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=a43ae620-fe4a-38b6-95aa-51603dac4696
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:05.609 INFO 21896 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:05.610 INFO 21896 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 7899 ms
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:07.817 INFO 21896 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:08.347 ERROR 21896 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} init error
+
+java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at com.alibaba.druid.util.JdbcUtils.createDriver(JdbcUtils.java:676)
+	at com.alibaba.druid.pool.DruidDataSource.resolveDriver(DruidDataSource.java:1203)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:878)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1920)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1790)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1176)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1404)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1420)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:227)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1356)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1203)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:897)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:551)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+Caused by: java.lang.ClassNotFoundException: ${spring.datasource.driver-class-name}
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.alibaba.druid.util.JdbcUtils.createDriver(JdbcUtils.java:674)
+	... 80 common frames omitted
+
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:08.353 WARN 21896 [] [main] ConfigServletWebServerApplicationContext [2m:[0;39m Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'configCache' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\cache\ConfigCache.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigMapper' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\mapper\SysConfigMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:08.424 INFO 21896 [] [main] ConditionEvaluationReportLoggingListener [2m:[0;39m 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:40:08.442 ERROR 21896 [] [main] o.s.boot.SpringApplication               [2m:[0;39m Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'configCache' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\cache\ConfigCache.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigMapper' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\mapper\SysConfigMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:797)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:227)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1356)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1203)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:897)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:551)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:40002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:41008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at hqsc.ray.component.RayComponentServer.main(RayComponentServer.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigServiceImpl': Unsatisfied dependency expressed through field 'baseMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigMapper' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\mapper\SysConfigMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1420)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 22 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sysConfigMapper' defined in file [D:\ideaworkspace\raycloud\ray-platform\ray-component\target\classes\hqsc\ray\component\mapper\SysConfigMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1524)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1404)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:797)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1176)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:556)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1509)
+	... 47 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot/autoconfigure/DruidDataSourceAutoConfigure.class]: Invocation of init method failed; nested exception is java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1794)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1227)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:884)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788)
+	... 60 common frames omitted
+Caused by: java.sql.SQLException: ${spring.datasource.driver-class-name}
+	at com.alibaba.druid.util.JdbcUtils.createDriver(JdbcUtils.java:676)
+	at com.alibaba.druid.pool.DruidDataSource.resolveDriver(DruidDataSource.java:1203)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:878)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1920)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1790)
+	... 71 common frames omitted
+Caused by: java.lang.ClassNotFoundException: ${spring.datasource.driver-class-name}
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.alibaba.druid.util.JdbcUtils.createDriver(JdbcUtils.java:674)
+	... 80 common frames omitted
+
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:39.869 WARN 8436 [] [main] c.a.c.n.c.NacosPropertySourceBuilder     [2m:[0;39m Ignore the empty nacos configuration and get it based on dataId[wcc] & group[DEFAULT_GROUP]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:39.939 INFO 8436 [] [main] b.c.PropertySourceBootstrapConfiguration [2m:[0;39m Located property source: [BootstrapPropertySource {name='bootstrapProperties-wcc-dev.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc.yaml,DEFAULT_GROUP'}, BootstrapPropertySource {name='bootstrapProperties-wcc,DEFAULT_GROUP'}]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:39.952 INFO 8436 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m The following profiles are active: dev
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:43.611 WARN 8436 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-config' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:43.621 WARN 8436 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:45.062 INFO 8436 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:45.075 INFO 8436 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:45.243 INFO 8436 [] [main] .s.d.r.c.RepositoryConfigurationDelegate [2m:[0;39m Finished Spring Data repository scanning in 26ms. Found 0 Redis repository interfaces.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:45.462 WARN 8436 [] [main] o.s.boot.actuate.endpoint.EndpointId     [2m:[0;39m Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:45.997 WARN 8436 [] [main] o.m.s.mapper.ClassPathMapperScanner      [2m:[0;39m No MyBatis mapper was found in '[hqsc.ray.component]' package. Please check your configuration.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:46.496 INFO 8436 [] [main] o.s.cloud.context.scope.GenericScope     [2m:[0;39m BeanFactory id=a43ae620-fe4a-38b6-95aa-51603dac4696
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:49.654 INFO 8436 [] [main] io.undertow.servlet                      [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:49.655 INFO 8436 [] [main] w.s.c.ServletWebServerApplicationContext [2m:[0;39m Root WebApplicationContext: initialization completed in 9625 ms
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:52.637 INFO 8436 [] [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure [2m:[0;39m Init DruidDataSource
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:53.865 INFO 8436 [] [main] com.alibaba.druid.pool.DruidDataSource   [2m:[0;39m {dataSource-1} inited
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:58.275 INFO 8436 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectOne
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'oss')
+Execute Time：83 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20009] 2021-03-18 14:48:58.293 INFO 8436 [] [main] h.r.c.m.interceptor.SqlLogInterceptor    [2m:[0;39m 
+
+==============  Sql Start  ==============
+Execute ID  ：hqsc.ray.component.mapper.SysConfigMapper.selectList
+Execute SQL ：SELECT id,parent_id,code,c_key,value,sort,remark,tenant_id,is_deleted,create_by,update_by,create_time,update_time FROM ray_sys_config WHERE (code = 'qiniuoss')
+Execute Time：0 ms
+==============  Sql  End   ==============
+
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:01.349 INFO 8436 [] [main] c.a.c.s.SentinelWebAutoConfiguration     [2m:[0;39m [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:02.275 INFO 8436 [] [main] o.s.b.a.e.web.EndpointLinksResolver      [2m:[0;39m Exposing 21 endpoint(s) beneath base path '/actuator'
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:02.684 WARN 8436 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:02.684 INFO 8436 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:02.696 WARN 8436 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m No URLs will be polled as dynamic configuration sources.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:02.697 INFO 8436 [] [main] c.n.c.sources.URLConfigurationSource     [2m:[0;39m To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:03.074 INFO 8436 [] [main] o.s.s.concurrent.ThreadPoolTaskExecutor  [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:03.466 INFO 8436 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m 自定义静态资源目录、此处功能用于文件映射
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:04.469 INFO 8436 [] [main] h.ray.core.web.config.WebConfiguration   [2m:[0;39m 资源扫描类.[hqsc.ray.core.web.listener.RequestMappingScanListener@27fb0d79]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:05.917 INFO 8436 [] [main] io.undertow                              [2m:[0;39m starting server: Undertow - 2.1.4.Final
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:05.944 INFO 8436 [] [main] org.xnio                                 [2m:[0;39m XNIO version 3.8.0.Final
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:05.974 INFO 8436 [] [main] org.xnio.nio                             [2m:[0;39m XNIO NIO Implementation Version 3.8.0.Final
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:06.134 INFO 8436 [] [main] org.jboss.threads                        [2m:[0;39m JBoss Threads version 3.1.0.Final
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:06.293 INFO 8436 [] [main] o.s.b.w.e.undertow.UndertowWebServer     [2m:[0;39m Undertow started on port(s) 20009 (http)
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:06.377 INFO 8436 [] [main] c.a.c.n.registry.NacosServiceRegistry    [2m:[0;39m nacos registry, DEFAULT_GROUP ray-component 192.168.101.18:20009 register finished
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:07.458 INFO 8436 [] [main] hqsc.ray.component.RayComponentServer    [2m:[0;39m Started RayComponentServer in 34.191 seconds (JVM running for 44.956)
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:07.591 INFO 8436 [] [main] h.r.c.w.l.RequestMappingScanListener     [2m:[0;39m 资源扫描结果:serviceId=[ray-component] size=[15] redis缓存key=[ray-api-resource]
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:08.372 INFO 8436 [] [RMI TCP Connection(5)-192.168.101.18] io.undertow.servlet                      [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:08.372 INFO 8436 [] [RMI TCP Connection(5)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[ray-component:192.168.101.18:20009] 2021-03-18 14:49:08.417 INFO 8436 [] [RMI TCP Connection(5)-192.168.101.18] o.s.web.servlet.DispatcherServlet        [2m:[0;39m Completed initialization in 44 ms

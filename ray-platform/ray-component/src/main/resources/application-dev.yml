@@ -1,10 +1,10 @@
 server:
-  port: 20004
+  port: 20009
 web:
   #  upload-path: /home/hongrenquan
   upload-path: D:/hongrenquan/
-  ffmpeg-path: D:/java-app/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
-#  ffmpeg-path: D:/work/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
+  #  ffmpeg-path: D:/java-app/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
+  ffmpeg-path: D:/work/ffmpeg-4.3.2-2021-02-27-full_build/bin/ffmpeg.exe
 file:
   maxsize: 10240
 spring:
