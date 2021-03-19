@@ -23,10 +23,6 @@ spring:
         max-file-size: 100MB
         # 默认最大请求大小为10M，总上传的数据大小
         max-request-size: 150MB
-  cloud:
-    inetutils:
-      ignored-interfaces: eth.*
-      preferred-networks: 139.9.203.15
 
 wechat:
   appid: wx3d1fc01c88aeb1b3

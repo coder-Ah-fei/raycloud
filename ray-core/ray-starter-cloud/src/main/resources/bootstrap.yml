@@ -23,7 +23,7 @@ spring:
         server-addr: @config.server-addr@
         watch:
           enabled: false
-        ip: @config.ip@
+    #        ip:
     sentinel:
       # 是否开启sentinel
       enabled: true
