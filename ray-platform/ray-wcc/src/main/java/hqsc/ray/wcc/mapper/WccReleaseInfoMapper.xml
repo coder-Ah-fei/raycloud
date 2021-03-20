@@ -44,58 +44,76 @@
         <result column="praise_count" property="praiseCount"/>
         <result column="comment_count" property="commentCount"/>
         <result column="concern_count" property="concernCount"/>
+        <result column="favorites_count" property="favoritesCount"/>
     </resultMap>
 
 
     <select id="findIndexReferrals" resultMap="indexReferrals">
         SELECT wcc_user.USER_ID,
-               wcc_user.HEAD_PORTRAIT                               AS ATT_ID,
-               wcc_user.WECHAT_HEAD_PORTRAIT_ADDRESS,
-               wcc_release_info.RELEASE_INFO_ID,
-               wcc_user.NICKNAME,
-               wcc_user.MEMBER,
-               wcc_user.MEMBER_RANK,
-               wcc_release_info.TYPE,
-               wcc_release_info.TITEL,
-               wcc_release_info.CONTENT,
-               wcc_release_info.ATTACHMENT_ID,
-               ray_sys_attachment.url                               AS attachment_url,
-               ray_sys_attachment.video_screenshot_path             AS videoScreenshotPath,
-               ray_sys_attachment.video_hls_path                    AS videoHlsPath,
-               wcc_release_info.CREATION_DATE,
-               (
-                   SELECT count(1)
-                   FROM wcc_praise_favorite
-                   WHERE 1 = 1
-                     AND STATUS = 1
-                     AND IS_DELETE = 0
-                     AND TYPE = 0
-                     AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
-               )                                                    AS praise_count,
-               (SELECT count(1)
-                FROM wcc_response_details
-                WHERE 1 = 1
-                  AND STATUS = 1
-                  AND IS_DELETE = 0
-                  AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID) AS comment_count,
-               (SELECT count(1)
-                FROM wcc_user_concern
-                WHERE 1 = 1
-                  AND STATUS = 1
-                  AND IS_DELETE = 0
-                  AND USER_ID = #{userId}
-                  AND BELONG_ID = wcc_user.USER_ID)                 AS concern_count
-        FROM wcc_release_info
-                 LEFT JOIN wcc_user ON wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
-                 LEFT JOIN ray_sys_attachment ON wcc_release_info.ATTACHMENT_ID = ray_sys_attachment.id
+        wcc_user.HEAD_PORTRAIT AS ATT_ID,
+        wcc_user.WECHAT_HEAD_PORTRAIT_ADDRESS,
+        wcc_release_info.RELEASE_INFO_ID,
+        wcc_user.NICKNAME,
+        wcc_user.MEMBER,
+        wcc_user.MEMBER_RANK,
+        wcc_release_info.TYPE,
+        wcc_release_info.TITEL,
+        wcc_release_info.CONTENT,
+        wcc_release_info.ATTACHMENT_ID,
+        ray_sys_attachment.url AS attachment_url,
+        ray_sys_attachment.video_screenshot_path AS videoScreenshotPath,
+        ray_sys_attachment.video_hls_path AS videoHlsPath,
+        wcc_release_info.CREATION_DATE,
+        (
+        SELECT count(1)
+        FROM wcc_praise_favorite
         WHERE 1 = 1
-          AND wcc_user.STATUS = 1
-          AND wcc_user.IS_DELETE = 0
-          AND wcc_release_info.STATUS = 1
-          AND wcc_release_info.IS_DELETE = 0
-          AND wcc_release_info.APPROVE_STATUS = 1
+        AND STATUS = 1
+        AND IS_DELETE = 0
+        AND TYPE = 0
+        AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
+        ) AS praise_count,
+        (
+        SELECT count(1)
+        FROM wcc_response_details
+        WHERE 1 = 1
+        AND STATUS = 1
+        AND IS_DELETE = 0
+        AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
+        ) AS comment_count,
+        <if test="userId != null and userId != ''">
+
+            (
+            SELECT count(1)
+            FROM wcc_user_concern
+            WHERE 1 = 1
+            AND STATUS = 1
+            AND IS_DELETE = 0
+            AND USER_ID = #{userId}
+            AND BELONG_ID = wcc_user.USER_ID
+            ) AS concern_count,
+            (
+            SELECT count(1)
+            FROM wcc_praise_favorite
+            WHERE 1 = 1
+            AND STATUS = 1
+            AND IS_DELETE = 0
+            AND TYPE = 1
+            AND USER_ID = #{userId}
+            AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
+            ) AS favorites_count
+        </if>
+        FROM wcc_release_info
+        LEFT JOIN wcc_user ON wcc_user.USER_ID = wcc_release_info.BELONG_USER_ID
+        LEFT JOIN ray_sys_attachment ON wcc_release_info.ATTACHMENT_ID = ray_sys_attachment.id
+        WHERE 1 = 1
+        AND wcc_user.STATUS = 1
+        AND wcc_user.IS_DELETE = 0
+        AND wcc_release_info.STATUS = 1
+        AND wcc_release_info.IS_DELETE = 0
+        AND wcc_release_info.APPROVE_STATUS = 1
         ORDER BY wcc_release_info.CREATION_DATE DESC
-            LIMIT #{current}, #{size}
+        LIMIT #{current}, #{size}
     </select>
 
 
@@ -376,9 +394,9 @@
                wri.TITEL,
                wri.CONTENT,
                wri.ATTACHMENT_ID,
-               rsa.url                                   AS attachment_url,
-               rsa.video_screenshot_path                 AS videoScreenshotPath,
-               rsa.video_hls_path                        AS videoHlsPath,
+               rsa.url                   AS attachment_url,
+               rsa.video_screenshot_path AS videoScreenshotPath,
+               rsa.video_hls_path        AS videoHlsPath,
                wri.TYPE,
                wri.BELONG_USER_ID,
                wri.BELONG_CIRCLE_ID,
@@ -398,13 +416,34 @@
                      AND f.IS_DELETE = 0
                      AND f.TYPE = 0
                      AND f.BELONG_ID = wri.RELEASE_INFO_ID
-               )                                         AS praise_count,
-               (SELECT count(1)
-                FROM wcc_response_details d
-                WHERE 1 = 1
-                  AND d.STATUS = 1
-                  AND d.IS_DELETE = 0
-                  AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
+               )                         AS praise_count,
+               (
+                   SELECT count(1)
+                   FROM wcc_response_details d
+                   WHERE 1 = 1
+                     AND d.STATUS = 1
+                     AND d.IS_DELETE = 0
+                     AND d.BELONG_ID = wri.RELEASE_INFO_ID
+               )                         AS comment_count,
+               (
+                   SELECT count(1)
+                   FROM wcc_user_concern
+                   WHERE 1 = 1
+                     AND STATUS = 1
+                     AND IS_DELETE = 0
+                     AND USER_ID = #{userId}
+                     AND BELONG_ID = wu.USER_ID
+               )                         AS concern_count,
+               (
+                   SELECT count(1)
+                   FROM wcc_praise_favorite
+                   WHERE 1 = 1
+                     AND STATUS = 1
+                     AND IS_DELETE = 0
+                     AND TYPE = 1
+                     AND USER_ID = #{userId}
+                     AND BELONG_ID = wri.RELEASE_INFO_ID
+               )                         AS favorites_count
         FROM wcc_release_info wri
                  INNER JOIN wcc_user_concern wuc ON wri.BELONG_USER_ID = wuc.BELONG_ID
                  INNER JOIN wcc_user wu ON wu.USER_ID = wuc.BELONG_ID

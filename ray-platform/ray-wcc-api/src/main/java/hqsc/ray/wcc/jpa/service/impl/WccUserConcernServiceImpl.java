@@ -45,7 +45,9 @@ public class WccUserConcernServiceImpl implements WccUserConcernService {
 				Join<Object, Object> section = root.join("jpaWccUser");
 				pr.add(criteriaBuilder.equal(section.get("id"), wccUserConcernForm.getUserId()));
 			}
-
+			if (wccUserConcernForm.getStatus() != null) {
+				pr.add(criteriaBuilder.equal(root.get("status"), wccUserConcernForm.getStatus()));
+			}
 //			if (!StringUtils.empty(litigationEnvelopeBrandForm.getBrandName())) {
 //				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
 //			}

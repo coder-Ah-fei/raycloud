@@ -192,6 +192,7 @@ public class IndexPageController extends BaseController {
 		wccUserConcernForm.setPageNow(wccUserConcernForm.getCurrent());
 		wccUserConcernForm.setPageSize(wccUserConcernForm.getSize());
 		wccUserConcernForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		wccUserConcernForm.setStatus(1);
 		PageMap<WccUserDto> page = wccUserConcernService.listWccUserConcerns(wccUserConcernForm);
 		
 		return Result.data(page);

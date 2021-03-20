@@ -66,6 +66,8 @@ public class IndexReferralsVO implements Serializable {
 	
 	@ApiModelProperty(value = "当前登录用户是否关注，大于等于1为关注")
 	private Integer concernCount;
+	@ApiModelProperty(value = "当前登录用户是否收藏，大于等于1为收藏")
+	private Integer favoritesCount;
 	
 	
 	@ApiModelProperty(value = "视频文件的截图路径")

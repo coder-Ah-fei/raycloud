@@ -408,28 +408,28 @@ public class MyController extends BaseController {
 	 * @Author:yzd
 	 * @Date:2021/1/16
 	 **/
-	@UserAuth
-	@Log(value = "用户收藏", exception = "用户收藏异常")
-	@PostMapping(value = {"/favorite"})
-	@ApiOperation(value = "用户收藏", notes = "用户收藏")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "releaseInfoId", required = true, value = "发布信息id", paramType = "form"),
-	})
-	public Result<?> favorite(@RequestParam Long releaseInfoId) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		WccPraiseFavorite wccPraiseFavorite = new WccPraiseFavorite();
-		wccPraiseFavorite.setUserId(Long.parseLong(userInfo.getUserId()));
-		wccPraiseFavorite.setBelongId(releaseInfoId);
-		wccPraiseFavorite.setType(1);
-		wccPraiseFavorite.setCreationDate(LocalDateTime.now());
-		boolean save;
-		try {
-			save = wccPraiseFavoriteService.save(wccPraiseFavorite);
-			return save ? Result.success("收藏成功！") : Result.fail("收藏失败！");
-		} catch (Exception e) {
-			return Result.success("收藏异常！");
-		}
-	}
+//	@UserAuth
+//	@Log(value = "用户收藏", exception = "用户收藏异常")
+//	@PostMapping(value = {"/favorite"})
+//	@ApiOperation(value = "用户收藏", notes = "用户收藏")
+//	@ApiImplicitParams({
+//			@ApiImplicitParam(name = "releaseInfoId", required = true, value = "发布信息id", paramType = "form"),
+//	})
+//	public Result<?> favorite(@RequestParam Long releaseInfoId) {
+//		LoginUser userInfo = SecurityUtil.getUsername(req);
+//		WccPraiseFavorite wccPraiseFavorite = new WccPraiseFavorite();
+//		wccPraiseFavorite.setUserId(Long.parseLong(userInfo.getUserId()));
+//		wccPraiseFavorite.setBelongId(releaseInfoId);
+//		wccPraiseFavorite.setType(1);
+//		wccPraiseFavorite.setCreationDate(LocalDateTime.now());
+//		boolean save;
+//		try {
+//			save = wccPraiseFavoriteService.save(wccPraiseFavorite);
+//			return save ? Result.success("收藏成功！") : Result.fail("收藏失败！");
+//		} catch (Exception e) {
+//			return Result.success("收藏异常！");
+//		}
+//	}
 	
 	/**
 	 * @Description:用户取消收藏
