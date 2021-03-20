@@ -80,5 +80,10 @@ public class JpaSysDict extends BasicSysEntity {
 	@ApiModelProperty(value = "字典备注")
 	private String remark;
 	
-	
+	/**
+	 * 删除标识
+	 */
+	@ApiModelProperty(value = "删除标识")
+	@Column(name = "is_deleted")
+	private String isDeleted;
 }
