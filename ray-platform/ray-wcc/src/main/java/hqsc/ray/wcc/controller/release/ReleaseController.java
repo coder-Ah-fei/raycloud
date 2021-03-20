@@ -133,7 +133,6 @@ public class ReleaseController extends BaseController {
 	
 	
 	private Result<?> releaseInfo(String titel, String content, Long attachmentid, Long belongCircleId, Long type) {
-		String a = "<p>23423432<img src=\"http://192.168.101.18:9999/ray-component/attachment/attachment?id=293\"></p><p>23423432</p>";
 		boolean msgSecCheck = wechatMiniUtil.msgSecCheck(titel + content);
 		if (!msgSecCheck) {
 			return Result.fail("您发布的标题或内容中可能包含敏感信息");

@@ -74,7 +74,7 @@ public class SysUserServiceImpl implements SysUserService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return ResultMap.of(ResultMap.SUCCESS_CODE, map);
 	}
 	
 }

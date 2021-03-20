@@ -56,6 +56,7 @@ public class IndexReferralsVO implements Serializable {
 	
 	@ApiModelProperty(value = "创建时间")
 	private LocalDateTime creationDate;
+	private String creationDateStr;
 	
 	@ApiModelProperty(value = "点赞数")
 	private Integer praiseCount;

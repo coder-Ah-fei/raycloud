@@ -81,7 +81,7 @@ public class WccBannerServiceImpl implements WccBannerService {
 			
 			list.add(wccBannerDto);
 		}
-		return new ResultMap(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**

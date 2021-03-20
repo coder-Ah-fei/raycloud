@@ -149,7 +149,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", wccCoursePage.getTotalElements());
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return ResultMap.success("'", map);
 	}
 	
 	/**
@@ -213,7 +213,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return ResultMap.success("'", map);
 	}
 	
 	/**

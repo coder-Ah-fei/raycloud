@@ -85,7 +85,7 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 			}
 			list.add(wccCelebrityInfoDto);
 		}
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**

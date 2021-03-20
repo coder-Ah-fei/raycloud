@@ -230,7 +230,8 @@ public class SysAttachmentController extends BaseController {
 					+ StringPool.DOT + "jpg";
 			videoScreenshotPath = videoFilePath + videoScreenshotFileName;
 			// 如果文件类型为mp4，则从视频中截图图片为视频封面
-			VideoUtil.getVideoPic(savePath + fileName, allVideoFilePath + videoScreenshotFileName);
+//			VideoUtil.getVideoPic(savePath + fileName, allVideoFilePath + videoScreenshotFileName);
+			VideoUtil.screenshots(attachmentConfig.getFfmpegPath(), "00.50", savePath + fileName, allVideoFilePath + videoScreenshotFileName);
 			// 然后启用线程将视频进行切片处理
 			VideoUtil.section(savePath + fileName, attachmentConfig.getFfmpegPath(), allVideoFilePath);
 			videoHlsPath = videoFilePath + "playList.m3u8";

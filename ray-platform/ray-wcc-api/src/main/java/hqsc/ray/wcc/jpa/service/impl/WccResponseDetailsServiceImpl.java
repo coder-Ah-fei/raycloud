@@ -26,7 +26,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,7 +94,7 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			
 			list.add(wccResponseDetailsDto);
 		}
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**
@@ -146,7 +145,8 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			jpaWccUserMessage.setMessageType(0);
 			jpaWccUserMessage.setMessageContent(comment.getResponseBody());
 		}
-		jpaWccUserMessage.setMessageTime(new Date());
+		jpaWccUserMessage.setResponseDetails(comment);
+		jpaWccUserMessage.setMessageTime(LocalDateTime.now());
 		jpaWccUserMessage.setIsRead(0);
 		wccUserMessageRepository.save(jpaWccUserMessage);
 		

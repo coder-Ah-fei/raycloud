@@ -67,6 +67,8 @@ public class JpaSysLog extends BasicSysEntity {
 	 * 操作内容
 	 */
 	@ApiModelProperty(value = "操作内容")
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private String operation;
 	/**
 	 * 执行方法
@@ -83,6 +85,8 @@ public class JpaSysLog extends BasicSysEntity {
 	 * 参数
 	 */
 	@ApiModelProperty(value = "参数")
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private String params;
 	/**
 	 * ip地址
@@ -140,6 +144,8 @@ public class JpaSysLog extends BasicSysEntity {
 	 * 异常信息
 	 */
 	@ApiModelProperty(value = "异常信息")
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private String exception;
 	
 	

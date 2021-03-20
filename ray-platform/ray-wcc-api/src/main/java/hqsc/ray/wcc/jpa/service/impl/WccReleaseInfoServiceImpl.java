@@ -1,7 +1,7 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
-import cn.hutool.core.date.DateUtil;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.util.DateUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
@@ -78,7 +78,7 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 		for (JpaWccReleaseInfo jpaWccReleaseInfo : jpaWccReleaseInfoList) {
 			wccReleaseInfoDto = new WccReleaseInfoDto();
 			BeanUtils.copyProperties(jpaWccReleaseInfo, wccReleaseInfoDto);
-			wccReleaseInfoDto.setCreationDateTimeStr(jpaWccReleaseInfo.getCreationDate() == null ? "" : DateUtil.formatDateTime(jpaWccReleaseInfo.getCreationDate()));
+			wccReleaseInfoDto.setCreationDateTimeStr(jpaWccReleaseInfo.getCreationDate() == null ? "" : DateUtil.simpleFormatWithYear(jpaWccReleaseInfo.getCreationDate()));
 			if (jpaWccReleaseInfo.getBelongUser() != null) {
 				wccReleaseInfoDto.setBelongUserId(jpaWccReleaseInfo.getBelongUser().getId())
 						.setBelongUserNickname(StringUtil.toUnicode(jpaWccReleaseInfo.getBelongUser().getNickname()))
@@ -96,7 +96,7 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 			list.add(wccReleaseInfoDto);
 		}
 		
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**

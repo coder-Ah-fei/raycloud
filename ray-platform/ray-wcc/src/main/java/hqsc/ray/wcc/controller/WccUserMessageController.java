@@ -139,6 +139,33 @@ public class WccUserMessageController extends BaseController {
 		return resultMap;
 	}
 	
+	@PreAuth
+	@Log(value = "获取消息详细列表", exception = "获取消息详细列表请求异常")
+	@PostMapping(value = "/listWccUserMessageDetails", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取消息详细列表", notes = "获取消息详细列表")
+	public ResultMap<?> listWccUserMessageDetails(WccUserMessageForm wccUserMessageForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccUserMessageForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccUserMessageService.listWccUserMessageDetails(wccUserMessageForm);
+		return resultMap;
+	}
+	
+	/**
+	 * 将消息设置为已读
+	 *
+	 * @param wccUserMessageForm
+	 * @return
+	 */
+	@PreAuth
+	@Log(value = "将消息设置为已读", exception = "将消息设置为已读请求异常")
+	@PostMapping(value = "/setAsRead", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "将消息设置为已读", notes = "将消息设置为已读")
+	public ResultMap<?> setAsRead(WccUserMessageForm wccUserMessageForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccUserMessageForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		ResultMap resultMap = wccUserMessageService.setAsRead(wccUserMessageForm);
+		return resultMap;
+	}
 	
 }
 

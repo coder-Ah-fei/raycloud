@@ -7,6 +7,7 @@ import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.DateUtil;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
@@ -89,6 +90,7 @@ public class IndexPageController extends BaseController {
 		for (IndexReferralsVO referral : referrals) {
 			referral.setAttachmentPath(StringUtil.isBlank(referral.getAttachmentPath()) ? "" : referral.getAttachmentPath().replace("static", ""));
 			referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
+			referral.setCreationDateStr(DateUtil.simpleFormatWithYear(referral.getCreationDate()));
 		}
 		
 		return Result.data(referrals);
@@ -219,6 +221,8 @@ public class IndexPageController extends BaseController {
 		for (IndexReferralsVO indexReferralsVO : list) {
 			indexReferralsVO.setAttachmentPath(StringUtil.isBlank(indexReferralsVO.getAttachmentPath()) ? "" : indexReferralsVO.getAttachmentPath().replace("static", ""));
 			indexReferralsVO.setNickname(indexReferralsVO.getNickname() == null ? "" : StringUtil.toUnicode(indexReferralsVO.getNickname()));
+			indexReferralsVO.setCreationDateStr(DateUtil.simpleFormatWithYear(indexReferralsVO.getCreationDate()));
+			
 		}
 		
 		return Result.data(list);

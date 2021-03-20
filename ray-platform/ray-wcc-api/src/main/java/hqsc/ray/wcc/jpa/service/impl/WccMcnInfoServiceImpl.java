@@ -78,7 +78,7 @@ public class WccMcnInfoServiceImpl implements WccMcnInfoService {
 			
 			list.add(wccMcnInfoDto);
 		}
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**

@@ -91,7 +91,7 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 			}
 			list.add(wccMerchantBrandDetailDto);
 		}
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, PageMap.of(count, list));
+		return ResultMap.success("", PageMap.of(count, list));
 	}
 	
 	/**

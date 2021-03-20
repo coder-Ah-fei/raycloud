@@ -1,5 +1,8 @@
 package hqsc.ray.wcc.jpa.dto;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * ResultMap
  *
@@ -52,34 +55,64 @@ public class ResultMap<T> {
 	public ResultMap() {
 	}
 	
-	public ResultMap(int code) {
+	private ResultMap(int code) {
 		this.code = code;
 	}
 	
-	public ResultMap(String message) {
+	private ResultMap(String message) {
 		this.message = message;
 	}
 	
-	public ResultMap(int code, T result) {
+	private ResultMap(int code, T result) {
 		this.code = code;
 		this.result = result;
 	}
 	
+	private ResultMap(int code, String message, T result) {
+		this.code = code;
+		this.message = message;
+		this.result = result;
+	}
+	
+	@NotNull
+	@Contract(value = " -> new", pure = true)
 	public static ResultMap of() {
 		return new ResultMap();
 	}
 	
 	
+	@NotNull
+	@Contract(value = "_ -> new", pure = true)
 	public static ResultMap of(int code) {
 		return new ResultMap(code);
 	}
 	
+	@NotNull
+	@Contract(value = "_ -> new", pure = true)
 	public static ResultMap of(String message) {
 		return new ResultMap(message);
 	}
 	
+	@NotNull
+	@Contract(value = "_, _ -> new", pure = true)
 	public static ResultMap of(int code, Object result) {
 		return new ResultMap(code, result);
+	}
+	
+	@NotNull
+	@Contract(value = " -> new", pure = true)
+	public static ResultMap success() {
+		return new ResultMap(SUCCESS_CODE);
+	}
+	
+	@NotNull
+	@Contract(value = "_ -> new", pure = true)
+	public static ResultMap success(String message) {
+		return new ResultMap(SUCCESS_CODE, message, null);
+	}
+	
+	public static ResultMap success(String message, Object result) {
+		return new ResultMap(SUCCESS_CODE, message, result);
 	}
 	
 	public int getCode() {

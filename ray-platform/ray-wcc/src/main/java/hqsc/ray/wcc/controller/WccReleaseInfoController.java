@@ -178,5 +178,6 @@ public class WccReleaseInfoController extends BaseController {
 		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
 		return Result.data(resultMap);
 	}
+	
 }
 
