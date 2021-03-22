@@ -55,10 +55,13 @@ public class VideoController extends BaseController {
 	@RequestMapping(value = "/authentication", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "视频资源鉴权", notes = "视频资源鉴权")
 	public Result<?> authentication(@RequestHeader("X-Original-URI") String uri, UserAttachmentForm userAttachmentForm) {
+		String[] split = uri.split("\\?");
+		uri = split[0];
 		if (uri.endsWith(".jpg") || uri.endsWith(".ts")) {
 			return Result.success("恭喜你可以访问");
 		}
 		try {
+			userAttachmentForm.setAttachmentId(Long.valueOf(req.getHeader("attachmentId")));
 			LoginUser userInfo = SecurityUtil.getUsername(req);
 			if (userInfo != null) {
 				userAttachmentForm.setUserId(Long.valueOf(userInfo.getUserId()));

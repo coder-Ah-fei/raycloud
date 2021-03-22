@@ -8,6 +8,10 @@ spring:
     url: ${ray.datasource.url}
     username: ${ray.datasource.username}
     password: ${ray.datasource.password}
+  cloud:
+    nacos:
+      discovery:
+#        ip: 47.105.168.210
 
 dubbo:
   scan:
