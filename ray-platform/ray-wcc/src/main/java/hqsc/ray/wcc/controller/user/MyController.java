@@ -14,6 +14,8 @@ import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.*;
 import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.form.WccResponseDetailsForm;
+import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
 import hqsc.ray.wcc.service.*;
 import hqsc.ray.wcc.vo.MyReleaseInfoVO;
 import hqsc.ray.wcc.vo.WccResponseDetailsVO;
@@ -40,7 +42,7 @@ public class MyController extends BaseController {
 	
 	private IWccUserService wccUserService;
 	
-	private IWccReleaseInfoService wccReleaseInfoService;
+	private IWccReleaseInfoService iWccReleaseInfoService;
 	
 	private IWccResponseDetailsService wccResponseDetailsService;
 	
@@ -49,6 +51,8 @@ public class MyController extends BaseController {
 	private IWccUserConcernService wccUserConcernService;
 	
 	private IWccUserCircleService wccUserCircleService;
+	
+	private final WccReleaseInfoService releaseInfoService;
 	
 	/*
 	 * 获取用户信息
@@ -149,13 +153,13 @@ public class MyController extends BaseController {
 		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
 				.setType(0);
 		
-		List<MyReleaseInfoVO> myQuestion = wccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+		List<MyReleaseInfoVO> myQuestion = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
 		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
 		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
 		wrapper.eq(WccReleaseInfo::getStatus, 1);
 		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
 		wrapper.eq(WccReleaseInfo::getType, 0);
-		int count = wccReleaseInfoService.count(wrapper);
+		int count = iWccReleaseInfoService.count(wrapper);
 		map.put("myQuestion", myQuestion);
 		map.put("count", count);
 		return Result.data(map);
@@ -178,13 +182,13 @@ public class MyController extends BaseController {
 		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
 		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
 				.setType(1);
-		List<MyReleaseInfoVO> myTopic = wccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+		List<MyReleaseInfoVO> myTopic = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
 		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
 		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
 		wrapper.eq(WccReleaseInfo::getStatus, 1);
 		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
 		wrapper.eq(WccReleaseInfo::getType, 1);
-		int count = wccReleaseInfoService.count(wrapper);
+		int count = iWccReleaseInfoService.count(wrapper);
 		map.put("myTopic", myTopic);
 		map.put("count", count);
 		return Result.data(map);
@@ -207,44 +211,34 @@ public class MyController extends BaseController {
 		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
 		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
 				.setType(2);
-		List<MyReleaseInfoVO> myArticle = wccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+		List<MyReleaseInfoVO> myArticle = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
 		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
 		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
 		wrapper.eq(WccReleaseInfo::getStatus, 1);
 		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
 		wrapper.eq(WccReleaseInfo::getType, 2);
-		int count = wccReleaseInfoService.count(wrapper);
+		int count = iWccReleaseInfoService.count(wrapper);
 		map.put("myArticle", myArticle);
 		map.put("count", count);
 		return Result.data(map);
 	}
 	
-	/*
+	/**
 	 * 用户视频
-	 * */
+	 */
 	@Log(value = "用户视频", exception = "用户视频异常")
 	@PostMapping(value = {"/getUserVideo"})
 	@ApiOperation(value = "用户视频", notes = "用户视频")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-	})
-	public Result<?> getUserVideo(@RequestBody Page page) {
+	public Result<?> getUserVideo(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
 		HashMap<String, Object> map = new HashMap<>();
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
-				.setType(3);
-		List<MyReleaseInfoVO> myVideo = wccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
-		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
-		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
-		wrapper.eq(WccReleaseInfo::getStatus, 1);
-		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
-		wrapper.eq(WccReleaseInfo::getType, 3);
-		int count = wccReleaseInfoService.count(wrapper);
-		map.put("myVideo", myVideo);
-		map.put("count", count);
-		return Result.data(map);
+		wccReleaseInfoForm
+				.setBelongUserId(Long.valueOf(userInfo.getUserId()))
+				.setType(3L)
+				.setStatus(1)
+				.setIsDelete(0);
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
 	
 	/*
@@ -269,7 +263,7 @@ public class MyController extends BaseController {
 		try {
 //			releaseInfo = wccReleaseInfoService.getById(id);
 			
-			myReleaseInfoVO = wccReleaseInfoService.findById(id);
+			myReleaseInfoVO = iWccReleaseInfoService.findById(id);
 //			wccResponseDetailsIPage = wccResponseDetailsService.getTopicDetails(page, Long.parseLong(id));
 			
 			wccResponseDetailsVOList = wccResponseDetailsService.listResponseDetails(Long.parseLong(id), null);
@@ -328,7 +322,7 @@ public class MyController extends BaseController {
 		wccReleaseInfoForm.setFavoritesUserId(Long.valueOf(userInfo.getUserId()));
 		List<MyReleaseInfoVO> myFavorite = null;
 		try {
-			myFavorite = wccReleaseInfoService.getMyFavorite(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+			myFavorite = iWccReleaseInfoService.getMyFavorite(wccReleaseInfoForm, page.getCurrent(), page.getSize());
 		} catch (Exception e) {
 			return Result.fail("查询异常！");
 		}
@@ -391,7 +385,7 @@ public class MyController extends BaseController {
 		
 		List<MyReleaseInfoVO> myReleaseInfoVOList;
 		try {
-			myReleaseInfoVOList = wccReleaseInfoService.listWccReleaseInfosForNewestComment(page.getCurrent(), page.getSize(), Long.parseLong(userInfo.getUserId()));
+			myReleaseInfoVOList = iWccReleaseInfoService.listWccReleaseInfosForNewestComment(page.getCurrent(), page.getSize(), Long.parseLong(userInfo.getUserId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Result.fail("查询异常");
@@ -640,7 +634,7 @@ public class MyController extends BaseController {
 		wrapper.eq(WccReleaseInfo::getStatus, 1);
 		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
 		wrapper.orderByDesc(WccReleaseInfo::getCreationDate);
-		return wccReleaseInfoService.page(page, wrapper).getRecords();
+		return iWccReleaseInfoService.page(page, wrapper).getRecords();
 	}
 	
 }

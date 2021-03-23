@@ -67,6 +67,12 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 			if (wccReleaseInfoForm.getType() != null) {
 				pr.add(criteriaBuilder.equal(root.get("type").as(Long.class), wccReleaseInfoForm.getType()));
 			}
+			if (wccReleaseInfoForm.getStatus() != null) {
+				pr.add(criteriaBuilder.equal(root.get("status"), wccReleaseInfoForm.getStatus()));
+			}
+			if (wccReleaseInfoForm.getIsDelete() != null) {
+				pr.add(criteriaBuilder.equal(root.get("isDelete"), wccReleaseInfoForm.getIsDelete()));
+			}
 			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
