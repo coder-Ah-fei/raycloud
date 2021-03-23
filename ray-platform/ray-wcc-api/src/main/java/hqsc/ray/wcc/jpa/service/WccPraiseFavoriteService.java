@@ -26,4 +26,26 @@ public interface WccPraiseFavoriteService {
 	 * @return
 	 */
 	Result<?> likeOrUnlike(WccPraiseFavoriteForm wccPraiseFavoriteForm);
+	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @return
+	 */
+	Integer countByTypeAndPraiseFavoriteTypeAndAndBelongId(Integer type, Integer praiseFavoriteType, Long belongId);
+	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param userId
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @return
+	 */
+	Integer countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(Long userId, Integer type, Integer praiseFavoriteType, Long belongId);
+	
 }

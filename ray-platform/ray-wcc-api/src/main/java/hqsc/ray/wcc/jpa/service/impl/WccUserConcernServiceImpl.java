@@ -83,4 +83,16 @@ public class WccUserConcernServiceImpl implements WccUserConcernService {
 		return PageMap.of(count, list);
 	}
 	
+	/**
+	 * 获取关注数量
+	 *
+	 * @param userId
+	 * @param belongUserId
+	 * @return
+	 */
+	@Override
+	public Long countByJpaWccUserIdAndBelongUserId(Long userId, Long belongUserId) {
+		return wccUserConcernRepository.countByJpaWccUserIdAndBelongUserIdAndStatusAndIsDelete(userId, belongUserId, 1, 0);
+	}
+	
 }

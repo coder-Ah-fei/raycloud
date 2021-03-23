@@ -14,4 +14,13 @@ public interface WccUserConcernRepository extends JpaRepository<JpaWccUserConcer
 	
 	Long countByJpaWccUserIdAndBelongUserId(Long userId, Long belongUserId);
 	
+	/**
+	 * @param userId
+	 * @param belongUserId
+	 * @param status
+	 * @param isdelete
+	 * @return
+	 */
+	Long countByJpaWccUserIdAndBelongUserIdAndStatusAndIsDelete(Long userId, Long belongUserId, Integer status, Integer isdelete);
+	
 }

@@ -19,6 +19,9 @@ public class WccReleaseInfoForm extends BaseForm {
 	
 	private Long id;
 	
+	@ApiModelProperty(value = "当前登录用户")
+	private Long userId;
+	
 	/**
 	 * 所属用户
 	 */

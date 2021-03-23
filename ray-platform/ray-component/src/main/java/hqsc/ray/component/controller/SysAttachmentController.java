@@ -237,6 +237,8 @@ public class SysAttachmentController extends BaseController {
 			videoHlsPath = videoFilePath + "playList.m3u8";
 		}
 		SysAttachment att = new SysAttachment();
+		att.setIsRecycle(false);
+		att.setIsDeleted("0");
 		att.setVideoScreenshotPath(videoScreenshotPath);
 		att.setVideoHlsPath(videoHlsPath);
 		att.setAuthority(false);

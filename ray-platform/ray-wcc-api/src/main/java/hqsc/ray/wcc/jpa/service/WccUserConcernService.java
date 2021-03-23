@@ -19,4 +19,12 @@ public interface WccUserConcernService {
 	 */
 	PageMap<WccUserDto> listWccUserConcerns(WccUserConcernForm wccUserConcernForm);
 	
+	/**
+	 * 获取关注数量
+	 *
+	 * @param userId
+	 * @param belongUserId
+	 * @return
+	 */
+	Long countByJpaWccUserIdAndBelongUserId(Long userId, Long belongUserId);
 }

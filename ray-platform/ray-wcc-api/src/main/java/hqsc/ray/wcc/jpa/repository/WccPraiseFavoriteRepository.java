@@ -25,4 +25,29 @@ public interface WccPraiseFavoriteRepository extends JpaRepository<JpaWccPraiseF
 	List<JpaWccPraiseFavorite> findByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndBelongId(Long userId, Integer type, Integer praiseFavoriteType, Long belongId);
 	
 	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @param status
+	 * @param isDelete
+	 * @return
+	 */
+	Integer countByTypeAndPraiseFavoriteTypeAndAndBelongIdAndStatusAndIsDelete(Integer type, Integer praiseFavoriteType, Long belongId, Integer status, Integer isDelete);
+	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param userId
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @param status
+	 * @param isDelete
+	 * @return
+	 */
+	Integer countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongIdAndStatusAndIsDelete(Long userId, Integer type, Integer praiseFavoriteType, Long belongId, Integer status, Integer isDelete);
+	
 }

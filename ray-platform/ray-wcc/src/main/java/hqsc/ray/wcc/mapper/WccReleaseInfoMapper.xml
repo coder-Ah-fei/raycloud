@@ -80,9 +80,9 @@
         AND STATUS = 1
         AND IS_DELETE = 0
         AND BELONG_ID = wcc_release_info.RELEASE_INFO_ID
-        ) AS comment_count,
+        ) AS comment_count
         <if test="userId != null and userId != ''">
-
+            ,
             (
             SELECT count(1)
             FROM wcc_user_concern
@@ -388,7 +388,8 @@
 
 
     <select id="listMyConcernReleaseInfos" resultMap="indexReferrals">
-        SELECT wu.NICKNAME,
+        SELECT wu.USER_ID,
+               wu.NICKNAME,
                wu.WECHAT_HEAD_PORTRAIT_ADDRESS,
                wri.RELEASE_INFO_ID,
                wri.TITEL,

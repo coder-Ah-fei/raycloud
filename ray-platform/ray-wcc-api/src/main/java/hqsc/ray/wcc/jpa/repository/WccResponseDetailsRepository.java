@@ -10,5 +10,16 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author Administrator
  */
 public interface WccResponseDetailsRepository extends JpaRepository<JpaWccResponseDetails, Long>, JpaSpecificationExecutor {
-
+	
+	
+	/**
+	 * 查找评论数
+	 *
+	 * @param releaseInfoId
+	 * @param status
+	 * @param isDelete
+	 * @return
+	 */
+	Integer countByJpaWccReleaseInfoIdAndStatusAndIsDelete(Long releaseInfoId, Integer status, Integer isDelete);
+	
 }

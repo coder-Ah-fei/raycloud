@@ -36,7 +36,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -158,23 +157,29 @@ public class WccReleaseInfoController extends BaseController {
 	
 	
 	//-----------------------------------------------------------------------------------
-	
-	@PreAuth
-	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
-	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
-	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
-		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
-		return resultMap;
-	}
+
+//	@PreAuth
+//	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
+//	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
+//	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
+//	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+//		LoginUser userInfo = SecurityUtil.getUsername(req);
+//		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
+//		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+//		return resultMap;
+//	}
 	
 	
 	@Log(value = "获取圈子中的发布信息", exception = "获取圈子中的发布信息请求异常")
 	@PostMapping("/listByCircleId")
 	@ApiOperation(value = "获取圈子中的发布信息", notes = "分页查询")
 	public Result<ResultMap<WccReleaseInfoDto>> listByCircleId(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+		try {
+			LoginUser userInfo = SecurityUtil.getUsername(req);
+			wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
 		return Result.data(resultMap);
 	}

@@ -10,7 +10,10 @@ import hqsc.ray.wcc.jpa.entity.JpaSysAttachment;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
 import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.repository.WccReleaseInfoRepository;
+import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
+import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
+import hqsc.ray.wcc.jpa.service.WccUserConcernService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,6 +39,12 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 	
 	@Autowired
 	private WccReleaseInfoRepository wccReleaseInfoRepository;
+	@Autowired
+	private WccPraiseFavoriteService praiseFavoriteService;
+	@Autowired
+	private WccResponseDetailsRepository responseDetailsRepository;
+	@Autowired
+	private WccUserConcernService userConcernService;
 	
 	/**
 	 * 获取数据
@@ -90,6 +99,21 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 				wccReleaseInfoDto.setVideoHlsPath(sysAttachment.getVideoHlsPath())
 						.setVideoScreenshotPath(sysAttachment.getVideoScreenshotPath())
 						.setSysAttachmentId(sysAttachment.getId());
+			}
+			
+			// 获取点赞数量
+			Integer praiseCount = praiseFavoriteService.countByTypeAndPraiseFavoriteTypeAndAndBelongId(0, jpaWccReleaseInfo.getType().intValue(), jpaWccReleaseInfo.getId());
+			wccReleaseInfoDto.setPraiseCount(praiseCount);
+			// 获取评论数量
+			wccReleaseInfoDto.setCommentCount(responseDetailsRepository.countByJpaWccReleaseInfoIdAndStatusAndIsDelete(jpaWccReleaseInfo.getId(), 1, 0));
+			
+			// 当前登录用户是否收藏
+			wccReleaseInfoDto.setFavoritesCount(0);
+			// 当前登录用户是否关注
+			wccReleaseInfoDto.setConcernCount(0);
+			if (wccReleaseInfoForm.getUserId() != null) {
+				wccReleaseInfoDto.setFavoritesCount(praiseFavoriteService.countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(wccReleaseInfoForm.getUserId(), 1, jpaWccReleaseInfo.getType().intValue(), jpaWccReleaseInfo.getId()));
+				wccReleaseInfoDto.setConcernCount(userConcernService.countByJpaWccUserIdAndBelongUserId(wccReleaseInfoForm.getUserId(), jpaWccReleaseInfo.getBelongUser().getId()).intValue());
 			}
 			
 			

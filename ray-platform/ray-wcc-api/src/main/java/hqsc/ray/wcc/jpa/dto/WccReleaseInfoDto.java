@@ -55,7 +55,17 @@ public class WccReleaseInfoDto {
 	private Long belongCircleId;
 	private String circleName;
 	
+	@ApiModelProperty(value = "点赞数")
+	private Integer praiseCount;
 	
+	@ApiModelProperty(value = "评论数")
+	private Integer commentCount;
+	
+	@ApiModelProperty(value = "收藏，0 没有收藏，1 收藏")
+	private Integer favoritesCount;
+	
+	@ApiModelProperty(value = "关注，0 没有关注，1 关注")
+	private Integer concernCount;
 	/**
 	 * 1 删除  0正常
 	 */

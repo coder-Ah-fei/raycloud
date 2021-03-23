@@ -112,4 +112,31 @@ public class WccPraiseFavoriteServiceImpl implements WccPraiseFavoriteService {
 		return Result.data(praiseFavorite.getStatus());
 	}
 	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @return
+	 */
+	@Override
+	public Integer countByTypeAndPraiseFavoriteTypeAndAndBelongId(Integer type, Integer praiseFavoriteType, Long belongId) {
+		return praiseFavoriteRepository.countByTypeAndPraiseFavoriteTypeAndAndBelongIdAndStatusAndIsDelete(type, praiseFavoriteType, belongId, 1, 0);
+	}
+	
+	/**
+	 * 查询点赞或者是收藏数量
+	 *
+	 * @param userId
+	 * @param type
+	 * @param praiseFavoriteType
+	 * @param belongId
+	 * @return
+	 */
+	@Override
+	public Integer countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(Long userId, Integer type, Integer praiseFavoriteType, Long belongId) {
+		return praiseFavoriteRepository.countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongIdAndStatusAndIsDelete(userId, type, praiseFavoriteType, belongId, 1, 0);
+	}
+	
 }
