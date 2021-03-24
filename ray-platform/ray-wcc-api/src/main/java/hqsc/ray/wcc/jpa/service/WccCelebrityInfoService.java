@@ -35,4 +35,11 @@ public interface WccCelebrityInfoService {
 	 * @return
 	 */
 	Result<?> save(WccCelebrityInfoForm wccCelebrityInfoForm);
+	
+	/**
+	 * 生成红人榜但查询条件的内容
+	 *
+	 * @return
+	 */
+	ResultMap findRedSearchData();
 }

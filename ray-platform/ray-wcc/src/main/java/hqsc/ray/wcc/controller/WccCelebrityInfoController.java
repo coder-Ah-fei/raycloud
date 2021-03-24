@@ -137,6 +137,14 @@ public class WccCelebrityInfoController extends BaseController {
 		return resultMap;
 	}
 	
+	@Log(value = "生成红人榜但查询条件的内容", exception = "生成红人榜但查询条件的内容请求异常")
+	@PostMapping(value = "/findRedSearchData", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "生成红人榜但查询条件的内容", notes = "生成红人榜但查询条件的内容")
+	public ResultMap<?> findRedSearchData() {
+		ResultMap resultMap = wccCelebrityInfoService.findRedSearchData();
+		return resultMap;
+	}
+	
 	@Log(value = "根据id获取红人信息", exception = "根据id获取红人信息请求异常")
 	@PostMapping(value = "/findById", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "根据id获取红人信息", notes = "根据id获取红人信息")

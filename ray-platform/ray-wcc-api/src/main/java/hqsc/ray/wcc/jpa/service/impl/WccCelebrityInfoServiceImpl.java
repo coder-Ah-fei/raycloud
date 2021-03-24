@@ -33,7 +33,7 @@ import java.util.*;
 @AllArgsConstructor
 public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 	
-	private final WccCelebrityInfoRepository wccCelebrityInfoRepository;
+	private final WccCelebrityInfoRepository celebrityInfoRepository;
 	private final RaySysAttachmentRepository raySysAttachmentRepository;
 	private final WccMcnInfoRepository wccMcnInfoRepository;
 	private final WccUserRepository wccUserRepository;
@@ -65,11 +65,11 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 		List<JpaWccCelebrityInfo> jpaWccCelebrityInfoList;
 		Long count = 0L;
 		if (wccCelebrityInfoForm.getPageNow() == -1) {
-			jpaWccCelebrityInfoList = wccCelebrityInfoRepository.findAll(specification);
+			jpaWccCelebrityInfoList = celebrityInfoRepository.findAll(specification);
 			count = Long.valueOf(jpaWccCelebrityInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccCelebrityInfoForm.getPageNow() - 1, wccCelebrityInfoForm.getPageSize());
-			Page<JpaWccCelebrityInfo> wccCelebrityInfoPage = wccCelebrityInfoRepository.findAll(specification, pageable);
+			Page<JpaWccCelebrityInfo> wccCelebrityInfoPage = celebrityInfoRepository.findAll(specification, pageable);
 			jpaWccCelebrityInfoList = wccCelebrityInfoPage.getContent();
 			count = wccCelebrityInfoPage.getTotalElements();
 		}
@@ -96,7 +96,7 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 	 */
 	@Override
 	public WccCelebrityInfoDto findById(Long id) {
-		Optional<JpaWccCelebrityInfo> celebrityInfoOptional = wccCelebrityInfoRepository.findById(id);
+		Optional<JpaWccCelebrityInfo> celebrityInfoOptional = celebrityInfoRepository.findById(id);
 		if (!celebrityInfoOptional.isPresent()) {
 			throw new RuntimeException("红人不存在");
 		}
@@ -120,7 +120,7 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 	@Override
 	public Result<?> save(WccCelebrityInfoForm wccCelebrityInfoForm) {
 		JpaWccCelebrityInfo celebrityInfo = null;
-		Optional<JpaWccCelebrityInfo> celebrityInfoOptional = wccCelebrityInfoRepository.findById(wccCelebrityInfoForm.getId() == null ? 0L : wccCelebrityInfoForm.getId());
+		Optional<JpaWccCelebrityInfo> celebrityInfoOptional = celebrityInfoRepository.findById(wccCelebrityInfoForm.getId() == null ? 0L : wccCelebrityInfoForm.getId());
 		if (celebrityInfoOptional.isPresent()) {
 			celebrityInfo = celebrityInfoOptional.get();
 			BeanUtils.copyProperties(wccCelebrityInfoForm, celebrityInfo);
@@ -157,8 +157,47 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 			celebrityInfo.setStatus(1);
 			celebrityInfo.setIsDelete(0);
 		}
-		wccCelebrityInfoRepository.save(celebrityInfo);
+		celebrityInfoRepository.save(celebrityInfo);
 		return Result.success("保存成功");
+	}
+	
+	/**
+	 * 生成红人榜但查询条件的内容
+	 *
+	 * @return
+	 */
+	@Override
+	public ResultMap findRedSearchData() {
+		List<Map<String, Object>> redPlatformList = new ArrayList<>();
+		List<Map<String, Object>> redScopeList = new ArrayList<>();
+		
+		Map<String, Object> map;
+		map = new HashMap<>(5);
+		map.put("text", "全平台");
+		map.put("value", "");
+		redPlatformList.add(map);
+		map = new HashMap<>(5);
+		map.put("text", "全领域");
+		map.put("value", "");
+		redScopeList.add(map);
+		List<JpaWccCelebrityInfo> groupByPlatform = celebrityInfoRepository.findByGroupByPlatform();
+		for (JpaWccCelebrityInfo celebrityInfo : groupByPlatform) {
+			map = new HashMap<>(5);
+			map.put("text", celebrityInfo.getPlatform());
+			map.put("value", celebrityInfo.getPlatform());
+			redPlatformList.add(map);
+		}
+		List<JpaWccCelebrityInfo> groupByScope = celebrityInfoRepository.findByGroupByScope();
+		for (JpaWccCelebrityInfo celebrityInfo : groupByScope) {
+			map = new HashMap<>(5);
+			map.put("text", celebrityInfo.getScope());
+			map.put("value", celebrityInfo.getScope());
+			redScopeList.add(map);
+		}
+		map = new HashMap<>(5);
+		map.put("redPlatformList", redPlatformList);
+		map.put("redScopeList", redScopeList);
+		return ResultMap.success("", map);
 	}
 	
 }
