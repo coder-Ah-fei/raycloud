@@ -116,4 +116,9 @@ public class WccCelebrityInfoForm extends BaseForm {
 	 */
 	@ApiModelProperty(value = "粉丝数量")
 	private Integer fans;
+	
+	@ApiModelProperty(value = "粉丝数量排序，0不排序，1升序，2降序")
+	private Integer fansSort;
+	@ApiModelProperty(value = "价格排序，0不排序，直播价格升序，2直播价格降序，3视频价格升序，4视频价格降序")
+	private Integer priceSort;
 }

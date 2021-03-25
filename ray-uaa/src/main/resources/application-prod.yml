@@ -8,7 +8,10 @@ spring:
     url: ${ray.datasource.url}
     username: ${ray.datasource.username}
     password: ${ray.datasource.password}
-
+  cloud:
+    nacos:
+      discovery:
+#        ip: 139.9.203.15
 dubbo:
   registry:
     #   The Spring Cloud Dubbo's registry extension

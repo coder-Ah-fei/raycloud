@@ -134,35 +134,42 @@ public class MyController extends BaseController {
 		}
 	}
 	
-	/*
+	/**
 	 * 用户提问
-	 * */
+	 * 过时的，请改用用 WccReleaseInfoController 中的  listWccReleaseInfos
+	 */
+	@Deprecated
 	@UserAuth
 	@Log(value = "用户提问", exception = "用户提问异常")
 	@PostMapping(value = {"/getUserQuestion"})
 	@ApiOperation(value = "用户提问", notes = "用户提问")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-	})
-	public Result<?> getUserQuestion(@RequestBody Page page) {
-		HashMap<String, Object> map = new HashMap<>();
+	public Result<?> getUserQuestion(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+//		HashMap<String, Object> map = new HashMap<>();
+//		LoginUser userInfo = SecurityUtil.getUsername(req);
+//		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
+//
+//		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
+//				.setType(0);
+//
+//		List<MyReleaseInfoVO> myQuestion = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+//		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
+//		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
+//		wrapper.eq(WccReleaseInfo::getStatus, 1);
+//		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
+//		wrapper.eq(WccReleaseInfo::getType, 0);
+//		int count = iWccReleaseInfoService.count(wrapper);
+//		map.put("myQuestion", myQuestion);
+//		map.put("count", count);
+//		return Result.data(map);
+		
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
-		
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
-				.setType(0);
-		
-		List<MyReleaseInfoVO> myQuestion = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
-		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
-		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
-		wrapper.eq(WccReleaseInfo::getStatus, 1);
-		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
-		wrapper.eq(WccReleaseInfo::getType, 0);
-		int count = iWccReleaseInfoService.count(wrapper);
-		map.put("myQuestion", myQuestion);
-		map.put("count", count);
-		return Result.data(map);
+		wccReleaseInfoForm
+				.setBelongUserId(Long.valueOf(userInfo.getUserId()))
+				.setType(0L)
+				.setStatus(1)
+				.setIsDelete(0);
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
 	
 	/*
@@ -192,6 +199,16 @@ public class MyController extends BaseController {
 		map.put("myTopic", myTopic);
 		map.put("count", count);
 		return Result.data(map);
+
+//		LoginUser userInfo = SecurityUtil.getUsername(req);
+//		wccReleaseInfoForm
+//				.setBelongUserId(Long.valueOf(userInfo.getUserId()))
+//				.setType(3L)
+//				.setStatus(1)
+//				.setIsDelete(0);
+//		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+//		return Result.data(resultMap);
+	
 	}
 	
 	/*
@@ -230,7 +247,6 @@ public class MyController extends BaseController {
 	@PostMapping(value = {"/getUserVideo"})
 	@ApiOperation(value = "用户视频", notes = "用户视频")
 	public Result<?> getUserVideo(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		HashMap<String, Object> map = new HashMap<>();
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		wccReleaseInfoForm
 				.setBelongUserId(Long.valueOf(userInfo.getUserId()))

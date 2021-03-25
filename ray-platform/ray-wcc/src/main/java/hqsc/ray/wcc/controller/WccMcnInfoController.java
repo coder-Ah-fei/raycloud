@@ -55,6 +55,14 @@ public class WccMcnInfoController extends BaseController {
 		return resultMap;
 	}
 	
+	@Log(value = "生成MCN榜单查询条件的内容", exception = "生成MCN榜单查询条件的内容请求异常")
+	@PostMapping(value = "/findMcnSearchData", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "生成MCN榜单查询条件的内容", notes = "生成MCN榜单查询条件的内容")
+	public ResultMap<PageMap<WccMcnInfoDto>> findMcnSearchData() {
+		ResultMap resultMap = wccMcnInfoService.findMcnSearchData();
+		return resultMap;
+	}
+	
 	
 }
 

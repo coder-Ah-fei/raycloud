@@ -48,4 +48,6 @@ public class WccMcnInfoForm extends BaseForm {
 	 */
 	@ApiModelProperty(value = "红人数量")
 	private Integer celebrityCount;
+	@ApiModelProperty(value = "红人数量排序，0不排序，1升序，2降序")
+	private Integer celebrityCountSort;
 }

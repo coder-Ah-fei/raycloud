@@ -161,6 +161,8 @@ public class ReleaseController extends BaseController {
 		releaseInfo.setBelongUserId(userid);
 		releaseInfo.setBelongCircleId(belongCircleId);
 		releaseInfo.setCreationDate(LocalDateTime.now());
+		releaseInfo.setStatus(1);
+		releaseInfo.setIsDelete(0);
 		try {
 			return wccReleaseInfoService.save(releaseInfo) ? Result.success("发布信息成功！") : Result.fail("发布信息失败！");
 		} catch (Exception e) {

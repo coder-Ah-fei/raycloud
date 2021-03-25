@@ -35,4 +35,11 @@ public interface WccMcnInfoService {
 	 * @return
 	 */
 	Result<?> save(WccMcnInfoForm wccMcnInfoForm);
+	
+	/**
+	 * 生成MCN榜单查询条件的内容
+	 *
+	 * @return
+	 */
+	ResultMap findMcnSearchData();
 }

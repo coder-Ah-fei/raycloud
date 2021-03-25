@@ -21,7 +21,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Predicate;
 import java.util.*;
 
 /**
@@ -48,18 +51,36 @@ public class WccCelebrityInfoServiceImpl implements WccCelebrityInfoService {
 	public ResultMap listWccCelebrityInfos(WccCelebrityInfoForm wccCelebrityInfoForm) {
 		Map<String, Object> map = new HashMap<>();
 		Specification<JpaWccCelebrityInfo> specification = (root, criteriaQuery, criteriaBuilder) -> {
-//			List<Predicate> pr = new ArrayList< >();
-//				if (!StringUtils.empty(articleForm.getSectionName())) {
-//					Join<Object, Object> section = root.join("section");
-//					pr.add(builder.equal(section.get("sectionName"), articleForm.getSectionName()));
-//				}
-
-//			if (!StringUtils.empty(litigationEnvelopeBrandForm.getBrandName())) {
-//				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
-//			}
-//			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
+			List<Predicate> pr = new ArrayList<>();
+			if (!StringUtils.isEmpty(wccCelebrityInfoForm.getPlatform())) {
+				pr.add(criteriaBuilder.equal(root.get("platform"), wccCelebrityInfoForm.getPlatform()));
+			}
+			if (!StringUtils.isEmpty(wccCelebrityInfoForm.getScope())) {
+				pr.add(criteriaBuilder.equal(root.get("scope"), wccCelebrityInfoForm.getScope()));
+			}
+			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
+			List<Order> orders = new ArrayList<>();
+			if (Integer.valueOf(1).equals(wccCelebrityInfoForm.getFansSort())) {
+				orders.add(criteriaBuilder.asc(root.get("fans")));
+			}
+			if (Integer.valueOf(2).equals(wccCelebrityInfoForm.getFansSort())) {
+				orders.add(criteriaBuilder.desc(root.get("fans")));
+			}
+			if (Integer.valueOf(1).equals(wccCelebrityInfoForm.getPriceSort())) {
+				orders.add(criteriaBuilder.asc(root.get("livePrice")));
+			}
+			if (Integer.valueOf(2).equals(wccCelebrityInfoForm.getPriceSort())) {
+				orders.add(criteriaBuilder.desc(root.get("livePrice")));
+			}
+			if (Integer.valueOf(3).equals(wccCelebrityInfoForm.getPriceSort())) {
+				orders.add(criteriaBuilder.asc(root.get("video")));
+			}
+			if (Integer.valueOf(4).equals(wccCelebrityInfoForm.getPriceSort())) {
+				orders.add(criteriaBuilder.desc(root.get("video")));
+			}
+			orders.add(criteriaBuilder.desc(root.get("creationDate")));
+			criteriaQuery.orderBy(orders);
 			
-			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
 		};
 		List<JpaWccCelebrityInfo> jpaWccCelebrityInfoList;
