@@ -5,6 +5,7 @@ import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.WccReleaseInfo;
@@ -21,10 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @AllArgsConstructor
@@ -138,7 +136,7 @@ public class ReleaseController extends BaseController {
 			return Result.fail("您发布的标题或内容中可能包含敏感信息");
 		}
 		// 从content中提取连接
-		List<String> imgStr = getImgStr(content);
+		List<String> imgStr = StringUtil.getImgStr(content);
 		for (String s : imgStr) {
 			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(s);
 			if (!imgSecCheck) {
@@ -172,19 +170,4 @@ public class ReleaseController extends BaseController {
 	}
 	
 	
-	public static List<String> getImgStr(String htmlStr) {
-		Matcher m = Pattern.compile("src=\"http://.*?\"").matcher(htmlStr);
-		List<String> list = new ArrayList<>();
-		
-		while (m.find()) {
-			String match = m.group();
-			//Pattern.CASE_INSENSITIVE忽略'jpg'的大小写
-			Matcher k = Pattern.compile("\"http://.*?\"", Pattern.CASE_INSENSITIVE).matcher(match);
-			if (k.find()) {
-				String group = k.group();
-				list.add(group.substring(1, group.length() - 1));
-			}
-		}
-		return list;
-	}
 }

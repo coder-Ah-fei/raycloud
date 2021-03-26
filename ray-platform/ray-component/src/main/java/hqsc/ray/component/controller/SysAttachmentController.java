@@ -177,7 +177,7 @@ public class SysAttachmentController extends BaseController {
 		
 		String fileName = UUID.randomUUID().toString().replace("-", "")
 				+ StringPool.DOT + FilenameUtils.getExtension(file.getOriginalFilename());
-		LoginUser userInfo = SecurityUtil.getUsername(req);
+		
 		Map<String, Object> result = new HashMap<>(4);
 		if (file == null) {
 			throw new RuntimeException("上传文件不能为空");
@@ -236,6 +236,8 @@ public class SysAttachmentController extends BaseController {
 			VideoUtil.section(savePath + fileName, attachmentConfig.getFfmpegPath(), allVideoFilePath);
 			videoHlsPath = videoFilePath + "playList.m3u8";
 		}
+		
+		
 		SysAttachment att = new SysAttachment();
 		att.setIsRecycle(false);
 		att.setIsDeleted("0");
@@ -248,10 +250,15 @@ public class SysAttachmentController extends BaseController {
 		att.setFileName(fileName);
 		att.setSize(size);
 		att.setType(OssUtil.getFileType(fileName));
-		att.setCreateBy(userInfo.getUserName());
 		att.setCreateTime(LocalDateTime.now());
-		att.setUpdateBy(userInfo.getUserName());
 		att.setUpdateTime(LocalDateTime.now());
+		try {
+			LoginUser userInfo = SecurityUtil.getUsername(req);
+			att.setCreateBy(userInfo.getUserName());
+			att.setUpdateBy(userInfo.getUserName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		sysAttachmentService.save(att);
 		return att;
 	}

@@ -299,45 +299,48 @@
     </select>
     <select id="listWccReleaseInfosForNewestComment" resultMap="myReleaseInfo">
         SELECT wri.RELEASE_INFO_ID,
-               wri.TITEL,
-               wri.CONTENT,
-               wri.ATTACHMENT_ID,
-               wri.TYPE,
-               wri.BELONG_USER_ID,
-               wri.BELONG_CIRCLE_ID,
-               wri.STATUS,
-               wri.IS_DELETE,
-               wri.CREATED_BY,
-               wri.CREATED_BY_USER,
-               wri.CREATION_DATE,
-               wri.LAST_UPDATED_BY_USER,
-               wri.LAST_UPDATED_BY,
-               wri.LAST_UPDATE_DATE,
-               (select wrd.CREATION_DATE
-                from wcc_response_details wrd
-                where wrd.USER_ID = #{userId}
-                order by wrd.CREATION_DATE desc limit 0,
-               1)                       AS responseDetailsCreateDateNewest,
-                (
-                   SELECT count(1)
-                   FROM wcc_praise_favorite f
-                   WHERE 1 = 1
-                     AND f.STATUS = 1
-                     AND f.IS_DELETE = 0
-                     AND f.TYPE = 0
-                     AND f.BELONG_ID = wri.RELEASE_INFO_ID
-               )                         AS praise_count,
-               (SELECT count(1)
-                FROM wcc_response_details d
-                WHERE 1 = 1
-                  AND d.STATUS = 1
-                  AND d.IS_DELETE = 0
-                  AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
-        FROM wcc_release_info wri,
-            wcc_response_details wrd
+        wri.TITEL,
+        wri.CONTENT,
+        wri.ATTACHMENT_ID,
+        wri.TYPE,
+        wri.BELONG_USER_ID,
+        wri.BELONG_CIRCLE_ID,
+        wri.STATUS,
+        wri.IS_DELETE,
+        wri.CREATED_BY,
+        wri.CREATED_BY_USER,
+        wri.CREATION_DATE,
+        wri.LAST_UPDATED_BY_USER,
+        wri.LAST_UPDATED_BY,
+        wri.LAST_UPDATE_DATE,
+        (select wrd.CREATION_DATE
+        from wcc_response_details wrd
+        where wrd.USER_ID = #{userId}
+        order by wrd.CREATION_DATE desc limit 0,
+        1) AS responseDetailsCreateDateNewest,
+        (
+        SELECT count(1)
+        FROM wcc_praise_favorite f
         WHERE 1 = 1
-          AND wri.RELEASE_INFO_ID = wrd.BELONG_ID
-          AND wrd.USER_ID = #{userId}
+        AND f.STATUS = 1
+        AND f.IS_DELETE = 0
+        AND f.TYPE = 0
+        AND f.BELONG_ID = wri.RELEASE_INFO_ID
+        ) AS praise_count,
+        (SELECT count(1)
+        FROM wcc_response_details d
+        WHERE 1 = 1
+        AND d.STATUS = 1
+        AND d.IS_DELETE = 0
+        AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
+        FROM wcc_release_info wri,
+        wcc_response_details wrd
+        WHERE 1 = 1
+        <if test="type != null and type != -1">
+            AND wri.TYPE = #{type}
+        </if>
+        AND wri.RELEASE_INFO_ID = wrd.BELONG_ID
+        AND wrd.USER_ID = #{userId}
         GROUP BY wrd.BELONG_ID
         ORDER BY responseDetailsCreateDateNewest LIMIT #{current}, #{size};
     </select>

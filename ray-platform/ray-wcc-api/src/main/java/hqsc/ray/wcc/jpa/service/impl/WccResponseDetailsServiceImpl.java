@@ -132,6 +132,8 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			}
 		}
 		comment.setResponseTime(LocalDateTime.now());
+		comment.setStatus(1)
+				.setIsDelete(0);
 		wccResponseDetailsRepository.save(comment);
 		
 		

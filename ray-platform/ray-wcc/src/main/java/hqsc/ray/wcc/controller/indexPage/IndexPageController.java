@@ -91,6 +91,15 @@ public class IndexPageController extends BaseController {
 			referral.setAttachmentPath(StringUtil.isBlank(referral.getAttachmentPath()) ? "" : referral.getAttachmentPath().replace("static", ""));
 			referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
 			referral.setCreationDateStr(DateUtil.simpleFormatWithYear(referral.getCreationDate()));
+			if (referral.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(referral.getContent());
+				if (imgStrs.size() > 0) {
+					referral.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (referral.getContent() != null) {
+					referral.setContent(StringUtil.trimHtml(referral.getContent(), 100));
+				}
+			}
 		}
 		
 		return Result.data(referrals);
@@ -224,6 +233,16 @@ public class IndexPageController extends BaseController {
 			indexReferralsVO.setNickname(indexReferralsVO.getNickname() == null ? "" : StringUtil.toUnicode(indexReferralsVO.getNickname()));
 			indexReferralsVO.setCreationDateStr(DateUtil.simpleFormatWithYear(indexReferralsVO.getCreationDate()));
 			
+			
+			if (indexReferralsVO.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(indexReferralsVO.getContent());
+				if (imgStrs.size() > 0) {
+					indexReferralsVO.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (indexReferralsVO.getContent() != null) {
+					indexReferralsVO.setContent(StringUtil.trimHtml(indexReferralsVO.getContent(), 100));
+				}
+			}
 		}
 		
 		return Result.data(list);

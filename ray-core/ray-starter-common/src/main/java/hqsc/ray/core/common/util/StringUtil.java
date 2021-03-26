@@ -3,7 +3,11 @@ package hqsc.ray.core.common.util;
 import com.github.binarywang.java.emoji.EmojiConverter;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * String工具类
@@ -158,6 +162,50 @@ public class StringUtil extends StringUtils {
 	 */
 	public static String join(Object[] arr, String delim) {
 		return StringUtil.arrayToDelimitedString(arr, delim);
+	}
+	
+	
+	/**
+	 * 从内容中提取http开头的地址
+	 *
+	 * @param htmlStr
+	 * @return
+	 */
+	public static List<String> getImgStr(String htmlStr) {
+		Matcher m = Pattern.compile("src=\"http.*?\"").matcher(htmlStr);
+		List<String> list = new ArrayList<>();
+		
+		while (m.find()) {
+			String match = m.group();
+			//Pattern.CASE_INSENSITIVE忽略'jpg'的大小写
+			Matcher k = Pattern.compile("\"http.*?\"", Pattern.CASE_INSENSITIVE).matcher(match);
+			if (k.find()) {
+				String group = k.group();
+				list.add(group.substring(1, group.length() - 1));
+			}
+		}
+		return list;
+	}
+	
+	/**
+	 * html中提取文字
+	 *
+	 * @param str    html
+	 * @param length 提取的长度
+	 * @return
+	 */
+	public static String trimHtml(String str, int length) {
+		str = str.replaceAll("/(\\n)/g", "");
+		str = str.replaceAll("/(\\t)/g", "");
+		str = str.replaceAll("/(\\r)/g", "");
+		str = str.replaceAll("<\\/?[^>]*>", "");
+		str = str.replaceAll("/\\s*/g", "");
+		str = str.replaceAll("/<[^>]*>/g", "");
+		str = str.replaceAll("/&nbsp;/g", " ");
+		if (str.length() > length) {
+			str = str.substring(0, length);
+		}
+		return str;
 	}
 	
 }

@@ -26,6 +26,9 @@ public class WccReleaseInfoDto {
 	@ApiModelProperty(value = "内容")
 	private String content;
 	
+	@ApiModelProperty(value = "信息类型为文章时，文章内提取的第一个图片")
+	private String articleImgUrl;
+	
 	/**
 	 * 附件id
 	 */

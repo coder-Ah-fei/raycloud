@@ -218,26 +218,15 @@ public class MyController extends BaseController {
 	@Log(value = "用户文章", exception = "用户文章异常")
 	@PostMapping(value = {"/getUserArticle"})
 	@ApiOperation(value = "用户文章", notes = "用户文章")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-	})
-	public Result<?> getUserArticle(@RequestBody Page page) {
-		HashMap<String, Object> map = new HashMap<>();
+	public Result<?> getUserArticle(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		WccReleaseInfoForm wccReleaseInfoForm = new WccReleaseInfoForm();
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()))
-				.setType(2);
-		List<MyReleaseInfoVO> myArticle = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
-		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
-		wrapper.eq(WccReleaseInfo::getBelongUserId, Long.parseLong(userInfo.getUserId()));
-		wrapper.eq(WccReleaseInfo::getStatus, 1);
-		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
-		wrapper.eq(WccReleaseInfo::getType, 2);
-		int count = iWccReleaseInfoService.count(wrapper);
-		map.put("myArticle", myArticle);
-		map.put("count", count);
-		return Result.data(map);
+		wccReleaseInfoForm
+				.setUserId(Long.valueOf(userInfo.getUserId()))
+				.setType(2L)
+				.setStatus(1)
+				.setIsDelete(0);
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
 	
 	/**
@@ -374,9 +363,9 @@ public class MyController extends BaseController {
 		return Result.data(map);
 	}
 	
-	/*
+	/**
 	 * 我的回答
-	 * */
+	 */
 	@UserAuth
 	@Log(value = "我的回答", exception = "我的回答异常")
 	@PostMapping(value = {"/getMyResponse"})
@@ -384,8 +373,9 @@ public class MyController extends BaseController {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
 			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
+			@ApiImplicitParam(name = "type", required = true, value = "发布信息的类型", paramType = "form"),
 	})
-	public Result<?> getMyResponse(@RequestBody Page page) {
+	public Result<?> getMyResponse(@RequestParam Integer type, Page page) {
 		if (page.getCurrent() < 1 || page.getSize() < 1) {
 			return Result.fail("非法参数！");
 		}
@@ -401,7 +391,7 @@ public class MyController extends BaseController {
 		
 		List<MyReleaseInfoVO> myReleaseInfoVOList;
 		try {
-			myReleaseInfoVOList = iWccReleaseInfoService.listWccReleaseInfosForNewestComment(page.getCurrent(), page.getSize(), Long.parseLong(userInfo.getUserId()));
+			myReleaseInfoVOList = iWccReleaseInfoService.listWccReleaseInfosForNewestComment(page.getCurrent(), page.getSize(), Long.parseLong(userInfo.getUserId()), type);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Result.fail("查询异常");

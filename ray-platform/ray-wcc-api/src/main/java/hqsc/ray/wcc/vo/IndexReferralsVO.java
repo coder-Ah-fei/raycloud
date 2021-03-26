@@ -50,6 +50,9 @@ public class IndexReferralsVO implements Serializable {
 	@ApiModelProperty(value = "内容")
 	private String content;
 	
+	@ApiModelProperty(value = "文章里面的图片地址")
+	private String articleImgUrl;
+	
 	@ApiModelProperty(value = "附件id")
 	private Long attachmentId;
 	private String attachmentPath;

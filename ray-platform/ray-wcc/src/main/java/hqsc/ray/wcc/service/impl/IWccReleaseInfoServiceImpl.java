@@ -164,10 +164,10 @@ public class IWccReleaseInfoServiceImpl extends ServiceImpl<WccReleaseInfoMapper
 	 * @return
 	 */
 	@Override
-	public List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long userId) {
+	public List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long userId, Integer type) {
 		current = current - 1;
 		current = current * size;
-		return wccReleaseInfoMapper.listWccReleaseInfosForNewestComment(current, size, userId);
+		return wccReleaseInfoMapper.listWccReleaseInfosForNewestComment(current, size, userId, type);
 	}
 	
 	/**

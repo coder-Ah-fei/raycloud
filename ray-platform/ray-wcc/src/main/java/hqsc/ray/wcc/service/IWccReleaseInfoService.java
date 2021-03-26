@@ -84,7 +84,7 @@ public interface IWccReleaseInfoService extends IService<WccReleaseInfo> {
 	 * @param parseLong
 	 * @return
 	 */
-	List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long parseLong);
+	List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long parseLong, Integer type);
 	
 	/**
 	 * 查找我收藏的内容（文章，话题，视频）

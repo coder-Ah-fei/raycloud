@@ -129,20 +129,14 @@ public class WccReleaseInfoController extends BaseController {
 	/**
 	 * 我的页面，获取用户发布的内容
 	 *
-	 * @param page               分页信息
 	 * @param wccReleaseInfoForm 　搜索关键词
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "我的页面，获取用户发布的内容", exception = "发布信息表列表请求异常")
-	@PostMapping("/listWccReleaseInfos")
+	@PostMapping("/private/listWccReleaseInfos")
 	@ApiOperation(value = "发布信息表列表", notes = "分页查询")
 	public Result<?> listWccReleaseInfos(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-//		LoginUser userInfo = SecurityUtil.getUsername(req);
-//		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
-//		IPage<WccReleaseInfo> wccReleaseInfoIPage = wccReleaseInfoService.listWccReleaseInfos(page, wccReleaseInfoForm);
-//		List<MyReleaseInfoVO> myReleaseInfo = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
-		
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		wccReleaseInfoForm
 				.setBelongUserId(Long.valueOf(userInfo.getUserId()))
@@ -150,9 +144,6 @@ public class WccReleaseInfoController extends BaseController {
 				.setIsDelete(0);
 		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
 		return Result.data(resultMap);
-
-
-//		return Result.data(myReleaseInfo);
 	}
 	
 	

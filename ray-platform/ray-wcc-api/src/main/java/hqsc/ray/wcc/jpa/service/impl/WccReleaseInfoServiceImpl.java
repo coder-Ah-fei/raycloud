@@ -122,6 +122,15 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 				wccReleaseInfoDto.setConcernCount(userConcernService.countByJpaWccUserIdAndBelongUserId(wccReleaseInfoForm.getUserId(), jpaWccReleaseInfo.getBelongUser().getId()).intValue());
 			}
 			
+			if (jpaWccReleaseInfo.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(jpaWccReleaseInfo.getContent());
+				if (imgStrs.size() > 0) {
+					wccReleaseInfoDto.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (jpaWccReleaseInfo.getContent() != null) {
+					wccReleaseInfoDto.setContent(StringUtil.trimHtml(jpaWccReleaseInfo.getContent(), 100));
+				}
+			}
 			
 			list.add(wccReleaseInfoDto);
 		}

@@ -1,6 +1,7 @@
 package hqsc.ray.wcc.utils;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.redis.core.RedisService;
 import lombok.RequiredArgsConstructor;
@@ -82,7 +83,8 @@ public class WechatMiniUtil {
 			byte[] bytes = HttpsUtil.get(imgUrl);
 			String uploadFile = HttpsUtil.uploadFile(url, bytes);
 			System.out.println("--------------------------" + uploadFile);
-			Map map = JSONUtil.toBean(uploadFile, Map.class);
+//			JSON.parseObject(uploadFile,Map.class);
+			Map map = JSON.parseObject(uploadFile, Map.class);
 			if ((Integer) map.get("errcode") == 0) {
 				return true;
 			}
