@@ -129,12 +129,22 @@ public class WccMerchantBrandDetailController extends BaseController {
 	
 	//-------------------------------------------------------------------------
 	
-	@Log(value = "获取品牌及品牌下的商品列表", exception = "获取mcn机构列表请求异常")
+	@Log(value = "获取品牌及品牌下的商品列表", exception = "获取品牌及品牌下的商品列表请求异常")
 	@PostMapping(value = "/listWccMerchantBrandDetails", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
+	@ApiOperation(value = "获取品牌及品牌下的商品列表", notes = "获取品牌及品牌下的商品列表")
 	public ResultMap<PageMap<WccMerchantBrandDetailDto>> listWccMerchantBrandDetails(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
 		ResultMap resultMap = wccMerchantBrandDetailService.listWccMerchantBrandDetails(wccMerchantBrandDetailForm);
 		return resultMap;
+	}
+	
+	@Log(value = "获取品牌及品牌下的商品", exception = "获取品牌及品牌下的商品请求异常")
+	@PostMapping(value = "/findWccMerchantBrandDetail", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "获取品牌及品牌下的商品", notes = "获取品牌及品牌下的商品")
+	public Result<WccMerchantBrandDetailDto> findWccMerchantBrandDetail(WccMerchantBrandDetailForm wccMerchantBrandDetailForm) {
+		WccMerchantBrandDetailDto dto = wccMerchantBrandDetailService.findById(wccMerchantBrandDetailForm);
+		Result<WccMerchantBrandDetailDto> success = Result.success("");
+		success.setData(dto);
+		return success;
 	}
 }
 

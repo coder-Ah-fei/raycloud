@@ -2,10 +2,15 @@ package hqsc.ray.wcc.jpa.form;
 
 import hqsc.ray.wcc.jpa.form.basic.BaseForm;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+/**
+ * @author yang
+ */
+@Builder
 @Getter
 @Setter
 @Accessors(chain = true)

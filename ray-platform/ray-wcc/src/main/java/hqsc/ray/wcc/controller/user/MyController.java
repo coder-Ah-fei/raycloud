@@ -10,12 +10,14 @@ import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
+import hqsc.ray.core.redis.core.RedisService;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.*;
 import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.form.WccResponseDetailsForm;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
+import hqsc.ray.wcc.jpa.service.WccUserService;
 import hqsc.ray.wcc.service.*;
 import hqsc.ray.wcc.vo.MyReleaseInfoVO;
 import hqsc.ray.wcc.vo.WccResponseDetailsVO;
@@ -39,8 +41,7 @@ import java.util.List;
 @Api(value = "我的", tags = "我的接口")
 public class MyController extends BaseController {
 	
-	
-	private IWccUserService wccUserService;
+	private IWccUserService iWccUserService;
 	
 	private IWccReleaseInfoService iWccReleaseInfoService;
 	
@@ -53,6 +54,8 @@ public class MyController extends BaseController {
 	private IWccUserCircleService wccUserCircleService;
 	
 	private final WccReleaseInfoService releaseInfoService;
+	private final RedisService redisService;
+	private final WccUserService wccUserService;
 	
 	/*
 	 * 获取用户信息
@@ -67,9 +70,10 @@ public class MyController extends BaseController {
 		HashMap<String, Object> map = new HashMap<>();
 		WccUser wccUser;
 		try {
-			wccUser = wccUserService.getById(userInfo.getUserId());
+			wccUser = iWccUserService.getById(userInfo.getUserId());
 			EmojiConverter emojiConverter = EmojiConverter.getInstance();
 			wccUser.setNickname(emojiConverter.toUnicode(wccUser.getNickname()));
+			wccUser.setPhone(StringUtil.hideString(wccUser.getPhone()));
 		} catch (Exception e) {
 			return Result.fail("查询用户信息异常");
 		}
@@ -109,7 +113,7 @@ public class MyController extends BaseController {
 	                          @RequestParam(required = false, value = "gender") Integer gender,
 	                          @RequestParam(required = false, value = "phone") String phone) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		WccUser wccUser = wccUserService.getById(userInfo.getUserId());
+		WccUser wccUser = iWccUserService.getById(userInfo.getUserId());
 		if (headimg != null) {
 			wccUser.setHeadPortrait(headimg);
 		}
@@ -127,7 +131,7 @@ public class MyController extends BaseController {
 		}
 		try {
 			wccUser.setLastUpdateDate(LocalDateTime.now());
-			wccUserService.updateById(wccUser);
+			iWccUserService.updateById(wccUser);
 			return Result.success("编辑资料成功！");
 		} catch (Exception e) {
 			return Result.fail("编辑资料异常！");
@@ -629,6 +633,19 @@ public class MyController extends BaseController {
 		return Result.condition(save);
 		
 	}
+	
+	@UserAuth
+	@Log(value = "绑定手机号", exception = "绑定手机号异常")
+	@PostMapping(value = {"/bindMobilePhone"}, produces = {"application/json; charset=UTF-8"})
+	@ApiOperation(value = "绑定手机号", notes = "绑定手机号")
+	public Result<?> bindMobilePhone(
+			@RequestParam("encryptedData") String encryptedData,
+			@RequestParam("iv") String iv
+	) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		return wccUserService.bindMobilePhone(encryptedData, iv, userInfo.getUserId());
+	}
+	
 	
 	/*
 	 * 查询用户已发布信息资料方法

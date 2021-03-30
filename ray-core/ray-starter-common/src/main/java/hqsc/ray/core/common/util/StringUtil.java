@@ -208,4 +208,20 @@ public class StringUtil extends StringUtils {
 		return str;
 	}
 	
+	
+	/**
+	 * 隐藏字符串的部分内容
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String hideString(String str) {
+		StringBuilder sb = new StringBuilder(str);
+		// 手机号
+		if (str.length() == 11) {
+			return sb.replace(3, 7, "****").toString();
+		}
+		return "";
+	}
+	
 }

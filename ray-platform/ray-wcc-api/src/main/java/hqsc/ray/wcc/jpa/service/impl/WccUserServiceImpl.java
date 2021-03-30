@@ -1,6 +1,10 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.util.AesHelper;
 import hqsc.ray.core.common.util.StringUtil;
+import hqsc.ray.core.redis.core.RedisService;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
 import hqsc.ray.wcc.jpa.entity.JpaWccUser;
@@ -8,6 +12,7 @@ import hqsc.ray.wcc.jpa.form.WccUserForm;
 import hqsc.ray.wcc.jpa.repository.WccUserRepository;
 import hqsc.ray.wcc.jpa.service.WccUserConcernService;
 import hqsc.ray.wcc.jpa.service.WccUserService;
+import hqsc.ray.wcc.wechatModel.GetPhoneModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,12 +20,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Predicate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 描述：
@@ -34,6 +37,8 @@ public class WccUserServiceImpl implements WccUserService {
 	private WccUserRepository wccUserRepository;
 	@Autowired
 	private WccUserConcernService userConcernService;
+	@Autowired
+	private RedisService redisService;
 	
 	/**
 	 * 获取数据
@@ -92,6 +97,36 @@ public class WccUserServiceImpl implements WccUserService {
 		map.put("list", list);
 		map.put("count", count);
 		return ResultMap.success("'", map);
+	}
+	
+	/**
+	 * 绑定手机号
+	 *
+	 * @param encryptedData
+	 * @param iv
+	 * @param userId
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result<?> bindMobilePhone(String encryptedData, String iv, String userId) {
+		String sessionKey = (String) redisService.get("session_key");
+		String phoneJsonStr = null;
+		try {
+			phoneJsonStr = AesHelper.decryptForWeChatApplet(encryptedData, sessionKey, iv);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return Result.fail("绑定手机号失败");
+		}
+		GetPhoneModel getPhoneModel = JSONObject.parseObject(phoneJsonStr, GetPhoneModel.class);
+		Optional<JpaWccUser> optionalJpaWccUser = wccUserRepository.findById(Long.valueOf(userId));
+		if (!optionalJpaWccUser.isPresent()) {
+			return Result.fail("用户不存在");
+		}
+		JpaWccUser jpaWccUser = optionalJpaWccUser.get();
+		jpaWccUser.setPhone(getPhoneModel.getPhoneNumber());
+		wccUserRepository.save(jpaWccUser);
+		return Result.success("手机号绑定成功").setData(StringUtil.hideString(jpaWccUser.getPhone()));
 	}
 	
 }

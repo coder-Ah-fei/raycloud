@@ -2,12 +2,9 @@ package hqsc.ray.wcc.controller.login;
 
 
 import com.alibaba.fastjson.JSONObject;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.conf.WechatConf;
-import hqsc.ray.wcc.entity.WccUser;
 import hqsc.ray.wcc.service.IWccUserService;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -16,7 +13,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
@@ -24,62 +24,62 @@ import java.net.URI;
 @RestController
 @RequestMapping({"/wechat"})
 public class LoginController extends BaseController {
-
-    @Autowired
-    WechatConf wechatConf;
-
-    private String openid;
-    private String session_key;
-
-
-    @Autowired
-    private IWccUserService wccUserService;
-
-
-    @PostMapping({"/getOpenId"})
-    public Result<?> getOpenId(@RequestParam(required = true, defaultValue = "", value = "code") String code) {
-        System.out.println("code==========="+code);
-        // 创建Httpclient对象
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        String resultString = "";
-        CloseableHttpResponse response = null;
-        if(code != null && code.length() > 0 ){
-            String url="https://api.weixin.qq.com/sns/jscode2session?appid="+wechatConf.getAppid()+"&secret="+wechatConf.getAppsecret()+"&js_code="+code+"&grant_type=authorization_code";
-            try {
-                // 创建uri
-                URIBuilder builder = new URIBuilder(url);
-                URI uri = builder.build();
-                // 创建http GET请求
-                HttpGet httpGet = new HttpGet(uri);
-                // 执行请求
-                response = httpclient.execute(httpGet);
-                // 判断返回状态是否为200
-                if (response.getStatusLine().getStatusCode() == 200) {
-                    resultString = EntityUtils.toString(response.getEntity(), "UTF-8");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else {
-            return Result.fail("code不存在！");
-        }
-        // 解析json
-        JSONObject jsonObject = (JSONObject) JSONObject.parse(resultString);
-        session_key = jsonObject.get("session_key")+"";
-        openid = jsonObject.get("openid")+"";
-        System.out.println("session_key=="+session_key);
-        System.out.println("openid=="+openid);
-        if (openid!=null&&!"".equals(openid)&&!"null".equals(openid)&&session_key!=null&&!"".equals(session_key)&&!"null".equals(session_key)){
-            return Result.data(resultString);
-        }else {
-            return Result.fail("无效code！");
-        }
-    }
-
-
-    /*
-    * 用户登录
-    * */
+	
+	@Autowired
+	WechatConf wechatConf;
+	
+	private String openid;
+	private String session_key;
+	
+	
+	@Autowired
+	private IWccUserService wccUserService;
+	
+	
+	@PostMapping({"/getOpenId"})
+	public Result<?> getOpenId(@RequestParam(required = true, defaultValue = "", value = "code") String code) {
+		System.out.println("code===========" + code);
+		// 创建Httpclient对象
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		String resultString = "";
+		CloseableHttpResponse response = null;
+		if (code != null && code.length() > 0) {
+			String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wechatConf.getAppid() + "&secret=" + wechatConf.getAppsecret() + "&js_code=" + code + "&grant_type=authorization_code";
+			try {
+				// 创建uri
+				URIBuilder builder = new URIBuilder(url);
+				URI uri = builder.build();
+				// 创建http GET请求
+				HttpGet httpGet = new HttpGet(uri);
+				// 执行请求
+				response = httpclient.execute(httpGet);
+				// 判断返回状态是否为200
+				if (response.getStatusLine().getStatusCode() == 200) {
+					resultString = EntityUtils.toString(response.getEntity(), "UTF-8");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			return Result.fail("code不存在！");
+		}
+		// 解析json
+		JSONObject jsonObject = (JSONObject) JSONObject.parse(resultString);
+		session_key = jsonObject.get("session_key") + "";
+		openid = jsonObject.get("openid") + "";
+		System.out.println("session_key==" + session_key);
+		System.out.println("openid==" + openid);
+		if (openid != null && !"".equals(openid) && !"null".equals(openid) && session_key != null && !"".equals(session_key) && !"null".equals(session_key)) {
+			return Result.data(resultString);
+		} else {
+			return Result.fail("无效code！");
+		}
+	}
+	
+	
+	/*
+	 * 用户登录
+	 * */
 //    @PostMapping(value = {"/login"})
 //    private Result<?> login(@RequestParam(required = false, defaultValue = "", value = "unionid") String unionid){
 //
@@ -129,8 +129,6 @@ public class LoginController extends BaseController {
 //            return Result.fail("请先注册后，再登录！");
 //        }
 //    }
-
-
 
 
 //    @PostMapping(value = {"/test"})

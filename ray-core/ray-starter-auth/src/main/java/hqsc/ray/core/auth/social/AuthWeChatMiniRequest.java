@@ -2,6 +2,9 @@ package hqsc.ray.core.auth.social;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import hqsc.ray.core.auth.model.WechatMiniAuthToken;
+import hqsc.ray.core.auth.model.WechatMiniAuthUser;
+import lombok.extern.slf4j.Slf4j;
 import me.zhyd.oauth.cache.AuthStateCache;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.enums.AuthResponseStatus;
@@ -33,6 +36,7 @@ import java.util.Arrays;
  * @author: Ryan Hsu
  * @create: 2021-01-09 00:50
  **/
+@Slf4j
 public class AuthWeChatMiniRequest extends AuthDefaultRequest {
 	
 	public AuthWeChatMiniRequest(AuthConfig config) {
@@ -47,15 +51,30 @@ public class AuthWeChatMiniRequest extends AuthDefaultRequest {
 		return this.getToken(this.accessTokenUrl(authCallback.getCode()), authCallback.getOauth_token(), authCallback.getAuth_code());
 	}
 	
-	protected AuthUser getUserInfo(AuthToken authToken) {
+	@Override
+	protected AuthUser getUserInfo(AuthToken token) {
+		WechatMiniAuthToken authToken = (WechatMiniAuthToken) token;
 		String openId = authToken.getOpenId();
 		JSONObject object = JSONObject.parseObject(authToken.getAccessToken());
 		String location = String.format("%s-%s-%s", object.getString("country"), object.getString("province"), object.getString("city"));
 		if (object.containsKey("unionid")) {
 			authToken.setUnionId(object.getString("unionid"));
 		}
-		
-		return AuthUser.builder().rawUserInfo(object).username(object.getString("nickname")).nickname(object.getString("nickname")).avatar(object.getString("avatarUrl")).location(location).uuid(openId).gender(AuthUserGender.getWechatRealGender(object.getString("gender"))).token(authToken).source(this.source.toString()).build();
+
+//		return AuthUser.builder().rawUserInfo(object).username(object.getString("nickname")).nickname(object.getString("nickname")).avatar(object.getString("avatarUrl")).location(location).uuid(openId).gender(AuthUserGender.getWechatRealGender(object.getString("gender"))).token(authToken).source(this.source.toString()).build();
+		WechatMiniAuthUser authUser = new WechatMiniAuthUser();
+		authUser.setSessionKey(authToken.getSessionKey());
+		authUser.setRawUserInfo(object);
+		authUser.setUsername(object.getString("nickname"));
+		authUser.setNickname(object.getString("nickname"));
+		authUser.setAvatar(object.getString("avatarUrl"));
+		authUser.setLocation(location);
+		authUser.setUuid(openId);
+		authUser.setGender(AuthUserGender.getWechatRealGender(object.getString("gender")));
+		authUser.setToken(authToken);
+		authUser.setSource(this.source.toString());
+		return authUser;
+//		return AuthUser.builder().rawUserInfo(object).username(object.getString("nickname")).nickname(object.getString("nickname")).avatar(object.getString("avatarUrl")).location(location).uuid(openId).gender(AuthUserGender.getWechatRealGender(object.getString("gender"))).token(authToken).source(this.source.toString()).build();
 	}
 	
 	public AuthResponse refresh(AuthToken oldToken) {
@@ -75,6 +94,8 @@ public class AuthWeChatMiniRequest extends AuthDefaultRequest {
 		String unionId = "";
 		String jsonStr = "";
 		String sessionKey = accessTokenObject.getString("session_key");
+		log.info("获取的session_key为{}", sessionKey);
+//		redisService.set("session_key", sessionKey);
 		JSONObject json = decrypt(encryptedData, sessionKey, iv);
 		if (json != null) {
 			jsonStr = json.toString();
@@ -83,7 +104,14 @@ public class AuthWeChatMiniRequest extends AuthDefaultRequest {
 			}
 		}
 //        return AuthToken.builder().accessToken(jsonStr).openId(accessTokenObject.getString("openid")).unionId(unionId).build();
-		return AuthToken.builder().accessToken(jsonStr).openId(accessTokenObject.getString("openid")).unionId(accessTokenObject.getString("openid")).build();
+//		return AuthToken.builder().accessToken(jsonStr).openId(accessTokenObject.getString("openid")).unionId(accessTokenObject.getString("openid")).build();
+		WechatMiniAuthToken authToken = new WechatMiniAuthToken();
+		authToken.setSessionKey(sessionKey);
+		authToken.setAccessToken(jsonStr);
+		authToken.setOpenId(accessTokenObject.getString("openid"));
+		authToken.setUnionId(accessTokenObject.getString("openid"));
+		
+		return authToken;
 	}
 	
 	public String authorize(String state) {
