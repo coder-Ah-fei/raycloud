@@ -77,7 +77,7 @@ public class JpaWccMerchantBrandDetail extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "评分级别")
 	@Column(name = "LEVEL")
-	private String level;
+	private Integer level;
 	/**
 	 * 平台
 	 */

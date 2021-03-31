@@ -76,6 +76,7 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 		for (JpaWccMerchantBrandDetail jpaWccMerchantBrandDetail : jpaWccMerchantBrandDetailList) {
 			wccMerchantBrandDetailDto = new WccMerchantBrandDetailDto();
 			BeanUtils.copyProperties(jpaWccMerchantBrandDetail, wccMerchantBrandDetailDto);
+			wccMerchantBrandDetailDto.setLevelStr(String.valueOf((char) (70 - jpaWccMerchantBrandDetail.getLevel())) + "级");
 			wccMerchantBrandDetailDto.setIconId(jpaWccMerchantBrandDetail.getIcon() == null ? 0L : jpaWccMerchantBrandDetail.getIcon().getId());
 			if (wccMerchantBrandDetailForm.isGetGoodsInfo()) {
 				List<JpaWccGoodsInfo> goodsInfoList = jpaWccMerchantBrandDetail.getGoodsInfoList();
@@ -109,6 +110,7 @@ public class WccMerchantBrandDetailServiceImpl implements WccMerchantBrandDetail
 		JpaWccMerchantBrandDetail jpaWccMerchantBrandDetail = brandDetailOptional.get();
 		WccMerchantBrandDetailDto wccMerchantBrandDetailDto = new WccMerchantBrandDetailDto();
 		BeanUtils.copyProperties(jpaWccMerchantBrandDetail, wccMerchantBrandDetailDto);
+		wccMerchantBrandDetailDto.setLevelStr(String.valueOf((char) (70 - jpaWccMerchantBrandDetail.getLevel()) + "级"));
 		wccMerchantBrandDetailDto.setIconId(jpaWccMerchantBrandDetail.getIcon() == null ? 0L : jpaWccMerchantBrandDetail.getIcon().getId());
 		if (wccMerchantBrandDetailForm.isGetGoodsInfo()) {
 			List<JpaWccGoodsInfo> goodsInfoList = jpaWccMerchantBrandDetail.getGoodsInfoList();

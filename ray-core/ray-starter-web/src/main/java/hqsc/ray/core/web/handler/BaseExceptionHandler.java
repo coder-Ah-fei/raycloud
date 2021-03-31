@@ -32,7 +32,7 @@ public class BaseExceptionHandler {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	public Result<?> handleException(BaseException ex) {
-		log.error("程序异常：" + ex.toString());
+		log.error("程序异常：" + ex.getMessage());
 		return Result.fail(HttpStatus.UNAUTHORIZED.value(), ex.getMessage());
 	}
 	
@@ -70,7 +70,7 @@ public class BaseExceptionHandler {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public Result<?> handleException(PreviewException ex) {
-		log.error("程序异常：" + ex.toString());
+		log.error("程序异常：" + ex.getMessage());
 		return Result.fail(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
 	}
 	
@@ -96,7 +96,7 @@ public class BaseExceptionHandler {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.FORBIDDEN)
 	public Result<?> handleException(AccessDeniedException ex) {
-		log.error("程序异常：{}" + ex.toString());
+		log.error("程序异常：{}" + ex.getMessage());
 		return Result.fail(HttpStatus.FORBIDDEN.value(), ex.getMessage());
 	}
 	
@@ -110,7 +110,7 @@ public class BaseExceptionHandler {
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public Result<?> handleException(Exception ex) {
-		log.error("程序异常：" + ex.toString());
+		log.error("程序异常：" + ex.getMessage());
 		String message = ex.getMessage();
 		if (StringUtils.contains(message, "Bad credentials")) {
 			message = "您输入的密码不正确";

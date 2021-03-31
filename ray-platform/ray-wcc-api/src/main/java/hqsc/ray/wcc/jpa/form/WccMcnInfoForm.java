@@ -50,4 +50,29 @@ public class WccMcnInfoForm extends BaseForm {
 	private Integer celebrityCount;
 	@ApiModelProperty(value = "红人数量排序，0不排序，1升序，2降序")
 	private Integer celebrityCountSort;
+	
+	/**
+	 * 全称
+	 */
+	@ApiModelProperty(value = "全称")
+	private String fullName;
+	
+	/**
+	 * 结算方式
+	 */
+	@ApiModelProperty(value = "结算方式")
+	private String settleType;
+	
+	/**
+	 * 平台网址
+	 */
+	@ApiModelProperty(value = "平台网址")
+	private String internetSite;
+	
+	/**
+	 * 平台介绍
+	 */
+	@ApiModelProperty(value = "平台介绍")
+	private String summary;
+	
 }

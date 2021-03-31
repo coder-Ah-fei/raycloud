@@ -63,6 +63,14 @@ public class WccMcnInfoController extends BaseController {
 		return resultMap;
 	}
 	
+	@Log(value = "根据id查找mcn机构", exception = "根据id查找mcn机构请求异常")
+	@PostMapping(value = "/findMcnInfoById", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "根据id查找mcn机构", notes = "根据id查找mcn机构")
+	public ResultMap<WccMcnInfoDto> findMcnInfoById(WccMcnInfoForm mcnInfoForm) {
+		WccMcnInfoDto mcnInfoDto = wccMcnInfoService.findById(mcnInfoForm.getId());
+		return ResultMap.success("", mcnInfoDto);
+	}
+	
 	
 }
 

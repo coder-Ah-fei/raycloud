@@ -2,9 +2,7 @@ package hqsc.ray.wcc.jpa.form;
 
 import hqsc.ray.wcc.jpa.form.basic.BaseForm;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,6 +11,8 @@ import lombok.experimental.Accessors;
 @Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
 public class WccMerchantBrandDetailForm extends BaseForm {
 	
@@ -42,7 +42,7 @@ public class WccMerchantBrandDetailForm extends BaseForm {
 	 * 评分级别
 	 */
 	@ApiModelProperty(value = "评分级别")
-	private String level;
+	private Integer level;
 	/**
 	 * 平台
 	 */

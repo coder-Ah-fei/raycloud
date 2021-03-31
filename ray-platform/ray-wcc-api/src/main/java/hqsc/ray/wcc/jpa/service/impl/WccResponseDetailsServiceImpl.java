@@ -90,7 +90,9 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			wccResponseDetailsDto.setUserNickname(jpaWccResponseDetails.getJpaWccUser().getNickname());
 			wccResponseDetailsDto.setResponseTimeStr(jpaWccResponseDetails.getResponseTime() == null ? "" : DateUtil.formatLocalDateTime(jpaWccResponseDetails.getResponseTime()));
 			wccResponseDetailsDto.setReleaseInfoId(jpaWccResponseDetails.getJpaWccReleaseInfo().getId());
-			wccResponseDetailsDto.setResponseDetailsId(jpaWccResponseDetails.getJpaWccResponseDetails().getId());
+			if (jpaWccResponseDetails.getJpaWccResponseDetails() != null) {
+				wccResponseDetailsDto.setResponseDetailsId(jpaWccResponseDetails.getJpaWccResponseDetails().getId());
+			}
 			
 			list.add(wccResponseDetailsDto);
 		}

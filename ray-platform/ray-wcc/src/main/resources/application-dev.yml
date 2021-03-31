@@ -20,7 +20,10 @@ spring:
         hbm2ddl:
           auto: update  #         指定DDL mode (none, validate, update, create, create-drop)
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-
+  cloud:
+    nacos:
+      discovery:
+        ip: 192.168.101.18
 wechat:
   appid: wx3d1fc01c88aeb1b3
   appsecret: e5381ab9b059e91c94fc5ecf2f651d63
