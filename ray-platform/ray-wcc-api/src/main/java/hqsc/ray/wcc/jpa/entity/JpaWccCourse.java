@@ -65,9 +65,17 @@ public class JpaWccCourse extends BasicEntity {
 	@ApiModelProperty(value = "课程附件")
 	@Column(name = "COURSE_ATTACHMENT")
 	private Long courseAttachment;
-	
+	/**
+	 * 课程附件
+	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccCourse")
 	private List<JpaWccCourseResource> resourceList;
+	
+	/**
+	 * 课程章节
+	 */
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccCourse")
+	private List<JpaWccCourseChapter> courseChapterList;
 	
 	/**
 	 * 课程类型(0系统课1进阶课)

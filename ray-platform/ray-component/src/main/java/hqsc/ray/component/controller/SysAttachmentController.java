@@ -153,6 +153,11 @@ public class SysAttachmentController extends BaseController {
 		SysAttachment sysAttachment = uploadFile(file);
 		result.put("id", sysAttachment.getId());
 		result.put("filePath", sysAttachment.getUrl());
+		// 如果是视频附件
+		if (sysAttachment.getType() == 2) {
+			result.put("videoScreenshotPath", sysAttachment.getVideoScreenshotPath());
+			result.put("videoHlsPath", sysAttachment.getVideoHlsPath());
+		}
 		return Result.data(result);
 	}
 	
