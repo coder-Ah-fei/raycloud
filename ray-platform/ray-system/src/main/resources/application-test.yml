@@ -11,7 +11,7 @@ spring:
   cloud:
     nacos:
       discovery:
-#        ip: 47.105.168.210
+        ip: 47.105.168.210
 
 dubbo:
   scan:

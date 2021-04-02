@@ -73,8 +73,11 @@ public class MyController extends BaseController {
 			wccUser = iWccUserService.getById(userInfo.getUserId());
 			EmojiConverter emojiConverter = EmojiConverter.getInstance();
 			wccUser.setNickname(emojiConverter.toUnicode(wccUser.getNickname()));
-			wccUser.setPhone(StringUtil.hideString(wccUser.getPhone()));
+			if (StringUtil.isNotBlank(wccUser.getPhone())) {
+				wccUser.setPhone(StringUtil.hideString(wccUser.getPhone()));
+			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return Result.fail("查询用户信息异常");
 		}
 		
