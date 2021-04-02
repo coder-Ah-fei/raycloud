@@ -21,13 +21,12 @@ import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccCourseChapterDto;
 import hqsc.ray.wcc.jpa.form.WccCourseChapterForm;
-import hqsc.ray.wcc.jpa.form.WccCourseForm;
 import hqsc.ray.wcc.jpa.service.WccCourseChapterService;
-import hqsc.ray.wcc.jpa.service.WccCourseService;
 import hqsc.ray.wcc.service.IWccCourseService;
+import hqsc.ray.wcc.service.IWccResponseDetailsService;
+import hqsc.ray.wcc.vo.WccResponseDetailsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -35,6 +34,10 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -52,20 +55,24 @@ public class WccCourseChapterController extends BaseController {
 	
 	private final IWccCourseService iWccCourseService;
 	private final WccCourseChapterService courseChapterService;
-	
+	private final IWccResponseDetailsService iWccResponseDetailsService;
 	
 	@Log(value = "根据id获取课程章节详细信息", exception = "根据id获取课程章节详细信息请求异常")
 	@PostMapping(value = "/findCourseChapterById", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "根据id获取课程章节详细信息", notes = "根据id获取课程章节详细信息")
-	public Result<WccCourseChapterDto> findCourseChapterById(WccCourseChapterForm courseChapterForm) {
+	public Result<?> findCourseChapterById(WccCourseChapterForm courseChapterForm) {
 		try {
 			LoginUser userInfo = SecurityUtil.getUsername(req);
-//			wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+			courseChapterForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Result<WccCourseChapterDto> result = courseChapterService.findById(courseChapterForm);
-		return result;
+		WccCourseChapterDto courseChapterDto = courseChapterService.findById(courseChapterForm);
+		List<WccResponseDetailsVO> responseDetails = iWccResponseDetailsService.listResponseDetails(courseChapterDto.getId(), 2, null);
+		Map<String, Object> map = new HashMap<>(5);
+		map.put("courseChapter", courseChapterDto);
+		map.put("responseDetails", responseDetails);
+		return Result.data(map);
 	}
 }
 

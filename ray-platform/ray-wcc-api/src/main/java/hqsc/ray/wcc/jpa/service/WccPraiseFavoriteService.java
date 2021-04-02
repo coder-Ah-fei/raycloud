@@ -30,20 +30,21 @@ public interface WccPraiseFavoriteService {
 	/**
 	 * 查询点赞或者是收藏数量
 	 *
-	 * @param type
-	 * @param praiseFavoriteType
-	 * @param belongId
+	 * @param type               0点赞还是1收藏
+	 * @param praiseFavoriteType 被点赞/收藏的内容的类型(0回复1提问2文章3话题4视频5课程(章节))
+	 * @param belongId           被点赞/收藏的内容的id
 	 * @return
 	 */
 	Integer countByTypeAndPraiseFavoriteTypeAndAndBelongId(Integer type, Integer praiseFavoriteType, Long belongId);
 	
 	/**
 	 * 查询点赞或者是收藏数量
+	 * 当前登录用户是否已经点赞/收藏
 	 *
-	 * @param userId
-	 * @param type
-	 * @param praiseFavoriteType
-	 * @param belongId
+	 * @param userId             点赞/收藏的用户的id
+	 * @param type               0点赞还是1收藏
+	 * @param praiseFavoriteType 被点赞/收藏的内容的类型(0回复1提问2文章3话题4视频5课程(章节))
+	 * @param belongId           被点赞/收藏的内容的id
 	 * @return
 	 */
 	Integer countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(Long userId, Integer type, Integer praiseFavoriteType, Long belongId);

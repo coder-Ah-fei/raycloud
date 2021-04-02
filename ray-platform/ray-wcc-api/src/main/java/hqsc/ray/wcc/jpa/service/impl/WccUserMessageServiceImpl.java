@@ -11,10 +11,11 @@ import hqsc.ray.wcc.jpa.entity.JpaWccResponseDetails;
 import hqsc.ray.wcc.jpa.entity.JpaWccUser;
 import hqsc.ray.wcc.jpa.entity.JpaWccUserMessage;
 import hqsc.ray.wcc.jpa.form.WccUserMessageForm;
+import hqsc.ray.wcc.jpa.repository.WccReleaseInfoRepository;
 import hqsc.ray.wcc.jpa.repository.WccUserMessageRepository;
 import hqsc.ray.wcc.jpa.service.WccUserMessageService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,10 +33,12 @@ import java.util.*;
  * @author Administrator
  */
 @Service
+@AllArgsConstructor
 public class WccUserMessageServiceImpl implements WccUserMessageService {
 	
-	@Autowired
-	private WccUserMessageRepository wccUserMessageRepository;
+	private final WccUserMessageRepository wccUserMessageRepository;
+	private final WccReleaseInfoRepository releaseInfoRepository;
+	
 	
 	/**
 	 * 获取数据
@@ -183,8 +186,11 @@ public class WccUserMessageServiceImpl implements WccUserMessageService {
 		// 对应发布内容
 		JpaWccResponseDetails responseDetails = userMessage.getResponseDetails();
 		if (responseDetails != null) {
-			JpaWccReleaseInfo releaseInfo = responseDetails.getJpaWccReleaseInfo();
-			if (releaseInfo != null) {
+			
+			Optional<JpaWccReleaseInfo> releaseInfoOptional = releaseInfoRepository.findById(responseDetails.getBelongId());
+			
+			if (releaseInfoOptional.isPresent()) {
+				JpaWccReleaseInfo releaseInfo = releaseInfoOptional.get();
 				WccReleaseInfoDto releaseInfoDto = new WccReleaseInfoDto();
 				BeanUtils.copyProperties(releaseInfo, releaseInfoDto);
 				releaseInfoDto.setTitel(releaseInfo.getTitel());

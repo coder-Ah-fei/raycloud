@@ -65,5 +65,5 @@ public interface IWccResponseDetailsService extends IService<WccResponseDetails>
 	 * @param responseDetailParentId
 	 * @return
 	 */
-	List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Long responseDetailParentId);
+	List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Integer belongType, Long responseDetailParentId);
 }

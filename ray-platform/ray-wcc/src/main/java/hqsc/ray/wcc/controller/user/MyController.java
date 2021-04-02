@@ -275,7 +275,7 @@ public class MyController extends BaseController {
 			myReleaseInfoVO = iWccReleaseInfoService.findById(id);
 //			wccResponseDetailsIPage = wccResponseDetailsService.getTopicDetails(page, Long.parseLong(id));
 			
-			wccResponseDetailsVOList = wccResponseDetailsService.listResponseDetails(Long.parseLong(id), null);
+			wccResponseDetailsVOList = wccResponseDetailsService.listResponseDetails(Long.parseLong(id), 0, null);
 			
 			for (WccResponseDetailsVO wccResponseDetailsVO : wccResponseDetailsVOList) {
 				List<WccResponseDetailsVO> childList2 = new ArrayList<>();

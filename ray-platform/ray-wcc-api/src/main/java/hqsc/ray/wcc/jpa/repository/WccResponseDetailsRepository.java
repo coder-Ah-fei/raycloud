@@ -15,11 +15,12 @@ public interface WccResponseDetailsRepository extends JpaRepository<JpaWccRespon
 	/**
 	 * 查找评论数
 	 *
-	 * @param releaseInfoId
+	 * @param belongId
+	 * @param belongType
 	 * @param status
 	 * @param isDelete
 	 * @return
 	 */
-	Integer countByJpaWccReleaseInfoIdAndStatusAndIsDelete(Long releaseInfoId, Integer status, Integer isDelete);
+	Integer countByBelongIdAndBelongTypeAndStatusAndIsDelete(Long belongId, Integer belongType, Integer status, Integer isDelete);
 	
 }

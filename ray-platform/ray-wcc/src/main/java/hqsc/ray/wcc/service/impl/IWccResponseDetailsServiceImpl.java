@@ -89,15 +89,15 @@ public class IWccResponseDetailsServiceImpl extends ServiceImpl<WccResponseDetai
 	 * @return
 	 */
 	@Override
-	public List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Long responseDetailParentId) {
-		List<WccResponseDetailsVO> list = wccResponseDetailsMapper.listResponseDetails(parseLong, responseDetailParentId);
+	public List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Integer belongType, Long responseDetailParentId) {
+		List<WccResponseDetailsVO> list = wccResponseDetailsMapper.listResponseDetails(parseLong, belongType, responseDetailParentId);
 		for (WccResponseDetailsVO wccResponseDetailsVO : list) {
 			
 			wccResponseDetailsVO.setUserNickname(StringUtil.toUnicode(wccResponseDetailsVO.getUserNickname() == null ? "" : wccResponseDetailsVO.getUserNickname()));
 			
 			
 			if (wccResponseDetailsVO.getChildNum() > 0) {
-				wccResponseDetailsVO.setChildList(listResponseDetails(parseLong, wccResponseDetailsVO.getResponseDetailId()));
+				wccResponseDetailsVO.setChildList(listResponseDetails(parseLong, belongType, wccResponseDetailsVO.getResponseDetailId()));
 			}
 		}
 		return list;

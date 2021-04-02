@@ -111,7 +111,7 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 			Integer praiseCount = praiseFavoriteService.countByTypeAndPraiseFavoriteTypeAndAndBelongId(0, jpaWccReleaseInfo.getType().intValue(), jpaWccReleaseInfo.getId());
 			wccReleaseInfoDto.setPraiseCount(praiseCount);
 			// 获取评论数量
-			wccReleaseInfoDto.setCommentCount(responseDetailsRepository.countByJpaWccReleaseInfoIdAndStatusAndIsDelete(jpaWccReleaseInfo.getId(), 1, 0));
+			wccReleaseInfoDto.setCommentCount(responseDetailsRepository.countByBelongIdAndBelongTypeAndStatusAndIsDelete(jpaWccReleaseInfo.getId(), 0, 1, 0));
 			
 			// 当前登录用户是否收藏
 			wccReleaseInfoDto.setFavoritesCount(0);

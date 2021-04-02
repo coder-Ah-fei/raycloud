@@ -50,4 +50,13 @@ public class WccCourseChapterDto {
 	
 	@ApiModelProperty(value = "排序")
 	private Integer sort;
+	
+	@ApiModelProperty(value = "点赞数")
+	private Integer praiseCount;
+	
+	@ApiModelProperty(value = "评论数")
+	private Integer commentCount;
+	
+	@ApiModelProperty(value = "收藏，0 没有收藏，1 收藏")
+	private Integer favoritesCount;
 }

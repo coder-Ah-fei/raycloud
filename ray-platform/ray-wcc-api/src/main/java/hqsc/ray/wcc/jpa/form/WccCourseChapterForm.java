@@ -15,6 +15,11 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class WccCourseChapterForm extends BaseForm {
+	
+	
+	@ApiModelProperty(value = "当前登录的用户的id")
+	private Long userId;
+	
 	@ApiModelProperty(value = "主键id")
 	private Long id;
 	

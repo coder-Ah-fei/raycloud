@@ -89,7 +89,7 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 			wccResponseDetailsDto.setUserId(jpaWccResponseDetails.getJpaWccUser().getId());
 			wccResponseDetailsDto.setUserNickname(jpaWccResponseDetails.getJpaWccUser().getNickname());
 			wccResponseDetailsDto.setResponseTimeStr(jpaWccResponseDetails.getResponseTime() == null ? "" : DateUtil.formatLocalDateTime(jpaWccResponseDetails.getResponseTime()));
-			wccResponseDetailsDto.setReleaseInfoId(jpaWccResponseDetails.getJpaWccReleaseInfo().getId());
+			wccResponseDetailsDto.setReleaseInfoId(jpaWccResponseDetails.getBelongId());
 			if (jpaWccResponseDetails.getJpaWccResponseDetails() != null) {
 				wccResponseDetailsDto.setResponseDetailsId(jpaWccResponseDetails.getJpaWccResponseDetails().getId());
 			}
@@ -119,12 +119,8 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 		JpaWccUser jpaWccUser = wccUserRepository.findById(wccResponseDetailsForm.getUserId()).get();
 		comment.setJpaWccUser(jpaWccUser);
 		
-		Optional<JpaWccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccResponseDetailsForm.getBelongId());
-		if (!releaseInfoOptional.isPresent()) {
-			return ResultMap.of("被评论的数据没有找到");
-		}
-		JpaWccReleaseInfo jpaWccReleaseInfo = releaseInfoOptional.get();
-		comment.setJpaWccReleaseInfo(jpaWccReleaseInfo);
+		
+		comment.setBelongId(wccResponseDetailsForm.getBelongId());
 		comment.setFavoriteCount(0);
 		// 查找上级评论
 		if (wccResponseDetailsForm.getParentId() != null) {
@@ -139,20 +135,29 @@ public class WccResponseDetailsServiceImpl implements WccResponseDetailsService 
 		wccResponseDetailsRepository.save(comment);
 		
 		
-		// 新增一条消息
-		JpaWccUserMessage jpaWccUserMessage = new JpaWccUserMessage();
-		jpaWccUserMessage.setJpaWccUser(jpaWccReleaseInfo.getBelongUser());
-		if (jpaWccReleaseInfo.getType() == 0L) {
-			jpaWccUserMessage.setMessageType(1);
-			jpaWccUserMessage.setMessageContent(jpaWccUser.getNickname() + "回答了你的提问");
-		} else {
-			jpaWccUserMessage.setMessageType(0);
-			jpaWccUserMessage.setMessageContent(comment.getResponseBody());
+		// 评论发布信息的时候新增一条消息
+		if (wccResponseDetailsForm.getBelongType() == 0) {
+			Optional<JpaWccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccResponseDetailsForm.getBelongId());
+			if (!releaseInfoOptional.isPresent()) {
+				return ResultMap.of("被评论的数据没有找到");
+			}
+			JpaWccReleaseInfo jpaWccReleaseInfo = releaseInfoOptional.get();
+			// 新增一条消息
+			JpaWccUserMessage jpaWccUserMessage = new JpaWccUserMessage();
+			jpaWccUserMessage.setJpaWccUser(jpaWccReleaseInfo.getBelongUser());
+			if (jpaWccReleaseInfo.getType() == 0L) {
+				jpaWccUserMessage.setMessageType(1);
+				jpaWccUserMessage.setMessageContent(jpaWccUser.getNickname() + "回答了你的提问");
+			} else {
+				jpaWccUserMessage.setMessageType(0);
+				jpaWccUserMessage.setMessageContent(comment.getResponseBody());
+			}
+			jpaWccUserMessage.setResponseDetails(comment);
+			jpaWccUserMessage.setMessageTime(LocalDateTime.now());
+			jpaWccUserMessage.setIsRead(0);
+			wccUserMessageRepository.save(jpaWccUserMessage);
 		}
-		jpaWccUserMessage.setResponseDetails(comment);
-		jpaWccUserMessage.setMessageTime(LocalDateTime.now());
-		jpaWccUserMessage.setIsRead(0);
-		wccUserMessageRepository.save(jpaWccUserMessage);
+		
 		
 		return ResultMap.of(ResultMap.SUCCESS_CODE);
 	}

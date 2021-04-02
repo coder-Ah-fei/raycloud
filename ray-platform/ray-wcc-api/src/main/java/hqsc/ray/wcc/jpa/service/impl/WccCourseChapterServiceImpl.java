@@ -11,9 +11,12 @@ import hqsc.ray.wcc.jpa.form.WccCourseForm;
 import hqsc.ray.wcc.jpa.repository.RaySysAttachmentRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseChapterRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseRepository;
+import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
 import hqsc.ray.wcc.jpa.service.WccCourseChapterService;
+import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
+import hqsc.ray.wcc.jpa.service.WccResponseDetailsService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +34,15 @@ import java.util.*;
  * @author Administrator
  */
 @Service
+@AllArgsConstructor
 public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 	
-	@Autowired
-	private WccCourseChapterRepository courseChapterRepository;
-	@Autowired
-	private RaySysAttachmentRepository attachmentRepository;
-	@Autowired
-	private WccCourseRepository courseRepository;
+	private final WccCourseChapterRepository courseChapterRepository;
+	private final RaySysAttachmentRepository attachmentRepository;
+	private final WccCourseRepository courseRepository;
+	private final WccPraiseFavoriteService praiseFavoriteService;
+	private final WccResponseDetailsService responseDetailsService;
+	private final WccResponseDetailsRepository responseDetailsRepository;
 	
 	/**
 	 * 获取数据
@@ -256,11 +260,11 @@ public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 	/**
 	 * 根据id获取课程
 	 *
-	 * @param wccCourseForm
+	 * @param courseChapterForm
 	 * @return
 	 */
 	@Override
-	public Result<WccCourseChapterDto> findById(WccCourseChapterForm courseChapterForm) {
+	public WccCourseChapterDto findById(WccCourseChapterForm courseChapterForm) {
 		
 		Optional<JpaWccCourseChapter> courseChapterOptional = courseChapterRepository.findById(courseChapterForm.getId());
 		if (!courseChapterOptional.isPresent()) {
@@ -269,6 +273,21 @@ public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 		JpaWccCourseChapter courseChapter = courseChapterOptional.get();
 		WccCourseChapterDto courseChapterDto = new WccCourseChapterDto();
 		BeanUtils.copyProperties(courseChapter, courseChapterDto);
+		
+		// 统计点赞的数量
+		Integer praiseCount = praiseFavoriteService.countByTypeAndPraiseFavoriteTypeAndAndBelongId(0, 5, courseChapter.getId());
+		courseChapterDto.setPraiseCount(praiseCount);
+		
+		// 如果有用户登录，则查看登录用户是否收藏
+		if (courseChapterForm.getUserId() != null) {
+			Integer favoritesCount = praiseFavoriteService.countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(courseChapterForm.getUserId(), 0, 5, courseChapter.getId());
+			courseChapterDto.setFavoritesCount(favoritesCount);
+		}
+		
+		// 统计评论的数量
+		Integer commentCount = responseDetailsRepository.countByBelongIdAndBelongTypeAndStatusAndIsDelete(courseChapter.getId(), 2, 1, 0);
+		courseChapterDto.setCommentCount(commentCount);
+		
 		courseChapterDto.setId(courseChapter.getId());
 		JpaWccCourse course = courseChapter.getJpaWccCourse();
 		if (course != null) {
@@ -283,7 +302,7 @@ public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 			courseChapterDto.setFileName(attachment.getFileName());
 		}
 		courseChapterDto.setChapterTypeStr(courseChapter.getChapterType() == 1 ? "图文" : "视频");
-		return Result.data(courseChapterDto);
+		return courseChapterDto;
 	}
 	
 	/**

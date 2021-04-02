@@ -61,5 +61,5 @@ public interface WccCourseChapterService {
 	 * @param courseChapterForm
 	 * @return
 	 */
-	Result<WccCourseChapterDto> findById(WccCourseChapterForm courseChapterForm);
+	WccCourseChapterDto findById(WccCourseChapterForm courseChapterForm);
 }

@@ -210,11 +210,11 @@
             <id>dev</id>
             <properties>
                 <spring.active>dev</spring.active>
-                <config.ip>192.168.101.18</config.ip>
-                <config.server-addr>192.168.101.18:8848</config.server-addr>
+                <config.ip>192.168.101.5</config.ip>
+                <config.server-addr>192.168.101.5:8848</config.server-addr>
                 <config.namespace></config.namespace>
                 <config.group>DEFAULT_GROUP</config.group>
-                <discovery.server-addr>192.168.101.18:8848</discovery.server-addr>
+                <discovery.server-addr>192.168.101.5:8848</discovery.server-addr>
                 <sentinel.port>8719</sentinel.port>
                 <sentinel.dashboard>localhost:8088</sentinel.dashboard>
             </properties>
