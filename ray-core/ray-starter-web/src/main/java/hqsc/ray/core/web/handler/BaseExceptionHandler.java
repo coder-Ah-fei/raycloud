@@ -116,7 +116,13 @@ public class BaseExceptionHandler {
 			message = "您输入的密码不正确";
 		} else if (StringUtils.contains(ex.toString(), "InternalAuthenticationServiceException")) {
 			message = "您输入的用户名不存在";
+		} else if (StringUtils.contains(ex.toString(), "WechatUserInfoTypeException")) {
+			message = "{\n" +
+					"  \"errorCode\": \"getUserInfoTypeError\",\n" +
+					"  \"errorMsg\": \"当前用户不存在，请使用getUserProfile接口获取用户的详细信息\"\n" +
+					"}";
 		}
+		
 		return Result.fail(HttpStatus.INTERNAL_SERVER_ERROR.value(), message);
 	}
 }

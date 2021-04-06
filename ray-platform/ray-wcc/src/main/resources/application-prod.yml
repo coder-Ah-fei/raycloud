@@ -22,7 +22,7 @@ spring:
       hibernate:
         format_sql: false
         hbm2ddl:
-          auto: none  #         指定DDL mode (none, validate, update, create, create-drop)
+          auto: update  #         指定DDL mode (none, validate, update, create, create-drop)
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 wechat:

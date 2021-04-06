@@ -63,6 +63,7 @@ public class UserTokenGranter extends AbstractTokenGranter {
 		String code = parameters.get("code");
 		String encryptedData = parameters.get("encryptedData");
 		String iv = parameters.get("iv");
+		String getUserInfoType = parameters.get("getUserInfoType");
 		
 		if (StringUtils.isBlank(code) || StringUtils.isBlank(encryptedData) || StringUtils.isBlank(iv)) {
 			throw new UserDeniedAuthorizationException("未传入请求参数");
@@ -77,6 +78,7 @@ public class UserTokenGranter extends AbstractTokenGranter {
 			authUser = (WechatMiniAuthUser) response.getData();
 			authUser.setRemark(Oauth2Constant.USER_TYPE_USER);
 			
+			authUser.setWechatGetUserInfoType(getUserInfoType);
 			// session_key 放入缓存
 			redisService.set("session_key", authUser.getSessionKey());
 		}

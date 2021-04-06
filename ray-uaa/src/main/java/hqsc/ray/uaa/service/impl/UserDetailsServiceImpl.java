@@ -111,6 +111,7 @@ public class UserDetailsServiceImpl implements RayUserDetailsService {
 
 //		String html = StringUtil.toHtml(nickname);
 		wccUser.setNickname(nickname);
+		wccUser.setStatus(1);
 		wccUser.setHeadPortrait(avatarId);
 		wccUser.setWechatHeadPortraitAddress(avatar);
 		wccUser.setGender(Integer.parseInt(sex));
