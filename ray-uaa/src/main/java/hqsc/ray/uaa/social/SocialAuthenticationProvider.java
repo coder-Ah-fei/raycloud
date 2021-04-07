@@ -48,6 +48,7 @@ public class SocialAuthenticationProvider implements AuthenticationProvider {
 						, avatarId, authUser.getAvatar(), authUser.getGender().getCode());
 				//最后再获取一下
 				user = userDetailsService.loadWUserBySocial(authUser.getToken().getUnionId());
+			} else {
 			}
 		} else {
 			user = userDetailsService.loadUserBySocial(authUser.getUuid());
