@@ -42,7 +42,6 @@ public class WccCircleInfoServiceImpl implements WccCircleInfoService {
 	 * @return ResultMap
 	 */
 	@Override
-	
 	public PageMap<WccCircleInfoDto> listWccCircleInfos(WccCircleInfoForm wccCircleInfoForm) {
 		Specification<JpaWccCircleInfo> specification = (root, criteriaQuery, criteriaBuilder) -> {
 //			List<Predicate> pr = new ArrayList< >();

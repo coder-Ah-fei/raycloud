@@ -7,6 +7,7 @@ import com.github.binarywang.java.emoji.EmojiConverter;
 import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.DateUtil;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
@@ -335,6 +336,20 @@ public class MyController extends BaseController {
 		List<MyReleaseInfoVO> myFavorite = null;
 		try {
 			myFavorite = iWccReleaseInfoService.getMyFavorite(wccReleaseInfoForm, page.getCurrent(), page.getSize());
+			for (MyReleaseInfoVO referral : myFavorite) {
+				referral.setAttachmentPath(StringUtil.isBlank(referral.getAttachmentPath()) ? "" : referral.getAttachmentPath().replace("static", ""));
+				referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
+				referral.setCreationDateStr(DateUtil.simpleFormatWithYear(referral.getCreationDate()));
+				if (referral.getType() == 2) {
+					List<String> imgStrs = StringUtil.getImgStr(referral.getContent());
+					if (imgStrs.size() > 0) {
+						referral.setArticleImgUrl(imgStrs.get(0));
+					}
+					if (referral.getContent() != null) {
+						referral.setContent(StringUtil.trimHtml(referral.getContent(), 100));
+					}
+				}
+			}
 		} catch (Exception e) {
 			return Result.fail("查询异常！");
 		}

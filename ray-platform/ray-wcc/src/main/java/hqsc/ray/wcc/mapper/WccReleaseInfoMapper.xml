@@ -362,6 +362,8 @@
                wri.LAST_UPDATED_BY_USER,
                wri.LAST_UPDATED_BY,
                wri.LAST_UPDATE_DATE,
+               wu.NICKNAME,
+               wu.WECHAT_HEAD_PORTRAIT_ADDRESS,
                (
                    SELECT count(1)
                    FROM wcc_praise_favorite f
@@ -378,11 +380,13 @@
                   AND d.IS_DELETE = 0
                   AND d.BELONG_ID = wri.RELEASE_INFO_ID) AS comment_count
         FROM wcc_release_info wri,
-             wcc_praise_favorite wpf
+             wcc_praise_favorite wpf,
+             wcc_user wu
         WHERE 1 = 1
           AND wri.RELEASE_INFO_ID = wpf.BELONG_ID
           AND wri.TYPE = #{type}
-          AND wpf.USER_ID = #{favoritesUserId}
+          AND wpf.USER_ID = wu.USER_ID
+          AND wu.USER_ID = #{favoritesUserId}
           AND wpf.IS_DELETE = 0
           AND wpf.STATUS = 1
         ORDER BY wri.CREATION_DATE limit #{current}, #{size};
