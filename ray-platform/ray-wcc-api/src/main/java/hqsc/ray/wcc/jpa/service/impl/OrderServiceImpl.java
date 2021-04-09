@@ -1,24 +1,24 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.wechat.pay.contrib.apache.httpclient.util.AesUtil;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.util.Abacus;
 import hqsc.ray.core.common.util.UUIDUtil;
 import hqsc.ray.wcc.jpa.common.enums.OrderStatus;
 import hqsc.ray.wcc.jpa.common.enums.OrderType;
 import hqsc.ray.wcc.jpa.common.enums.PayMode;
 import hqsc.ray.wcc.jpa.dto.OrderDto;
 import hqsc.ray.wcc.jpa.dto.PageMap;
-import hqsc.ray.wcc.jpa.entity.JpaWccUser;
-import hqsc.ray.wcc.jpa.entity.OpenVipConfiguration;
-import hqsc.ray.wcc.jpa.entity.Order;
-import hqsc.ray.wcc.jpa.entity.OrderMember;
+import hqsc.ray.wcc.jpa.dto.wechatPay.NotifyDto;
+import hqsc.ray.wcc.jpa.entity.*;
 import hqsc.ray.wcc.jpa.form.OrderForm;
-import hqsc.ray.wcc.jpa.repository.OpenVipConfigurationRepository;
-import hqsc.ray.wcc.jpa.repository.OrderMemberRepository;
-import hqsc.ray.wcc.jpa.repository.OrderRepository;
-import hqsc.ray.wcc.jpa.repository.WccUserRepository;
+import hqsc.ray.wcc.jpa.repository.*;
 import hqsc.ray.wcc.jpa.service.OrderService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Predicate;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.security.GeneralSecurityException;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -37,14 +40,19 @@ import java.util.*;
  * @author yang
  * @date 2021-04-07
  */
+@Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 	
 	private final OrderRepository orderRepository;
 	private final WccUserRepository userRepository;
 	private final OpenVipConfigurationRepository openVipConfigurationRepository;
 	private final OrderMemberRepository orderMemberRepository;
+	private final PayLogRepository payLogRepository;
+	
+	@Value("${wechat.api_v3_key}")
+	private String apiV3Key;
 	
 	/**
 	 * 获取开通会员的配置列表
@@ -145,5 +153,83 @@ public class OrderServiceImpl implements OrderService {
 		Map<String, Object> map = new HashMap<>(3);
 		map.put("orderId", order.getId());
 		return Result.data(map);
+	}
+	
+	/**
+	 * 收到微信支付通知之后
+	 *
+	 * @param notify
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public void getWechatPayNotifyAfter(String notify) {
+		log.info("接收到微信支付通知【{}】", notify);
+		NotifyDto notifyDto = JSON.parseObject(notify, NotifyDto.class);
+		if (!"TRANSACTION.SUCCESS".equals(notifyDto.getEvent_type())) {
+			log.info("接收到微信支付通知【但是支付没成功】");
+			return;
+		}
+		AesUtil decryptor = new AesUtil(apiV3Key.getBytes(StandardCharsets.UTF_8));
+		try {
+			String resourceStr = decryptor.decryptToString(
+					notifyDto.getResource().getAssociated_data().getBytes(StandardCharsets.UTF_8),
+					notifyDto.getResource().getNonce().getBytes(StandardCharsets.UTF_8),
+					notifyDto.getResource().getCiphertext());
+			log.info("接收到微信支付通知,解密后的数据【{}】", resourceStr);
+			NotifyDto.Resource resource = JSON.parseObject(resourceStr, NotifyDto.Resource.class);
+			
+			// 更新支付日志状态
+			PayLog payLog = payLogRepository.findByOrderWechatCode(resource.getOut_trade_no());
+			if (payLog == null) {
+				log.error("接收到微信支付通知之后没有找到支付日志");
+				return;
+			}
+			payLog.setPayStatus(1);
+			payLog = payLogRepository.save(payLog);
+			
+			// 更新订单状态
+			Order order = payLog.getOrder();
+			order.setPay(true);
+			order.setPayDataTime(LocalDateTime.now());
+			order.setFinishDataTime(LocalDateTime.now());
+			order.setPayPrice(Abacus.divide(new BigDecimal(resource.getAmount().getTotal()), 100));
+			order.setOrderStatus(OrderStatus.finish);
+			orderRepository.save(order);
+			
+			// 给用户开通会员
+			//TODO
+			fdasfdsafdsa
+			JpaWccUser jpaWccUser = order.getJpaWccUser();
+			OrderMember orderMember = order.getOrderMember();
+			MemberInfo memberInfo = jpaWccUser.getMemberInfo();
+			if (memberInfo == null) {
+				memberInfo = new MemberInfo();
+				memberInfo.setWccUser(jpaWccUser);
+				LocalDateTime now = LocalDateTime.now();
+				memberInfo.setStartDataTime(now);
+				
+				// 按自然月
+				if (orderMember.getValidityType() == 0) {
+				
+				}
+				// 按天数
+				if (orderMember.getValidityType() == 1) {
+				
+				}
+				
+				memberInfo.setEndDataTime(LocalDateTime.now());
+				memberInfo.setPaymentMode(orderMember.getPaymentMode());
+				memberInfo.setOrderMember(orderMember);
+				memberInfo.setStatus(1);
+				memberInfo.setIsDelete(0);
+			}
+			
+			
+		} catch (GeneralSecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

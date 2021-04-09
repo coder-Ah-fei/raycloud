@@ -20,4 +20,12 @@ public interface PayLogRepository extends JpaRepository<PayLog, Long>, JpaSpecif
 	 */
 	PayLog findByPrePayId(String prePayId);
 	
+	/**
+	 * 根据微信统一下单号查询
+	 *
+	 * @param orderWechatCode
+	 * @return
+	 */
+	PayLog findByOrderWechatCode(String orderWechatCode);
+	
 }

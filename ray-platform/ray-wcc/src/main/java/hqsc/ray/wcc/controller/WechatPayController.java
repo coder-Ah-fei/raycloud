@@ -27,9 +27,10 @@ import hqsc.ray.wcc.jpa.service.OrderService;
 import hqsc.ray.wcc.jpa.service.PayLogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-12-30
  */
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/wcc-wechat-pay")
 @Api(value = "微信支付的controller", tags = "微信支付的接口")
 public class WechatPayController extends BaseController {
@@ -48,10 +49,11 @@ public class WechatPayController extends BaseController {
 	private final OrderService orderService;
 	private final PayLogService payLogService;
 	
+	
 	/**
 	 * 分页列表
 	 *
-	 * @param orderForm
+	 * @param payLogForm
 	 * @return Result
 	 */
 	@PreAuth
@@ -71,6 +73,24 @@ public class WechatPayController extends BaseController {
 		
 		// 生成微信支付的统一下单（生成PayLog）
 		return payLogService.save(payLogForm);
+	}
+	
+	
+	@Log(value = "微信支付通知", exception = "微信支付通知请求异常")
+	@PostMapping(value = "/notify", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "微信支付通知", notes = "微信支付通知")
+	public String notify(@RequestBody String notify) {
+		try {
+			orderService.getWechatPayNotifyAfter(notify);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String result = "{\n" +
+				"  \"code\": \"SUCCESS\",\n" +
+				"  \"message\": \"成功\"\n" +
+				"}";
+		
+		return result;
 	}
 	
 }

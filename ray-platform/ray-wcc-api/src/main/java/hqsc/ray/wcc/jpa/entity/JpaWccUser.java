@@ -195,4 +195,7 @@ public class JpaWccUser extends BasicEntity {
 	 */
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccUser")
 	private List<JpaWccUserCircle> userCircleList;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "wccUser")
+	private MemberInfo memberInfo;
 }

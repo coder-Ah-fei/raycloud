@@ -30,4 +30,11 @@ public interface OrderService {
 	 * @return
 	 */
 	Result<Map<String, Object>> saveOpenVipOrder(OrderForm orderForm);
+	
+	/**
+	 * 收到微信支付通知之后
+	 *
+	 * @param notify
+	 */
+	void getWechatPayNotifyAfter(String notify);
 }

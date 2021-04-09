@@ -91,6 +91,14 @@ public class OrderMember extends BasicEntity {
 	@Column(name = "NEXT_PRICE", columnDefinition = "decimal(19,2) null comment '下次续费的价格'")
 	private BigDecimal nextPrice;
 	
+	@ApiModelProperty(value = "天数")
+	@Column(name = "DAY_NUM", columnDefinition = "int(11) NOT NULL DEFAULT '0' comment '天数'")
+	private int dayNum;
+	
+	@ApiModelProperty(value = "会员有效期的计算方式（0，按自然月；1，按天数）")
+	@Column(name = "VALIDITY_TYPE", columnDefinition = "int(1) NOT NULL DEFAULT '0' comment '会员有效期的计算方式（0，自然月；1，按天数）'")
+	private int validityType;
+	
 	@ApiModelProperty(value = "排序")
 	@Column(name = "SORT", columnDefinition = "int(11) NOT NULL DEFAULT '0' COMMENT '排序'")
 	private int sort;
