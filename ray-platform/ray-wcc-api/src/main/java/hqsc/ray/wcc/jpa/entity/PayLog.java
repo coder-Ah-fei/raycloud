@@ -16,7 +16,7 @@
  */
 package hqsc.ray.wcc.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import hqsc.ray.wcc.jpa.common.enums.PayMode;
 import hqsc.ray.wcc.jpa.entity.base.BasicEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -27,7 +27,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * 用户支付记录表实体类
@@ -42,7 +41,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "wcc_pay_log")
 @org.hibernate.annotations.Table(appliesTo = "wcc_pay_log", comment = "用户支付记录表")
-public class JpaWccPayLog extends BasicEntity {
+public class PayLog extends BasicEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -54,55 +53,38 @@ public class JpaWccPayLog extends BasicEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
 	@GenericGenerator(name = "myid", strategy = "hqsc.ray.wcc.jpa.configs.MyInsertGenerator")
 	private Long id;
-	/**
-	 * 订单号
-	 */
-	@ApiModelProperty(value = "订单号")
-	@Column(name = "ORDER_ID")
-	private Long orderId;
-	/**
-	 * 第三方订单id
-	 */
-	@ApiModelProperty(value = "第三方订单id")
-	@Column(name = "THIRDPARTY_ID")
-	private Long thirdpartyId;
-	/**
-	 * 用户id
-	 */
-	@ApiModelProperty(value = "用户id")
+	
+	@ApiModelProperty(value = "订单")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-	@JsonIgnore
-	private JpaWccUser jpaWccUser;
-	/**
-	 * 支付类型(0课程1会员)
-	 */
-	@ApiModelProperty(value = "支付类型(0课程1会员)")
-	@Column(name = "PAY_TYPE")
-	private Integer payType;
-	/**
-	 * 所属id
-	 */
-	@ApiModelProperty(value = "所属id")
-	@Column(name = "BELONG_ID")
-	private Long belongId;
-	/**
-	 * 商品原价
-	 */
-	@ApiModelProperty(value = "商品原价")
-	@Column(name = "PROTO_PRICE")
-	private BigDecimal protoPrice;
-	/**
-	 * 支付金额
-	 */
+	@JoinColumn(name = "ORDER_ID", referencedColumnName = "id")
+	private Order order;
+	
+	@ApiModelProperty(value = "微信统一下单号")
+	@Column(name = "ORDER_WECHAT_CODE", columnDefinition = "varchar(32) null comment '微信统一下单号'")
+	private String orderWechatCode;
+	
+	
+	@ApiModelProperty(value = "预支付交易会话标识")
+	@Column(name = "PRE_PAY_ID", columnDefinition = "varchar(64) null comment '预支付交易会话标识'")
+	private String prePayId;
+	
+	
 	@ApiModelProperty(value = "支付金额")
-	@Column(name = "PAY_AMOUNT")
-	private BigDecimal payAmount;
-	/**
-	 * 支付时间
-	 */
-	@ApiModelProperty(value = "支付时间")
-	@Column(name = "PAY_TIME")
-	private LocalDateTime payTime;
+	@Column(name = "PAY_PRICE", columnDefinition = "decimal(19,2) null comment '支付金额'")
+	private BigDecimal payPrice;
+	
+	@ApiModelProperty(value = "支付人")
+	@Column(name = "PAYER_OPENID", columnDefinition = "varchar(32) null comment '支付人'")
+	private String payerOpenid;
+	
+	
+	@ApiModelProperty(value = "支付方式")
+	@Column(name = "PAY_MODE", columnDefinition = "varchar(255) null comment '支付方式'")
+	@Enumerated(EnumType.STRING)
+	private PayMode payMode;
+	
+	@ApiModelProperty(value = "支付状态（1成功 0支付中 -1失败）")
+	@Column(name = "PAY_STATUS", columnDefinition = "char(1) default '1' comment '支付状态（1成功 0支付中 -1失败）'")
+	private Integer payStatus = 0;
 	
 }

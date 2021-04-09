@@ -9,6 +9,15 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  * @author Administrator
  */
-public interface WccPayLogRepository extends JpaRepository<PayLog, Long>, JpaSpecificationExecutor {
-
+public interface PayLogRepository extends JpaRepository<PayLog, Long>, JpaSpecificationExecutor {
+	
+	
+	/**
+	 * 根据微信预支付id查询
+	 *
+	 * @param prePayId
+	 * @return
+	 */
+	PayLog findByPrePayId(String prePayId);
+	
 }

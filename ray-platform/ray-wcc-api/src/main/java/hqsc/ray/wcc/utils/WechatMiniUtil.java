@@ -2,6 +2,7 @@ package hqsc.ray.wcc.utils;
 
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
+import hqsc.ray.core.common.util.HttpsUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.redis.core.RedisService;
 import lombok.RequiredArgsConstructor;

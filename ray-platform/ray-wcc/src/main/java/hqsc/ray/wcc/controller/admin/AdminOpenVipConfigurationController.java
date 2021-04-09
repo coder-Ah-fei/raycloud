@@ -20,10 +20,10 @@ import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.jpa.dto.OpenMembershipConfigurationDto;
+import hqsc.ray.wcc.jpa.dto.OpenVipConfigurationDto;
 import hqsc.ray.wcc.jpa.dto.PageMap;
-import hqsc.ray.wcc.jpa.form.OpenMembershipConfigurationForm;
-import hqsc.ray.wcc.jpa.service.OpenMembershipConfigurationService;
+import hqsc.ray.wcc.jpa.form.OpenVipConfigurationForm;
+import hqsc.ray.wcc.jpa.service.OpenVipConfigurationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -41,24 +41,24 @@ import javax.validation.Valid;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wcc-open-membership-configuration/manage/")
+@RequestMapping("/wcc-open-vip-configuration/manage/")
 @Api(value = "开通会员配置表", tags = "开通会员配置表接口")
-public class AdminOpenMembershipConfigurationController extends BaseController {
+public class AdminOpenVipConfigurationController extends BaseController {
 	
-	private final OpenMembershipConfigurationService openMembershipConfigurationService;
+	private final OpenVipConfigurationService openVipConfigurationService;
 	
 	/**
 	 * 分页列表
 	 *
-	 * @param openMembershipConfigurationForm
+	 * @param openVipConfigurationForm
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "获取开通会员的配置列表", exception = "获取开通会员的配置列表请求异常")
 	@GetMapping("/page")
 	@ApiOperation(value = "获取开通会员的配置列表", notes = "分页查询")
-	public Result<PageMap<OpenMembershipConfigurationDto>> page(OpenMembershipConfigurationForm openMembershipConfigurationForm) {
-		PageMap<OpenMembershipConfigurationDto> map = openMembershipConfigurationService.listOpenMembershipConfigurations(openMembershipConfigurationForm);
+	public Result<PageMap<OpenVipConfigurationDto>> page(OpenVipConfigurationForm openVipConfigurationForm) {
+		PageMap<OpenVipConfigurationDto> map = openVipConfigurationService.listOpenMembershipConfigurations(openVipConfigurationForm);
 		return Result.data(map);
 	}
 	
@@ -83,15 +83,15 @@ public class AdminOpenMembershipConfigurationController extends BaseController {
 	/**
 	 * 保存更新配置
 	 *
-	 * @param openMembershipConfigurationForm 对象
+	 * @param openVipConfigurationForm 对象
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "保存更新配置", exception = "保存更新配置请求异常")
 	@PostMapping("/set")
 	@ApiOperation(value = "保存更新配置", notes = "保存更新配置")
-	public Result<?> set(@Valid @RequestBody OpenMembershipConfigurationForm openMembershipConfigurationForm) {
-		return openMembershipConfigurationService.save(openMembershipConfigurationForm);
+	public Result<?> set(@Valid @RequestBody OpenVipConfigurationForm openVipConfigurationForm) {
+		return openVipConfigurationService.save(openVipConfigurationForm);
 //		return Result.condition(wccUserPurchasedCourseService.saveOrUpdate(wccUserPurchasedCourse));
 	}
 	

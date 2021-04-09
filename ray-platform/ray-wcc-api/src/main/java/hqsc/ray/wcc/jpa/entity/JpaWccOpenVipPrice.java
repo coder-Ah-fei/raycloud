@@ -33,6 +33,7 @@ import java.math.BigDecimal;
  * @author pangu
  * @since 2020-12-30
  */
+@Deprecated
 @ApiModel(value = "WccOpenVipPrice对象", description = "开通会员价目表")
 @Getter
 @Setter

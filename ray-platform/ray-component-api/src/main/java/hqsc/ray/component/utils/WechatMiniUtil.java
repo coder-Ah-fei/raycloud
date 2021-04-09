@@ -1,6 +1,7 @@
 package hqsc.ray.component.utils;
 
 import cn.hutool.json.JSONUtil;
+import hqsc.ray.core.common.util.HttpsUtil;
 import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.redis.core.RedisService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,6 @@ public class WechatMiniUtil {
 	private String appid;
 	@Value("${wechat.appsecret}")
 	private String appsecret;
-	
 	
 	private final String token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential";
 	private final String msg_sec_check_url = "https://api.weixin.qq.com/wxa/msg_sec_check?access_token=";

@@ -24,24 +24,26 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * 开通会员配置表
+ * 开通会员订单表
  *
  * @author pangu
  * @since 2020-12-30
  */
-@ApiModel(value = "OpenMembershipConfiguration对象", description = "开通会员配置表")
+@ApiModel(value = "OrderMember对象", description = "开通会员订单表")
 @Getter
 @Setter
 @Accessors(chain = true)
 @Entity
-@Table(name = "wcc_open_membership_configuration")
-@org.hibernate.annotations.Table(appliesTo = "wcc_open_membership_configuration", comment = "开通会员配置表")
-public class OpenMembershipConfiguration extends BasicEntity {
+@Table(name = "wcc_order_member")
+@org.hibernate.annotations.Table(appliesTo = "wcc_order_member", comment = "开通会员订单表")
+public class OrderMember extends BasicEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -54,6 +56,23 @@ public class OpenMembershipConfiguration extends BasicEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "myid")
 	@GenericGenerator(name = "myid", strategy = "hqsc.ray.wcc.jpa.configs.MyInsertGenerator")
 	private Long id;
+	
+	
+	@ApiModelProperty(value = "订单")
+	@OneToOne
+	@JoinColumn(name = "ORDER_ID", nullable = true)
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Order order;
+	
+	@ApiModelProperty(value = "开通会员配置")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OPEN_VIP_CONFIGURATION_ID", referencedColumnName = "id")
+	private OpenVipConfiguration openVipConfiguration;
+	
+	
+	@ApiModelProperty(value = "配置名称")
+	@Column(name = "SETTING_NAME", columnDefinition = "varchar(100) null comment '配置名称'")
+	private String settingName;
 	
 	@ApiModelProperty(value = "续费模式")
 	@Column(name = "PAYMENT_MODE", columnDefinition = "varchar(255) null comment '续费模式'")
@@ -71,5 +90,9 @@ public class OpenMembershipConfiguration extends BasicEntity {
 	@ApiModelProperty(value = "下次续费的价格")
 	@Column(name = "NEXT_PRICE", columnDefinition = "decimal(19,2) null comment '下次续费的价格'")
 	private BigDecimal nextPrice;
+	
+	@ApiModelProperty(value = "排序")
+	@Column(name = "SORT", columnDefinition = "int(11) NOT NULL DEFAULT '0' COMMENT '排序'")
+	private int sort;
 	
 }

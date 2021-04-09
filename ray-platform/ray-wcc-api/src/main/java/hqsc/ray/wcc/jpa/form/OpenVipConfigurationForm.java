@@ -6,9 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -20,14 +18,15 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class OpenMembershipConfigurationForm extends BaseForm {
+public class OpenVipConfigurationForm extends BaseForm {
 	
 	/**
 	 * 主键id
 	 */
 	@ApiModelProperty(value = "主键id")
 	private Long id;
-	
+	@ApiModelProperty(value = "配置名称")
+	private String settingName;
 	@ApiModelProperty(value = "续费模式")
 	private PaymentMode paymentMode;
 	
@@ -39,4 +38,13 @@ public class OpenMembershipConfigurationForm extends BaseForm {
 	
 	@ApiModelProperty(value = "下次续费的价格")
 	private BigDecimal nextPrice;
+	
+	@ApiModelProperty(value = "天数")
+	private int dayNum;
+	
+	@ApiModelProperty(value = "会员有效期的计算方式（0，按自然月；1，按天数）")
+	private int validityType;
+	
+	@ApiModelProperty(value = "排序")
+	private int sort;
 }

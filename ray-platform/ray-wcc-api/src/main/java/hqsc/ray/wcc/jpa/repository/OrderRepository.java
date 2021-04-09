@@ -1,6 +1,6 @@
 package hqsc.ray.wcc.jpa.repository;
 
-import hqsc.ray.wcc.jpa.entity.OpenMembershipConfiguration;
+import hqsc.ray.wcc.jpa.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  * @author Administrator
  */
-public interface OpenMembershipConfigurationRepository extends JpaRepository<OpenMembershipConfiguration, Long>, JpaSpecificationExecutor {
+public interface OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor {
 
 }

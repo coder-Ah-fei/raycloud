@@ -1,4 +1,4 @@
-package hqsc.ray.component.utils;
+package hqsc.ray.core.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
