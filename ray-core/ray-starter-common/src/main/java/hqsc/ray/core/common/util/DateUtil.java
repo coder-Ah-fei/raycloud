@@ -2,6 +2,7 @@ package hqsc.ray.core.common.util;
 
 import cn.hutool.core.date.DateTime;
 
+import javax.annotation.Nonnull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -40,6 +41,73 @@ public class DateUtil {
 	 */
 	public static final String REGEX_DATA = "^((\\d{2}(([02468][048])|([13579][26]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
 	
+	
+	public static final int YEAR = 6;
+	public static final int MONTH = 5;
+	public static final int DAY = 4;
+	public static final int HOUR = 3;
+	public static final int MINUTE = 2;
+	public static final int SECOND = 1;
+	
+	public static void main(String[] args) {
+//		LocalDateTime time = LocalDateTime.now();
+		LocalDateTime time = LocalDateTime.of(2021, 1, 31, 12, 12, 12, 12);
+		System.out.println(offset(time, 3, MONTH));
+		
+	}
+	
+	/**
+	 * 计算LocalDateTime的偏移量，年月日时分秒均可
+	 *
+	 * @param localDateTime 要偏移的时间
+	 * @param offsetNum     偏移量
+	 * @param offsetType    偏移类型，年月日时分秒
+	 * @return 结果
+	 */
+	@Nonnull
+	public static LocalDateTime offset(LocalDateTime localDateTime, int offsetNum, int offsetType) {
+		if (offsetType == YEAR) {
+			return localDateTime.plusYears(offsetNum);
+		}
+		if (offsetType == MONTH) {
+			return localDateTime.plusMonths(offsetNum);
+		}
+		if (offsetType == DAY) {
+			return localDateTime.plusDays(offsetNum);
+		}
+		if (offsetType == HOUR) {
+			return localDateTime.plusHours(offsetNum);
+		}
+		if (offsetType == MINUTE) {
+			return localDateTime.plusMinutes(offsetNum);
+		}
+		if (offsetType == SECOND) {
+			return localDateTime.plusSeconds(offsetNum);
+		}
+		return null;
+	}
+	
+	/**
+	 * 将时间设置为这一天的开始
+	 *
+	 * @param localDateTime
+	 * @return
+	 */
+	@Nonnull
+	public static LocalDateTime localDateTimeOfDayStart(LocalDateTime localDateTime) {
+		return localDateTime.withHour(0).withMinute(0).withSecond(0).withNano(0);
+	}
+	
+	/**
+	 * 将时间设置为这一天的结束
+	 *
+	 * @param localDateTime
+	 * @return
+	 */
+	@Nonnull
+	public static LocalDateTime localDateTimeOfDayEnd(LocalDateTime localDateTime) {
+		return localDateTime.withHour(23).withMinute(59).withSecond(59).withNano(0);
+	}
 	
 	/**
 	 * 获取当前时间戳

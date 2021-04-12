@@ -1,13 +1,16 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.sun.istack.Nullable;
 import com.wechat.pay.contrib.apache.httpclient.util.AesUtil;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.util.Abacus;
+import hqsc.ray.core.common.util.DateUtil;
 import hqsc.ray.core.common.util.UUIDUtil;
 import hqsc.ray.wcc.jpa.common.enums.OrderStatus;
 import hqsc.ray.wcc.jpa.common.enums.OrderType;
 import hqsc.ray.wcc.jpa.common.enums.PayMode;
+import hqsc.ray.wcc.jpa.common.enums.PaymentMode;
 import hqsc.ray.wcc.jpa.dto.OrderDto;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.wechatPay.NotifyDto;
@@ -50,6 +53,7 @@ public class OrderServiceImpl implements OrderService {
 	private final OpenVipConfigurationRepository openVipConfigurationRepository;
 	private final OrderMemberRepository orderMemberRepository;
 	private final PayLogRepository payLogRepository;
+	private final MemberInfoRepository memberInfoRepository;
 	
 	@Value("${wechat.api_v3_key}")
 	private String apiV3Key;
@@ -121,6 +125,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		OpenVipConfiguration openVipConfiguration = openVipConfigurationOptional.get();
 		
+		
 		Order order = new Order();
 		order.setJpaWccUser(user)
 				.setOrderCode("OV" + UUIDUtil.longUuid())
@@ -130,10 +135,16 @@ public class OrderServiceImpl implements OrderService {
 				.setPay(false)
 				.setPayMode(PayMode.WECHAT_PAY)
 				.setPayPrice(BigDecimal.ZERO)
-				.setOrderPrice(openVipConfiguration.getPresentPrice())
 				.setOrderStatus(OrderStatus.ordered)
 				.setStatus(1)
 				.setIsDelete(0);
+		
+		if (user.getMember() != null && user.getMember() == 1 && user.getMemberInfo() != null && user.getMemberInfo().getPaymentMode().equals(openVipConfiguration.getPaymentMode())) {
+			order.setOrderPrice(openVipConfiguration.getNextPrice());
+		} else {
+			order.setOrderPrice(openVipConfiguration.getPresentPrice());
+		}
+		
 		orderRepository.save(order);
 		
 		OrderMember orderMember = new OrderMember();
@@ -197,33 +208,34 @@ public class OrderServiceImpl implements OrderService {
 			orderRepository.save(order);
 			
 			// 给用户开通会员
-			//TODO
-			fdasfdsafdsa
 			JpaWccUser jpaWccUser = order.getJpaWccUser();
 			OrderMember orderMember = order.getOrderMember();
 			MemberInfo memberInfo = jpaWccUser.getMemberInfo();
-			if (memberInfo == null) {
-				memberInfo = new MemberInfo();
-				memberInfo.setWccUser(jpaWccUser);
-				LocalDateTime now = LocalDateTime.now();
-				memberInfo.setStartDataTime(now);
-				
-				// 按自然月
-				if (orderMember.getValidityType() == 0) {
-				
+			if (jpaWccUser.getMember() == null || jpaWccUser.getMember() == 0) {
+				// 从来没开过会员的话，新建一个
+				if (memberInfo == null) {
+					memberInfo = new MemberInfo();
+					memberInfo.setWccUser(jpaWccUser);
+					memberInfo.setStatus(1);
+					memberInfo.setIsDelete(0);
 				}
-				// 按天数
-				if (orderMember.getValidityType() == 1) {
+				LocalDateTime startDateTime = LocalDateTime.now();
+//				LocalDateTime startDateTime = DateUtil.localDateTimeOfDayStart(startDateTime);
+				memberInfo.setStartDataTime(startDateTime.withNano(0));
+				memberInfo.setEndDataTime(getMemberEndDateTime(startDateTime, orderMember));
 				
-				}
-				
-				memberInfo.setEndDataTime(LocalDateTime.now());
-				memberInfo.setPaymentMode(orderMember.getPaymentMode());
-				memberInfo.setOrderMember(orderMember);
-				memberInfo.setStatus(1);
-				memberInfo.setIsDelete(0);
 			}
+			if (jpaWccUser.getMember() != null && jpaWccUser.getMember() == 1) {
+				LocalDateTime startDateTime = DateUtil.offset(memberInfo.getEndDataTime(), 1, DateUtil.SECOND);
+//				LocalDateTime startDateTime = DateUtil.localDateTimeOfDayStart(startDateTime);
+				memberInfo.setEndDataTime(getMemberEndDateTime(startDateTime, orderMember));
+			}
+			memberInfo.setPaymentMode(orderMember.getPaymentMode());
+			memberInfo.setOrderMember(orderMember);
+			memberInfoRepository.save(memberInfo);
 			
+			jpaWccUser.setMember(1);
+			userRepository.save(jpaWccUser);
 			
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
@@ -232,4 +244,34 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 	}
+	
+	/**
+	 * 开通会员，计算会员的结束日期
+	 *
+	 * @param startDateTime 本次支付成功后新的会员的开始日期（此日期只用于计算，没有在数据库中记录）
+	 * @param orderMember
+	 * @return
+	 */
+	@Nullable
+	private LocalDateTime getMemberEndDateTime(LocalDateTime startDateTime, OrderMember orderMember) {
+		LocalDateTime endDateTime = DateUtil.offset(startDateTime, -1, DateUtil.SECOND);
+		// 按自然月
+		if (orderMember.getValidityType() == 0) {
+			if (PaymentMode.Monthly.equals(orderMember.getPaymentMode())) {
+				return DateUtil.offset(endDateTime, 1, DateUtil.MONTH);
+			}
+			if (PaymentMode.Quarterly.equals(orderMember.getPaymentMode())) {
+				return DateUtil.offset(endDateTime, 3, DateUtil.MONTH);
+			}
+			if (PaymentMode.Yearly.equals(orderMember.getPaymentMode())) {
+				return DateUtil.offset(endDateTime, 12, DateUtil.MONTH);
+			}
+		}
+		// 按天数
+		if (orderMember.getValidityType() == 1) {
+			return DateUtil.offset(endDateTime, orderMember.getDayNum() - 1, DateUtil.DAY);
+		}
+		return null;
+	}
+	
 }

@@ -102,7 +102,10 @@ public class OpenVipConfigurationServiceImpl implements OpenVipConfigurationServ
 					.setOriginalPrice(openVipConfigurationForm.getOriginalPrice())
 					.setPresentPrice(openVipConfigurationForm.getPresentPrice())
 					.setNextPrice(openVipConfigurationForm.getNextPrice())
-					.setSort(openVipConfigurationForm.getSort());
+					.setSort(openVipConfigurationForm.getSort())
+					.setDayNum(openVipConfigurationForm.getDayNum())
+					.setValidityType(openVipConfigurationForm.getValidityType())
+			;
 		} else {
 			openVipConfiguration = new OpenVipConfiguration();
 			BeanUtils.copyProperties(openVipConfigurationForm, openVipConfiguration);
