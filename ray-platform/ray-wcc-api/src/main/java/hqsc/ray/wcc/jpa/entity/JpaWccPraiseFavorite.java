@@ -65,9 +65,9 @@ public class JpaWccPraiseFavorite extends BasicEntity {
 	@Column(name = "TYPE")
 	private Integer type;
 	/**
-	 * 点赞收藏类型(0回复1提问2文章3话题4视频5课程)
+	 * 点赞收藏类型(0回复1提问2文章3话题4视频5课程6章节)
 	 */
-	@ApiModelProperty(value = "点赞收藏类型(0回复1提问2文章3话题4视频5课程)")
+	@ApiModelProperty(value = "点赞收藏类型(0回复1提问2文章3话题4视频5课程6章节)")
 	@Column(name = "PRAISE_FAVORITE_TYPE")
 	private Integer praiseFavoriteType;
 	/**

@@ -16,13 +16,20 @@
  */
 package hqsc.ray.uaa.config;
 
+import hqsc.ray.core.security.config.IgnoreUrlPropsConfiguration;
+import hqsc.ray.core.security.handle.RayAuthenticationFailureHandler;
+import hqsc.ray.core.security.handle.RayAuthenticationSuccessHandler;
 import hqsc.ray.uaa.service.impl.UserDetailsServiceImpl;
+import hqsc.ray.uaa.sms.SmsCodeAuthenticationSecurityConfig;
+import hqsc.ray.uaa.social.SocialAuthenticationSecurityConfig;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
@@ -31,11 +38,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import hqsc.ray.core.security.config.IgnoreUrlPropsConfiguration;
-import hqsc.ray.core.security.handle.RayAuthenticationFailureHandler;
-import hqsc.ray.core.security.handle.RayAuthenticationSuccessHandler;
-import hqsc.ray.uaa.sms.SmsCodeAuthenticationSecurityConfig;
-import hqsc.ray.uaa.social.SocialAuthenticationSecurityConfig;
 
 import javax.annotation.Resource;
 
@@ -47,21 +49,21 @@ import javax.annotation.Resource;
  **/
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Autowired
 	private IgnoreUrlPropsConfiguration ignoreUrlPropsConfig;
-
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
-
+	
 	@Resource
 	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
-
+	
 	@Resource
 	private SocialAuthenticationSecurityConfig socialAuthenticationSecurityConfig;
-
+	
 	/**
 	 * 必须要定义，否则不支持grant_type=password模式
 	 *
@@ -73,23 +75,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() {
 		return super.authenticationManagerBean();
 	}
-
+	
 	@Bean
 	public AuthenticationSuccessHandler rayAuthenticationSuccessHandler() {
 		return new RayAuthenticationSuccessHandler();
 	}
-
+	
 	@Bean
 	public AuthenticationFailureHandler rayAuthenticationFailureHandler() {
 		return new RayAuthenticationFailureHandler();
 	}
-
+	
 	@Override
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
 	}
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config
@@ -117,11 +119,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.csrf().disable();
 	}
-
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.
 				userDetailsService(userDetailsService())
 				.passwordEncoder(passwordEncoder());
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web
+				.ignoring()
+				// 放行预检请求
+				.antMatchers(
+						HttpMethod.OPTIONS,
+						"**"
+				)
+				.and()
+				.ignoring()
+				.antMatchers(
+						// 暂时对任何请求不进行认证和鉴权
+//						"/",
+//						"/indexPage/indexReferrals",
+//						"/ray-wcc/indexPage/indexReferrals"
+				);
 	}
 }

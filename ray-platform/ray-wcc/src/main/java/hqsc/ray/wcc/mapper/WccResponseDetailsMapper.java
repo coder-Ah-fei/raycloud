@@ -39,5 +39,5 @@ public interface WccResponseDetailsMapper extends BaseMapper<WccResponseDetails>
 	 * @param parseLong
 	 * @return
 	 */
-	List<WccResponseDetailsVO> listResponseDetails(@Param("parseLong") Long parseLong, @Param("responseDetailParentId") Long responseDetailParentId);
+	List<WccResponseDetailsVO> listResponseDetails(@Param("parseLong") Long parseLong, @Param("belongType") Integer belongType, @Param("responseDetailParentId") Long responseDetailParentId);
 }

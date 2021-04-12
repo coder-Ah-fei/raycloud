@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 描述：
@@ -90,4 +91,8 @@ public class WccCourseDto {
 	
 	@ApiModelProperty(value = "是否推荐课程(1是 0否)")
 	private Integer isRecommend;
+	
+	
+	@ApiModelProperty(value = "课程章节")
+	private List<WccCourseChapterDto> courseChapterList;
 }

@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.entity.WccResponseDetails;
 import hqsc.ray.wcc.mapper.WccResponseDetailsMapper;
 import hqsc.ray.wcc.service.IWccResponseDetailsService;
@@ -88,11 +89,15 @@ public class IWccResponseDetailsServiceImpl extends ServiceImpl<WccResponseDetai
 	 * @return
 	 */
 	@Override
-	public List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Long responseDetailParentId) {
-		List<WccResponseDetailsVO> list = wccResponseDetailsMapper.listResponseDetails(parseLong, responseDetailParentId);
+	public List<WccResponseDetailsVO> listResponseDetails(Long parseLong, Integer belongType, Long responseDetailParentId) {
+		List<WccResponseDetailsVO> list = wccResponseDetailsMapper.listResponseDetails(parseLong, belongType, responseDetailParentId);
 		for (WccResponseDetailsVO wccResponseDetailsVO : list) {
+			
+			wccResponseDetailsVO.setUserNickname(StringUtil.toUnicode(wccResponseDetailsVO.getUserNickname() == null ? "" : wccResponseDetailsVO.getUserNickname()));
+			
+			
 			if (wccResponseDetailsVO.getChildNum() > 0) {
-				wccResponseDetailsVO.setChildList(listResponseDetails(parseLong, wccResponseDetailsVO.getResponseDetailId()));
+				wccResponseDetailsVO.setChildList(listResponseDetails(parseLong, belongType, wccResponseDetailsVO.getResponseDetailId()));
 			}
 		}
 		return list;

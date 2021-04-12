@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class WccMerchantBrandDetailDto {
+public class WccMerchantBrandDetailDto extends BasicDto {
 	private Long id;
 	/**
 	 * 品牌方/商家图标
@@ -36,7 +36,8 @@ public class WccMerchantBrandDetailDto {
 	 * 评分级别
 	 */
 	@ApiModelProperty(value = "评分级别")
-	private String level;
+	private Integer level;
+	private String levelStr;
 	/**
 	 * 平台
 	 */

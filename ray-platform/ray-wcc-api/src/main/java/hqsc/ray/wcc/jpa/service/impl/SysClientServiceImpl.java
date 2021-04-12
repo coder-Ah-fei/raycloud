@@ -74,7 +74,7 @@ public class SysClientServiceImpl implements SysClientService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return ResultMap.success("'", map);
 	}
 	
 }

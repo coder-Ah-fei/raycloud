@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.form.WccUserForm;
 
@@ -18,5 +19,13 @@ public interface WccUserService {
 	 */
 	ResultMap listWccUsers(WccUserForm wccUserForm);
 	
-	
+	/**
+	 * 绑定手机号
+	 *
+	 * @param encryptedData
+	 * @param iv
+	 * @param userId
+	 * @return
+	 */
+	Result<?> bindMobilePhone(String encryptedData, String iv, String userId);
 }

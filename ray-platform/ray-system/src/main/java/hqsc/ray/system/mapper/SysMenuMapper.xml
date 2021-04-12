@@ -15,14 +15,12 @@
     </resultMap>
 
     <select id="routes" resultMap="menuResultMap">
-        SELECT
-        *
-        FROM
-        ray_sys_menu
-        WHERE
-        is_deleted = 0 and type != 2
+        SELECT *
+        FROM ray_sys_menu
+        WHERE is_deleted = 0
+          and type != 2
         and id IN ( SELECT menu_id FROM ray_sys_role_permission WHERE role_id = #{param1})
-        order by sort
+        order by sort desc
     </select>
 
 </mapper>

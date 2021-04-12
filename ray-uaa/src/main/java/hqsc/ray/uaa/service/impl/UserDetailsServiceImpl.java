@@ -108,7 +108,10 @@ public class UserDetailsServiceImpl implements RayUserDetailsService {
 		boolean bo = true;
 		WccUser wccUser = new WccUser();
 		wccUser.setWechatUnionId(unionId);
+
+//		String html = StringUtil.toHtml(nickname);
 		wccUser.setNickname(nickname);
+		wccUser.setStatus(1);
 		wccUser.setHeadPortrait(avatarId);
 		wccUser.setWechatHeadPortraitAddress(avatar);
 		wccUser.setGender(Integer.parseInt(sex));

@@ -16,17 +16,15 @@
  */
 package hqsc.ray.wcc.entity;
 
-import hqsc.ray.core.database.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 发布信息表实体类
@@ -37,30 +35,30 @@ import io.swagger.annotations.ApiModelProperty;
 @Data
 @ApiModel(value = "WccReleaseInfo对象", description = "发布信息表")
 public class WccReleaseInfo implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
-	* 主键id
-	*/
+	 * 主键id
+	 */
 	@ApiModelProperty(value = "主键id")
 	@TableId(value = "RELEASE_INFO_ID", type = IdType.AUTO)
 	private Long releaseInfoId;
 	/**
-	* 标题
-	*/
+	 * 标题
+	 */
 	@ApiModelProperty(value = "标题")
 	@TableField("TITEL")
 	private String titel;
 	/**
-	* 内容
-	*/
+	 * 内容
+	 */
 	@ApiModelProperty(value = "内容")
 	@TableField("CONTENT")
 	private String content;
 	/**
-	* 附件id
-	*/
+	 * 附件id
+	 */
 	@ApiModelProperty(value = "附件id")
 	@TableField("ATTACHMENT_ID")
 	private Long attachmentId;
@@ -71,65 +69,74 @@ public class WccReleaseInfo implements Serializable {
 	@TableField("TYPE")
 	private Long type;
 	/**
-	* 所属用户
-	*/
+	 * 所属用户
+	 */
 	@ApiModelProperty(value = "所属用户")
 	@TableField("BELONG_USER_ID")
 	private Long belongUserId;
 	/**
-	* 所属圈子
-	*/
+	 * 所属圈子
+	 */
 	@ApiModelProperty(value = "所属圈子")
 	@TableField("BELONG_CIRCLE_ID")
 	private Long belongCircleId;
 	/**
-	* 状态（1正常 0禁用）
-	*/
+	 * 状态（1正常 0禁用）
+	 */
 	@ApiModelProperty(value = "状态（1正常 0禁用）")
 	@TableField("STATUS")
 	private Integer status;
 	/**
-	* 1 删除  0正常
-	*/
+	 * 1 删除  0正常
+	 */
 	@ApiModelProperty(value = "1 删除  0正常")
 	@TableField("IS_DELETE")
 	private Integer isDelete;
+	
 	/**
-	* 创建人
-	*/
+	 * 1 删除  0正常
+	 */
+	@ApiModelProperty(value = "0 待审批  1审批通过 2审批未通过（临时处理）")
+	@TableField("APPROVE_STATUS")
+	private Integer approveStatus;
+	
+	
+	/**
+	 * 创建人
+	 */
 	@ApiModelProperty(value = "创建人")
 	@TableField("CREATED_BY")
 	private String createdBy;
 	/**
-	* 创建人姓名
-	*/
+	 * 创建人姓名
+	 */
 	@ApiModelProperty(value = "创建人姓名")
 	@TableField("CREATED_BY_USER")
 	private String createdByUser;
 	/**
-	* 创建时间
-	*/
+	 * 创建时间
+	 */
 	@ApiModelProperty(value = "创建时间")
 	@TableField("CREATION_DATE")
 	private LocalDateTime creationDate;
 	/**
-	* 修改人姓名
-	*/
+	 * 修改人姓名
+	 */
 	@ApiModelProperty(value = "修改人姓名")
 	@TableField("LAST_UPDATED_BY_USER")
 	private String lastUpdatedByUser;
 	/**
-	* 最后更新人
-	*/
+	 * 最后更新人
+	 */
 	@ApiModelProperty(value = "最后更新人")
 	@TableField("LAST_UPDATED_BY")
 	private String lastUpdatedBy;
 	/**
-	* 最后更新时间
-	*/
+	 * 最后更新时间
+	 */
 	@ApiModelProperty(value = "最后更新时间")
 	@TableField("LAST_UPDATE_DATE")
 	private LocalDateTime lastUpdateDate;
-
-
+	
+	
 }

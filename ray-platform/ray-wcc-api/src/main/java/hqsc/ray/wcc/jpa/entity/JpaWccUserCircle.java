@@ -16,7 +16,6 @@
  */
 package hqsc.ray.wcc.jpa.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hqsc.ray.wcc.jpa.entity.base.BasicEntity;
 import io.swagger.annotations.ApiModel;
@@ -67,7 +66,6 @@ public class JpaWccUserCircle extends BasicEntity {
 	 * 圈子id
 	 */
 	@ApiModelProperty(value = "圈子id")
-	@TableField("CIRCLE_ID")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CIRCLE_ID", referencedColumnName = "CIRCLE_ID")
 	@JsonIgnore

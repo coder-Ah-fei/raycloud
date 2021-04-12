@@ -2,8 +2,8 @@ package hqsc.ray.wcc.jpa.service.impl;
 
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccPayLogDto;
-import hqsc.ray.wcc.jpa.entity.JpaWccPayLog;
-import hqsc.ray.wcc.jpa.form.WccPayLogForm;
+import hqsc.ray.wcc.jpa.entity.PayLog;
+import hqsc.ray.wcc.jpa.form.PayLogForm;
 import hqsc.ray.wcc.jpa.repository.WccPayLogRepository;
 import hqsc.ray.wcc.jpa.service.WccPayLogService;
 import org.springframework.beans.BeanUtils;
@@ -33,12 +33,12 @@ public class WccPayLogServiceImpl implements WccPayLogService {
 	/**
 	 * 获取数据
 	 *
-	 * @param wccPayLogForm
+	 * @param payLogForm
 	 * @return ResultMap
 	 */
 	@Override
-	public ResultMap listWccPayLogs(WccPayLogForm wccPayLogForm) {
-		Specification<JpaWccPayLog> specification = (root, criteriaQuery, criteriaBuilder) -> {
+	public ResultMap listWccPayLogs(PayLogForm payLogForm) {
+		Specification<PayLog> specification = (root, criteriaQuery, criteriaBuilder) -> {
 //			List<Predicate> pr = new ArrayList< >();
 //				if (!StringUtils.empty(articleForm.getSectionName())) {
 //					Join<Object, Object> section = root.join("section");
@@ -53,19 +53,19 @@ public class WccPayLogServiceImpl implements WccPayLogService {
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
 		};
-		List<JpaWccPayLog> jpaWccPayLogList;
-		if (wccPayLogForm.getPageNow() == -1) {
-			jpaWccPayLogList = wccPayLogRepository.findAll(specification);
+		List<PayLog> payLogList;
+		if (payLogForm.getPageNow() == -1) {
+			payLogList = wccPayLogRepository.findAll(specification);
 		} else {
-			Pageable pageable = PageRequest.of(wccPayLogForm.getPageNow() - 1, wccPayLogForm.getPageSize());
-			Page<JpaWccPayLog> wccPayLogPage = wccPayLogRepository.findAll(specification, pageable);
-			jpaWccPayLogList = wccPayLogPage.getContent();
+			Pageable pageable = PageRequest.of(payLogForm.getPageNow() - 1, payLogForm.getPageSize());
+			Page<PayLog> wccPayLogPage = wccPayLogRepository.findAll(specification, pageable);
+			payLogList = wccPayLogPage.getContent();
 		}
 		List<WccPayLogDto> list = new ArrayList<>();
 		WccPayLogDto wccPayLogDto;
-		for (JpaWccPayLog jpaWccPayLog : jpaWccPayLogList) {
+		for (PayLog payLog : payLogList) {
 			wccPayLogDto = new WccPayLogDto();
-			BeanUtils.copyProperties(jpaWccPayLog, wccPayLogDto);
+			BeanUtils.copyProperties(payLog, wccPayLogDto);
 			
 			
 			list.add(wccPayLogDto);
@@ -74,7 +74,7 @@ public class WccPayLogServiceImpl implements WccPayLogService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		return ResultMap.success("'", map);
 	}
 	
 }

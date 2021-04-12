@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.WccUserConcernDto;
 import hqsc.ray.wcc.jpa.dto.WccUserDto;
@@ -44,7 +45,9 @@ public class WccUserConcernServiceImpl implements WccUserConcernService {
 				Join<Object, Object> section = root.join("jpaWccUser");
 				pr.add(criteriaBuilder.equal(section.get("id"), wccUserConcernForm.getUserId()));
 			}
-
+			if (wccUserConcernForm.getStatus() != null) {
+				pr.add(criteriaBuilder.equal(root.get("status"), wccUserConcernForm.getStatus()));
+			}
 //			if (!StringUtils.empty(litigationEnvelopeBrandForm.getBrandName())) {
 //				pr.add(criteriaBuilder.equal(root.get("brandName").as(String.class), litigationEnvelopeBrandForm.getBrandName()));
 //			}
@@ -72,13 +75,24 @@ public class WccUserConcernServiceImpl implements WccUserConcernService {
 			wccUserConcernDto.setId(jpaWccUserConcern.getId());
 			wccUserConcernDto.setJpaWccUserId(jpaWccUserConcern.getJpaWccUser().getId());
 			wccUserConcernDto.setBelongUserId(jpaWccUserConcern.getBelongUser().getId());
-			wccUserConcernDto.setNickname(jpaWccUserConcern.getBelongUser().getNickname());
+			wccUserConcernDto.setNickname(jpaWccUserConcern.getBelongUser().getNickname() == null ? "" : StringUtil.toUnicode(jpaWccUserConcern.getBelongUser().getNickname()));
 			wccUserConcernDto.setWechatHeadPortraitAddress(jpaWccUserConcern.getBelongUser().getWechatHeadPortraitAddress());
 			wccUserConcernDto.setAccessCount(jpaWccUserConcern.getAccessCount());
-			
 			list.add(wccUserConcernDto);
 		}
 		return PageMap.of(count, list);
+	}
+	
+	/**
+	 * 获取关注数量
+	 *
+	 * @param userId
+	 * @param belongUserId
+	 * @return
+	 */
+	@Override
+	public Long countByJpaWccUserIdAndBelongUserId(Long userId, Long belongUserId) {
+		return wccUserConcernRepository.countByJpaWccUserIdAndBelongUserIdAndStatusAndIsDelete(userId, belongUserId, 1, 0);
 	}
 	
 }

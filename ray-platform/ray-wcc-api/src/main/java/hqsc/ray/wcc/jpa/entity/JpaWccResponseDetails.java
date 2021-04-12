@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 回答详情表实体类
@@ -63,7 +63,7 @@ public class JpaWccResponseDetails extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "回答时间")
 	@Column(name = "RESPONSE_TIME")
-	private Date responseTime;
+	private LocalDateTime responseTime;
 	/**
 	 * 回答内容
 	 */
@@ -73,19 +73,18 @@ public class JpaWccResponseDetails extends BasicEntity {
 	@Column(name = "RESPONSE_BODY")
 	private String responseBody;
 	/**
-	 * 所属类型(0回复1提问2文章3话题4视频)
+	 * old:所属类型(0回复1提问2文章3话题4视频5课程6章节)
+	 * new:所属类型(0发布信息1课程2章节)
 	 */
-	@ApiModelProperty(value = "所属类型(0回复1提问2文章3话题4视频)")
+	@ApiModelProperty(value = "所属类型(0发布信息1课程2章节)")
 	@Column(name = "BELONG_TYPE")
 	private Integer belongType;
 	/**
 	 * 所属id
 	 */
 	@ApiModelProperty(value = "所属id")
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "BELONG_ID", referencedColumnName = "RELEASE_INFO_ID")
-	@JsonIgnore
-	private JpaWccReleaseInfo jpaWccReleaseInfo;
+	@Column(name = "BELONG_ID")
+	private Long belongId;
 	
 	/**
 	 * 上级id

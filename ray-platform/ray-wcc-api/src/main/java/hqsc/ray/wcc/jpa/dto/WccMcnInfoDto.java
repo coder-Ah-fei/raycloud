@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class WccMcnInfoDto {
+public class WccMcnInfoDto extends BasicDto {
 	
 	private Long id;
 	/**
@@ -25,7 +25,7 @@ public class WccMcnInfoDto {
 	 * 标题
 	 */
 	@ApiModelProperty(value = "标题")
-	private String oName;
+	private String oname;
 	/**
 	 * 机构坐标
 	 */
@@ -48,4 +48,28 @@ public class WccMcnInfoDto {
 	 */
 	@ApiModelProperty(value = "红人数量")
 	private Integer celebrityCount;
+	
+	/**
+	 * 全称
+	 */
+	@ApiModelProperty(value = "全称")
+	private String fullName;
+	
+	/**
+	 * 结算方式
+	 */
+	@ApiModelProperty(value = "结算方式")
+	private String settleType;
+	
+	/**
+	 * 平台网址
+	 */
+	@ApiModelProperty(value = "平台网址")
+	private String internetSite;
+	
+	/**
+	 * 平台介绍
+	 */
+	@ApiModelProperty(value = "平台介绍")
+	private String summary;
 }

@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class WccCelebrityInfoDto {
+public class WccCelebrityInfoDto extends BasicDto {
 	
 	/**
 	 * 主键id
@@ -57,6 +57,10 @@ public class WccCelebrityInfoDto {
 	 */
 	@ApiModelProperty(value = "所属机构")
 	private Long organizationId;
+	@ApiModelProperty(value = "所属MCN机构")
+	private Long mcnInfoId;
+	private String mcnName;
+	
 	/**
 	 * 现居住地
 	 */

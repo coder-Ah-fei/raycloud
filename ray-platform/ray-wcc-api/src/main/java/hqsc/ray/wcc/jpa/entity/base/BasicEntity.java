@@ -32,14 +32,14 @@ public class BasicEntity implements Serializable {
 	 * 状态（1正常 0禁用）
 	 */
 	@ApiModelProperty(value = "状态（1正常 0禁用）")
-	@Column(name = "STATUS", columnDefinition = "char(1) default '' comment '状态（1正常 0禁用）'")
-	private Integer status;
+	@Column(name = "STATUS", columnDefinition = "char(1) default '1' comment '状态（1正常 0禁用）'")
+	private Integer status = 1;
 	/**
 	 * 1 删除  0正常
 	 */
 	@ApiModelProperty(value = "1 删除  0正常")
-	@Column(name = "IS_DELETE", columnDefinition = "char(1) default '' comment '删除标识（1 删除  0正常）'")
-	private Integer isDelete;
+	@Column(name = "IS_DELETE", columnDefinition = "char(1) default '0' comment '删除标识（1 删除  0正常）'")
+	private Integer isDelete = 0;
 	
 	/**
 	 * jpa 版本控制

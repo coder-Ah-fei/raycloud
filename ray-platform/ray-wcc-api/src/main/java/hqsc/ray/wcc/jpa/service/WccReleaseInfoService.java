@@ -1,5 +1,6 @@
 package hqsc.ray.wcc.jpa.service;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 
@@ -9,7 +10,7 @@ import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
  * @author Administrator
  */
 public interface WccReleaseInfoService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +18,12 @@ public interface WccReleaseInfoService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccReleaseInfos(WccReleaseInfoForm wccReleaseInfoForm);
-
+	
+	/**
+	 * 发布内容审批
+	 *
+	 * @param wccReleaseInfoForm
+	 * @return
+	 */
+	Result<?> approve(WccReleaseInfoForm wccReleaseInfoForm);
 }

@@ -25,21 +25,18 @@ import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
 import hqsc.ray.wcc.entity.WccReleaseInfo;
-import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
 import hqsc.ray.wcc.service.IWccReleaseInfoService;
-import hqsc.ray.wcc.vo.MyReleaseInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,7 +54,7 @@ import java.util.Map;
 public class WccReleaseInfoController extends BaseController {
 	
 	private final IWccReleaseInfoService iWccReleaseInfoService;
-	private final WccReleaseInfoService wccReleaseInfoService;
+	private final WccReleaseInfoService releaseInfoService;
 	
 	/**
 	 * 分页列表
@@ -87,9 +84,8 @@ public class WccReleaseInfoController extends BaseController {
 	 * @param id Id
 	 * @return Result
 	 */
-	@PreAuth
 	@Log(value = "发布信息表信息", exception = "发布信息表信息请求异常")
-	@GetMapping("/get")
+	@PostMapping("/get")
 	@ApiOperation(value = "发布信息表信息", notes = "根据ID查询")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
@@ -104,7 +100,6 @@ public class WccReleaseInfoController extends BaseController {
 	 * @param wccReleaseInfo WccReleaseInfo 对象
 	 * @return Result
 	 */
-	@PreAuth
 	@Log(value = "发布信息表设置", exception = "发布信息表设置请求异常")
 	@PostMapping("/set")
 	@ApiOperation(value = "发布信息表设置", notes = "发布信息表设置,支持新增或修改")
@@ -134,41 +129,51 @@ public class WccReleaseInfoController extends BaseController {
 	/**
 	 * 我的页面，获取用户发布的内容
 	 *
-	 * @param page               分页信息
 	 * @param wccReleaseInfoForm 　搜索关键词
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "我的页面，获取用户发布的内容", exception = "发布信息表列表请求异常")
-	@PostMapping("/listWccReleaseInfos")
+	@PostMapping("/private/listWccReleaseInfos")
 	@ApiOperation(value = "发布信息表列表", notes = "分页查询")
-	@ApiImplicitParams({
-			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-	})
-	public Result<?> listWccReleaseInfos(Page page, WccReleaseInfoForm wccReleaseInfoForm) {
+	public Result<?> listWccReleaseInfos(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
-//		IPage<WccReleaseInfo> wccReleaseInfoIPage = wccReleaseInfoService.listWccReleaseInfos(page, wccReleaseInfoForm);
-		List<MyReleaseInfoVO> myReleaseInfo = iWccReleaseInfoService.findMyReleaseInfo(wccReleaseInfoForm, page.getCurrent(), page.getSize());
-		return Result.data(myReleaseInfo);
+		wccReleaseInfoForm
+				.setBelongUserId(Long.valueOf(userInfo.getUserId()))
+				.setStatus(1)
+				.setIsDelete(0);
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
 	
 	
 	//-----------------------------------------------------------------------------------
+
+//	@PreAuth
+//	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
+//	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
+//	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
+//	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+//		LoginUser userInfo = SecurityUtil.getUsername(req);
+//		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
+//		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+//		return resultMap;
+//	}
 	
-	@PreAuth
-	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
-	@PostMapping(value = "/listWccUserMessages", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
-	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
-		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
-		return resultMap;
+	
+	@Log(value = "获取圈子中的发布信息", exception = "获取圈子中的发布信息请求异常")
+	@PostMapping("/listByCircleId")
+	@ApiOperation(value = "获取圈子中的发布信息", notes = "分页查询")
+	public Result<ResultMap<WccReleaseInfoDto>> listByCircleId(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
+		try {
+			LoginUser userInfo = SecurityUtil.getUsername(req);
+			wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		return Result.data(resultMap);
 	}
+	
 }
 

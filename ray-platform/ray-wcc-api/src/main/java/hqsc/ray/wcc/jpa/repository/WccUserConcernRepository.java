@@ -10,5 +10,17 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author Administrator
  */
 public interface WccUserConcernRepository extends JpaRepository<JpaWccUserConcern, Long>, JpaSpecificationExecutor {
-
+	
+	
+	Long countByJpaWccUserIdAndBelongUserId(Long userId, Long belongUserId);
+	
+	/**
+	 * @param userId
+	 * @param belongUserId
+	 * @param status
+	 * @param isdelete
+	 * @return
+	 */
+	Long countByJpaWccUserIdAndBelongUserIdAndStatusAndIsDelete(Long userId, Long belongUserId, Integer status, Integer isdelete);
+	
 }

@@ -30,63 +30,63 @@ import java.util.stream.Collectors;
  */
 @Service
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements ISysMenuService {
-
-    @Override
-    public List<SysMenuVO> routes(String roleId) {
-        //1. 获取用户的菜单列表，待扩展
-        List<SysMenu> menus = this.baseMapper.routes(roleId);
-        //2. 生成菜单树
-        return TreeUtil.list2Tree(menus, RayConstant.TREE_ROOT);
-    }
-
-    @Override
-    public List<SysMenu> searchList(Map<String, Object> search) {
-        String keyword = String.valueOf(search.get("keyword"));
-        String startDate = String.valueOf(search.get("startDate"));
-        String endDate = String.valueOf(search.get("endDate"));
-        LambdaQueryWrapper<SysMenu> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        if (StringUtils.isNotBlank(startDate) && !startDate.equals("null")) {
-            lambdaQueryWrapper.between(SysMenu::getCreateTime, startDate, endDate);
-        }
-        if (StringUtils.isNotBlank(keyword) && !keyword.equals("null")) {
-            lambdaQueryWrapper.like(SysMenu::getName, keyword);
-            lambdaQueryWrapper.or();
-            lambdaQueryWrapper.like(SysMenu::getId, keyword);
-        }
-        lambdaQueryWrapper.orderByAsc(SysMenu::getSort);
-        return this.baseMapper.selectList(lambdaQueryWrapper);
-    }
-
-    @Override
-    public boolean saveAll(SysMenu sysMenu) {
-        if (sysMenu.getType().equals("0")) {
-            sysMenu.setParentId(-1L);
-        }
-        return saveOrUpdate(sysMenu);
-    }
-
-    @Override
-    public boolean status(String ids, String status) {
-        Collection<? extends Serializable> collection = CollectionUtil.stringToCollection(ids);
-
-        for (Object id: collection){
-            SysMenu sysMenu = this.baseMapper.selectById(CollectionUtil.objectToLong(id, 0L));
-            sysMenu.setStatus(status);
-            this.baseMapper.updateById(sysMenu);
-        }
-        return true;
-    }
-
-    @Override
-    public List<SysMenuPOI> export() {
-        LambdaQueryWrapper<SysMenu> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(SysMenu::getIsDeleted, 0);
-        queryWrapper.orderByAsc(SysMenu::getId);
-        List<SysMenu> sysMenus = this.baseMapper.selectList(queryWrapper);
-        return sysMenus.stream().map(sysMenu -> {
-            SysMenuPOI sysMenuPOI = new SysMenuPOI();
-            BeanUtils.copyProperties(sysMenu, sysMenuPOI);
-            return sysMenuPOI;
-        }).collect(Collectors.toList());
-    }
+	
+	@Override
+	public List<SysMenuVO> routes(String roleId) {
+		//1. 获取用户的菜单列表，待扩展
+		List<SysMenu> menus = this.baseMapper.routes(roleId);
+		//2. 生成菜单树
+		return TreeUtil.list2Tree(menus, RayConstant.TREE_ROOT);
+	}
+	
+	@Override
+	public List<SysMenu> searchList(Map<String, Object> search) {
+		String keyword = String.valueOf(search.get("keyword"));
+		String startDate = String.valueOf(search.get("startDate"));
+		String endDate = String.valueOf(search.get("endDate"));
+		LambdaQueryWrapper<SysMenu> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+		if (StringUtils.isNotBlank(startDate) && !startDate.equals("null")) {
+			lambdaQueryWrapper.between(SysMenu::getCreateTime, startDate, endDate);
+		}
+		if (StringUtils.isNotBlank(keyword) && !keyword.equals("null")) {
+			lambdaQueryWrapper.like(SysMenu::getName, keyword);
+			lambdaQueryWrapper.or();
+			lambdaQueryWrapper.like(SysMenu::getId, keyword);
+		}
+		lambdaQueryWrapper.orderByDesc(SysMenu::getSort);
+		return this.baseMapper.selectList(lambdaQueryWrapper);
+	}
+	
+	@Override
+	public boolean saveAll(SysMenu sysMenu) {
+		if (sysMenu.getType().equals("0")) {
+			sysMenu.setParentId(-1L);
+		}
+		return saveOrUpdate(sysMenu);
+	}
+	
+	@Override
+	public boolean status(String ids, String status) {
+		Collection<? extends Serializable> collection = CollectionUtil.stringToCollection(ids);
+		
+		for (Object id : collection) {
+			SysMenu sysMenu = this.baseMapper.selectById(CollectionUtil.objectToLong(id, 0L));
+			sysMenu.setStatus(status);
+			this.baseMapper.updateById(sysMenu);
+		}
+		return true;
+	}
+	
+	@Override
+	public List<SysMenuPOI> export() {
+		LambdaQueryWrapper<SysMenu> queryWrapper = new LambdaQueryWrapper<>();
+		queryWrapper.eq(SysMenu::getIsDeleted, 0);
+		queryWrapper.orderByAsc(SysMenu::getId);
+		List<SysMenu> sysMenus = this.baseMapper.selectList(queryWrapper);
+		return sysMenus.stream().map(sysMenu -> {
+			SysMenuPOI sysMenuPOI = new SysMenuPOI();
+			BeanUtils.copyProperties(sysMenu, sysMenuPOI);
+			return sysMenuPOI;
+		}).collect(Collectors.toList());
+	}
 }

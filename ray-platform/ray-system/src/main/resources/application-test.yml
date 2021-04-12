@@ -8,6 +8,10 @@ spring:
     url: ${ray.datasource.url}
     username: ${ray.datasource.username}
     password: ${ray.datasource.password}
+  cloud:
+    nacos:
+      discovery:
+        ip: 47.105.168.210
 
 dubbo:
   scan:
@@ -37,3 +41,8 @@ jetcache:
       #  - redis://127.0.0.1:7001
       #  - redis://127.0.0.1:7002
       #readFrom: slavePreferred
+
+## 配置日志显示在spring boot admin
+logging:
+  file:
+    name: logs/app/ray-system/ray-system.log

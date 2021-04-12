@@ -1,7 +1,7 @@
 package hqsc.ray.wcc.jpa.service;
 
 import hqsc.ray.wcc.jpa.dto.ResultMap;
-import hqsc.ray.wcc.jpa.form.WccPayLogForm;
+import hqsc.ray.wcc.jpa.form.PayLogForm;
 
 /**
  * 描述：
@@ -9,13 +9,13 @@ import hqsc.ray.wcc.jpa.form.WccPayLogForm;
  * @author Administrator
  */
 public interface WccPayLogService {
-
+	
 	/**
 	 * 获取数据
 	 *
-	 * @param wccPayLogForm
+	 * @param payLogForm
 	 * @return ResultMap
 	 */
-	ResultMap listWccPayLogs(WccPayLogForm wccPayLogForm);
-
+	ResultMap listWccPayLogs(PayLogForm payLogForm);
+	
 }

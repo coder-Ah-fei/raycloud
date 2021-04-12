@@ -9,8 +9,10 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author yang
@@ -40,11 +42,43 @@ public class JpaWccMcnInfo extends BasicEntity {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private JpaSysAttachment icon;
 	/**
-	 * 标题
+	 * 简称
 	 */
-	@ApiModelProperty(value = "标题")
+	@ApiModelProperty(value = "简称")
 	@Column(name = "O_NAME")
-	private String oName;
+	private String oname;
+	
+	
+	/**
+	 * 全称
+	 */
+	@ApiModelProperty(value = "全称")
+	@Column(name = "FULL_NAME")
+	private String fullName;
+	
+	/**
+	 * 结算方式
+	 */
+	@ApiModelProperty(value = "结算方式")
+	@Column(name = "SETTLE_TYPE")
+	private String settleType;
+	
+	/**
+	 * 平台网址
+	 */
+	@ApiModelProperty(value = "平台网址")
+	@Column(name = "INTERNET_SITE")
+	private String internetSite;
+	
+	/**
+	 * 平台介绍
+	 */
+	@ApiModelProperty(value = "平台介绍")
+	@Column(name = "SUMMARY")
+	@Lazy
+	@Lob
+	private String summary;
+	
 	/**
 	 * 机构坐标
 	 */
@@ -72,4 +106,7 @@ public class JpaWccMcnInfo extends BasicEntity {
 	@Column(name = "CELEBRITYCOUNT")
 	private Integer celebrityCount;
 	
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "jpaWccMcnInfo")
+	private List<JpaWccCelebrityInfo> celebrityInfoList;
 }

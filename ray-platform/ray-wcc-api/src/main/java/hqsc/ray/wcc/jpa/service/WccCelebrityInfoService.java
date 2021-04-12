@@ -1,6 +1,8 @@
 package hqsc.ray.wcc.jpa.service;
 
+import hqsc.ray.core.common.api.Result;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.dto.WccCelebrityInfoDto;
 import hqsc.ray.wcc.jpa.form.WccCelebrityInfoForm;
 
 /**
@@ -9,7 +11,7 @@ import hqsc.ray.wcc.jpa.form.WccCelebrityInfoForm;
  * @author Administrator
  */
 public interface WccCelebrityInfoService {
-
+	
 	/**
 	 * 获取数据
 	 *
@@ -17,5 +19,27 @@ public interface WccCelebrityInfoService {
 	 * @return ResultMap
 	 */
 	ResultMap listWccCelebrityInfos(WccCelebrityInfoForm wccCelebrityInfoForm);
-
+	
+	/**
+	 * 红人信息表信息
+	 *
+	 * @param id
+	 * @return
+	 */
+	WccCelebrityInfoDto findById(Long id);
+	
+	/**
+	 * 红人信息表设置
+	 *
+	 * @param wccCelebrityInfoForm
+	 * @return
+	 */
+	Result<?> save(WccCelebrityInfoForm wccCelebrityInfoForm);
+	
+	/**
+	 * 生成红人榜但查询条件的内容
+	 *
+	 * @return
+	 */
+	ResultMap findRedSearchData();
 }

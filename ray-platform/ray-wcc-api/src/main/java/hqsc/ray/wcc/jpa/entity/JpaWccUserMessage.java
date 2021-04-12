@@ -26,7 +26,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 用户消息表实体类
@@ -81,11 +81,20 @@ public class JpaWccUserMessage extends BasicEntity {
 	 */
 	@ApiModelProperty(value = "消息时间")
 	@Column(name = "MESSAGE_TIME")
-	private Date messageTime;
+	private LocalDateTime messageTime;
 	
 	
 	@ApiModelProperty(value = "1 已读  0 未读")
 	@Column(name = "IS_READ", columnDefinition = "char(1) default 0 comment '已读标识（1 已读  0 未读）'")
 	private Integer isRead;
+	
+	/**
+	 * 对应的的评论、回答
+	 */
+	@ApiModelProperty(value = "对应的的评论、回答的id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "RESPONSE_DETAIL_ID", referencedColumnName = "RESPONSE_DETAIL_ID")
+	@JsonIgnore
+	private JpaWccResponseDetails responseDetails;
 	
 }

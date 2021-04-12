@@ -5,10 +5,12 @@ import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.WccReleaseInfo;
 import hqsc.ray.wcc.service.IWccReleaseInfoService;
+import hqsc.ray.wcc.utils.WechatMiniUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -27,7 +30,8 @@ import java.time.LocalDateTime;
 @Api(value = "发布信息", tags = "发布信息接口")
 public class ReleaseController extends BaseController {
 	
-	private IWccReleaseInfoService wccReleaseInfoService;
+	private final IWccReleaseInfoService wccReleaseInfoService;
+	private final WechatMiniUtil wechatMiniUtil;
 	
 	/*
 	 * 发布提问
@@ -95,6 +99,9 @@ public class ReleaseController extends BaseController {
 		if ("".equals(titel) || titel == null || "null".equals(titel)) {
 			return Result.fail("标题不能为空！");
 		}
+		if (belongCircleId <= 0) {
+			belongCircleId = null;
+		}
 		return releaseInfo(titel, content, attachmentid, belongCircleId, 2L);
 		
 	}
@@ -124,6 +131,18 @@ public class ReleaseController extends BaseController {
 	
 	
 	private Result<?> releaseInfo(String titel, String content, Long attachmentid, Long belongCircleId, Long type) {
+		boolean msgSecCheck = wechatMiniUtil.msgSecCheck(titel + content);
+		if (!msgSecCheck) {
+			return Result.fail("您发布的标题或内容中可能包含敏感信息");
+		}
+		// 从content中提取连接
+		List<String> imgStr = StringUtil.getImgStr(content);
+		for (String s : imgStr) {
+			boolean imgSecCheck = wechatMiniUtil.imgSecCheck(s);
+			if (!imgSecCheck) {
+				return Result.fail("您发布的标题或内容中可能包含敏感信息");
+			}
+		}
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		Long userid = Long.parseLong(userInfo.getUserId());
 		WccReleaseInfo releaseInfo = new WccReleaseInfo();
@@ -131,9 +150,17 @@ public class ReleaseController extends BaseController {
 		releaseInfo.setContent(content);
 		releaseInfo.setAttachmentId(attachmentid);
 		releaseInfo.setType(type);
+		if (type == 3) {
+			releaseInfo.setApproveStatus(0);
+		} else {
+			releaseInfo.setApproveStatus(1);
+			
+		}
 		releaseInfo.setBelongUserId(userid);
 		releaseInfo.setBelongCircleId(belongCircleId);
 		releaseInfo.setCreationDate(LocalDateTime.now());
+		releaseInfo.setStatus(1);
+		releaseInfo.setIsDelete(0);
 		try {
 			return wccReleaseInfoService.save(releaseInfo) ? Result.success("发布信息成功！") : Result.fail("发布信息失败！");
 		} catch (Exception e) {
@@ -141,4 +168,6 @@ public class ReleaseController extends BaseController {
 			return Result.fail("发布信息异常！");
 		}
 	}
+	
+	
 }

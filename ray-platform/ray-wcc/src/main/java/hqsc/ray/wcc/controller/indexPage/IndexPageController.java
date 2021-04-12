@@ -3,10 +3,13 @@ package hqsc.ray.wcc.controller.indexPage;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.auth.annotation.UserAuth;
 import hqsc.ray.core.common.api.Result;
 import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.DateUtil;
 import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.common.util.StringUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.entity.WccCircleInfo;
@@ -65,7 +68,6 @@ public class IndexPageController extends BaseController {
 	/*
 	 * 首页推荐
 	 * */
-	@UserAuth
 	@Log(value = "首页推荐", exception = "首页推荐异常")
 	@PostMapping(value = {"/indexReferrals"})
 	@ApiOperation(value = "首页推荐", notes = "首页推荐")
@@ -77,15 +79,35 @@ public class IndexPageController extends BaseController {
 		if (page.getCurrent() < 1 || page.getSize() < 1) {
 			return Result.fail("非法参数！");
 		}
-		LoginUser userInfo = SecurityUtil.getUsername(req);
+		LoginUser userInfo = new LoginUser();
+		try {
+			userInfo = SecurityUtil.getUsername(req);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		List<IndexReferralsVO> referrals = wccReleaseInfoService.findIndexReferrals(userInfo.getUserId(), page.getCurrent(), page.getSize());
+		
+		for (IndexReferralsVO referral : referrals) {
+			referral.setAttachmentPath(StringUtil.isBlank(referral.getAttachmentPath()) ? "" : referral.getAttachmentPath().replace("static", ""));
+			referral.setNickname(referral.getNickname() == null ? "" : StringUtil.toUnicode(referral.getNickname()));
+			referral.setCreationDateStr(DateUtil.simpleFormatWithYear(referral.getCreationDate()));
+			if (referral.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(referral.getContent());
+				if (imgStrs.size() > 0) {
+					referral.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (referral.getContent() != null) {
+					referral.setContent(StringUtil.trimHtml(referral.getContent(), 100));
+				}
+			}
+		}
+		
 		return Result.data(referrals);
 	}
 	
 	/*
 	 * 首页推荐
 	 * */
-	@UserAuth
 	@Log(value = "首页视频", exception = "首页视频异常")
 	@PostMapping(value = {"/indexVideo"})
 	@ApiOperation(value = "首页视频", notes = "首页视频")
@@ -98,6 +120,9 @@ public class IndexPageController extends BaseController {
 			return Result.fail("非法参数！");
 		}
 		List<IndexVideoVO> records = wccReleaseInfoService.findIndexVideo(page.getCurrent(), page.getSize());
+		for (IndexVideoVO record : records) {
+			record.setUrl(StringUtil.isBlank(record.getUrl()) ? "" : record.getUrl().replace("static", ""));
+		}
 		return Result.data(records);
 	}
 	
@@ -136,7 +161,6 @@ public class IndexPageController extends BaseController {
 	/*
 	 * 查询所有圈子
 	 * */
-	@UserAuth
 	@Log(value = "查询所有圈子", exception = "查询所有圈子异常")
 	@PostMapping(value = {"/findAllCircle"})
 	@ApiOperation(value = "查询所有圈子", notes = "查询所有圈子")
@@ -148,24 +172,12 @@ public class IndexPageController extends BaseController {
 		if (page.getCurrent() < 1 || page.getSize() < 1) {
 			return Result.fail("非法参数！");
 		}
-//		LambdaQueryWrapper<WccCircleInfo> wrapper = Wrappers.lambdaQuery(new WccCircleInfo());
-//		wrapper.eq(WccCircleInfo::getStatus, 1);
-//		wrapper.eq(WccCircleInfo::getIsDelete, 0);
-//		List<WccCircleInfo> records = wccCircleInfoService.page(page, wrapper).getRecords();
-//		List<IndexCircleInfoVO> indexCircleInfoVOS = new ArrayList<>();
-//		IndexCircleInfoVO indexCircleInfoVO;
-//		for (WccCircleInfo record : records) {
-//			LambdaQueryWrapper<WccUserCircle> wccUserCircleLambdaQueryWrapper = Wrappers.lambdaQuery(new WccUserCircle());
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getStatus, 1);
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getIsDelete, 0);
-//			wccUserCircleLambdaQueryWrapper.eq(WccUserCircle::getCircleId, record.getCircleId());
-//			int count = wccUserCircleService.count(wccUserCircleLambdaQueryWrapper);
-//			indexCircleInfoVO = new IndexCircleInfoVO();
-//			BeanUtils.copyProperties(record, indexCircleInfoVO);
-//			indexCircleInfoVO.setPeopleCount(count);
-//			indexCircleInfoVOS.add(indexCircleInfoVO);
-//		}
-		LoginUser userInfo = SecurityUtil.getUsername(req);
+		LoginUser userInfo = new LoginUser();
+		try {
+			userInfo = SecurityUtil.getUsername(req);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		List<IndexCircleInfoVO> circleInfos = wccCircleInfoService.findIndexCircles(userInfo.getUserId(), page.getCurrent(), page.getSize());
 		return Result.data(circleInfos);
 	}
@@ -189,6 +201,7 @@ public class IndexPageController extends BaseController {
 		wccUserConcernForm.setPageNow(wccUserConcernForm.getCurrent());
 		wccUserConcernForm.setPageSize(wccUserConcernForm.getSize());
 		wccUserConcernForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		wccUserConcernForm.setStatus(1);
 		PageMap<WccUserDto> page = wccUserConcernService.listWccUserConcerns(wccUserConcernForm);
 		
 		return Result.data(page);
@@ -212,20 +225,25 @@ public class IndexPageController extends BaseController {
 			return Result.fail("非法参数！");
 		}
 		LoginUser userInfo = SecurityUtil.getUsername(req);
-//		List<Long> ids = this.getMyConcern(Long.parseLong(userInfo.getUserId()));
-//		if (ids == null || ids.size() == 0) {
-//			return Result.success("您还没有关注用户哦！");
-//		}
-//		LambdaQueryWrapper<WccReleaseInfo> wrapper = Wrappers.lambdaQuery(new WccReleaseInfo());
-//		wrapper.in(WccReleaseInfo::getBelongUserId, ids);
-//		wrapper.eq(WccReleaseInfo::getStatus, 1);
-//		wrapper.eq(WccReleaseInfo::getIsDelete, 0);
-//		wrapper.orderByDesc(WccReleaseInfo::getCreationDate);
-//		List records = wccReleaseInfoService.page(page, wrapper).getRecords();
 		
 		wccReleaseInfoForm.setUserId(Long.valueOf(userInfo.getUserId()));
 		List<IndexReferralsVO> list = wccReleaseInfoService.listMyConcernReleaseInfos(wccReleaseInfoForm, wccReleaseInfoForm.getCurrent(), wccReleaseInfoForm.getSize());
-		
+		for (IndexReferralsVO indexReferralsVO : list) {
+			indexReferralsVO.setAttachmentPath(StringUtil.isBlank(indexReferralsVO.getAttachmentPath()) ? "" : indexReferralsVO.getAttachmentPath().replace("static", ""));
+			indexReferralsVO.setNickname(indexReferralsVO.getNickname() == null ? "" : StringUtil.toUnicode(indexReferralsVO.getNickname()));
+			indexReferralsVO.setCreationDateStr(DateUtil.simpleFormatWithYear(indexReferralsVO.getCreationDate()));
+			
+			
+			if (indexReferralsVO.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(indexReferralsVO.getContent());
+				if (imgStrs.size() > 0) {
+					indexReferralsVO.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (indexReferralsVO.getContent() != null) {
+					indexReferralsVO.setContent(StringUtil.trimHtml(indexReferralsVO.getContent(), 100));
+				}
+			}
+		}
 		
 		return Result.data(list);
 	}
@@ -349,6 +367,7 @@ public class IndexPageController extends BaseController {
 		return Result.condition(true);
 	}
 	
+	@PreAuth
 	@UserAuth
 	@Log(value = "加入圈子", exception = "加入圈子异常")
 	@PostMapping(value = {"/joinCircle"})

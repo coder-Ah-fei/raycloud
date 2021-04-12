@@ -16,7 +16,6 @@
  */
 package hqsc.ray.wcc.controller;
 
-import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.jpa.dto.PageMap;
@@ -48,13 +47,28 @@ public class WccMcnInfoController extends BaseController {
 	@Autowired
 	private WccMcnInfoService wccMcnInfoService;
 	
-	@PreAuth
 	@Log(value = "获取mcn机构列表", exception = "获取mcn机构列表请求异常")
 	@PostMapping(value = "/listMcnInfos", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取mcn机构列表", notes = "获取mcn机构列表")
 	public ResultMap<PageMap<WccMcnInfoDto>> listMcnInfos(WccMcnInfoForm wccMcnInfoForm) {
 		ResultMap resultMap = wccMcnInfoService.listWccMcnInfos(wccMcnInfoForm);
 		return resultMap;
+	}
+	
+	@Log(value = "生成MCN榜单查询条件的内容", exception = "生成MCN榜单查询条件的内容请求异常")
+	@PostMapping(value = "/findMcnSearchData", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "生成MCN榜单查询条件的内容", notes = "生成MCN榜单查询条件的内容")
+	public ResultMap<PageMap<WccMcnInfoDto>> findMcnSearchData() {
+		ResultMap resultMap = wccMcnInfoService.findMcnSearchData();
+		return resultMap;
+	}
+	
+	@Log(value = "根据id查找mcn机构", exception = "根据id查找mcn机构请求异常")
+	@PostMapping(value = "/findMcnInfoById", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "根据id查找mcn机构", notes = "根据id查找mcn机构")
+	public ResultMap<WccMcnInfoDto> findMcnInfoById(WccMcnInfoForm mcnInfoForm) {
+		WccMcnInfoDto mcnInfoDto = wccMcnInfoService.findById(mcnInfoForm.getId());
+		return ResultMap.success("", mcnInfoDto);
 	}
 	
 	

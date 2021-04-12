@@ -8,10 +8,31 @@ spring:
     url: ${ray.datasource.url}
     username: ${ray.datasource.username}
     password: ${ray.datasource.password}
+  cloud:
+    nacos:
+      discovery:
+  #        ip: 139.9.203.15
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: mysql
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        hbm2ddl:
+          auto: update  #         指定DDL mode (none, validate, update, create, create-drop)
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 wechat:
   appid: wx3d1fc01c88aeb1b3
-  appsecret: db7f89e3ee1d8d48f0e93c24f88f62f5
+  appsecret: e5381ab9b059e91c94fc5ecf2f651d63
+  mchid: 1608136320 # 商户号
+  api_v3_key: 200bfb67a337456594a59a2617cb3471 # 商户APIv3密钥
+  merchant_serial_number: 2619CE8D00171F4161DB32F2B08FFDB38FAACED4  # 商户证书序列号
+  merchant_private_key_path: D:\红人圈微信支付相关资料\1608136320_20210408_cert\apiclient_key.pem
+  notify_url: https://hrq.houxinghua.com/ray-wcc/wcc-wechat-pay/notify # 通知地址
 
 dubbo:
   scan:
@@ -41,6 +62,12 @@ jetcache:
       #  - redis://127.0.0.1:7001
       #  - redis://127.0.0.1:7002
       #readFrom: slavePreferred
+
+## 配置日志显示在spring boot admin
+logging:
+  file:
+    name: logs/app/ray-system/ray-system.log
+
 mybatis-plus:
   configuration:
     call-setters-on-nulls: true

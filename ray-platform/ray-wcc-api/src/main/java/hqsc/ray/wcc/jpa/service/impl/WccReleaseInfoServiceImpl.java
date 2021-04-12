@@ -1,11 +1,19 @@
 package hqsc.ray.wcc.jpa.service.impl;
 
+import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.util.DateUtil;
+import hqsc.ray.core.common.util.StringUtil;
+import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
+import hqsc.ray.wcc.jpa.entity.JpaSysAttachment;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
 import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.repository.WccReleaseInfoRepository;
+import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
+import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
+import hqsc.ray.wcc.jpa.service.WccUserConcernService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,13 +21,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 /**
  * 描述：
@@ -31,6 +39,12 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 	
 	@Autowired
 	private WccReleaseInfoRepository wccReleaseInfoRepository;
+	@Autowired
+	private WccPraiseFavoriteService praiseFavoriteService;
+	@Autowired
+	private WccResponseDetailsRepository responseDetailsRepository;
+	@Autowired
+	private WccUserConcernService userConcernService;
 	
 	/**
 	 * 获取数据
@@ -46,35 +60,101 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 				Join<Object, Object> belongUser = root.join("belongUser");
 				pr.add(criteriaBuilder.equal(belongUser.get("id"), wccReleaseInfoForm.getBelongUserId()));
 			}
+			if (wccReleaseInfoForm.getBelongCircleId() != null) {
+				Join<Object, Object> circleInfo = root.join("belongCircle");
+				pr.add(criteriaBuilder.equal(circleInfo.get("id"), wccReleaseInfoForm.getBelongCircleId()));
+			}
 			if (wccReleaseInfoForm.getType() != null) {
 				pr.add(criteriaBuilder.equal(root.get("type").as(Long.class), wccReleaseInfoForm.getType()));
+			}
+			if (wccReleaseInfoForm.getStatus() != null) {
+				pr.add(criteriaBuilder.equal(root.get("status"), wccReleaseInfoForm.getStatus()));
+			}
+			if (wccReleaseInfoForm.getIsDelete() != null) {
+				pr.add(criteriaBuilder.equal(root.get("isDelete"), wccReleaseInfoForm.getIsDelete()));
 			}
 			criteriaQuery.where(pr.toArray(new Predicate[pr.size()]));
 			criteriaQuery.orderBy(criteriaBuilder.desc(root.get("creationDate")));
 			return criteriaQuery.getRestriction();
 		};
 		List<JpaWccReleaseInfo> jpaWccReleaseInfoList;
+		Long count = 0L;
 		if (wccReleaseInfoForm.getPageNow() == -1) {
 			jpaWccReleaseInfoList = wccReleaseInfoRepository.findAll(specification);
+			count = Long.valueOf(jpaWccReleaseInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccReleaseInfoForm.getPageNow() - 1, wccReleaseInfoForm.getPageSize());
 			Page<JpaWccReleaseInfo> wccReleaseInfoPage = wccReleaseInfoRepository.findAll(specification, pageable);
 			jpaWccReleaseInfoList = wccReleaseInfoPage.getContent();
+			count = wccReleaseInfoPage.getTotalElements();
 		}
 		List<WccReleaseInfoDto> list = new ArrayList<>();
 		WccReleaseInfoDto wccReleaseInfoDto;
 		for (JpaWccReleaseInfo jpaWccReleaseInfo : jpaWccReleaseInfoList) {
 			wccReleaseInfoDto = new WccReleaseInfoDto();
 			BeanUtils.copyProperties(jpaWccReleaseInfo, wccReleaseInfoDto);
+			wccReleaseInfoDto.setCreationDateTimeStr(jpaWccReleaseInfo.getCreationDate() == null ? "" : DateUtil.simpleFormatWithYear(jpaWccReleaseInfo.getCreationDate()));
+			if (jpaWccReleaseInfo.getBelongUser() != null) {
+				wccReleaseInfoDto.setBelongUserId(jpaWccReleaseInfo.getBelongUser().getId())
+						.setBelongUserNickname(StringUtil.toUnicode(jpaWccReleaseInfo.getBelongUser().getNickname()))
+						.setWechatHeadPortraitAddress(jpaWccReleaseInfo.getBelongUser().getWechatHeadPortraitAddress())
+				;
+			}
+			JpaSysAttachment sysAttachment = jpaWccReleaseInfo.getJpaWccAttachment();
+			if (sysAttachment != null) {
+				wccReleaseInfoDto.setVideoHlsPath(sysAttachment.getVideoHlsPath())
+						.setVideoScreenshotPath(sysAttachment.getVideoScreenshotPath())
+						.setSysAttachmentId(sysAttachment.getId());
+			}
 			
+			// 获取点赞数量
+			Integer praiseCount = praiseFavoriteService.countByTypeAndPraiseFavoriteTypeAndAndBelongId(0, jpaWccReleaseInfo.getType().intValue(), jpaWccReleaseInfo.getId());
+			wccReleaseInfoDto.setPraiseCount(praiseCount);
+			// 获取评论数量
+			wccReleaseInfoDto.setCommentCount(responseDetailsRepository.countByBelongIdAndBelongTypeAndStatusAndIsDelete(jpaWccReleaseInfo.getId(), 0, 1, 0));
+			
+			// 当前登录用户是否收藏
+			wccReleaseInfoDto.setFavoritesCount(0);
+			// 当前登录用户是否关注
+			wccReleaseInfoDto.setConcernCount(0);
+			if (wccReleaseInfoForm.getUserId() != null) {
+				wccReleaseInfoDto.setFavoritesCount(praiseFavoriteService.countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(wccReleaseInfoForm.getUserId(), 1, jpaWccReleaseInfo.getType().intValue(), jpaWccReleaseInfo.getId()));
+				wccReleaseInfoDto.setConcernCount(userConcernService.countByJpaWccUserIdAndBelongUserId(wccReleaseInfoForm.getUserId(), jpaWccReleaseInfo.getBelongUser().getId()).intValue());
+			}
+			
+			if (jpaWccReleaseInfo.getType() == 2) {
+				List<String> imgStrs = StringUtil.getImgStr(jpaWccReleaseInfo.getContent());
+				if (imgStrs.size() > 0) {
+					wccReleaseInfoDto.setArticleImgUrl(imgStrs.get(0));
+				}
+				if (jpaWccReleaseInfo.getContent() != null) {
+					wccReleaseInfoDto.setContent(StringUtil.trimHtml(jpaWccReleaseInfo.getContent(), 100));
+				}
+			}
 			
 			list.add(wccReleaseInfoDto);
 		}
-		long count = wccReleaseInfoRepository.count(specification);
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		return new ResultMap<>(ResultMap.SUCCESS_CODE, map);
+		
+		return ResultMap.success("", PageMap.of(count, list));
+	}
+	
+	/**
+	 * 发布内容审批
+	 *
+	 * @param wccReleaseInfoForm
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result<?> approve(WccReleaseInfoForm wccReleaseInfoForm) {
+		Optional<JpaWccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccReleaseInfoForm.getId());
+		if (!releaseInfoOptional.isPresent()) {
+			return Result.fail("数据不存在");
+		}
+		JpaWccReleaseInfo jpaWccReleaseInfo = releaseInfoOptional.get();
+		jpaWccReleaseInfo.setApproveStatus(wccReleaseInfoForm.getApproveStatus());
+		wccReleaseInfoRepository.save(jpaWccReleaseInfo);
+		return Result.success("保存成功");
 	}
 	
 }

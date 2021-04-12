@@ -23,36 +23,36 @@ package hqsc.ray.core.common.constant;
  * @date 2019-10-10 17:46
  **/
 public class Oauth2Constant {
-
-
+	
+	
 	private static final String ALL = "/**";
-
+	
 	private static final String OAUTH_ALL = "/oauth/**";
-
+	
 	public static final String OAUTH_AUTHORIZE = "/oauth/authorize";
-
+	
 	public static final String OAUTH_CHECK_TOKEN = "/oauth/check_token";
-
+	
 	public static final String OAUTH_CONFIRM_ACCESS = "/oauth/confirm_access";
-
+	
 	public static final String OAUTH_TOKEN = "/oauth/token";
-
+	
 	public static final String OAUTH_TOKEN_KEY = "/oauth/token_key";
-
+	
 	public static final String OAUTH_ERROR = "/oauth/error";
-
+	
 	public static final String OAUTH_MOBILE = "/oauth/mobile";
-
+	
 	/**
 	 * 发送短信验证码 或 验证短信验证码时，传递手机号的参数的名称
 	 */
 	public static final String DEFAULT_PARAMETER_NAME_MOBILE = "mobile";
-
+	
 	/**
 	 * 社交登录，传递的参数名称
 	 */
 	public static final String DEFAULT_PARAMETER_NAME_SOCIAL = "social";
-
+	
 	/**
 	 * 验证码 key
 	 */
@@ -69,7 +69,7 @@ public class Oauth2Constant {
 	 * 登录类型
 	 */
 	public static final String LOGIN_TYPE = "login_type";
-
+	
 	/**
 	 * 刷新模式
 	 */
@@ -90,70 +90,79 @@ public class Oauth2Constant {
 	 * 简化模式
 	 */
 	public static final String IMPLICIT = "implicit";
-
+	
 	public static final String SIGN_KEY = "RAY";
-
+	
 	public static final String CAPTCHA_KEY = "ray.captcha.";
-
+	
 	public static final String SMS_CODE_KEY = "ray.sms.code.";
-
+	
 	public static final String CAPTCHA_HEADER_KEY = "key";
-
+	
 	public static final String CAPTCHA_HEADER_CODE = "code";
-
+	
 	public static final int LOGIN_USERNAME_TYPE = 1;
-
+	
 	public static final int LOGIN_MOBILE_TYPE = 2;
-
+	
 	public static final int LOGIN_SOCIAL_TYPE = 3;
-
+	
 	public static final String HEADER_TOKEN = "Ray-Auth";
-
+	
 	/**
 	 * 自定义client表名
 	 */
 	public static final String CLIENT_TABLE = "ray_sys_client";
-
+	
 	public static final String ENCRYPT = "{ray}";
-
+	
 	public static final String CAPTCHA_ERROR = "验证码不正确！";
-
+	
 	public static final String SUPER_ADMIN = "admin";
-
+	
 	/**
 	 * 基础查询语句
 	 */
 	public static final String CLIENT_BASE = "select client_id, CONCAT('{noop}',client_secret) as client_secret, resource_ids, scope, " +
 			"authorized_grant_types, web_server_redirect_uri, authorities, access_token_validity," +
 			"refresh_token_validity, additional_information, autoapprove from " + CLIENT_TABLE;
-
+	
 	public static final String FIND_CLIENT_DETAIL_SQL = CLIENT_BASE + " order by client_id";
-
+	
 	public static final String SELECT_CLIENT_DETAIL_SQL = CLIENT_BASE + " where client_id = ?";
-
+	
 	/**
 	 * 标志
 	 */
 	public static final String FROM = "from";
-
+	
 	/**
 	 * 内部
 	 */
 	public static final String FROM_IN = "Y";
-
+	
 	/**
 	 * 权限标识前缀
 	 */
 	public static final String RAY_PERMISSION_PREFIX = "ray.permission.";
-
+	
 	/**
 	 * 用户类型：管理用户
 	 */
 	public static final String USER_TYPE_MANAGER = "manager";
-
+	
 	/**
 	 * 用户类型：前端用户
 	 */
 	public static final String USER_TYPE_USER = "user";
-
+	
+	/**
+	 * 微信用户用户信息的方式：getUserInfo
+	 */
+	public static final String GET_USER_INFO_TYPE_INFO = "getUserInfo";
+	/**
+	 * 微信用户用户信息的方式：getUserProfile
+	 */
+	public static final String GET_USER_INFO_TYPE_PROFILE = "getUserProfile";
+	
 }

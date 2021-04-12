@@ -16,7 +16,6 @@
  */
 package hqsc.ray.wcc.controller;
 
-import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.jpa.dto.PageMap;
@@ -27,7 +26,6 @@ import hqsc.ray.wcc.jpa.service.WccBannerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,10 +43,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "banner图", tags = "banner图")
 public class WccBannerController extends BaseController {
 	
-	@Autowired
-	private WccBannerService wccBannerService;
+	private final WccBannerService wccBannerService;
 	
-	@PreAuth
 	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
 	@PostMapping(value = "/listWccBanners", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")

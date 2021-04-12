@@ -16,28 +16,25 @@
  */
 package hqsc.ray.wcc.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
-import hqsc.ray.core.web.util.CollectionUtil;
+import hqsc.ray.core.common.entity.LoginUser;
+import hqsc.ray.core.common.util.SecurityUtil;
+import hqsc.ray.core.log.annotation.Log;
+import hqsc.ray.core.web.controller.BaseController;
+import hqsc.ray.wcc.entity.WccPraiseFavorite;
+import hqsc.ray.wcc.jpa.form.WccPraiseFavoriteForm;
+import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
+import hqsc.ray.wcc.service.IWccPraiseFavoriteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-import hqsc.ray.core.auth.annotation.PreAuth;
-import hqsc.ray.core.log.annotation.Log;
-
-import org.springframework.web.bind.annotation.RestController;
-import hqsc.ray.core.web.controller.BaseController;
-import hqsc.ray.wcc.service.IWccPraiseFavoriteService;
-import hqsc.ray.wcc.entity.WccPraiseFavorite;
 import javax.validation.Valid;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hqsc.ray.core.common.api.Result;
-import hqsc.ray.core.database.entity.Search;
-import hqsc.ray.core.web.util.CollectionUtil;
-
 import java.util.Map;
 
 /**
@@ -53,77 +50,77 @@ import java.util.Map;
 @RequestMapping("/wcc-praise-favorite")
 @Api(value = "用户点赞收藏表", tags = "用户点赞收藏表接口")
 public class WccPraiseFavoriteController extends BaseController {
-
-    private final IWccPraiseFavoriteService wccPraiseFavoriteService;
-
-    /**
-     * 分页列表
-     *
-     * @param page   分页信息
-     * @param search 　搜索关键词
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "用户点赞收藏表列表", exception = "用户点赞收藏表列表请求异常")
-    @GetMapping("/page")
-    @ApiOperation(value = "用户点赞收藏表列表", notes = "分页查询")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
-        @ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
-        @ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
-        @ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
-        @ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
-    })
-    public Result<?> page(Page page, Map search) {
-		return Result.data(wccPraiseFavoriteService.listPage(page, search));
-    }
-
-    /**
-     * 用户点赞收藏表信息
-     *
-     * @param id Id
-     * @return Result
-     */
-    @PreAuth
-    @Log(value = "用户点赞收藏表信息", exception = "用户点赞收藏表信息请求异常")
-    @GetMapping("/get")
-    @ApiOperation(value = "用户点赞收藏表信息", notes = "根据ID查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
-    })
-    public Result<?> get(@RequestParam String id) {
-		return Result.data(wccPraiseFavoriteService.getById(id));
+	
+	private final IWccPraiseFavoriteService iWccPraiseFavoriteService;
+	private final WccPraiseFavoriteService praiseFavoriteService;
+	
+	/**
+	 * 分页列表
+	 *
+	 * @param page   分页信息
+	 * @param search 　搜索关键词
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "用户点赞收藏表列表", exception = "用户点赞收藏表列表请求异常")
+	@GetMapping("/page")
+	@ApiOperation(value = "用户点赞收藏表列表", notes = "分页查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "current", required = true, value = "当前页", paramType = "form"),
+			@ApiImplicitParam(name = "size", required = true, value = "每页显示数据", paramType = "form"),
+			@ApiImplicitParam(name = "keyword", required = true, value = "模糊查询关键词", paramType = "form"),
+			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
+			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
+	})
+	public Result<?> page(Page page, Map search) {
+		return Result.data(iWccPraiseFavoriteService.listPage(page, search));
 	}
-
-    /**
-    * 用户点赞收藏表设置
-    *
-    * @param wccPraiseFavorite WccPraiseFavorite 对象
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "用户点赞收藏表设置", exception = "用户点赞收藏表设置请求异常")
-    @PostMapping("/set")
-    @ApiOperation(value = "用户点赞收藏表设置", notes = "用户点赞收藏表设置,支持新增或修改")
-    public Result<?> set(@Valid @RequestBody WccPraiseFavorite wccPraiseFavorite) {
-		return Result.condition(wccPraiseFavoriteService.saveOrUpdate(wccPraiseFavorite));
+	
+	/**
+	 * 用户点赞收藏表信息
+	 *
+	 * @param id Id
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "用户点赞收藏表信息", exception = "用户点赞收藏表信息请求异常")
+	@GetMapping("/get")
+	@ApiOperation(value = "用户点赞收藏表信息", notes = "根据ID查询")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", required = true, value = "ID", paramType = "form"),
+	})
+	public Result<?> get(@RequestParam String id) {
+		return Result.data(iWccPraiseFavoriteService.getById(id));
 	}
-
-    /**
-    * 用户点赞收藏表删除
-    *
-    * @param ids id字符串，根据,号分隔
-    * @return Result
-    */
-    @PreAuth
-    @Log(value = "用户点赞收藏表删除", exception = "用户点赞收藏表删除请求异常")
-    @PostMapping("/del")
-    @ApiOperation(value = "用户点赞收藏表删除", notes = "用户点赞收藏表删除")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "ids", required = true, value = "多个用,号隔开", paramType = "form")
-    })
-    public Result<?> del(@RequestParam String ids) {
-		return Result.condition(wccPraiseFavoriteService.removeByIds(CollectionUtil.stringToCollection(ids)));
+	
+	/**
+	 * 用户点赞收藏表设置
+	 *
+	 * @param wccPraiseFavorite WccPraiseFavorite 对象
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "用户点赞收藏表设置", exception = "用户点赞收藏表设置请求异常")
+	@PostMapping("/set")
+	@ApiOperation(value = "用户点赞收藏表设置", notes = "用户点赞收藏表设置,支持新增或修改")
+	public Result<?> set(@Valid @RequestBody WccPraiseFavorite wccPraiseFavorite) {
+		return Result.condition(iWccPraiseFavoriteService.saveOrUpdate(wccPraiseFavorite));
+	}
+	
+	/**
+	 * 用户点赞/取消点赞
+	 *
+	 * @param wccPraiseFavoriteForm 参数
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "用户点赞/取消点赞", exception = "用户点赞/取消点赞请求异常")
+	@PostMapping("/likeOrUnlike")
+	@ApiOperation(value = "用户点赞/取消点赞", notes = "用户点赞/取消点赞")
+	public Result<?> likeOrUnlike(WccPraiseFavoriteForm wccPraiseFavoriteForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccPraiseFavoriteForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		return praiseFavoriteService.likeOrUnlike(wccPraiseFavoriteForm);
 	}
 }
 

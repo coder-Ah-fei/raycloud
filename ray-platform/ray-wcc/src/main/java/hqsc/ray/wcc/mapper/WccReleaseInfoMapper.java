@@ -58,7 +58,7 @@ public interface WccReleaseInfoMapper extends BaseMapper<WccReleaseInfo> {
 	 * @param userId
 	 * @return
 	 */
-	List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long userId);
+	List<MyReleaseInfoVO> listWccReleaseInfosForNewestComment(long current, long size, long userId, Integer type);
 	
 	/**
 	 * 查找我收藏的内容（文章，话题，视频）

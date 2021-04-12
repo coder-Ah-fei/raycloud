@@ -25,7 +25,9 @@ import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
 import hqsc.ray.wcc.entity.WccCourse;
+import hqsc.ray.wcc.jpa.dto.PageMap;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.dto.WccCourseDto;
 import hqsc.ray.wcc.jpa.form.WccCourseForm;
 import hqsc.ray.wcc.jpa.service.WccCourseService;
 import hqsc.ray.wcc.service.IWccCourseService;
@@ -140,15 +142,19 @@ public class WccCourseController extends BaseController {
 	 * @param wccCourseForm 分页信息
 	 * @return Result
 	 */
-	@PreAuth
 	@Log(value = "获取课程列表", exception = "课程列表请求异常")
 	@PostMapping(value = "/listWccCourses", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取课程列表", notes = "分页查询")
 	public ResultMap<?> listWccCourses(WccCourseForm wccCourseForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
-		ResultMap resultMap = wccCourseService.listWccCourses(wccCourseForm);
-		return resultMap;
+		try {
+			LoginUser userInfo = SecurityUtil.getUsername(req);
+			wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		PageMap<WccCourseDto> wccCourseDtoPageMap = wccCourseService.listWccCourses(wccCourseForm);
+		return ResultMap.of(ResultMap.SUCCESS_CODE, wccCourseDtoPageMap);
 	}
 	
 	@PreAuth
@@ -173,13 +179,16 @@ public class WccCourseController extends BaseController {
 		return resultMap;
 	}
 	
-	@PreAuth
 	@Log(value = "获取课程详细信息", exception = "获取课程详细信息请求异常")
 	@PostMapping(value = "/wccCourseDetail", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "获取课程详细信息", notes = "查询")
 	public ResultMap<?> wccCourseDetail(WccCourseForm wccCourseForm) {
-		LoginUser userInfo = SecurityUtil.getUsername(req);
-		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		try {
+			LoginUser userInfo = SecurityUtil.getUsername(req);
+			wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		ResultMap resultMap = wccCourseService.wccCourseDetail(wccCourseForm);
 		return resultMap;
 	}

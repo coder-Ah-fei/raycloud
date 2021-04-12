@@ -20,7 +20,6 @@ public class WccUserConcernForm extends BaseForm {
 	 */
 	@ApiModelProperty(value = "当前登录用户")
 	private Long userId;
-	
 	private Integer current;
 	private Integer size;
 }

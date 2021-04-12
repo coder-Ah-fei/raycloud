@@ -50,11 +50,16 @@ public class IndexReferralsVO implements Serializable {
 	@ApiModelProperty(value = "内容")
 	private String content;
 	
+	@ApiModelProperty(value = "文章里面的图片地址")
+	private String articleImgUrl;
+	
 	@ApiModelProperty(value = "附件id")
 	private Long attachmentId;
+	private String attachmentPath;
 	
 	@ApiModelProperty(value = "创建时间")
 	private LocalDateTime creationDate;
+	private String creationDateStr;
 	
 	@ApiModelProperty(value = "点赞数")
 	private Integer praiseCount;
@@ -64,4 +69,13 @@ public class IndexReferralsVO implements Serializable {
 	
 	@ApiModelProperty(value = "当前登录用户是否关注，大于等于1为关注")
 	private Integer concernCount;
+	@ApiModelProperty(value = "当前登录用户是否收藏，大于等于1为收藏")
+	private Integer favoritesCount;
+	
+	
+	@ApiModelProperty(value = "视频文件的截图路径")
+	private String videoScreenshotPath;
+	@ApiModelProperty(value = "视频文件的hls路径")
+	private String videoHlsPath;
+	
 }

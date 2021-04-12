@@ -105,6 +105,15 @@ public class JpaWccCelebrityInfo extends BasicEntity {
 	@ApiModelProperty(value = "所属机构")
 	@Column(name = "ORGANIZATION_ID")
 	private Long organizationId;
+	
+	
+	@ApiModelProperty(value = "所属mcn机构")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MCN_ID", referencedColumnName = "MCN_ID")
+	@JsonIgnore
+	private JpaWccMcnInfo jpaWccMcnInfo;
+	
+	
 	/**
 	 * 现居住地
 	 */

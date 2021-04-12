@@ -27,6 +27,9 @@ public class WccUserMessageDto {
 	 */
 	@ApiModelProperty(value = "用户id")
 	private Long userId;
+	private WccUserDto wccUserDto;
+	
+	
 	/**
 	 * 消息类型(0评论1回答2赞同3系统消息)
 	 */
@@ -47,5 +50,11 @@ public class WccUserMessageDto {
 	
 	@ApiModelProperty(value = "1 已读  0 未读")
 	private Integer isRead;
+	
+	/**
+	 * 对应的发布信息
+	 */
+	private WccReleaseInfoDto releaseInfoDto;
+	
 	
 }
