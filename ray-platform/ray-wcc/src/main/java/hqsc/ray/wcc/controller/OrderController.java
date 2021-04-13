@@ -60,11 +60,29 @@ public class OrderController extends BaseController {
 	@Log(value = "生成开通vip的订单", exception = "生成开通vip的订单请求异常")
 	@PostMapping(value = "/createOpenVipOrder", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "生成开通vip的订单", notes = "")
-	public Result<?> getPrePayId(OrderForm orderForm) {
+	public Result<?> createOpenVipOrder(OrderForm orderForm) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		orderForm.setJpaWccUserId(Long.valueOf(userInfo.getUserId()));
 		// 生成订单
 		Result<Map<String, Object>> saveOrderResult = orderService.saveOpenVipOrder(orderForm);
+		return saveOrderResult;
+	}
+	
+	/**
+	 * 生成购买课程的订单
+	 *
+	 * @param orderForm
+	 * @return Result
+	 */
+	@PreAuth
+	@Log(value = "生成购买课程的订单", exception = "生成购买课程的订单请求异常")
+	@PostMapping(value = "/createBuyCourseOrder", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "生成购买课程的订单", notes = "")
+	public Result<?> createBuyCourseOrder(OrderForm orderForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		orderForm.setJpaWccUserId(Long.valueOf(userInfo.getUserId()));
+		// 生成订单
+		Result<Map<String, Object>> saveOrderResult = orderService.saveBuyCourseOrder(orderForm);
 		return saveOrderResult;
 	}
 	

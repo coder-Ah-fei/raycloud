@@ -60,4 +60,12 @@ public interface WccCourseService {
 	 * @return
 	 */
 	Result<?> save(WccCourseForm wccCourseForm);
+	
+	/**
+	 * 查看用户是否可以学习课程
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	Result<Boolean> canStudyCourse(WccCourseForm wccCourseForm);
 }

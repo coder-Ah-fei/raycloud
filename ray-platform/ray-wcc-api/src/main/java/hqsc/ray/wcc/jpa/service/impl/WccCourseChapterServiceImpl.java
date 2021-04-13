@@ -13,6 +13,7 @@ import hqsc.ray.wcc.jpa.repository.WccCourseChapterRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseRepository;
 import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
 import hqsc.ray.wcc.jpa.service.WccCourseChapterService;
+import hqsc.ray.wcc.jpa.service.WccCourseService;
 import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
 import hqsc.ray.wcc.jpa.service.WccResponseDetailsService;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,7 @@ public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 	private final WccCourseChapterRepository courseChapterRepository;
 	private final RaySysAttachmentRepository attachmentRepository;
 	private final WccCourseRepository courseRepository;
+	private final WccCourseService wccCourseService;
 	private final WccPraiseFavoriteService praiseFavoriteService;
 	private final WccResponseDetailsService responseDetailsService;
 	private final WccResponseDetailsRepository responseDetailsRepository;
@@ -303,6 +305,27 @@ public class WccCourseChapterServiceImpl implements WccCourseChapterService {
 		}
 		courseChapterDto.setChapterTypeStr(courseChapter.getChapterType() == 1 ? "图文" : "视频");
 		return courseChapterDto;
+	}
+	
+	/**
+	 * 判断用户有权学习课程
+	 *
+	 * @param courseChapterForm
+	 * @return
+	 */
+	@Override
+	public boolean canStudyCourse(WccCourseChapterForm courseChapterForm) {
+		courseChapterForm.getId();
+		Optional<JpaWccCourseChapter> courseChapterOptional = courseChapterRepository.findById(courseChapterForm.getId());
+		if (!courseChapterOptional.isPresent()) {
+			return false;
+		}
+		JpaWccCourseChapter courseChapter = courseChapterOptional.get();
+		JpaWccCourse jpaWccCourse = courseChapter.getJpaWccCourse();
+		WccCourseForm wccCourseForm = new WccCourseForm();
+		wccCourseForm.setUserId(courseChapterForm.getUserId())
+				.setId(jpaWccCourse.getId());
+		return wccCourseService.canStudyCourse(wccCourseForm).getData();
 	}
 	
 	/**

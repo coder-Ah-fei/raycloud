@@ -7,6 +7,7 @@ import hqsc.ray.wcc.jpa.common.enums.OrderType;
 import hqsc.ray.wcc.jpa.common.enums.PayMode;
 import hqsc.ray.wcc.jpa.dto.wechatPay.UnifiedOrderDto;
 import hqsc.ray.wcc.jpa.entity.Order;
+import hqsc.ray.wcc.jpa.entity.OrderCourse;
 import hqsc.ray.wcc.jpa.entity.OrderMember;
 import hqsc.ray.wcc.jpa.entity.PayLog;
 import hqsc.ray.wcc.jpa.form.PayLogForm;
@@ -84,12 +85,14 @@ public class PayLogServiceImpl implements PayLogService {
 			payLog.setPayStatus(0);
 			payLog.setStatus(1);
 			payLog.setIsDelete(0);
-			UnifiedOrderDto unifiedOrderDto = null;
+			UnifiedOrderForm unifiedOrderForm = null;
 			if (OrderType.OPEN_MEMBER_ORDER.equals(order.getOrderType())) {
-				UnifiedOrderForm unifiedOrderForm = wechatUnifiedOrder(order, order.getOrderMember(), payLog);
-				unifiedOrderDto = wechatPayService.unifiedOrder(unifiedOrderForm);
+				unifiedOrderForm = wechatUnifiedOrder(order, "开通红人圈" + order.getOrderMember().getSettingName() + "会员", payLog);
+			} else if (OrderType.COURSE_ORDER.equals(order.getOrderType())) {
+				unifiedOrderForm = wechatUnifiedOrder(order, "购买课程《" + order.getOrderCourse().getCourseTitel() + "》", payLog);
 				
 			}
+			UnifiedOrderDto unifiedOrderDto = wechatPayService.unifiedOrder(unifiedOrderForm);
 			if (unifiedOrderDto == null) {
 				return Result.fail("微信支付统一下单出错");
 			}
@@ -144,15 +147,16 @@ public class PayLogServiceImpl implements PayLogService {
 		return Base64.getEncoder().encodeToString(signArray);
 	}
 	
+	
 	/**
 	 * 微信统一下单参数组装
 	 *
 	 * @param order
-	 * @param orderMember
+	 * @param description
 	 */
-	private UnifiedOrderForm wechatUnifiedOrder(Order order, OrderMember orderMember, PayLog payLog) {
+	private UnifiedOrderForm wechatUnifiedOrder(Order order, String description, PayLog payLog) {
 		UnifiedOrderForm unifiedOrderForm = new UnifiedOrderForm();
-		unifiedOrderForm.setDescription("开通红人圈" + orderMember.getSettingName() + "会员");
+		unifiedOrderForm.setDescription(description);
 		unifiedOrderForm.setOut_trade_no(payLog.getOrderWechatCode());
 		AmountDTO amountDTO = new AmountDTO();
 		amountDTO.setTotal(Abacus.multiply(order.getOrderPrice(), 100).intValue());
@@ -162,4 +166,5 @@ public class PayLogServiceImpl implements PayLogService {
 		unifiedOrderForm.setPayer(payerDTO);
 		return unifiedOrderForm;
 	}
+	
 }

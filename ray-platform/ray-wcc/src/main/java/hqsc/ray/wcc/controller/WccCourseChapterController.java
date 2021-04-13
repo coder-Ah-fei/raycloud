@@ -16,7 +16,9 @@
  */
 package hqsc.ray.wcc.controller;
 
+import hqsc.ray.core.auth.annotation.PreAuth;
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.api.ResultCode;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
@@ -57,16 +59,18 @@ public class WccCourseChapterController extends BaseController {
 	private final WccCourseChapterService courseChapterService;
 	private final IWccResponseDetailsService iWccResponseDetailsService;
 	
+	@PreAuth
 	@Log(value = "根据id获取课程章节详细信息", exception = "根据id获取课程章节详细信息请求异常")
 	@PostMapping(value = "/findCourseChapterById", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "根据id获取课程章节详细信息", notes = "根据id获取课程章节详细信息")
 	public Result<?> findCourseChapterById(WccCourseChapterForm courseChapterForm) {
-		try {
-			LoginUser userInfo = SecurityUtil.getUsername(req);
-			courseChapterForm.setUserId(Long.valueOf(userInfo.getUserId()));
-		} catch (Exception e) {
-			e.printStackTrace();
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		courseChapterForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		
+		if (!courseChapterService.canStudyCourse(courseChapterForm)) {
+			return Result.success(ResultCode.NO_AUTHENTICATION);
 		}
+		
 		WccCourseChapterDto courseChapterDto = courseChapterService.findById(courseChapterForm);
 		List<WccResponseDetailsVO> responseDetails = iWccResponseDetailsService.listResponseDetails(courseChapterDto.getId(), 2, null);
 		Map<String, Object> map = new HashMap<>(5);

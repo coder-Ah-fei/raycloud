@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.PrivateKey;
 
 /**
@@ -58,11 +57,7 @@ public class WechatPayServiceImpl implements WechatPayService {
 		HttpPost httpPost = new HttpPost(unifiedOrderUrl);
 		httpPost.addHeader("Accept", "application/json");
 		httpPost.addHeader("Content-type", "application/json; charset=utf-8");
-		try {
-			httpPost.setEntity(new StringEntity(params));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		httpPost.setEntity(new StringEntity(params, "UTF-8"));
 		HttpResponse response = null;
 		try {
 			response = wechatPayHttpClient.execute(httpPost);

@@ -62,4 +62,12 @@ public interface WccCourseChapterService {
 	 * @return
 	 */
 	WccCourseChapterDto findById(WccCourseChapterForm courseChapterForm);
+	
+	/**
+	 * 判断用户有权学习课程
+	 *
+	 * @param courseChapterForm
+	 * @return
+	 */
+	boolean canStudyCourse(WccCourseChapterForm courseChapterForm);
 }

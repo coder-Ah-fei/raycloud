@@ -10,5 +10,16 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author Administrator
  */
 public interface WccUserPurchasedCourseRepository extends JpaRepository<JpaWccUserPurchasedCourse, Long>, JpaSpecificationExecutor {
-
+	
+	/**
+	 * 查询用户是否购买某课程
+	 *
+	 * @param userId
+	 * @param courseId
+	 * @param status
+	 * @param isDelete
+	 * @return
+	 */
+	Integer countByJpaWccUserIdAndJpaWccCourseIdAndStatusAndIsDelete(Long userId, Long courseId, Integer status, Integer isDelete);
+	
 }

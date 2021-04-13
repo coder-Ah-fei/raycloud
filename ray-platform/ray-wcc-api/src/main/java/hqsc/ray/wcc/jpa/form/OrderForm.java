@@ -84,4 +84,6 @@ public class OrderForm extends BaseForm {
 	private Long orderMemberId;
 	
 	private Long openVipConfigurationId;
+	
+	private Long courseId;
 }

@@ -10,10 +10,13 @@ import hqsc.ray.wcc.jpa.form.WccCourseForm;
 import hqsc.ray.wcc.jpa.repository.RaySysAttachmentRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseRepository;
 import hqsc.ray.wcc.jpa.repository.WccCourseResourceRepository;
+import hqsc.ray.wcc.jpa.repository.WccUserRepository;
+import hqsc.ray.wcc.jpa.service.UserPurchasedCourseService;
 import hqsc.ray.wcc.jpa.service.WccCourseService;
+import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +34,15 @@ import java.util.*;
  * @author Administrator
  */
 @Service
+@RequiredArgsConstructor
 public class WccCourseServiceImpl implements WccCourseService {
 	
-	@Autowired
-	private WccCourseRepository wccCourseRepository;
-	@Autowired
-	private RaySysAttachmentRepository raySysAttachmentRepository;
-	@Autowired
-	private WccCourseResourceRepository wccCourseResourceRepository;
+	private final WccCourseRepository courseRepository;
+	private final RaySysAttachmentRepository raySysAttachmentRepository;
+	private final WccCourseResourceRepository wccCourseResourceRepository;
+	private final WccPraiseFavoriteService praiseFavoriteService;
+	private final UserPurchasedCourseService userPurchasedCourseService;
+	private final WccUserRepository userRepository;
 	
 	/**
 	 * 获取数据
@@ -68,11 +72,11 @@ public class WccCourseServiceImpl implements WccCourseService {
 		List<JpaWccCourse> jpaWccCourseList;
 		Long count = 0L;
 		if (wccCourseForm.getPageNow() == -1) {
-			jpaWccCourseList = wccCourseRepository.findAll(specification);
+			jpaWccCourseList = courseRepository.findAll(specification);
 			count = Long.valueOf(jpaWccCourseList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccCourseForm.getPageNow() - 1, wccCourseForm.getPageSize());
-			Page<JpaWccCourse> wccCoursePage = wccCourseRepository.findAll(specification, pageable);
+			Page<JpaWccCourse> wccCoursePage = courseRepository.findAll(specification, pageable);
 			jpaWccCourseList = wccCoursePage.getContent();
 			count = wccCoursePage.getTotalElements();
 		}
@@ -117,7 +121,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 	public ResultMap listWccCoursesFavorites(WccCourseForm wccCourseForm) {
 		wccCourseForm.setPageNow(1);
 		Pageable pageable = PageRequest.of(wccCourseForm.getPageNow() - 1, wccCourseForm.getPageSize());
-		Page<JpaWccCourse> wccCoursePage = wccCourseRepository.listWccCoursesFavorites(wccCourseForm.getUserId(), wccCourseForm.getCourseType(), pageable);
+		Page<JpaWccCourse> wccCoursePage = courseRepository.listWccCoursesFavorites(wccCourseForm.getUserId(), wccCourseForm.getCourseType(), pageable);
 		List<JpaWccCourse> jpaWccCourseList = wccCoursePage.getContent();
 		List<WccCourseDto> list = new ArrayList<>();
 		WccCourseDto wccCourseDto;
@@ -176,10 +180,10 @@ public class WccCourseServiceImpl implements WccCourseService {
 		};
 		List<JpaWccCourse> jpaWccCourseList;
 		if (wccCourseForm.getPageNow() == -1) {
-			jpaWccCourseList = wccCourseRepository.findAll(specification);
+			jpaWccCourseList = courseRepository.findAll(specification);
 		} else {
 			Pageable pageable = PageRequest.of(wccCourseForm.getPageNow() - 1, wccCourseForm.getPageSize());
-			Page<JpaWccCourse> wccCoursePage = wccCourseRepository.findAll(specification, pageable);
+			Page<JpaWccCourse> wccCoursePage = courseRepository.findAll(specification, pageable);
 			jpaWccCourseList = wccCoursePage.getContent();
 		}
 		List<WccCourseDto> list = new ArrayList<>();
@@ -210,7 +214,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 			wccCourseDto.setBannerIds(bannerIds);
 			list.add(wccCourseDto);
 		}
-		long count = wccCourseRepository.count(specification);
+		long count = courseRepository.count(specification);
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("count", count);
@@ -226,13 +230,21 @@ public class WccCourseServiceImpl implements WccCourseService {
 	@Override
 	public ResultMap wccCourseDetail(WccCourseForm wccCourseForm) {
 		
-		Optional<JpaWccCourse> wccCourseOptional = wccCourseRepository.findById(wccCourseForm.getWccCourseId());
+		Optional<JpaWccCourse> wccCourseOptional = courseRepository.findById(wccCourseForm.getWccCourseId());
 		if (!wccCourseOptional.isPresent()) {
 			return ResultMap.of("课程不存在");
 		}
 		JpaWccCourse jpaWccCourse = wccCourseOptional.get();
 		WccCourseDto wccCourseDto = new WccCourseDto();
 		BeanUtils.copyProperties(jpaWccCourse, wccCourseDto);
+		
+		if (wccCourseForm.getUserId() != null && wccCourseForm.getUserId() > 0) {
+			Integer userFavoritesCount = praiseFavoriteService.countByJpaWccUserIdAndTypeAndPraiseFavoriteTypeAndAndBelongId(wccCourseForm.getUserId(), 1, 5, jpaWccCourse.getId());
+			wccCourseDto.setUserFavoritesCount(userFavoritesCount);
+			
+			Integer buyForUser = userPurchasedCourseService.isBuyForUser(wccCourseForm.getUserId(), jpaWccCourse.getId());
+			wccCourseDto.setIsBuyForUser(buyForUser);
+		}
 		
 		List<JpaWccCourseChapter> courseChapterList = jpaWccCourse.getCourseChapterList();
 		List<WccCourseChapterDto> courseChapterDtoList = new ArrayList<>();
@@ -277,7 +289,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 	@Override
 	public WccCourseDto findById(WccCourseForm wccCourseForm) {
 		
-		Optional<JpaWccCourse> jpaWccCourseOptional = wccCourseRepository.findById(wccCourseForm.getId());
+		Optional<JpaWccCourse> jpaWccCourseOptional = courseRepository.findById(wccCourseForm.getId());
 		if (!jpaWccCourseOptional.isPresent()) {
 			throw new RuntimeException("课程不存在");
 		}
@@ -320,7 +332,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 		
 		JpaWccCourse jpaWccCourse = null;
 		
-		Optional<JpaWccCourse> wccCourseOptional = wccCourseRepository.findById(wccCourseForm.getId() == null ? 0L : wccCourseForm.getId());
+		Optional<JpaWccCourse> wccCourseOptional = courseRepository.findById(wccCourseForm.getId() == null ? 0L : wccCourseForm.getId());
 		List<JpaWccCourseResource> resourceListOld = new ArrayList<>();
 		if (wccCourseOptional.isPresent()) {
 			jpaWccCourse = wccCourseOptional.get();
@@ -393,7 +405,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 			jpaWccCourse.setStatus(1);
 			jpaWccCourse.setIsDelete(0);
 		}
-		wccCourseRepository.save(jpaWccCourse);
+		courseRepository.save(jpaWccCourse);
 		
 		if (resourceListOld != null) {
 			for (JpaWccCourseResource resource : resourceListOld) {
@@ -404,6 +416,42 @@ public class WccCourseServiceImpl implements WccCourseService {
 		}
 		
 		return Result.success("保存成功");
+	}
+	
+	/**
+	 * 查看用户是否可以学习课程
+	 *
+	 * @param wccCourseForm
+	 * @return
+	 */
+	@Override
+	public Result<Boolean> canStudyCourse(WccCourseForm wccCourseForm) {
+		
+		Optional<JpaWccUser> userOptional = userRepository.findById(wccCourseForm.getUserId());
+		if (!userOptional.isPresent()) {
+			return Result.data(false);
+		}
+		JpaWccUser user = userOptional.get();
+		
+		Optional<JpaWccCourse> courseOptional = courseRepository.findById(wccCourseForm.getWccCourseId());
+		if (!courseOptional.isPresent()) {
+			return Result.data(false);
+		}
+		
+		JpaWccCourse course = courseOptional.get();
+		
+		// 先判断当前课程是不是会员免费
+		if (course.getVipIsFree() == 1 && user.getMember() == 1) {
+			return Result.data(true);
+		}
+		
+		// 在判断当前用户是否已经购买课程
+		Integer buyForUser = userPurchasedCourseService.isBuyForUser(user.getId(), course.getId());
+		if (buyForUser > 0) {
+			return Result.data(true);
+		}
+		
+		return Result.data(false);
 	}
 	
 }

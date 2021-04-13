@@ -24,12 +24,20 @@ public interface OrderService {
 	PageMap<OrderDto> listOrders(OrderForm orderForm);
 	
 	/**
-	 * 保存更新配置
+	 * 生成开通vip的订单
 	 *
 	 * @param orderForm
 	 * @return
 	 */
 	Result<Map<String, Object>> saveOpenVipOrder(OrderForm orderForm);
+	
+	/**
+	 * 生成购买课程的订单
+	 *
+	 * @param orderForm
+	 * @return
+	 */
+	Result<Map<String, Object>> saveBuyCourseOrder(OrderForm orderForm);
 	
 	/**
 	 * 收到微信支付通知之后

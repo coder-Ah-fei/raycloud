@@ -17,12 +17,15 @@
 package hqsc.ray.wcc.controller;
 
 import hqsc.ray.core.common.api.Result;
+import hqsc.ray.core.common.api.ResultCode;
 import hqsc.ray.core.common.entity.LoginUser;
 import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.wcc.jpa.form.UserAttachmentForm;
+import hqsc.ray.wcc.jpa.form.WccCourseChapterForm;
 import hqsc.ray.wcc.jpa.service.UserAttachmentService;
+import hqsc.ray.wcc.jpa.service.WccCourseChapterService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -43,7 +46,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "视频接口", tags = "视频接口")
 public class VideoController extends BaseController {
 	private final UserAttachmentService userAttachmentService;
-	
+	private final WccCourseChapterService courseChapterService;
 	
 	/**
 	 * 给视频服务器调用的接口，用来判断用户是否可以访问该资源
@@ -66,9 +69,29 @@ public class VideoController extends BaseController {
 			if (userInfo != null) {
 				userAttachmentForm.setUserId(Long.valueOf(userInfo.getUserId()));
 			}
+			
+			
+			// 如果是课程资源，判断用户是否可以学习此资源
+			Long courseChapterId = Long.valueOf(req.getHeader("courseChapterId"));
+			if (courseChapterId != null) {
+				if (userInfo == null || userInfo.getUserId() == null) {
+					res.setStatus(401);
+					return Result.success(ResultCode.NO_AUTHENTICATION);
+				} else {
+					WccCourseChapterForm courseChapterForm = new WccCourseChapterForm();
+					courseChapterForm.setId(courseChapterId).setUserId(Long.valueOf(userInfo.getUserId()));
+					if (!courseChapterService.canStudyCourse(courseChapterForm)) {
+						res.setStatus(401);
+						return Result.success(ResultCode.NO_AUTHENTICATION);
+					}
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 		userAttachmentService.authentication(userAttachmentForm, res);
 		return Result.success("恭喜你可以访问");
 	}

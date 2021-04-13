@@ -18,6 +18,12 @@ import java.util.List;
 @Accessors(chain = true)
 public class WccCourseDto {
 	
+	@ApiModelProperty(value = "是否被当前用户收藏 null || 0 没有被收藏，1 被收藏")
+	private Integer userFavoritesCount;
+	
+	@ApiModelProperty(value = "当前用户是否已经购买 null || 0 没有购买，1 购买")
+	private Integer isBuyForUser;
+	
 	@ApiModelProperty(value = "主键id")
 	private Long id;
 	/**
@@ -95,4 +101,6 @@ public class WccCourseDto {
 	
 	@ApiModelProperty(value = "课程章节")
 	private List<WccCourseChapterDto> courseChapterList;
+	
+	
 }

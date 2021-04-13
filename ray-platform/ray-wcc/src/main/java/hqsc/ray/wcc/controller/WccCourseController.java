@@ -192,5 +192,16 @@ public class WccCourseController extends BaseController {
 		ResultMap resultMap = wccCourseService.wccCourseDetail(wccCourseForm);
 		return resultMap;
 	}
+	
+	
+	@PreAuth
+	@Log(value = "查看用户是否可以学习课程", exception = "查看用户是否可以学习课程请求异常")
+	@PostMapping(value = "/canStudyCourse", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "查看用户是否可以学习课程", notes = "查看用户是否可以学习课程")
+	public Result<Boolean> canStudyCourse(WccCourseForm wccCourseForm) {
+		LoginUser userInfo = SecurityUtil.getUsername(req);
+		wccCourseForm.setUserId(Long.valueOf(userInfo.getUserId()));
+		return wccCourseService.canStudyCourse(wccCourseForm);
+	}
 }
 

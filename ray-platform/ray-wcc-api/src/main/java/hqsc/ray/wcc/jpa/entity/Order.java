@@ -109,4 +109,7 @@ public class Order extends BasicEntity {
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
 	private OrderMember orderMember;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+	private OrderCourse orderCourse;
 }

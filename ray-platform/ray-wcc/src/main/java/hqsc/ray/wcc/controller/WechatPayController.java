@@ -64,13 +64,6 @@ public class WechatPayController extends BaseController {
 		
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		payLogForm.setUserId(Long.valueOf(userInfo.getUserId()));
-		
-		// 生成订单
-//		Result<Map<String, Object>> saveOrderResult = orderService.saveOpenVipOrder(orderForm);
-//		Map<String, Object> saveOrderResultData = saveOrderResult.getData();
-//		Order order = (Order) saveOrderResultData.get("order");
-//		OrderMember orderMember = (OrderMember) saveOrderResultData.get("orderMember");
-		
 		// 生成微信支付的统一下单（生成PayLog）
 		return payLogService.save(payLogForm);
 	}
