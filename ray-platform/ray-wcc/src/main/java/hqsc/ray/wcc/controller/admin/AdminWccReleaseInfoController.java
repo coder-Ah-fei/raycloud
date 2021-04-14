@@ -142,7 +142,7 @@ public class AdminWccReleaseInfoController extends BaseController {
 			@ApiImplicitParam(name = "startDate", required = true, value = "创建开始日期", paramType = "form"),
 			@ApiImplicitParam(name = "endDate", required = true, value = "创建结束日期", paramType = "form"),
 	})
-	public Result<?> listWccReleaseInfos(Page page, WccReleaseInfoForm wccReleaseInfoForm) {
+	public Result<?> listWccReleaseInfos(Page page, hqsc.ray.wcc.form.WccReleaseInfoForm wccReleaseInfoForm) {
 		LoginUser userInfo = SecurityUtil.getUsername(req);
 		wccReleaseInfoForm.setBelongUserId(Long.valueOf(userInfo.getUserId()));
 //		IPage<WccReleaseInfo> wccReleaseInfoIPage = wccReleaseInfoService.listWccReleaseInfos(page, wccReleaseInfoForm);
