@@ -24,9 +24,8 @@ import hqsc.ray.core.common.util.SecurityUtil;
 import hqsc.ray.core.log.annotation.Log;
 import hqsc.ray.core.web.controller.BaseController;
 import hqsc.ray.core.web.util.CollectionUtil;
-import hqsc.ray.wcc.entity.WccReleaseInfo;
-import hqsc.ray.wcc.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.dto.ResultMap;
+import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
 import hqsc.ray.wcc.service.IWccReleaseInfoService;
 import hqsc.ray.wcc.vo.MyReleaseInfoVO;
@@ -55,14 +54,14 @@ import java.util.List;
 public class AdminWccReleaseInfoController extends BaseController {
 	
 	private final IWccReleaseInfoService iWccReleaseInfoService;
-	private final WccReleaseInfoService wccReleaseInfoService;
+	private final WccReleaseInfoService releaseInfoService;
 	
 	@PreAuth
 	@Log(value = "获取消息列表", exception = "获取消息列表请求异常")
 	@GetMapping("/page")
 	@ApiOperation(value = "获取消息列表", notes = "获取消息列表")
 	public ResultMap<?> listWccUserMessages(hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		ResultMap resultMap = wccReleaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
+		ResultMap resultMap = releaseInfoService.listWccReleaseInfos(wccReleaseInfoForm);
 		return resultMap;
 	}
 	
@@ -71,7 +70,7 @@ public class AdminWccReleaseInfoController extends BaseController {
 	@PostMapping("/approve")
 	@ApiOperation(value = "发布内容审批", notes = "发布内容审批")
 	public Result<?> approve(@RequestBody hqsc.ray.wcc.jpa.form.WccReleaseInfoForm wccReleaseInfoForm) {
-		Result result = wccReleaseInfoService.approve(wccReleaseInfoForm);
+		Result result = releaseInfoService.approve(wccReleaseInfoForm);
 		return result;
 	}
 	
@@ -95,15 +94,15 @@ public class AdminWccReleaseInfoController extends BaseController {
 	/**
 	 * 发布信息表设置
 	 *
-	 * @param wccReleaseInfo WccReleaseInfo 对象
+	 * @param releaseInfoForm WccReleaseInfoForm 对象
 	 * @return Result
 	 */
 	@PreAuth
 	@Log(value = "发布信息表设置", exception = "发布信息表设置请求异常")
 	@PostMapping("/set")
 	@ApiOperation(value = "发布信息表设置", notes = "发布信息表设置,支持新增或修改")
-	public Result<?> set(@Valid @RequestBody WccReleaseInfo wccReleaseInfo) {
-		return Result.condition(iWccReleaseInfoService.saveOrUpdate(wccReleaseInfo));
+	public Result<?> set(@Valid @RequestBody WccReleaseInfoForm releaseInfoForm) {
+		return releaseInfoService.saveOrUpdate(releaseInfoForm);
 	}
 	
 	/**

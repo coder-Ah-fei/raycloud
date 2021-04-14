@@ -26,4 +26,12 @@ public interface WccReleaseInfoService {
 	 * @return
 	 */
 	Result<?> approve(WccReleaseInfoForm wccReleaseInfoForm);
+	
+	/**
+	 * 保存新增/编辑的发布内容
+	 *
+	 * @param releaseInfoForm
+	 * @return
+	 */
+	Result<?> saveOrUpdate(WccReleaseInfoForm releaseInfoForm);
 }

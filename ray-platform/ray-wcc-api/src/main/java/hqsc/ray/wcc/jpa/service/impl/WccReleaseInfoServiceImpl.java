@@ -8,14 +8,16 @@ import hqsc.ray.wcc.jpa.dto.ResultMap;
 import hqsc.ray.wcc.jpa.dto.WccReleaseInfoDto;
 import hqsc.ray.wcc.jpa.entity.JpaSysAttachment;
 import hqsc.ray.wcc.jpa.entity.JpaWccReleaseInfo;
+import hqsc.ray.wcc.jpa.entity.JpaWccUser;
 import hqsc.ray.wcc.jpa.form.WccReleaseInfoForm;
 import hqsc.ray.wcc.jpa.repository.WccReleaseInfoRepository;
 import hqsc.ray.wcc.jpa.repository.WccResponseDetailsRepository;
+import hqsc.ray.wcc.jpa.repository.WccUserRepository;
 import hqsc.ray.wcc.jpa.service.WccPraiseFavoriteService;
 import hqsc.ray.wcc.jpa.service.WccReleaseInfoService;
 import hqsc.ray.wcc.jpa.service.WccUserConcernService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,16 +37,14 @@ import java.util.Optional;
  * @author Administrator
  */
 @Service
+@RequiredArgsConstructor
 public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 	
-	@Autowired
-	private WccReleaseInfoRepository wccReleaseInfoRepository;
-	@Autowired
-	private WccPraiseFavoriteService praiseFavoriteService;
-	@Autowired
-	private WccResponseDetailsRepository responseDetailsRepository;
-	@Autowired
-	private WccUserConcernService userConcernService;
+	private final WccReleaseInfoRepository releaseInfoRepository;
+	private final WccPraiseFavoriteService praiseFavoriteService;
+	private final WccResponseDetailsRepository responseDetailsRepository;
+	private final WccUserConcernService userConcernService;
+	private final WccUserRepository userRepository;
 	
 	/**
 	 * 获取数据
@@ -80,11 +80,11 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 		List<JpaWccReleaseInfo> jpaWccReleaseInfoList;
 		Long count = 0L;
 		if (wccReleaseInfoForm.getPageNow() == -1) {
-			jpaWccReleaseInfoList = wccReleaseInfoRepository.findAll(specification);
+			jpaWccReleaseInfoList = releaseInfoRepository.findAll(specification);
 			count = Long.valueOf(jpaWccReleaseInfoList.size());
 		} else {
 			Pageable pageable = PageRequest.of(wccReleaseInfoForm.getPageNow() - 1, wccReleaseInfoForm.getPageSize());
-			Page<JpaWccReleaseInfo> wccReleaseInfoPage = wccReleaseInfoRepository.findAll(specification, pageable);
+			Page<JpaWccReleaseInfo> wccReleaseInfoPage = releaseInfoRepository.findAll(specification, pageable);
 			jpaWccReleaseInfoList = wccReleaseInfoPage.getContent();
 			count = wccReleaseInfoPage.getTotalElements();
 		}
@@ -147,14 +147,46 @@ public class WccReleaseInfoServiceImpl implements WccReleaseInfoService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public Result<?> approve(WccReleaseInfoForm wccReleaseInfoForm) {
-		Optional<JpaWccReleaseInfo> releaseInfoOptional = wccReleaseInfoRepository.findById(wccReleaseInfoForm.getId());
+		Optional<JpaWccReleaseInfo> releaseInfoOptional = releaseInfoRepository.findById(wccReleaseInfoForm.getId());
 		if (!releaseInfoOptional.isPresent()) {
 			return Result.fail("数据不存在");
 		}
 		JpaWccReleaseInfo jpaWccReleaseInfo = releaseInfoOptional.get();
 		jpaWccReleaseInfo.setApproveStatus(wccReleaseInfoForm.getApproveStatus());
-		wccReleaseInfoRepository.save(jpaWccReleaseInfo);
+		releaseInfoRepository.save(jpaWccReleaseInfo);
 		return Result.success("保存成功");
+	}
+	
+	/**
+	 * 保存新增/编辑的发布内容
+	 *
+	 * @param releaseInfoForm
+	 * @return
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Result<?> saveOrUpdate(WccReleaseInfoForm releaseInfoForm) {
+		Optional<JpaWccUser> userOptional = userRepository.findById(releaseInfoForm.getUserId());
+		if (!userOptional.isPresent()) {
+			return Result.condition(false);
+		}
+		Optional<JpaWccReleaseInfo> releaseInfoOptional = releaseInfoRepository.findById(releaseInfoForm.getId() == null ? 0 : releaseInfoForm.getId());
+		JpaWccReleaseInfo releaseInfo = new JpaWccReleaseInfo();
+		if (releaseInfoOptional.isPresent()) {
+			releaseInfo = releaseInfoOptional.get();
+		}
+		
+		releaseInfo.setTitel(releaseInfoForm.getTitel())
+				.setBelongUser(userOptional.get())
+				.setContent(releaseInfoForm.getContent())
+				.setType(releaseInfoForm.getType())
+				.setApproveStatus(0)
+				.setStatus(1)
+				.setIsDelete(0)
+		;
+		releaseInfoRepository.save(releaseInfo);
+		
+		return Result.condition(true);
 	}
 	
 }
