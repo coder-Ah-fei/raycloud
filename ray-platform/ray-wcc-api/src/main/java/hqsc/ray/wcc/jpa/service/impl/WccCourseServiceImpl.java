@@ -433,7 +433,7 @@ public class WccCourseServiceImpl implements WccCourseService {
 		}
 		JpaWccUser user = userOptional.get();
 		
-		Optional<JpaWccCourse> courseOptional = courseRepository.findById(wccCourseForm.getWccCourseId());
+		Optional<JpaWccCourse> courseOptional = courseRepository.findById(wccCourseForm.getWccCourseId() == null ? 0 : wccCourseForm.getWccCourseId());
 		if (!courseOptional.isPresent()) {
 			return Result.data(false);
 		}

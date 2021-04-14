@@ -105,4 +105,6 @@ public class WccUserDto {
 	 */
 	@ApiModelProperty(value = "状态（1正常 0禁用）")
 	private Integer status;
+	
+	private MemberInfoDto memberInfoDto;
 }

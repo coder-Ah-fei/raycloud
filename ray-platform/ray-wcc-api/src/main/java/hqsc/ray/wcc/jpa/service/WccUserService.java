@@ -28,4 +28,12 @@ public interface WccUserService {
 	 * @return
 	 */
 	Result<?> bindMobilePhone(String encryptedData, String iv, String userId);
+	
+	/**
+	 * 保存新增/修改用户
+	 *
+	 * @param userForm
+	 * @return
+	 */
+	Result<?> save(WccUserForm userForm);
 }
